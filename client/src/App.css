@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Patua+One');
+
+.b-green{
+    background: rgb(131, 170, 24);
+}
+.navbar-brand{
+    padding-left: 5%;
+    font-family: 'Patua One', cursive;
+}
+
+
+.responsive-img {
+    object-fit: cover;
+    width: 100%;
+    height: 150px;
+  }
+  
