@@ -5,7 +5,7 @@ export default class footer extends Component {
     render() {
         return (
             <div>
-                <Footer copyrights="copy 2018 Copyright"
+                <Footer copyrights="copy 2018 "
                     className='black'>
                 </Footer>
             </div>
