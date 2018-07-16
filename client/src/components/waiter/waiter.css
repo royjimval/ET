@@ -1,0 +1,17 @@
+.nst{
+    user-select: none;
+}
+
+.b-g{
+    width: 80%;
+    border: 5px solid white;
+    border-radius: 8px;
+}
+
+.b-g:hover{
+    background-color: aqua;
+}
+
+.btn-wide{
+    width: 100%;
+}
