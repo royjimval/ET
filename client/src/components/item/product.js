@@ -1,70 +1,92 @@
-import React, { Component } from 'react'
-import { Row, Col } from 'react-materialize'
+import React, { Component } from 'react';
+import { Col, Icon, Row } from 'react-materialize';
+import Nav from '../header/header'
 import Edit from '../modal/edit'
- 
-import '../item/item.css'
 
-export default class Item extends Component {
+import { getproduct} from '../../accions/productAccion';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import '../item/item.css';
+
+
+class Item extends Component {
+
+    componentDidMount() {
+        this.props.getproduct();        
+    }
+
     render() {
+        const { product } = this.props.product;
         return (
+
             <div>
+                <Nav/>
                 <Row>
 
-                    <Col s={4} className='center grid-example'>
-                    <img className='img-circle' src='https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=74ac7c1aa35dc36f50cc1ac7517c70a7&auto=format&fit=crop&w=750&q=80' alt='' />
-                    <Col s={12} className='center grid-example'>
-                        <h4>Product #{Math.floor(Math.random() * 50)}</h4>
+                                  {
+                product.map((product_item) => (
+                // <CollectionItem className="center"> <Button className=' btn-large white green-text' key={item._id}  waves='light' onClick={this.onDeleteClick.bind(this, item._id)} >Table number {item.idtable} need help<Icon right>check</Icon></Button>
+                // </CollectionItem>
+
+                <Col s={8} m={3} l={3} className='push-s2 center'key={product_item._id} >
+                        <div class=" cardd z-depth-3" >
+                            <div >
+                                <Row>
+                                    <Col s={9} m={9} className="left-align">
+                                        <h5>{product_item.name}</h5>
+                                    </Col>
+                                    <Col s={3} m={3} className="right-align">
+                                            <h5 className='green-text'>${product_item.price}</h5>
+                                    </Col>
+                                </Row>
+                            </div>
+                            <img class="crdImg" src={product_item.photo} alt=""></img>
+
+                            <div class="center supporting_text">
+                                <div className='hide-on-med-and-down'>
+                                    <Row>
+                                        <Col m={6}>
+                                            <button className='btns'>add</button>
+                                        </Col>
+                                        <Col m={6}>
+                                            <button data-target='modalEdit' className='btns'>edit</button>
+                                        </Col>
+                                    </Row>
+                                </div>
+
+                                <div className='hide-on-med-and-up show-on-medium-and-down'>
+                                    <Row>
+                                        <Col s={6} m={6}>
+                                            <Icon small className='icn-btn'>add_circle</Icon>
+                                        </Col>
+                                        <Col s={6} m={6}>
+                                            <Icon data-target='modalEdit' small className='icn-btn'>edit</Icon>
+                                        </Col>
+                                    </Row>
+                                </div>
+                            </div>
+
+                        </div>
                     </Col>
+                ))
+              }
 
-                    <Row className='center'>
-                        <Col s={6} className='center grid-example'>
-                            <a class="black waves-effect waves-light btn-large">Add</a>
-                        </Col>
-                        <Col s={6} className='center grid-example'>
-                            <a data-target='modalEdit' class="black waves-effect waves-light  btn-large">Edit</a>
-                        </Col>
-                    </Row>
-
-                </Col>
-
-                <Col s={4} className='center grid-example'>
-                    <img className='img-circle' src='https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=74ac7c1aa35dc36f50cc1ac7517c70a7&auto=format&fit=crop&w=750&q=80' alt='' />
-                    <Col s={12} className='center grid-example'>
-                        <h4>Product #{Math.floor(Math.random() * 50)}</h4>
-                    </Col>
-
-                    <Row className='center'>
-                        <Col s={6} className='center grid-example'>
-                            <a class="black waves-effect waves-light btn-large">Add</a>
-                        </Col>
-                        <Col s={6} className='center grid-example'>
-                            <a class="black waves-effect waves-light  btn-large">Edit</a>
-                        </Col>
-                    </Row>
-
-                </Col>
-
-                <Col s={4} className='center grid-example'>
-                    <img className='img-circle' src='https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=74ac7c1aa35dc36f50cc1ac7517c70a7&auto=format&fit=crop&w=750&q=80' alt='' />
-                    <Col s={12} className='center grid-example'>
-                        <h4>Product #{Math.floor(Math.random() * 50)}</h4>
-                    </Col>
-
-                    <Row className='center'>
-                        <Col s={6} className='center grid-example'>
-                            <a class="black waves-effect waves-light btn-large">Add</a>
-                        </Col>
-                        <Col s={6} className='center grid-example'>
-                            <a class="black waves-effect waves-light  btn-large">Edit</a>
-                        </Col>
-                    </Row>
-
-                </Col>
 
                 </Row>
-
                 <Edit/>
-            </div>
+            </div >
         )
     }
 }
+
+Item.propTypes = {
+    getproduct: PropTypes.func.isRequired,
+    product: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    product: state.product
+});
+
+
+export default connect(mapStateToProps, {getproduct })(Item);

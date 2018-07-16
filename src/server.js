@@ -30,6 +30,13 @@ app.use('/api/buys', require('../src/routes/buys.routes'));
 app.use('/api/attention', require('../src/routes/attention.routes'));
 app.use('/api/preorder', require('../src/routes/preorder.routes'));
 
+// Set CORS here
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 
 
 

@@ -11,18 +11,13 @@ export default class modalEdit extends Component {
                     </div>}>
 
                     <Row>
-                        <Col s={7} className='grid-example'>
+                        <Col s={6} m={6} l={6}>
                             <Row className=' center-align'>
                                 <MediaBox className=" cicrle-img" src="https://images.pexels.com/photos/920220/pexels-photo-920220.jpeg?auto=compress&cs=tinysrgb&h=650&w=940https://images.pexels.com/photos/920220/pexels-photo-920220.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" caption="A demo media box1" />
                             </Row>
-                            <Row className="left-align">
-                                <p>
-                                    You have to make these big decisions. We spend so much of our life looking - but never seeing.
-                                </p>
-                            </Row>
                         </Col>
 
-                        <Col s={5} className='grid-example'>
+                        <Col  s={6} m={6} l={6}>
                             <h4 className='center'>Ingredientes</h4>
                             <Row>
                                 <Input name='group1' type='checkbox' value='red' label='Red' />
@@ -39,7 +34,15 @@ export default class modalEdit extends Component {
                             <Row>
                                 <Input name='group1' type='checkbox' value='red' label='Red' />
                             </Row>
+                            <Row>
+                            <Col s={12} m={12} l={12} className=''>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras viverra placerat aliquet. Donec ut dolor tempor, cursus nibh elementum, euismod libero. Sed volutpat neque eget est vulputate, sed blandit eros fermentum.
+                                </p>
                         </Col>
+                            </Row>
+                        </Col>
+
 
                     </Row>
                 </Modal>
