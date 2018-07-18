@@ -16,5 +16,9 @@ router.post('/', async (req, res) => {
     res.json({status: 'Preorder Saved'});
   });
 
+router.delete('/:id', async (req, res) => {
+    await Preorder.findByIdAndRemove(req.params.id);
+    res.json({ status: 'Preorder Deleted' });
+}); 
 
 module.exports = router;

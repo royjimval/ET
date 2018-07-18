@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Row, Col, Collection, CollectionItem, Button } from 'react-materialize'
 import Nav from '../header/header'
-import { getPreorder } from '../../accions/preorderAccions'
+import { getPreorder, deletePreorder } from '../../accions/preorderAccions'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
@@ -11,6 +11,10 @@ class Order extends Component {
     componentDidMount() {
         this.props.getPreorder();
     }
+
+    onDeletePreorder = id => {        
+        this.props.deletePreorder(id);
+    };
 
     render() {
         const { preorder } = this.props.preorder;
@@ -33,7 +37,7 @@ class Order extends Component {
                                             <Col m={12} >
                                                 <p>{preorder_item.ingredients}</p>
                                             </Col>
-                                            <Button className=' red right' waves='light'>Remove</Button>
+                                            <Button className=' red right' waves='light' onClick={() => this.onDeletePreorder(preorder_item._id)} >Remove</Button>
                                         </Row>
                                     </CollectionItem>
                                 ))
@@ -72,4 +76,4 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps, { getPreorder })(Order);
+export default connect(mapStateToProps, { getPreorder, deletePreorder})(Order);

@@ -23,8 +23,8 @@ class Item extends Component {
         const data = { idorder, name, ingredients, price }
         console.log(data);
         this.props.addPreorder(data);
-        toast.info("A waiter will attend you soon :)", {
-            position: toast.POSITION.TOP_RIGHT,
+        toast.info(name + " is added now to your preorder :) ", {
+            position: toast.POSITION.BOTTOM_RIGHT,
             className: 'foo-bar'
         });
     }
