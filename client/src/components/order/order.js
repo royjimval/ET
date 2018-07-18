@@ -4,17 +4,24 @@ import Nav from '../header/header'
 import { getPreorder, deletePreorder } from '../../accions/preorderAccions'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-
+let total = 0;
 
 class Order extends Component {
-
     componentDidMount() {
         this.props.getPreorder();
     }
 
-    onDeletePreorder = id => {        
+    onDeletePreorder = (id) => {     
         this.props.deletePreorder(id);
+        total = 0;
     };
+
+    
+    sumPrice(price){
+        total = total + price
+        console.log(total)
+
+    }
 
     render() {
         const { preorder } = this.props.preorder;
@@ -32,12 +39,14 @@ class Order extends Component {
                                                 <h5>{preorder_item.name}</h5>
                                             </Col>
                                             <Col m={4}>
-                                                <h5>${preorder_item.price}</h5>
+                                                <h5  >${preorder_item.price}</h5>
+                                                {this.sumPrice(preorder_item.price)}
                                             </Col>
                                             <Col m={12} >
                                                 <p>{preorder_item.ingredients}</p>
                                             </Col>
                                             <Button className=' red right' waves='light' onClick={() => this.onDeletePreorder(preorder_item._id)} >Remove</Button>
+                                            
                                         </Row>
                                     </CollectionItem>
                                 ))
@@ -48,7 +57,7 @@ class Order extends Component {
                                         <h4 className='right'>Total:</h4>
                                     </Col>
                                     <Col m={6}>
-                                        <h4 className='left red-text'>$  {Math.floor(Math.random() * 30.01)}.48</h4>
+                                        <h4 className='left red-text'>{total}$</h4>
                                     </Col>
                                 </Row>
                             </CollectionItem>
