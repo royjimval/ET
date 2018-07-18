@@ -14,3 +14,6 @@ export const ADD_PRODUCT = "ADD_PRODUCT"
 
 export const GET_CATEGORY = 'GET_CATEGORY';
 export const CATEGORY_LOADING = 'CATEGORY_LOADING';
+
+export const ADD_PREORDER = "ADD_PREORDER";
+export const GET_PREORDER = "GET_PREORDER";

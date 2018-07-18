@@ -1,44 +1,43 @@
 import React, { Component } from 'react'
 import { Row, Col, Collection, CollectionItem, Button } from 'react-materialize'
 import Nav from '../header/header'
+import { getPreorder } from '../../accions/preorderAccions'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 
-export default class Order extends Component {
+class Order extends Component {
+
+    componentDidMount() {
+        this.props.getPreorder();
+    }
+
     render() {
+        const { preorder } = this.props.preorder;
         return (
             <div>
-                <Nav/>
+                <Nav />
                 <Row>
                     <Col m={8} className='offset-m2 '>
                         <Collection header='Order' className='z-depth-3'>
-                            <CollectionItem>
-                                <Row>
-                                    <Col m={8}>
-                                        <h5>Product {Math.floor(Math.random() * 30)}</h5>
-                                    </Col>
-                                    <Col m={4}>
-                                        <h5 className='right'>$  {Math.floor(Math.random() * 30.01)}.48</h5>
-                                    </Col>
-                                    <Col m={12} >
-                                        <p>Let's go up in here, and start having some fun Anytime you learn something your time and energy are not wasted. You can do anything your heart can imagine. This is your creation - and it's just as unique and special as you are.</p>
-                                    </Col>
-                                    <Button className=' red right' waves='light'>Remove</Button>
-                                </Row>
-                            </CollectionItem>
-                            <CollectionItem>
-                                <Row>
-                                    <Col m={8}>
-                                        <h5>Product {Math.floor(Math.random() * 30)}</h5>
-                                    </Col>
-                                    <Col m={4}>
-                                        <h5 className='right'>$  {Math.floor(Math.random() * 30.01)}.48</h5>
-                                    </Col>
-                                    <Col m={12} >
-                                        <p>Let's go up in here, and start having some fun Anytime you learn something your time and energy are not wasted. You can do anything your heart can imagine. This is your creation - and it's just as unique and special as you are.</p>
-                                    </Col>
-                                    <Button className=' red right' waves='light'>Remove</Button>
-                                </Row>
-                            </CollectionItem>
+                            {
+                                preorder.map((preorder_item) => (
+                                    <CollectionItem>
+                                        <Row>
+                                            <Col m={8}>
+                                                <h5>{preorder_item.name}</h5>
+                                            </Col>
+                                            <Col m={4}>
+                                                <h5>${preorder_item.price}</h5>
+                                            </Col>
+                                            <Col m={12} >
+                                                <p>{preorder_item.ingredients}</p>
+                                            </Col>
+                                            <Button className=' red right' waves='light'>Remove</Button>
+                                        </Row>
+                                    </CollectionItem>
+                                ))
+                            }
                             <CollectionItem>
                                 <Row>
                                     <Col m={6}>
@@ -62,3 +61,15 @@ export default class Order extends Component {
         )
     }
 }
+
+Order.propTypes = {
+    getPreorder: PropTypes.func.isRequired,
+    preorder: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    preorder: state.preorder
+});
+
+
+export default connect(mapStateToProps, { getPreorder })(Order);

@@ -10,10 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import '../header/header.css'
 
 class Header extends Component {
-    notify = () => toast("Wow so easy !");
-
     handleSubmit = (e) => {
-        
         e.preventDefault();
         const idtable = this.getTitle.value;
         const data = {
@@ -24,11 +21,9 @@ class Header extends Component {
         toast.info("A waiter will attend you soon :)", {
             position: toast.POSITION.TOP_RIGHT,
             className: 'foo-bar'
-          });
-        
-        
+        });
 
-    }   
+    }
     render() {
         return (
             <div>
@@ -58,18 +53,12 @@ class Header extends Component {
                 </Row>
                 <Row className='center-align'>
                     <Col m={12} s={12}>
-                        {/* <button className='btn-r green' data-target="modal1">
-                        <img src='./assets/camarero2.svg' alt='' width='60px' height='60px'></img>
-                        </button> */}
                         <Button data-target="modal1" floating fab='vertical' icon='add' className='amber darken-3' large style={{ bottom: '45px', right: '24px' }}>
-                            {/* <button className='btn-r green' data-target="modal1">
-                                <img src='./assets/camarero2.svg' alt='' width='50px' height='50px'></img>
-                            </button> */}
                             <form onSubmit={this.handleSubmit}>
                                 <input className="hide" value="2" required type="text" ref={(input) => this.getTitle = input}
                                     placeholder="Enter Post Title" />
                                 <button className='btn-r green'>
-                                <img src='./assets/camarero2.svg' alt='' width='50px' height='50px'></img>
+                                    <img src='./assets/camarero2.svg' alt='' width='50px' height='50px'></img>
                                 </button>
                             </form>
                         </Button>
@@ -84,7 +73,4 @@ const mapStateToProps = state => ({
     item: state.item
 });
 
-export default connect(
-    mapStateToProps,
-    { addItem }
-)(Header);
+export default connect(mapStateToProps,{ addItem })(Header);
