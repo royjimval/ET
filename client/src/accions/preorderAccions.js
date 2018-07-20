@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ADD_PREORDER, GET_PREORDER, DELET_PREORDER } from './types';
+import { ADD_PREORDER, GET_PREORDER, DELET_PREORDER, PUT_PREORDER, PUT_PREORDER_SUCCESS } from './types';
 
 export const addPreorder = item => dispatch => {
   axios.post('/api/preorder', item).then(res =>
@@ -29,3 +29,33 @@ export const deletePreorder = id => dispatch => {
     })
   );
 };
+
+export const putPreorder = (id, idtable, name, ingredients, price, start, finished, delivered, noOrder) => {
+  console.log(id);
+  axios.put(`/api/preorder/${id}`, {
+            idtable : idtable,
+            name : name,
+            ingredients : ingredients,
+            price : price,
+            sended : true,
+            start : start,
+            finished : finished,
+            delivered : delivered,
+            noOrder : noOrder,
+  })
+    .then(response => {
+      console.log(response);
+    })
+
+
+};
+
+// export const putPreorderSuccess = item => dispatch => {
+//   axios.put(`/api/preorder/${item._id}`).then(res =>
+//     dispatch({
+//       type: PUT_PREORDER_SUCCESS,
+//       payload: item._id
+//     })
+//   );
+// };
+

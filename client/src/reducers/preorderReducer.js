@@ -1,4 +1,4 @@
-import { ADD_PREORDER, GET_PREORDER, DELET_PREORDER } from '../accions/types';
+import { ADD_PREORDER, GET_PREORDER, DELET_PREORDER, PUT_PREORDER, PUT_PREORDER_SUCCESS } from '../accions/types';
 
 const initialState = {
   preorder: [],
@@ -25,6 +25,24 @@ export default function (state = initialState, action) {
         ...state,
         preorder: state.preorder.filter(preorder => preorder._id !== action.payload)
       };
+    case PUT_PREORDER:
+      return {
+        ...state,
+        preorder: state.preorder.filter(preorder => preorder._id !== action.payload),
+
+
+      };
+
+    // case PUT_PREORDER_SUCCESS:
+    //   return preorder.map(eachPreorder =>
+    //     (eachPreorder._id === action.updatePreorder._id)
+    //       ? {
+    //         ...eachPreorder,
+    //         name: action.updatePreorder.name,
+    //       }
+    //       : eachPreorder
+    //   )
+
     default:
       return state;
   }
