@@ -1,4 +1,4 @@
-import { ADD_PREORDER, GET_PREORDER, DELET_PREORDER, PUT_PREORDER, PUT_PREORDER_SUCCESS } from '../accions/types';
+import { ADD_PREORDER, GET_PREORDER, DELET_PREORDER, PUT_PREORDER, GET_PREORDER_BYTABLE } from '../accions/types';
 
 const initialState = {
   preorder: [],
@@ -9,6 +9,13 @@ export default function (state = initialState, action) {
   switch (action.type) {
 
     case GET_PREORDER:
+      return {
+        ...state,
+        preorder: action.payload,
+        loading: true
+      };
+
+    case GET_PREORDER_BYTABLE:
       return {
         ...state,
         preorder: action.payload,

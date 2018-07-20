@@ -1,27 +1,71 @@
 import React, { Component } from 'react'
-import { Col, Collection, CollectionItem, Input, Icon, Button } from 'react-materialize'
-export default class ChefDetail extends Component {
+import { Col, Collection, Table, Button, Icon } from 'react-materialize'
+import { getPreorderbytable } from '../../accions/preorderAccions';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
+class ChefDetail extends Component {
+
+
+    componentDidMount() {
+        this.props.getPreorderbytable();
+    }
     render() {
+        const { preorder } = this.props.preorder
+        console.log(preorder)
+
         return (
+
             <div>
                 <Col m={6} >
                     <h3 className='center'>Order Detail</h3>
                     <Col s={12} m={12}>
                         <Collection className='z-depth-1'>
-                            <CollectionItem>Alvin <div className='secondary-content'><Input name='group1' type='checkbox' value='red' label=' ' /></div></CollectionItem>
-                            <CollectionItem>Alvin</CollectionItem>
-                            <CollectionItem>Alvin</CollectionItem>
-                            <CollectionItem>Alvin</CollectionItem>
+                            {
+                                preorder.map(eachPreorder => {
+                                    return (
+                                        <Table >
+                                            <thead>
+                                                <tr>
+                                                    <th data-field="id"><strong className="">{eachPreorder.name}</strong></th>
+                                                    <th><Button waves='light'>button<Icon left>cloud</Icon></Button></th>
+
+                                                </tr>
+                                            </thead>
+                                            {
+                                                eachPreorder.ingredients.map(eachIngredients => {
+                                                    return (
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>{eachIngredients}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    )
+                                                })
+                                            }
+
+                                        </Table>
+                                    )
+                                })
+                            }
                         </Collection>
                     </Col>
-                    <div className='center'>
-                        <Button className='cyan darken-2' waves='light'>Cooking<Icon left>restaurant_menu</Icon></Button>
-                        <span className=' pr-2' />
-                        <Button className='green' waves='light'>Cooked<Icon left>restaurant_menu</Icon></Button>
-                    </div>
+
                 </Col>
             </div>
+
         )
     }
 }
+
+ChefDetail.propTypes = {
+    getPreorder: PropTypes.func.isRequired,
+    preorder: PropTypes.object.isRequired,
+
+};
+
+const mapStateToProps = state => ({
+    preorder: state.preorder
+});
+
+export default connect(mapStateToProps, { getPreorderbytable })(ChefDetail);

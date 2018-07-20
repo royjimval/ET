@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { Row, Col, Collection, CollectionItem, Button } from 'react-materialize'
+import { Row, Col, Collection, CollectionItem, Button, Preloader } from 'react-materialize'
 import Nav from '../header/header'
 import { getPreorder, deletePreorder, putPreorder } from '../../accions/preorderAccions'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import './order.css'
 let total = 0;
 
 class Order extends Component {
@@ -28,6 +29,55 @@ class Order extends Component {
 
     }
 
+    isSended(preorder_item) {
+        if (preorder_item.sended === true) {
+            return (
+                <CollectionItem className="disabled grey lighten-4" >
+                    <Row>
+                        <Col m={1} >
+                            <Row>
+                                <Col s={4} className='secondary-content'>
+                                    <Preloader size='small' />
+                                </Col>
+                            </Row>
+                        </Col>
+                        <Col m={8}>
+                            <h5>{preorder_item.name}</h5>
+                        </Col>
+                        <Col m={3} className='right-align'>
+                            <h5  >${preorder_item.price}</h5>
+                            {this.sumPrice(preorder_item.price)}
+                        </Col>
+                        <Col m={12}>
+                            <p>{preorder_item.ingredients}</p>
+                        </Col>
+
+
+
+                    </Row>
+
+                </CollectionItem>)
+        } else {
+            return (
+                <CollectionItem>
+                    <Row>
+                        <Col m={8}>
+                            <h5>{preorder_item.name}</h5>
+                        </Col>
+                        <Col m={4}>
+                            <h5  >${preorder_item.price} </h5>
+                            {this.sumPrice(preorder_item.price)}
+                        </Col>
+                        <Col m={12} >
+                            <p>{preorder_item.ingredients}<th></th></p>
+                        </Col>
+                        <Button className=' red right' waves='light' onClick={() => this.onDeletePreorder(preorder_item._id)} >Remove</Button>
+
+                    </Row>
+                </CollectionItem>)
+        }
+    }
+
     render() {
         const { preorder } = this.props.preorder;
         return (
@@ -39,22 +89,8 @@ class Order extends Component {
                             {
                                 preorder.map((preorder_item) =>
                                     (
-                                        <CollectionItem>
-                                            <Row>
-                                                <Col m={8}>
-                                                    <h5>{preorder_item.name}</h5>
-                                                </Col>
-                                                <Col m={4}>
-                                                    <h5  >${preorder_item.price}</h5>
-                                                    {this.sumPrice(preorder_item.price)}
-                                                </Col>
-                                                <Col m={12} >
-                                                    <p>{preorder_item.ingredients}</p>
-                                                </Col>
-                                                <Button className=' red right' waves='light' onClick={() => this.onDeletePreorder(preorder_item._id)} >Remove</Button>
+                                        this.isSended(preorder_item)
 
-                                            </Row>
-                                        </CollectionItem>
                                     ))
                             }
                             <CollectionItem>
@@ -63,7 +99,7 @@ class Order extends Component {
                                         <h4 className='right'>Total:</h4>
                                     </Col>
                                     <Col m={6}>
-                                        <h4 className='left red-text'>{total}$</h4>
+                                        <h4 className='left red-text'>${total}</h4>
                                     </Col>
                                 </Row>
                             </CollectionItem>

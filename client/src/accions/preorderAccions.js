@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ADD_PREORDER, GET_PREORDER, DELET_PREORDER, PUT_PREORDER, PUT_PREORDER_SUCCESS } from './types';
+import { ADD_PREORDER, GET_PREORDER, DELET_PREORDER, GET_PREORDER_BYTABLE } from './types';
 
 export const addPreorder = item => dispatch => {
   axios.post('/api/preorder', item).then(res =>
@@ -17,6 +17,17 @@ export const getPreorder = () => dispatch => {
         type: GET_PREORDER,
         payload: res.data
       })
+
+    );
+};
+export const getPreorderbytable = item => dispatch => {
+  axios.get(`/api/preorder/${item}`)
+    .then(res =>
+      dispatch({
+        type: GET_PREORDER_BYTABLE,
+        payload: res.data,
+      },
+    console.log(res.data))
 
     );
 };
