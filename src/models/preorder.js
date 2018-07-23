@@ -4,8 +4,16 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const preorder = new Schema({
-	idorder: {type: String, required: true},
-	foods: [[{type: String, required: true}]]
+	idtable: { type: String, required: true },
+	name: {type: String, required: true},
+	ingredients: [[{type: String, required: true}]],
+	price: {type: Number, required: true},
+	sended: {type: Boolean, required: true, default: false},
+	start: { type: Boolean, required: true, default: false},
+	finished: { type: Boolean, required: true, default: false },
+	delivered: { type: Boolean, required: true, default : false },
+	noOrder: { type: String, default:"" }
+
 });
 
 module.exports = mongoose.model('Preorder', preorder);
