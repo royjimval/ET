@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Col, Collection, Table, Button, Icon } from 'react-materialize'
-import { getPreorderbytableFinished } from '../../../accions/preorderAccions';
+import { getPreorderbytableFinished, deletePreorder } from '../../../accions/preorderAccions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -10,6 +10,11 @@ class TableDescription extends Component {
     componentDidMount() {
         this.props.getPreorderbytableFinished();
     }
+
+    onDeletePreorder = (id) => {
+        console.log(id)
+        this.props.deletePreorder(id);
+    };
 
     render() {
         const { preorder } = this.props.preorder
@@ -27,6 +32,8 @@ class TableDescription extends Component {
                                             <thead>
                                                 <tr>
                                                     <th data-field="id"><strong className="">{eachPreorder.name}</strong></th>
+                                                    <th><Button className="blue lighten-1" waves='light' onClick={() => this.onDeletePreorder(eachPreorder._id)} >Delivered<Icon left>cloud</Icon></Button></th>
+
 
                                                 </tr>
                                             </thead>
@@ -59,6 +66,7 @@ class TableDescription extends Component {
 TableDescription.propTypes = {
     getPreorderbytableFinished: PropTypes.func.isRequired,
     preorder: PropTypes.object.isRequired,
+    deletePreorder: PropTypes.func.isRequired,
 
 };
 
@@ -66,4 +74,4 @@ const mapStateToProps = state => ({
     preorder: state.preorder
 });
 
-export default connect(mapStateToProps, { getPreorderbytableFinished })(TableDescription);
+export default connect(mapStateToProps, { getPreorderbytableFinished, deletePreorder })(TableDescription);

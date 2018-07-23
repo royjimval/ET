@@ -30,48 +30,8 @@ class Order extends Component {
 
 
     render() {
-        // const { order } = this.props.order;
         return (
-            /*  <div>
-                 <table>
-                     <thead>
-                         <tr>
-                             <th>TABLE ASSISNTANCE </th>
-                         </tr>
-                     </thead>
-                     <tbody>
-                         {
-                             items.map((item) => (
-                             <th key={item._id}>
-                                 <h3>Table number {item.idtable} need a waiter for assistence</h3>
-                                 <button onClick={this.onDeleteClick.bind(this, item._id)} > DELETE </button>
-                             </th>
-                             ))
-                         }
-                     </tbody>
-                 </table>
- 
-                 <table>
-                     <thead>
-                         <tr>
-                             <th>FOOD TO DELIVERED </th>
-                         </tr>
-                     </thead>
-                     <tbody>
-                         {
-                             order.map((order_by_element) => (
-                             <th key={order_by_element._id}>
-                                 <h3>{order_by_element.idtable}</h3>
-                                 <h3>{order_by_element.foods}</h3>
-                                 <h3>{order_by_element.start}</h3>
- 
-                                 <button onClick={this.onDeleteOrder.bind(this, order_by_element._id)} > DELETE </button>
-                             </th>
-                             ))
-                         }
-                     </tbody>
-                 </table>
-             </div> */
+
             <div className='blue-grey lighten-5'>
                 <Barnav />
                 <Row>
