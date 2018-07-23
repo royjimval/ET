@@ -73,4 +73,4 @@ const mapStateToProps = state => ({
     preorder: state.preorder
 });
 
-export default connect(mapStateToProps, { getPreorderbytable, updateFinished })(ChefDetail);
+export default connect(mapStateToProps, { getPreorderbytable, updateFinished, })(ChefDetail);
