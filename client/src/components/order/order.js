@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Row, Col, Collection, CollectionItem, Button, Preloader } from 'react-materialize'
+import { Row, Col, Collection, CollectionItem, Button, Preloader, Icon } from 'react-materialize'
 import Nav from '../header/header'
 import { getPreorder, deletePreorder, putPreorder } from '../../accions/preorderAccions'
 import PropTypes from 'prop-types'
@@ -29,17 +29,39 @@ class Order extends Component {
 
     }
 
+    isCooked(preorder_item) {
+        console.log(preorder_item.finished)
+        if (preorder_item.finished === true) {
+            return(
+            <Row>
+                <Col s={4} className='secondary-content'>
+                    <Icon>check_circle</Icon>
+                </Col>
+            </Row>)
+        } else {
+            return(
+            <Row>
+                <Col s={4} className='secondary-content'>
+                    <Preloader size='small' />
+                </Col>
+            </Row>)
+        }
+    }
+
     isSended(preorder_item) {
         if (preorder_item.sended === true) {
             return (
                 <CollectionItem className="disabled grey lighten-4" >
                     <Row>
                         <Col m={1} >
-                            <Row>
+                            {
+                                this.isCooked(preorder_item)
+                            }
+                            {/* <Row>
                                 <Col s={4} className='secondary-content'>
                                     <Preloader size='small' />
                                 </Col>
-                            </Row>
+                            </Row> */}
                         </Col>
                         <Col m={8}>
                             <h5>{preorder_item.name}</h5>

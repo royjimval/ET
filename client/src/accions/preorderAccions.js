@@ -32,6 +32,19 @@ export const getPreorderbytable = item => dispatch => {
     );
 };
 
+export const getPreorderbytableFinished = item => dispatch => {
+  axios.get(`/api/preorder/finished/${item}`)
+    .then(res =>
+      dispatch({
+        type: GET_PREORDER_BYTABLE,
+        payload: res.data,
+      },
+        console.log(res.data))
+
+    );
+};
+
+
 export const deletePreorder = id => dispatch => {
   axios.delete(`/api/preorder/${id}`).then(res =>
     dispatch({
@@ -42,7 +55,6 @@ export const deletePreorder = id => dispatch => {
 };
 
 export const putPreorder = (id, idtable, name, ingredients, price, start, finished, delivered, noOrder) => {
-  console.log(id);
   axios.put(`/api/preorder/${id}`, {
             idtable : idtable,
             name : name,
@@ -61,6 +73,25 @@ export const putPreorder = (id, idtable, name, ingredients, price, start, finish
 
 };
 
+export const updateFinished = (item) => {
+  console.log(item._id)
+  axios.put(`/api/preorder/${item._id}`, {
+    idtable: item.idtable,
+    name: item.name,
+    ingredients: item.ingredients,
+    price: item.price,
+    sended: item.sended,
+    start: item.start,
+    finished: true,
+    delivered: item.delivered,
+    noOrder: item.noOrder,
+  })
+    .then(response => {
+      console.log(response);
+    })
+
+
+};
 // export const putPreorderSuccess = item => dispatch => {
 //   axios.put(`/api/preorder/${item._id}`).then(res =>
 //     dispatch({

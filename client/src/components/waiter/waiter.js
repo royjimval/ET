@@ -5,7 +5,7 @@ import { getOrder, deleteOrder } from '../../accions/orderAccions';
 import { Row} from 'react-materialize'
 import '../waiter/waiter.css'
 
-import TableCard from './orderCard/TableCard'
+import Buttons from '../waiter/TableDescription/ButtonsWaiter'
 import WaiterAssist from './WaiterAssist/WaiterAssist'
 import TableDescription from './TableDescription/TableDescription'
 import Barnav from '../header/navbar'
@@ -75,7 +75,7 @@ class Order extends Component {
             <div className='blue-grey lighten-5'>
                 <Barnav />
                 <Row>
-                    <TableCard />
+                    <Buttons />
                     <WaiterAssist />
                     <TableDescription />
 

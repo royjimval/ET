@@ -35,7 +35,6 @@ class TableCard extends Component {
               return (
                 <Col s={12} m={6} l={4} >
                   <Card onClick={() => this.seeOrder(table)} className='blue-grey darken-1' textClassName='white-text' title={res}></Card>
-                  {/* <Button waves='light' onClick={() => this.seeOrder(table)} >{res} <Icon left>open_in_new</Icon></Button> */}
                 </Col>
               )
             })

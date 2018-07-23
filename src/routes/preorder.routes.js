@@ -14,6 +14,12 @@ router.get('/:idtable', async (req, res) => {
     res.json(preorder);
 }); 
 
+router.get('/finished/:idtable', async (req, res) => {
+    const preorder = await Preorder.find({ idtable: req.params.idtable, sended: true, finished: true })
+    console.log(preorder);
+    res.json(preorder);
+}); 
+
 router.post('/', async (req, res) => {
     const { idtable, name, ingredients, price, noOrder } = req.body;
     const preorder = new Preorder({ idtable, name, ingredients, price, noOrder });
