@@ -1,34 +1,56 @@
 import React, { Component } from 'react';
-import { Col, Icon, Row } from 'react-materialize';
+import { Col, Icon, Row, Button} from 'react-materialize';
+import '../modal/modal.css'
 import Nav from '../header/header'
-import Edit from '../modal/edit'
+import '../item/item.css';
+import ModalEdit from '../modal/edit'
 
 import { getproduct} from '../../accions/productAccion';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import '../item/item.css';
+
 
 
 class Item extends Component {
+
+    constructor(props){
+        super(props)
+        this.state = {
+            name:"",
+            ingredients:[],
+            extra:[],
+            photo:"",
+            ids:""
+        }
+    }
 
     componentDidMount() {
         this.props.getproduct();        
     }
 
+    datamodal = (product_item) => {
+        this.setState({
+            name:product_item.name,
+            ingredients:product_item.ingredients,
+            photo:product_item.photo,
+            extra:product_item.extra,
+            ids:product_item._id,
+        })
+    }
+
+
+
+
     render() {
         const { product } = this.props.product;
         return (
-
             <div>
                 <Nav/>
                 <Row>
-
                                   {
                 product.map((product_item) => (
-                // <CollectionItem className="center"> <Button className=' btn-large white green-text' key={item._id}  waves='light' onClick={this.onDeleteClick.bind(this, item._id)} >Table number {item.idtable} need help<Icon right>check</Icon></Button>
-                // </CollectionItem>
-
-                <Col s={8} m={3} l={3} className='push-s2 center'key={product_item._id} >
+                <div key={product_item._id}>
+                <Col s={8} m={3} l={3} className='push-s2 center' >
                         <div class=" cardd z-depth-3" >
                             <div >
                                 <Row>
@@ -46,10 +68,10 @@ class Item extends Component {
                                 <div className='hide-on-med-and-down'>
                                     <Row>
                                         <Col m={6}>
-                                            <button className='btns'>add</button>
+                                            <button className='btns' >add</button>
                                         </Col>
                                         <Col m={6}>
-                                            <button data-target='modalEdit' className='btns'>edit</button>
+                                            <button className='btns' data-target="modalEdit" onClick={() => this.datamodal(product_item)}>edit</button>
                                         </Col>
                                     </Row>
                                 </div>
@@ -57,10 +79,12 @@ class Item extends Component {
                                 <div className='hide-on-med-and-up show-on-medium-and-down'>
                                     <Row>
                                         <Col s={6} m={6}>
-                                            <Icon small className='icn-btn'>add_circle</Icon>
+                                            <Icon small className='icn-btn' >add_circle</Icon>
                                         </Col>
                                         <Col s={6} m={6}>
-                                            <Icon data-target='modalEdit' small className='icn-btn'>edit</Icon>
+                                            <Button flat className='icn-btn' data-target="modalEdit" onClick={() => this.datamodal(product_item)}>
+                                            <Icon small>edit</Icon>
+                                            </Button>
                                         </Col>
                                     </Row>
                                 </div>
@@ -68,12 +92,14 @@ class Item extends Component {
 
                         </div>
                     </Col>
+                    </div>
                 ))
               }
 
 
                 </Row>
-                <Edit/>
+                <ModalEdit datapass={this.state}/>
+
             </div >
         )
     }
