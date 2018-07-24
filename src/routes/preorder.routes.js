@@ -4,26 +4,22 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
     const preorder = await Preorder.find();
-    console.log(preorder);
     res.json(preorder);
 }); 
 
 router.get('/:idtable', async (req, res) => {
     const preorder = await Preorder.find({idtable: req.params.idtable, sended: true, finished: false})
-    console.log(preorder);
     res.json(preorder);
 }); 
 
 router.get('/finished/:idtable', async (req, res) => {
     const preorder = await Preorder.find({ idtable: req.params.idtable, sended: true, finished: true })
-    console.log(preorder);
     res.json(preorder);
 }); 
 
 router.post('/', async (req, res) => {
     const { idtable, name, ingredients, price, noOrder } = req.body;
     const preorder = new Preorder({ idtable, name, ingredients, price, noOrder });
-    console.log(preorder);
     await preorder.save();
     res.json({status: 'Preorder Saved'});
   });

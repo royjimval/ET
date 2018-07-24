@@ -10,7 +10,6 @@ import Order from './components/order/order';
 import Foot from './components/footer/footer';
 import Waiter from './components/waiter/waiter';
 import Chef from './components/chef/Chef';
-import { Navbar } from '../../node_modules/react-materialize';
 import NavBarAdmin from './components/Admin/navbar/navbar';
 import Grafica from './components/Admin/Graficas/grafica';
 import General from './components/Admin/General/General';

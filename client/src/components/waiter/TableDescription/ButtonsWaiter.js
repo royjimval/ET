@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Col, Button, Icon, Card } from 'react-materialize'
+import { Col, Card } from 'react-materialize'
 import { getPreorderbytableFinished } from '../../../accions/preorderAccions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -19,7 +19,6 @@ class TableCardWaiter extends Component {
     }
 
     seeOrderFinished = (table) => {
-        console.log(table)
         this.props.getPreorderbytableFinished(table);
     }
     render() {

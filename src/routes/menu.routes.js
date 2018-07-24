@@ -5,7 +5,6 @@ const Product = require('../models/eatable');
 
 router.get('/', async (req, res) => {
     const products = await Product.find();
-    console.log(products);
     res.json(products);
 });
 
@@ -17,7 +16,6 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
     const { title, description, price } = req.body;
     const product = new Product({title, description, price});
-    console.log(product);
     await product.save();
     res.json({status: 'Task Saved'});
   });
@@ -39,7 +37,6 @@ router.post('/', async (req, res) => {
   router.post('/', async (req, res) => {
     const { location, people } = req.body;
     const table = new Product({location, people});
-    console.log(table);
     await table.save();
     res.json({status: 'Task Saved'});
   });

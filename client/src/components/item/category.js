@@ -6,7 +6,6 @@ import Nav from '../header/header'
 import { getcategory} from '../../accions/categoryAccion';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { createHash } from 'crypto';
 
 class categoryItem extends Component {
 
