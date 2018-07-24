@@ -27,6 +27,8 @@ router.get('/', async (req, res) => {
     res.json(attention);
 }); 
 
+
+
 router.delete('/:id', async (req, res) => {
     await Attention.findByIdAndRemove(req.params.id);
     res.json({ status: 'attention Deleted' });

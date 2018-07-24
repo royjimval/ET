@@ -8,40 +8,33 @@ export default class modalEdit extends Component {
         e.preventDefault();
 
         const {FoodIngredients} = this.form;
-        
-
         const checkboxArrayIngredients = Array.prototype.slice.call(FoodIngredients);
-
-        // extract only the checked checkboxes
         const checkedCheckboxesIngredients = checkboxArrayIngredients.filter(input => input.checked);
-        
-
-        // use .map() to extract the value from each checked checkbox
         const checkedCheckboxesValuesIngredients = checkedCheckboxesIngredients.map(input => input.value);
         console.log('checked ingredients:', checkedCheckboxesValuesIngredients);
 
         const {FoodExtra} = this.form;
-
         const checkboxArrayExtra = Array.prototype.slice.call(FoodExtra);
-
-        // extract only the checked checkboxes
         const checkedCheckboxesExtra = checkboxArrayExtra.filter(input => input.checked);
-
-        // use .map() to extract the value from each checked checkbox
         const checkedCheckboxesValuesExtra = checkedCheckboxesExtra.map(input => input.value);
         console.log('checked extra:', checkedCheckboxesValuesExtra);
 
+        let extraItems=0;
+        checkedCheckboxesValuesExtra.map(item =>{
+            extraItems++;
+        })
+
+        const extraPrice = 15 * extraItems;
+
+        this.props.datapass.price=this.props.datapass.price+extraPrice;
+         
     }
 
 
     render() {
         return (
             <div key={this.props.datapass.ids[0]}>
-                <Modal id='modalEdit' fixedFooter className='center' header={this.props.datapass.name} /*actions={
-                    <div>
-                        <Button className='black' modal="close" waves="light" onClick={() => this.save()}>Done </Button>
-                        
-                    </div>}*/>
+                <Modal id='modalEdit' fixedFooter className='center' header={this.props.datapass.name}>
                     <Row>
                         
                         <Col s={6} m={6} l={6}>
