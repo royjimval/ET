@@ -23,14 +23,7 @@ export const addProduct = item => dispatch => {
   );
 };
 
-// export const deleteItem = id => dispatch => {
-//   axios.delete(`/api/attention/${id}`).then(res =>
-//     dispatch({
-//       type: DELETE_ITEM,
-//       payload: id
-//     })
-//   );
-// };
+
 
 export const setproductsLoading = () => {
     return {
