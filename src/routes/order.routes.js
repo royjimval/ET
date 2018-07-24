@@ -5,14 +5,12 @@ const router = express.Router();
 router.post('/', async (req, res) => {
     const { idtable, date, foods, ingredients, total, start, finished, delivered } = req.body;
     const order = new Order({ idtable, date, foods, ingredients, total, start, finished, delivered });
-    console.log(order);
     await order.save();
     res.json({ status: 'order Saved' });
 }); 
 
 router.get('/', async (req, res) => {
     const order = await Order.find();
-    console.log(order);
     res.json(order);
 }); 
 

@@ -8,7 +8,6 @@ const router = express.Router();
 router.post('/', async (req, res) => {
     const { idtable } = req.body;
     const attention = new Attention({ idtable });
-    console.log(attention);
     await attention.save();
     res.json({ status: 'attention Saved' });
 }); 
@@ -23,7 +22,6 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
     const attention = await Attention.find();
-    console.log(attention);
     res.json(attention);
 }); 
 

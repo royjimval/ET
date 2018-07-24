@@ -12,7 +12,6 @@ class TableDescription extends Component {
     }
 
     onDeletePreorder = (id) => {
-        console.log(id)
         this.props.deletePreorder(id);
     };
 

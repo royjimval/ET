@@ -15,7 +15,8 @@ const user = new Schema({
         	match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
     	},
 	role: {type: String, required: true},
-	permissions:[[{type: String, required: true}]]
+	permissions:[[{type: String, required: true}]],
+	status:{type: Boolean, required: true}	
 });
 
 // var validateEmail = function(email) {
