@@ -25,12 +25,10 @@ class Order extends Component {
 
     sumPrice(price) {
         total = total + price
-        console.log(total)
 
     }
 
     isCooked(preorder_item) {
-        console.log(preorder_item.finished)
         if (preorder_item.finished === true) {
             return(
             <Row>

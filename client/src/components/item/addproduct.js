@@ -21,7 +21,6 @@ class ADDPRODUCT extends Component {
         const data = {
             name, category, price, ingredients, extra, photo
         }
-        console.log(data);
         this.props.addProduct(data);
         toast.info("Congratulations, Your new product have been added correctly :)!", {
             position: toast.POSITION.TOP_RIGHT,
