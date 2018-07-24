@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
-import { Row, Col, Button, Modal, MediaBox, Input } from 'react-materialize';
+import { Row, Col, Modal, MediaBox, Input } from 'react-materialize';
+import { toast } from 'react-toastify'
+import { addPreorder } from '../../accions/preorderAccions'
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import './modal.css'
 
 
-export default class modalEdit extends Component {
+class modalEdit extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
@@ -21,13 +25,30 @@ export default class modalEdit extends Component {
 
         let extraItems=0;
         checkedCheckboxesValuesExtra.map(item =>{
-            extraItems++;
+            return(
+            extraItems++
+            )
         })
 
         const extraPrice = 15 * extraItems;
 
-        this.props.datapass.price=this.props.datapass.price+extraPrice;
+        const total_Price=this.props.datapass.price+extraPrice;
          
+        this.add_Preorder(total_Price,checkedCheckboxesValuesIngredients,checkedCheckboxesValuesExtra)
+    }
+
+    add_Preorder = (total_price,list_ingredients,list_extra) => {
+        const total_ingredients=list_extra+list_ingredients;
+        const idtable = "1"
+        const name = this.props.datapass.name
+        const ingredients = total_ingredients
+        const price = total_price
+        const data = {idtable, name, ingredients, price }
+        this.props.addPreorder(data);
+        toast.info(name + " is added now to your preorder :) ", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+            className: 'foo-bar'
+        });
     }
 
 
@@ -78,3 +99,15 @@ export default class modalEdit extends Component {
         )
     }
 }
+
+modalEdit.propTypes = {
+    addPreorder: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+    product: state.product,
+    preorder: state.preorder
+})
+
+
+export default connect(mapStateToProps, {addPreorder })(modalEdit);
