@@ -1,5 +1,9 @@
-
-
+.space{
+  margin: 20px;
+}
+.hdr{
+  padding-bottom: 20px;
+}
 .icn-btn {
     text-align: center;
     cursor: pointer;
@@ -36,6 +40,18 @@
     border-radius:5px;
     box-shadow: 0 6px #43a047;
     }
+    .btns1 {
+    text-align: center;
+    cursor: pointer;
+    font-size:16px;
+    padding:5px 30px;
+    outline: none;
+    color: white;
+    background-color: #00c853;
+    border: none;
+    border-radius:5px;
+    box-shadow: 0 6px #922626;
+    }
   
     .btns:hover{
       background-color: #2ecc71;
@@ -57,7 +73,7 @@
       border-radius: 10px;
     }
     .supporting_text {
-      padding-top: 8px;
+      margin-bottom: 20px;
     }
   
   
@@ -115,7 +131,7 @@
   
   
         h5{
-          font-size: 18px;
+          font-size: 10px;
       }
   
         .btns {
@@ -164,6 +180,10 @@
           height: 200px;
           object-fit: cover;
           margin-top: -15px;
+        }
+
+        h5{
+          font-size: 16px;
         }
         
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button,Icon,Col, Collection, CollectionItem } from 'react-materialize'
+import { Button, Col, Collection } from 'react-materialize'
 import Confirmation from '../../modal/confirmation'
 import { connect } from 'react-redux';
 import { getItems, deleteItem } from '../../../accions/itemAccions'
@@ -11,11 +11,11 @@ import '../waiter.css'
 class WaiterAssist extends Component {
   componentDidMount() {
     this.props.getItems();
-}
+  }
 
-onDeleteClick = id => {
-  this.props.deleteItem(id);
-};
+  onDeleteClick = id => {
+    this.props.deleteItem(id);
+  };
 
 
   render() {
@@ -23,20 +23,21 @@ onDeleteClick = id => {
     return (
       <div>
         <Col m={6}  >
-          <h3 className='center'>Assist</h3>
           <Col s={12} m={12}>
-            <Collection className=''>
+            <Collection header='Assist' className='scrolleable'>
               {
                 items.map((item) => (
-                <CollectionItem className="center"> <Button className='btn-wide white green-text' key={item._id}  waves='green' onClick={this.onDeleteClick.bind(this, item._id)} >Table number {item.idtable} need help <Icon>check</Icon></Button>
-                </CollectionItem>
+                  <li className="collection-item avatar">
+                    <span className="title">The table number {item.idtable} need a waiter.</span>
+                    <Button className="secondary-content" flat onClick={this.onDeleteClick.bind(this, item._id)}><i className="material-icons green-text">check</i></Button>
+                  </li>
                 ))
               }
 
             </Collection>
           </Col>
         </Col>
-        <Confirmation/>
+        <Confirmation />
       </div>
     )
   }
@@ -50,4 +51,4 @@ const mapStateToProps = state => ({
   item: state.item,
 });
 
-export default connect(mapStateToProps, { getItems, deleteItem})(WaiterAssist);
+export default connect(mapStateToProps, { getItems, deleteItem })(WaiterAssist);

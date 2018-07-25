@@ -92,12 +92,3 @@ export const updateFinished = (item) => {
 
 
 };
-// export const putPreorderSuccess = item => dispatch => {
-//   axios.put(`/api/preorder/${item._id}`).then(res =>
-//     dispatch({
-//       type: PUT_PREORDER_SUCCESS,
-//       payload: item._id
-//     })
-//   );
-// };
-

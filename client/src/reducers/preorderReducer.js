@@ -39,17 +39,6 @@ export default function (state = initialState, action) {
 
 
       };
-
-    // case PUT_PREORDER_SUCCESS:
-    //   return preorder.map(eachPreorder =>
-    //     (eachPreorder._id === action.updatePreorder._id)
-    //       ? {
-    //         ...eachPreorder,
-    //         name: action.updatePreorder.name,
-    //       }
-    //       : eachPreorder
-    //   )
-
     default:
       return state;
   }

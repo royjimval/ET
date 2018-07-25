@@ -18,11 +18,6 @@ import {GET_PRODUCT, PRODUCT_LOADING, ADD_PRODUCT} from '../accions/types';
         ...state,
         product: [action.payload, ...state.items]
         };
-//         case DELETE_ITEM:
-//         return {
-//           ...state,
-//           items: state.items.filter(item => item._id !== action.payload)
-//   };
       case PRODUCT_LOADING:
       return {
           ...state,

@@ -25,8 +25,6 @@ router.post('/', async (req, res) => {
     const newTask = {title, description, price};
     await Product.findByIdAndUpdate(req.params.id, newTask);
     res.json({status: 'Task Updated'});
-    // console.log(req.params.id);
-    // res.json('recieved');
   });
 
   router.delete('/:id', async (req, res) => {

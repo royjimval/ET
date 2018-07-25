@@ -5,6 +5,8 @@ import { addPreorder } from '../../accions/preorderAccions'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './modal.css'
+import '../item/item.css';
+import Button from '../../../../node_modules/react-materialize/lib/Button';
 
 
 class modalEdit extends Component {
@@ -38,7 +40,7 @@ class modalEdit extends Component {
     }
 
     add_Preorder = (total_price,list_ingredients,list_extra) => {
-        const total_ingredients=list_extra+list_ingredients;
+        const total_ingredients=list_extra.concat(list_ingredients);
         const idtable = "1"
         const name = this.props.datapass.name
         const ingredients = total_ingredients
@@ -55,10 +57,15 @@ class modalEdit extends Component {
     render() {
         return (
             <div key={this.props.datapass.ids[0]}>
-                <Modal id='modalEdit' fixedFooter className='center' header={this.props.datapass.name}>
+                <Modal id='modalEdit' fixedFooter className='center' header={this.props.datapass.name} actions={
+                    <div>
+                        <Button modal="close" className="right red btns1">X</Button>
+                    </div>
+                }>
                     <Row>
                         
                         <Col s={6} m={6} l={6}>
+                            
                             <Row className=' center-align'>
                                 <MediaBox className=" cicrle-img" src={this.props.datapass.photo} caption="A demo media box1" />
                             </Row>
@@ -69,13 +76,14 @@ class modalEdit extends Component {
                             {this.props.datapass.ingredients.map(ingredien =>{
                                 return(
                                     <Row>
-                                        <Input name="FoodIngredients" type='checkbox'  key={ingredien[0]} value={ingredien[0]} label={ingredien[0]}/>
+                                        <Input name="FoodIngredients" type='checkbox' checked key={ingredien[0]} value={ingredien[0]} label={ingredien[0]}/>
                                     </Row>
                                 )
                             })}
                             <Row>
                                 <Col s={12} m={12} l={12} className=''>
                                     <h4 className='center'>Extra</h4>
+                                    <h5>each extra ingredient cost 15 pesos plus</h5>
                                     {
                                         this.props.datapass.extra.map(extra =>{
                                             return(
@@ -89,8 +97,8 @@ class modalEdit extends Component {
                                     }
                                 </Col>
                             </Row>
+                                <Button modal="close" className="btns">Add</Button>
                         </Col>
-                        <input type="submit" value="Submit" />
                         </form>
 
                     </Row>

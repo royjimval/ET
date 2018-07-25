@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Parallax, Row, Col, Button, Navbar, NavItem, Icon } from 'react-materialize'
+import { Parallax, Row, Button, Navbar, NavItem, Icon, Col } from 'react-materialize'
 import { Link } from 'react-router-dom';
 import Assist from '../modal/assist'
 import { connect } from 'react-redux';
@@ -12,16 +12,16 @@ import '../header/header.css'
 class Header extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
-        const idtable = this.getTitle.value;
+        const idtable = this.getTable.value;
         const data = {
             idtable
         }
+        console.log(data);
         this.props.addItem(data);
         toast.info("A waiter will attend you soon :)", {
             position: toast.POSITION.TOP_RIGHT,
             className: 'foo-bar'
         });
-
     }
     render() {
         return (
@@ -39,29 +39,22 @@ class Header extends Component {
                         <Row className='center'>
                             <Navbar className='green accent-4 center'>
                                 <NavItem componentClass={Link} href="/Menu" to="/Menu">Menu</NavItem>
-                                <NavItem componentClass={Link} href="/Categories" to="/Categories">Categories</NavItem>
+                                <NavItem componentClass={Link} href="/Meals" to="/Meals">Meals</NavItem>
+                                <NavItem className='right'>
+                                    <form onSubmit={this.handleSubmit}>
+                                        <Button className='transparent white-text' flat>Waiter
+                                        <input type="button" className='hide' value="1" required type="text" ref={(Table) => this.getTable = Table}></input>
+                                        </Button>
+                                    </form>
+                                </NavItem>
                                 <NavItem className='right' componentClass={Link} href="/Order" to="/Order"><Icon>shopping_cart</Icon></NavItem>
                             </Navbar>
-
                         </Row>
                         <ToastContainer />
                     </div>
                 </Row>
                 <Row className='right-align'>
                     <Col m={4} className='offset-m7'> </Col>
-                </Row>
-                <Row className='center-align'>
-                    <Col m={12} s={12}>
-                        <Button data-target="modal1" floating fab='vertical' icon='add' className='amber darken-3' large style={{ bottom: '45px', right: '24px' }}>
-                            <form onSubmit={this.handleSubmit}>
-                                <input className="hide" value="2" required type="text" ref={(input) => this.getTitle = input}
-                                    placeholder="Enter Post Title" />
-                                <button className='btn-r green'>
-                                    <img src='./assets/camarero2.svg' alt='' width='50px' height='50px'></img>
-                                </button>
-                            </form>
-                        </Button>
-                    </Col>
                 </Row>
                 <Assist />
             </div>
@@ -72,4 +65,4 @@ const mapStateToProps = state => ({
     item: state.item
 });
 
-export default connect(mapStateToProps,{ addItem })(Header);
+export default connect(mapStateToProps, { addItem })(Header);

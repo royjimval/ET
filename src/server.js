@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 
-
 const app = express();
 
 // Db connection
@@ -36,12 +35,6 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-
-
-
-
-// Static Files
-// app.use(express.static(path.join('./public')));;
 
 // Starting the server
 app.listen(app.get('port'), () => {

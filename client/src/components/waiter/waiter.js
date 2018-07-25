@@ -32,7 +32,7 @@ class Order extends Component {
     render() {
         return (
 
-            <div className='blue-grey lighten-5'>
+            <div>
                 <Barnav />
                 <Row>
                     <Buttons />
