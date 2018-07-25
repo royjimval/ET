@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import { Col, Icon, Row, Button, Collapsible } from 'react-materialize';
+import { Col, Icon, Row, Button, Collapsible, CollapsibleItem } from 'react-materialize';
 import '../item/item.css';
 import ModalEdit from '../modal/edit'
-import { getproduct_Meal } from '../../accions/productAccion';
+import { getproduct_Breakfast } from '../../accions/productAccion';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import CollapsibleItem from '../../../../node_modules/react-materialize/lib/CollapsibleItem';
 
 
 
-class Meal_Component extends Component {
+class Breakfast_component extends Component {
 
     constructor(props) {
         super(props)
@@ -24,7 +23,7 @@ class Meal_Component extends Component {
     }
 
     componentDidMount() {
-        this.props.getproduct_Meal();
+        this.props.getproduct_Breakfast();
     }
 
     datamodal = (product_item) => {
@@ -38,19 +37,18 @@ class Meal_Component extends Component {
         })
     }
 
-
-
-
     render() {
-        const { meal } = this.props.product;
+        const { breakfast } = this.props.breakfast;
         return (
             <div>
                 <Collapsible popout >
-                    <CollapsibleItem header='MEAL' icon='arrow_drop_down_circle'> 
+
+                    <CollapsibleItem header='BREAKFASTS' icon='arrow_drop_down_circle'>
+
                 <Row>
                     <div className='space'></div>
                     {
-                        meal.map((product_item) => (
+                                breakfast.map((product_item) => (
                             <Col s={8} m={3} l={3} className='push-s2 center' key={product_item._id} >
                                 <div class=" cardd z-depth-3" >
                                     <div >
@@ -90,23 +88,25 @@ class Meal_Component extends Component {
                         ))
                     }
                 </Row>
-                </CollapsibleItem>
-                </Collapsible>
+                    </CollapsibleItem>
+
                 <ModalEdit datapass={this.state} />
+                </Collapsible>
+
             </div >
         )
     }
 }
 
-Meal_Component.propTypes = {
-    getproduct_Meal: PropTypes.func.isRequired,
-    product: PropTypes.object.isRequired
+Breakfast_component.propTypes = {
+    getproduct_Breakfast: PropTypes.func.isRequired,
+    breakfast: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-    product: state.product,
+    breakfast: state.product,
     preorder: state.preorder
 });
 
 
-export default connect(mapStateToProps, { getproduct_Meal })(Meal_Component);
+export default connect(mapStateToProps, { getproduct_Breakfast })(Breakfast_component);

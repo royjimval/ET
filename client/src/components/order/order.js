@@ -69,8 +69,13 @@ class Order extends Component {
                             {this.sumPrice(preorder_item.price)}
                         </Col>
                         <Col m={12}>
-                            <p>{preorder_item.ingredients}</p>
-                        </Col>
+                            {
+                                preorder_item.ingredients.map(each_Ingredient => {
+                                    return (
+                                        <p>{each_Ingredient}</p>
+                                    )
+                                })
+                            }                        </Col>
 
 
 
@@ -89,7 +94,13 @@ class Order extends Component {
                             {this.sumPrice(preorder_item.price)}
                         </Col>
                         <Col m={12} >
-                            <p>{preorder_item.ingredients}<th></th></p>
+                        {
+                            preorder_item.ingredients.map(each_Ingredient => {
+                                return(
+                                    <p>{each_Ingredient}</p>
+                                )
+                            })
+                        }
                         </Col>
                         <Button className=' red right' waves='light' onClick={() => this.onDeletePreorder(preorder_item._id)} >Remove</Button>
 

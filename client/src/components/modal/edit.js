@@ -97,6 +97,7 @@ class modalEdit extends Component {
                                     }
                                 </Col>
                             </Row>
+                                    <br/>
                                 <Button modal="close" className="btns">Add</Button>
                         </Col>
                         </form>

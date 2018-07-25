@@ -8,6 +8,10 @@ import ClientStart from './components/start/ClientStart';
 import Login from './components/start/login';
 import Item from './components/item/product';
 import Meal from './components/item/Meals';
+import Breakfast_Component from './components/item/Breakfast';
+import Dinner_Component from './components/item/Dinner';
+import Drinks_commponent from './components/item/Drinks'; 
+import Dessert_Component from './components/item/Desserts';
 import Order from './components/order/order';
 import Waiter from './components/waiter/waiter';
 import Chef from './components/chef/Chef';
@@ -28,6 +32,10 @@ class App extends Component {
             <Route exact path="/Admin" component={NavBarAdmin} />
             <Route exact path="/Nav" component={Item} />
             <Route path="/Meals" component={Meal} />
+            <Route path="/Breakfast" component={Breakfast_Component} />
+            <Route path="/Drinks" component={Drinks_commponent} />
+            <Route path="/Desserts" component={Dessert_Component} />
+            <Route path="/Dinner" component={Dinner_Component} />
             <Route path="/Order" component={Order} />
             <Route path="/Waiter" component={Waiter} />
             <Route path="/Chef" component={Chef} />

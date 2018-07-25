@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import { Col, Icon, Row, Button, Collapsible } from 'react-materialize';
+import { Col, Icon, Row, Button, Collapsible, CollapsibleItem } from 'react-materialize';
 import '../item/item.css';
-import ModalEdit from '../modal/edit'
-import { getproduct_Meal } from '../../accions/productAccion';
+import { toast } from 'react-toastify'
+import { addPreorder } from '../../accions/preorderAccions'
+import { getproduct_Drink } from '../../accions/productAccion';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import CollapsibleItem from '../../../../node_modules/react-materialize/lib/CollapsibleItem';
 
 
 
-class Meal_Component extends Component {
+class Item extends Component {
 
     constructor(props) {
         super(props)
@@ -24,33 +24,34 @@ class Meal_Component extends Component {
     }
 
     componentDidMount() {
-        this.props.getproduct_Meal();
+        this.props.getproduct_Drink();
     }
 
-    datamodal = (product_item) => {
-        this.setState({
-            name: product_item.name,
-            ingredients: product_item.ingredients,
-            photo: product_item.photo,
-            extra: product_item.extra,
-            ids: product_item._id,
-            price: product_item.price
-        })
+    add_Preorder = (Products) => {
+        const idtable = "1"
+        const name = Products.name
+        const ingredients = Products.ingredients
+        const price = Products.price
+        const data = { idtable, name, ingredients, price }
+        this.props.addPreorder(data);
+        toast.info(name + " is added now to your preorder :) ", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+            className: 'foo-bar'
+        });
     }
-
-
-
 
     render() {
-        const { meal } = this.props.product;
+        const { drink } = this.props.product;
         return (
             <div>
                 <Collapsible popout >
-                    <CollapsibleItem header='MEAL' icon='arrow_drop_down_circle'> 
+
+                    <CollapsibleItem header='DRINKS' icon='arrow_drop_down_circle'>
+
                 <Row>
                     <div className='space'></div>
                     {
-                        meal.map((product_item) => (
+                        drink.map((product_item) => (
                             <Col s={8} m={3} l={3} className='push-s2 center' key={product_item._id} >
                                 <div class=" cardd z-depth-3" >
                                     <div >
@@ -69,7 +70,7 @@ class Meal_Component extends Component {
                                         <div className='hide-on-med-and-down'>
                                             <Row>
                                                 <Col m={12}>
-                                                    <button data-target='modalEdit' className='btns' onClick={() => this.datamodal(product_item)}>ADD TO ORDER</button>
+                                                    <Button className='btns' onClick={() => this.add_Preorder(product_item)} >ADD TO ORDER</Button>
                                                 </Col>
                                             </Row>
                                         </div>
@@ -77,9 +78,7 @@ class Meal_Component extends Component {
                                         <div className='hide-on-med-and-up show-on-medium-and-down'>
                                             <Row>
                                                 <Col s={12} m={12}>
-                                                    <Button flat className='icn-btn' data-target="modalEdit" onClick={() => this.datamodal(product_item)}>
-                                                        <Icon small>edit</Icon>
-                                                    </Button>
+                                                    <Icon small className='icn-btn'>add_circle</Icon>
                                                 </Col>
                                             </Row>
                                         </div>
@@ -88,18 +87,21 @@ class Meal_Component extends Component {
                                 </div>
                             </Col>
                         ))
+
                     }
                 </Row>
-                </CollapsibleItem>
-                </Collapsible>
-                <ModalEdit datapass={this.state} />
+                    </CollapsibleItem>
+
+                        </Collapsible  >
+
+
             </div >
         )
     }
 }
 
-Meal_Component.propTypes = {
-    getproduct_Meal: PropTypes.func.isRequired,
+Item.propTypes = {
+    getproduct_Drink: PropTypes.func.isRequired,
     product: PropTypes.object.isRequired
 };
 
@@ -109,4 +111,4 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps, { getproduct_Meal })(Meal_Component);
+export default connect(mapStateToProps, { getproduct_Drink, addPreorder })(Item);
