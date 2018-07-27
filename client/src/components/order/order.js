@@ -4,6 +4,8 @@ import Nav from '../header/header'
 import { getPreorder, deletePreorder, putPreorder } from '../../accions/preorderAccions'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { toast } from 'react-toastify'
+
 import './order.css'
 let total = 0;
 
@@ -21,6 +23,10 @@ class Order extends Component {
         preorder.map((item) => (
             putPreorder(item._id, item.idtable, item.name, item.ingredients, item.price, item.start, item.finished, item.delivered, item.noOrder)
         ))
+        toast.info("Your order is being prepared by the chef ;)", {
+            position: toast.POSITION.TOP_RIGHT,
+            className: 'black'
+        });
     };
 
     sumPrice(price) {

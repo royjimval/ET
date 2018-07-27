@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Col, Collection, Table, Button, Icon } from 'react-materialize'
-import { getPreorderbytableFinished, deletePreorder } from '../../../accions/preorderAccions';
+import { getPreorderbytableFinished, updateDelivered } from '../../../accions/preorderAccions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -11,10 +11,10 @@ class TableDescription extends Component {
         this.props.getPreorderbytableFinished();
     }
 
-    onDeletePreorder = (id) => {
-        this.props.deletePreorder(id);
+    updateDelivered = (item) => {
+        console.log(item)
+            updateDelivered(item._id, item.idtable, item.name, item.ingredients, item.price, item.sended, item.start, item.finished, item.noOrder)
     };
-
     render() {
         const { preorder } = this.props.preorder
         return (
@@ -31,7 +31,7 @@ class TableDescription extends Component {
                                             <thead>
                                                 <tr>
                                                     <th data-field="id"><strong className="">{eachPreorder.name}</strong></th>
-                                                    <th><Button className="blue lighten-1" waves='light' onClick={() => this.onDeletePreorder(eachPreorder._id)} >Delivered<Icon left>cloud</Icon></Button></th>
+                                                    <th><Button className="blue lighten-1" waves='light' onClick={() => this.updateDelivered(eachPreorder)} >Delivered<Icon left>cloud</Icon></Button></th>
 
 
                                                 </tr>
@@ -65,7 +65,7 @@ class TableDescription extends Component {
 TableDescription.propTypes = {
     getPreorderbytableFinished: PropTypes.func.isRequired,
     preorder: PropTypes.object.isRequired,
-    deletePreorder: PropTypes.func.isRequired,
+    updateDelivered: PropTypes.func.isRequired,
 
 };
 
@@ -73,4 +73,4 @@ const mapStateToProps = state => ({
     preorder: state.preorder
 });
 
-export default connect(mapStateToProps, { getPreorderbytableFinished, deletePreorder })(TableDescription);
+export default connect(mapStateToProps, { getPreorderbytableFinished, updateDelivered })(TableDescription);
