@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Parallax, Row, Button, Navbar, NavItem, Icon, Col, Dropdown } from 'react-materialize'
+import { Parallax, Row, Button, Navbar, NavItem, Icon, Col } from 'react-materialize'
 import { Link } from 'react-router-dom';
 import Assist from '../modal/assist'
 import { connect } from 'react-redux';
@@ -39,15 +39,6 @@ class Header extends Component {
                         <Row className='center'>
                             <Navbar className='green accent-4 center'>
                                 <NavItem componentClass={Link} href="/Menu" to="/Menu">MENU</NavItem>
-                                <Dropdown trigger={
-                                    <NavItem className='nav-width'>FOOD</NavItem>
-                                }>
-                                    <NavItem componentClass={Link} href="/Breakfast" to="/Breakfast">BREAKFAST</NavItem>
-                                    <NavItem componentClass={Link} href="/Meals" to="/Meals">MEALS</NavItem>
-                                    <NavItem componentClass={Link} href="/Dinner" to="/Dinner">DINNER</NavItem>
-                                </Dropdown>
-                                <NavItem componentClass={Link} href="/Drinks" to="/Drinks">DRINKS</NavItem>
-                                <NavItem componentClass={Link} href="/Desserts" to="/Desserts">DESSERTS</NavItem>
                                 <NavItem className='right'>
                                     <form onSubmit={this.handleSubmit}>
                                         <Button className='transparent white-text' flat>Waiter

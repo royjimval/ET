@@ -72,10 +72,10 @@ class modalEdit extends Component {
 
             // </div>
 
-            < div key={this.props.datapass._id}>
+            < div>
 
-                {console.log("edit cat "+ this.props.datapass.category)}
-                <Modal id="modal_for_categorys"  fixedFooter key={this.props.datapass._id} className='center' header={this.props.datapass.name} actions={
+
+                <Modal id='modalEdit' fixedFooter key={this.props.datapass._id} className='center' header={this.props.datapass.name} actions={
                     <div>
                         <Button modal="close" className="right red btns1">X</Button>
                     </div>
@@ -119,12 +119,10 @@ class modalEdit extends Component {
                                 <Button modal="close" className="btns">Add</Button>
                             </Col>
                         </form>
-                        {console.log('test')}
                         {console.log(this.props.datapass)}
 
                     </Row>
                 </Modal>
-
             </div >
         )
     }
