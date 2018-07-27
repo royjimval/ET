@@ -30,23 +30,17 @@ class TableDescription extends Component {
                                         <Table >
                                             <thead>
                                                 <tr>
-                                                    <th data-field="id"><strong className="">{eachPreorder.name}</strong></th>
-                                                    <th><Button className="blue lighten-1" waves='light' onClick={() => this.updateDelivered(eachPreorder)} >Delivered<Icon left>cloud</Icon></Button></th>
-
+                                                    
+                                                    <Col s={6} m={6}>
+                                                        <th data-field="id"><strong className="">{eachPreorder.name}</strong></th>
+                                                    </Col>
+                                                    <Col s={6} m={6}>
+                                                        <th><Button className="blue lighten-1" waves='light' onClick={() => this.updateDelivered(eachPreorder)} >Delivered<Icon left>check</Icon></Button></th> 
+                                                    </Col>
+                            
 
                                                 </tr>
                                             </thead>
-                                            {
-                                                eachPreorder.ingredients.map(eachIngredients => {
-                                                    return (
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>{eachIngredients}</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    )
-                                                })
-                                            }
 
                                         </Table>
                                     )
