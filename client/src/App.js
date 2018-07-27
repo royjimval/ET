@@ -7,7 +7,6 @@ import store from './store';
 import ClientStart from './components/start/ClientStart';
 import Login from './components/start/login';
 import Item from './components/item/product';
-import Meal from './components/item/Meals';
 import Order from './components/order/order';
 import Waiter from './components/waiter/waiter';
 import Chef from './components/chef/Chef';
@@ -15,7 +14,6 @@ import NavBarAdmin from './components/Admin/navbar/navbar';
 import Grafica from './components/Admin/Graficas/grafica';
 import General from './components/Admin/General/General';
 import Usuario from './components/Admin/Usuario/Usuario';
-
 class App extends Component {
   render() {
     return (
@@ -27,7 +25,6 @@ class App extends Component {
             <Route exact path="/Menu" component={Item} />      
             <Route exact path="/Admin" component={NavBarAdmin} />
             <Route exact path="/Nav" component={Item} />
-            <Route path="/Meals" component={Meal} />
             <Route path="/Order" component={Order} />
             <Route path="/Waiter" component={Waiter} />
             <Route path="/Chef" component={Chef} />

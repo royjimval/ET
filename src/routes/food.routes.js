@@ -7,6 +7,32 @@ router.get('/', async (req, res) => {
     res.json(food);
 }); 
 
+
+router.get('/Breakfast', async (req, res) => {
+    const food = await Food.find({'category':"Breakfast"})
+    res.json(food);
+});
+
+router.get('/Meal', async (req, res) => {
+    const food = await Food.find({ 'category': "Meal" })
+    res.json(food);
+}); 
+
+router.get('/Dinner', async (req, res) => {
+    const food = await Food.find({ 'category': "Dinner" })
+    res.json(food);
+}); 
+
+router.get('/Drink', async (req, res) => {
+    const food = await Food.find({ 'category': "Drink" })
+    res.json(food);
+}); 
+
+router.get('/Dessert', async (req, res) => {
+    const food = await Food.find({ 'category': "Dessert" })
+    res.json(food);
+});
+
 router.post('/', async (req, res) => {
     const { name, category, price, ingredients, extra, photo } = req.body;
     const food = new Food({ name, category, price, ingredients, extra, photo });

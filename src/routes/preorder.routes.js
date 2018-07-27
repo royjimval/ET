@@ -13,7 +13,7 @@ router.get('/:idtable', async (req, res) => {
 }); 
 
 router.get('/finished/:idtable', async (req, res) => {
-    const preorder = await Preorder.find({ idtable: req.params.idtable, sended: true, finished: true })
+    const preorder = await Preorder.find({ idtable: req.params.idtable, sended: true, finished: true, delivered:false })
     res.json(preorder);
 }); 
 
@@ -30,6 +30,7 @@ router.delete('/:id', async (req, res) => {
 }); 
 
 router.put('/:id', async (req, res) => {
+    console.log(req.body);
     const { idtable, name, ingredients, price, sended, start, finished, delivered, noOrder } = req.body;
     const preorder = { idtable, name, ingredients, price, sended, start, finished, delivered, noOrder };
     await Preorder.findByIdAndUpdate(req.params.id, preorder);

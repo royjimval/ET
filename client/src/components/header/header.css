@@ -41,3 +41,7 @@
     max-height: 64px!important;
     padding: 15px 0!important;
 }
+
+.nav-width{
+    width: 120px;
+}

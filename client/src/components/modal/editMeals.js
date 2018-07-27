@@ -40,9 +40,7 @@ class modalEdit extends Component {
     }
 
     add_Preorder = (total_price, list_ingredients, list_extra) => {
-        let extra_label = ['Extra Ingredients:']
-        extra_label = extra_label.concat(list_extra);
-        const total_ingredients = list_ingredients.concat(extra_label);
+        const total_ingredients = list_extra.concat(list_ingredients);
         const idtable = "1"
         const name = this.props.datapass.name
         const ingredients = total_ingredients
@@ -74,9 +72,10 @@ class modalEdit extends Component {
 
             // </div>
 
-            < div key={this.props.datapass._id}>
+            < div>
 
-                <Modal id="modal_for_categorys"  fixedFooter key={this.props.datapass._id} className='center' header={this.props.datapass.name} actions={
+
+                <Modal id='modalEdit' fixedFooter key={this.props.datapass._id} className='center' header={this.props.datapass.name} actions={
                     <div>
                         <Button modal="close" className="right red btns1">X</Button>
                     </div>
@@ -120,9 +119,10 @@ class modalEdit extends Component {
                                 <Button modal="close" className="btns">Add</Button>
                             </Col>
                         </form>
+                        {console.log(this.props.datapass)}
+
                     </Row>
                 </Modal>
-
             </div >
         )
     }

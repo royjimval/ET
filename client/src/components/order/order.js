@@ -4,6 +4,8 @@ import Nav from '../header/header'
 import { getPreorder, deletePreorder, putPreorder } from '../../accions/preorderAccions'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { toast } from 'react-toastify'
+
 import './order.css'
 let total = 0;
 
@@ -21,6 +23,10 @@ class Order extends Component {
         preorder.map((item) => (
             putPreorder(item._id, item.idtable, item.name, item.ingredients, item.price, item.start, item.finished, item.delivered, item.noOrder)
         ))
+        toast.info("Your order is being prepared by the chef ;)", {
+            position: toast.POSITION.TOP_RIGHT,
+            className: 'black'
+        });
     };
 
     sumPrice(price) {
@@ -69,8 +75,13 @@ class Order extends Component {
                             {this.sumPrice(preorder_item.price)}
                         </Col>
                         <Col m={12}>
-                            <p>{preorder_item.ingredients}</p>
-                        </Col>
+                            {
+                                preorder_item.ingredients.map(each_Ingredient => {
+                                    return (
+                                        <p>{each_Ingredient}</p>
+                                    )
+                                })
+                            }                        </Col>
 
 
 
@@ -89,7 +100,13 @@ class Order extends Component {
                             {this.sumPrice(preorder_item.price)}
                         </Col>
                         <Col m={12} >
-                            <p>{preorder_item.ingredients}<th></th></p>
+                        {
+                            preorder_item.ingredients.map(each_Ingredient => {
+                                return(
+                                    <p>{each_Ingredient}</p>
+                                )
+                            })
+                        }
                         </Col>
                         <Button className=' red right' waves='light' onClick={() => this.onDeletePreorder(preorder_item._id)} >Remove</Button>
 
@@ -128,6 +145,7 @@ class Order extends Component {
 
                 </Row>
                 <Row>
+                    
                     <Col m={12} className=' center'>
                         <Button className='green' waves='light' onClick={() => this.onPutPreorder(preorder)}>Make Order</Button>
                     </Col>

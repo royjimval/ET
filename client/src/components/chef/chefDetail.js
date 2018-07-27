@@ -32,7 +32,7 @@ class ChefDetail extends Component {
                                             <thead>
                                                 <tr>
                                                     <th data-field="id"><strong className="">{eachPreorder.name}</strong></th>
-                                                    <th><Button className="blue lighten-1" waves='light' onClick={() => updateFinished(eachPreorder)} >Cooked<Icon left>cloud</Icon></Button></th>
+                                                    <th><Button className="blue lighten-1" waves='light' onClick={() => updateFinished(eachPreorder)} >Cooked<Icon left>check</Icon></Button></th>
 
                                                 </tr>
                                             </thead>

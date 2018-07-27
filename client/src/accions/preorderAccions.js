@@ -89,6 +89,24 @@ export const updateFinished = (item) => {
     .then(response => {
       console.log(response);
     })
+};
+
+export const updateDelivered = (id, idtable, name, ingredients, price, sended, start, finished, noOrder) => {
+  console.log(id)
+  axios.put(`/api/preorder/${id}`, {
+    idtable: idtable,
+    name: name,
+    ingredients: ingredients,
+    price: price,
+    sended: sended,
+    start: start,
+    finished: finished,
+    delivered: true,
+    noOrder: noOrder,
+  })
+    .then(response => {
+      console.log(response);
+    })
 
 
 };

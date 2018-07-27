@@ -38,8 +38,7 @@ class Header extends Component {
                     <div>
                         <Row className='center'>
                             <Navbar className='green accent-4 center'>
-                                <NavItem componentClass={Link} href="/Menu" to="/Menu">Menu</NavItem>
-                                <NavItem componentClass={Link} href="/Meals" to="/Meals">Meals</NavItem>
+                                <NavItem componentClass={Link} href="/Menu" to="/Menu">MENU</NavItem>
                                 <NavItem className='right'>
                                     <form onSubmit={this.handleSubmit}>
                                         <Button className='transparent white-text' flat>Waiter
