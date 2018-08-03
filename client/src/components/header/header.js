@@ -37,16 +37,16 @@ class Header extends Component {
                     </div>
                     <div>
                         <Row className='center'>
-                            <Navbar className='green accent-4 center'>
-                                <NavItem componentClass={Link} href="/Menu" to="/Menu">MENU</NavItem>
+                            <Navbar className='nav-color  center'>
+                                <NavItem componentClass={Link} href="/Menu" to="/Menu"><img className='menu-icon' src='assets/menu.svg' width='30px'/> MENU</NavItem>
                                 <NavItem className='right'>
                                     <form onSubmit={this.handleSubmit}>
-                                        <Button className='transparent white-text' flat>Waiter
+                                        <Button className='transparent white-text wb' flat><img className='menu-icon-w' src='assets/waiter.svg' width='30px'/>Waiter
                                         <input type="button" className='hide' value="1" required type="text" ref={(Table) => this.getTable = Table}></input>
                                         </Button>
                                     </form>
                                 </NavItem>
-                                <NavItem className='right' componentClass={Link} href="/Order" to="/Order"><Icon>shopping_cart</Icon></NavItem>
+                                <NavItem className='right' componentClass={Link} href="/Order" to="/Order"><img className='menu-icon' src='assets/fast-delivery.svg' width='30px'/>My Order</NavItem>
                             </Navbar>
                         </Row>
                         <ToastContainer />

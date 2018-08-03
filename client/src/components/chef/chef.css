@@ -1,0 +1,29 @@
+.hedr{
+    line-height: 180%;
+    margin: 0;
+}
+
+.custom-badge{ 
+    width: 10px;
+    margin-top: 10px;
+    border-radius: 100px;
+    min-width: 1rem;
+    padding: 0 10px;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 10px;
+    height: 10px;
+    color: #f3f3f3;
+    box-sizing: border-box;
+    position: relative;
+    top: -25px;
+    left: 40px;
+}
+
+.m-top20{
+    margin-top:20px;
+}
+
+.container{
+   width: 90%; 
+}

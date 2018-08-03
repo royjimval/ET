@@ -28,6 +28,8 @@ app.use('/api/category', require('../src/routes/category.routes'));
 app.use('/api/buys', require('../src/routes/buys.routes'));
 app.use('/api/attention', require('../src/routes/attention.routes'));
 app.use('/api/preorder', require('../src/routes/preorder.routes'));
+app.use('/api/id_order', require('../src/routes/id_order.routes'));
+
 
 // Set CORS here
 app.use(function(req, res, next) {

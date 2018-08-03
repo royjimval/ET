@@ -45,3 +45,21 @@
 .nav-width{
     width: 120px;
 }
+
+.menu-icon {
+    border: 0;
+    position: relative;
+    top: 10px;
+    left: -5px;
+}
+
+.menu-icon-w {
+    border: 0;
+    position: relative;
+    top: 8px;
+    left: -5px;
+}
+
+.wb{
+    margin-top: -10px;
+}

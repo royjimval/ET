@@ -9,10 +9,9 @@ const preorder = new Schema({
 	ingredients: [[{type: String, required: true}]],
 	price: {type: Number, required: true},
 	sended: {type: Boolean, required: true, default: false},
-	start: { type: Boolean, required: true, default: false},
-	finished: { type: Boolean, required: true, default: false },
+	finished: { type: Boolean, required: true, default: false},
 	delivered: { type: Boolean, required: true, default : false },
-	noOrder: { type: String, default:"" }
+	noOrder: { type: String, default:"0" }
 
 });
 
