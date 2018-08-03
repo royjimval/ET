@@ -2,8 +2,8 @@ const express = require('express');
 const Preorder = require('../models/preorder');
 const router = express.Router();
 
-router.get('/', async (req, res) => {
-    const preorder = await Preorder.find();
+router.get('/order/:idtable', async (req, res) => {
+    const preorder = await Preorder.find({idtable: req.params.idtable, noOrder:"0"});
     res.json(preorder);
 }); 
 
@@ -14,6 +14,11 @@ router.get('/:idtable', async (req, res) => {
 
 router.get('/finished/:idtable', async (req, res) => {
     const preorder = await Preorder.find({ idtable: req.params.idtable, sended: true, finished: true, delivered:false })
+    res.json(preorder);
+}); 
+
+router.get('/Cashier/:idtable', async (req, res) => {
+    const preorder = await Preorder.find({ idtable: req.params.idtable, sended: true,  noOrder:"0" })
     res.json(preorder);
 }); 
 
@@ -36,5 +41,6 @@ router.put('/:id', async (req, res) => {
     await Preorder.findByIdAndUpdate(req.params.id, preorder);
     res.json({ status: 'preorder update' });
 });
+
 
 module.exports = router;

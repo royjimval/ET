@@ -48,11 +48,12 @@ class Item extends Component {
     }
 
     add_Preorder = (Products) => {
-        const idtable = "1"
+        const idtable = "2"
         const name = Products.name
         const ingredients = Products.ingredients
         const price = Products.price
         const data = { idtable, name, ingredients, price }
+        console.log(idtable)
         this.props.addPreorder(data);
         toast.info(name + " is added now to your preorder :) ", {
             position: toast.POSITION.BOTTOM_RIGHT,

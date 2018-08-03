@@ -1,22 +1,23 @@
 import React, { Component } from 'react'
-import { Row, Col, Collection, CollectionItem, Button, Preloader, Icon } from 'react-materialize'
+import { Row, Col, Collection, CollectionItem, Button } from 'react-materialize'
 import Nav from '../header/header'
 import { getPreorder, deletePreorder, putPreorder } from '../../accions/preorderAccions'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { toast } from 'react-toastify'
-
 import './order.css'
+import Delivere from './delivered'
 let total = 0;
 
 class Order extends Component {
     componentDidMount() {
-        this.props.getPreorder();
+        this.props.getPreorder("2");
+        this.resetTotal();
     }
 
     onDeletePreorder = (id) => {
         this.props.deletePreorder(id);
-        total = 0;
+        this.resetTotal();
     };
 
     onPutPreorder = (preorder) => {
@@ -30,89 +31,47 @@ class Order extends Component {
     };
 
     sumPrice(price) {
+        console.log(total)
         total = total + price
 
     }
 
-    isCooked(preorder_item) {
-        if (preorder_item.finished === true) {
-            return(
-            <Row>
-                <Col s={4} className='secondary-content'>
-                    <Icon>check_circle</Icon>
-                </Col>
-            </Row>)
-        } else {
-            return(
-            <Row>
-                <Col s={4} className='secondary-content'>
-                    <Preloader size='small' />
-                </Col>
-            </Row>)
-        }
-    }
 
     isSended(preorder_item) {
-        if (preorder_item.sended === true) {
+        if (preorder_item.sended === false) {
             return (
-                <CollectionItem className="disabled grey lighten-4" >
-                    <Row>
-                        <Col m={1} >
-                            {
-                                this.isCooked(preorder_item)
-                            }
-                            {/* <Row>
-                                <Col s={4} className='secondary-content'>
-                                    <Preloader size='small' />
-                                </Col>
-                            </Row> */}
-                        </Col>
+                <Row>
+                    <Col m={8}>
+                        <h5>{preorder_item.name}</h5>
+                    </Col>
+                    <Col m={4}>
+                        <h5  >${preorder_item.price} </h5>
+                        {this.sumPrice(preorder_item.price)}
+                    </Col>
+                    <Col m={12}>
                         <Col m={8}>
-                            <h5>{preorder_item.name}</h5>
-                        </Col>
-                        <Col m={3} className='right-align'>
-                            <h5  >${preorder_item.price}</h5>
-                            {this.sumPrice(preorder_item.price)}
-                        </Col>
-                        <Col m={12}>
                             {
                                 preorder_item.ingredients.map(each_Ingredient => {
                                     return (
                                         <p>{each_Ingredient}</p>
                                     )
                                 })
-                            }                        </Col>
-
-
-
-                    </Row>
-
-                </CollectionItem>)
-        } else {
-            return (
-                <CollectionItem>
-                    <Row>
-                        <Col m={8}>
-                            <h5>{preorder_item.name}</h5>
-                        </Col>
+                            }</Col>
                         <Col m={4}>
-                            <h5  >${preorder_item.price} </h5>
-                            {this.sumPrice(preorder_item.price)}
-                        </Col>
-                        <Col m={12} >
-                        {
-                            preorder_item.ingredients.map(each_Ingredient => {
-                                return(
-                                    <p>{each_Ingredient}</p>
-                                )
-                            })
-                        }
-                        </Col>
-                        <Button className=' red right' waves='light' onClick={() => this.onDeletePreorder(preorder_item._id)} >Remove</Button>
+                            <div className='valign-wrapper'>
+                                <Button className='red right' waves='light' onClick={() => this.onDeletePreorder(preorder_item._id)} >Remove</Button>
 
-                    </Row>
-                </CollectionItem>)
+                            </div>
+                        </Col>
+                    </Col>
+
+                </Row>
+            )
         }
+    }
+
+    resetTotal(){
+        total=0;
     }
 
     render() {
@@ -121,34 +80,56 @@ class Order extends Component {
             <div>
                 <Nav />
                 <Row>
-                    <Col m={8} className='offset-m2 '>
-                        <Collection header='Order' className='z-depth-3'>
-                            {
-                                preorder.map((preorder_item) =>
-                                    (
-                                        this.isSended(preorder_item)
+                    <Col m={5} className='offset-m1'>
+                        <Col m={12}>
+                            <Collection header="Pre-Order" className='z-depth-1-half'>
+                                <CollectionItem className='lst-scrl'>
+                                {this.resetTotal()}
+                                    {
+                                        
+                                        preorder.map((preorder_item) =>
 
-                                    ))
-                            }
-                            <CollectionItem>
-                                <Row>
-                                    <Col m={6}>
-                                        <h4 className='right'>Total:</h4>
-                                    </Col>
-                                    <Col m={6}>
-                                        <h4 className='left red-text'>${total}</h4>
-                                    </Col>
-                                </Row>
-                            </CollectionItem>
-                        </Collection>
+                                            (
+                                                this.isSended(preorder_item)
+
+                                            ))
+                                    }
+                                </CollectionItem>
+                                <CollectionItem>
+                                    <Row>
+                                        <Col m={6}>
+                                            <h4 className='right'>Total:</h4>
+                                        </Col>
+                                        <Col m={6}>
+                                            <h4 className='left red-text'>${total}</h4>
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col m={12} className=' center'>
+                                            <Button className='green' waves='light' onClick={() => this.onPutPreorder(preorder)}>Make Order</Button>
+                                        </Col>
+                                    </Row>
+                                </CollectionItem>
+                            </Collection>
+                        </Col>
                     </Col>
 
-                </Row>
-                <Row>
-                    
-                    <Col m={12} className=' center'>
-                        <Button className='green' waves='light' onClick={() => this.onPutPreorder(preorder)}>Make Order</Button>
+                    <Col m={6} className='offset m-6'>
+                        <Row>
+                            <Delivere />
+                        </Row>
+                        {/* <Row>
+                            <Col m={10} className=''>
+                                <Collection>
+                                <CollectionItem>
+                                        <h1>k pedo prro</h1>
+                                </CollectionItem>
+                                </Collection>
+                            </Col>
+                        </Row> */}
                     </Col>
+
+
                 </Row>
             </div>
         )

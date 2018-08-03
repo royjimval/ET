@@ -15,14 +15,14 @@ class modalEdit extends Component {
 
         const { FoodIngredients } = this.form;
         const checkboxArrayIngredients = Array.prototype.slice.call(FoodIngredients);
-        const checkedCheckboxesIngredients = checkboxArrayIngredients.filter(input => input.checked);
-        const checkedCheckboxesValuesIngredients = checkedCheckboxesIngredients.map(input => input.value);
+        const checkedCheckboxesIngredients = checkboxArrayIngredients.filter(input => input.checked===false);
+        const checkedCheckboxesValuesIngredients = checkedCheckboxesIngredients.map(input => "No "+input.value);
         console.log('checked ingredients:', checkedCheckboxesValuesIngredients);
 
         const { FoodExtra } = this.form;
         const checkboxArrayExtra = Array.prototype.slice.call(FoodExtra);
         const checkedCheckboxesExtra = checkboxArrayExtra.filter(input => input.checked);
-        const checkedCheckboxesValuesExtra = checkedCheckboxesExtra.map(input => input.value);
+        const checkedCheckboxesValuesExtra = checkedCheckboxesExtra.map(input => "Extra "+input.value);
         console.log('checked extra:', checkedCheckboxesValuesExtra);
 
         let extraItems = 0;
@@ -40,10 +40,8 @@ class modalEdit extends Component {
     }
 
     add_Preorder = (total_price, list_ingredients, list_extra) => {
-        let extra_label = ['Extra Ingredients:']
-        extra_label = extra_label.concat(list_extra);
-        const total_ingredients = list_ingredients.concat(extra_label);
-        const idtable = "1"
+        const total_ingredients = list_ingredients.concat(list_extra);
+        const idtable = "2"
         const name = this.props.datapass.name
         const ingredients = total_ingredients
         const price = total_price

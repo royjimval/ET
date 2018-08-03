@@ -12,7 +12,7 @@ export default class Barnav extends Component {
           <Parallax className='header' imageSrc="https://source.unsplash.com/collection/1113375/900x550" />
         </div>
 
-        <Navbar className='blue-grey darken-3'>
+        <Navbar className='nav-color'>
 
         </Navbar>
 

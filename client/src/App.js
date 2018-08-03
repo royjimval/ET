@@ -14,6 +14,7 @@ import NavBarAdmin from './components/Admin/navbar/navbar';
 import Grafica from './components/Admin/Graficas/grafica';
 import General from './components/Admin/General/General';
 import Usuario from './components/Admin/Usuario/Usuario';
+import Cashier from './components/cashier/cashier';
 class App extends Component {
   render() {
     return (
@@ -31,6 +32,7 @@ class App extends Component {
             <Route exact path="/Grafica" component={Grafica} />
             <Route path="/General" component={General} />
             <Route path="/Usuario" component={Usuario} />
+            <Route path="/Cashier" component={Cashier} />
           </div>
         </Router>
   </Provider>
