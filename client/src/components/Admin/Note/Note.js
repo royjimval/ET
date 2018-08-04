@@ -5,7 +5,7 @@ export default class Note extends Component {
 
     render() {
         return (
-            <div className='center'>
+            <div className='divnote'>
                 <ul className="ulNote center">
                     <li className="liNote">
                         <a className="aNote" href="/">

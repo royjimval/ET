@@ -31,10 +31,35 @@
 </head>
 
 <body>
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+  <!-- And then your bundled js -->
+  <script src="path/to/your/bundle.js"></script>
   <noscript>
     You need to enable JavaScript to run this app.
   </noscript>
+
   <div id="root"></div>
+
+  <script>
+    $(document).ready(function () {
+      $('select').material_select();
+    });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      $('#datepicker').datepicker();
+    });
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.datepicker');
+      var instances = M.Datepicker.init(elems, options);
+    });
+  </script>
   <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -47,10 +72,7 @@
     -->
   <!-- Compiled and minified JavaScript -->
   <!-- Import jQuery before materialize.js -->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-  <!-- And then your bundled js -->
-  <script src="path/to/your/bundle.js"></script>
+
 
 </body>
 
