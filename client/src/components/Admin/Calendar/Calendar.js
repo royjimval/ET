@@ -6,8 +6,8 @@ export default class Calendar extends Component {
 
     render() {
         return (
-            <div className="center">
-                <DayPicker />;
+            <div className="divcalendar">
+                <DayPicker />
             </div>
         );
     }
