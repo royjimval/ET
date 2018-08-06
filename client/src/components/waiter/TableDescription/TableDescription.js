@@ -15,13 +15,18 @@ class TableDescription extends Component {
         console.log(item)
             updateDelivered(item._id, item.idtable, item.name, item.ingredients, item.price, item.sended, item.start, item.finished, item.noOrder)
     };
+
+    fakeSolution(){
+        this.props.getPreorderbytableFinished();
+    }
+
     render() {
         const { preorder } = this.props.preorder
         return (
 
             <div>
                 <Col m={6} >
-                    <h3 className='center'>Order Detail</h3>
+                    <h3 className='center'>Order Detai</h3>
                     <Col s={12} m={12}>
                         <Collection className='z-depth-1'>
                             {
@@ -35,7 +40,7 @@ class TableDescription extends Component {
                                                         <th data-field="id"><strong className="">{eachPreorder.name}</strong></th>
                                                     </Col>
                                                     <Col s={6} m={6}>
-                                                        <th><Button className="blue lighten-1" waves='light' onClick={() => this.updateDelivered(eachPreorder)} >Delivered<Icon left>check</Icon></Button></th> 
+                                                        <th><Button className="blue lighten-1" waves='light' onClick={() => {this.updateDelivered(eachPreorder),this.fakeSolution()}} >Delivered<Icon left>check</Icon></Button></th> 
                                                     </Col>
                             
 
