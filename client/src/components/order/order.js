@@ -11,9 +11,14 @@ let total = 0;
 
 class Order extends Component {
     componentDidMount() {
-        this.props.getPreorder("2");
+        this.interval = setInterval(() => this.props.getPreorder("2"), 2000);
         this.resetTotal();
-    }
+      }
+    
+      componentWillUnmount() {
+        clearInterval(this.interval);
+      }
+    
 
     onDeletePreorder = (id) => {
         this.props.deletePreorder(id);

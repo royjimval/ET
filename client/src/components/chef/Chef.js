@@ -9,26 +9,39 @@ import '../waiter/waiter.css'
 
 import Barnav from '../header/navbar'
 import Badge from '../../../../node_modules/react-materialize/lib/Badge';
-let cont2 = 0; let cont1 = 0; let cont3 = 0; let cont4 = 0; let cont5 = 0; let cont6 = 0;
+let cont2 = 0; let cont1 = 0; let cont3 = 0; let cont4 = 0; let cont5 = 0; let cont6 = 0; let lastTable="";
 
 
 class Chef extends Component {
+
     componentDidMount() {
-        this.props.getPreorderbytable();
-        this.props.get_table1();
-        this.props.get_table2();
-        this.props.get_table3();
-        this.props.get_table4();
-        this.props.get_table5();
-        this.props.get_table6();
+        this.props.getPreorderbytable()
+        //this.interval7 = setInterval(() => this.props.getPreorderbytable(), 5000);
+        this.interval1 = setInterval(() => this.props.get_table1(), 2000);
+        this.interval2 = setInterval(() => this.props.get_table2(), 2000);
+        this.interval3 = setInterval(() => this.props.get_table3(), 2000);
+        this.interval4 = setInterval(() => this.props.get_table4(), 2000);
+        this.interval5 = setInterval(() => this.props.get_table5(), 2000);
+        this.interval6 = setInterval(() => this.props.get_table6(), 2000);
+      }
+    
+      componentWillUnmount() {
+        clearInterval(this.interval1);
+        clearInterval(this.interval2);
+        clearInterval(this.interval3);
+        clearInterval(this.interval4);
+        clearInterval(this.interval5);
+        clearInterval(this.interval6);
+        //clearInterval(this.interval7);
+      }
 
-    }
-
-    updateFinished = (preorder) => {
+    updateFinished (preorder){
+        this.seeOrder(lastTable)
         preorder.map((item) => (
             this.props.updateFinished(item._id, item.idtable, item.name, item.ingredients, item.price, item.sended, item.start, item.finished, item.delivered, item.noOrder)
         ))
-    };
+    }
+
 
     changecolor1(table1) {
         cont1 = 0;
@@ -46,7 +59,7 @@ class Chef extends Component {
         else {
             return (
                 <Col m={2} className='center'>
-                    <Button onClick={() => this.seeOrder("1")} className='blue' large>Table 1 <Badge className="custom-badge red white-text">{cont1}</Badge></Button>
+                    <Button onClick={() => this.sendTable("1")} className='blue' large>Table 1 <Badge className="custom-badge red white-text">{cont1}</Badge></Button>
                 </Col>
             )
         }
@@ -69,7 +82,7 @@ class Chef extends Component {
         else {
             return (
                 <Col m={2} className='center'>
-                    <Button onClick={() => this.seeOrder("2")} className='blue' large>Table 2 <Badge className="custom-badge red white-text">{cont2}</Badge></Button>
+                    <Button onClick={() => this.sendTable("2")} className='blue' large>Table 2 <Badge className="custom-badge red white-text">{cont2}</Badge></Button>
                 </Col>
             )
         }
@@ -91,7 +104,7 @@ class Chef extends Component {
         else {
             return (
                 <Col m={2} className='center'>
-                    <Button onClick={() => this.seeOrder("3")} className='blue' large>Table 3 <Badge className="custom-badge red white-text">{cont3}</Badge></Button>
+                    <Button onClick={() => this.sendTable("3")} className='blue' large>Table 3 <Badge className="custom-badge red white-text">{cont3}</Badge></Button>
                 </Col>
             )
         }
@@ -113,7 +126,7 @@ class Chef extends Component {
         else {
             return (
                 <Col m={2} className='center'>
-                    <Button onClick={() => this.seeOrder("4")} className='blue' large>Table 4 <Badge className="custom-badge red white-text">{cont4}</Badge></Button>
+                    <Button onClick={() => this.sendTable("4")} className='blue' large>Table 4 <Badge className="custom-badge red white-text">{cont4}</Badge></Button>
                 </Col>
             )
         }
@@ -136,7 +149,7 @@ class Chef extends Component {
         else {
             return (
                 <Col m={2} className='center'>
-                    <Button onClick={() => this.seeOrder("5")} className='blue' large>Table 5 <Badge className="custom-badge red white-text">{cont5}</Badge></Button>
+                    <Button onClick={() => this.sendTable("5")} className='blue' large>Table 5 <Badge className="custom-badge red white-text">{cont5}</Badge></Button>
                 </Col>
             )
         }
@@ -159,14 +172,20 @@ class Chef extends Component {
         else {
             return (
                 <Col m={2} className='center'>
-                    <Button onClick={() => this.seeOrder("6")} className='blue' large>Table 6 <Badge className="custom-badge red white-text">{cont6}</Badge></Button>
+                    <Button onClick={() => this.sendTable("6")} className='blue' large>Table 6 <Badge className="custom-badge red white-text">{cont6}</Badge></Button>
                 </Col>
             )
         }
     }
 
+    sendTable(table){
+        lastTable=table
+        this.seeOrder(lastTable)
+    }
+
     seeOrder = (table) => {
         this.props.getPreorderbytable(table);
+        console.log(lastTable);
     }
 
     render() {
@@ -217,7 +236,7 @@ class Chef extends Component {
                             return (
                                 <Col m={3}>
                                     <Collection>
-                                        <CollectionItem className='orange white-text'><Button onClick={() => updateFinished(eachPreorder)} waves='light' flat className='transparent white-text'> {eachPreorder.name}</Button></CollectionItem>
+                                        <CollectionItem className='orange white-text'><Button onClick={() => {updateFinished(eachPreorder),this.seeOrder(lastTable)}} waves='light' flat className='transparent white-text'> {eachPreorder.name}</Button></CollectionItem>
                                         {
                                             eachPreorder.ingredients.map(eachIngredients => {
                                                 return (
