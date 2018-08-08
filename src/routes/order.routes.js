@@ -1,4 +1,6 @@
 const express = require('express');
+const moment = require('moment');
+
 const Order = require('../models/order');
 const router = express.Router();
 
@@ -15,6 +17,23 @@ router.get('/', async (req, res) => {
     res.json(order);
 }); 
 
+router.get('/date', async (req, res) => {
+    var from = moment(req.query.from).toDate()
+    var to = moment(req.query.to).toDate()
+
+    from.setHours(0)
+    from.setMinutes(0)
+    from.setSeconds(0)
+
+    to.setHours(23)
+    to.setMinutes(59)
+    to.setSeconds(59)
+
+    console.log({from, to})
+
+    const order = await Order.find({ date: { $gt: from, $lt: to } })
+    res.json(order);
+}); 
 
 
 module.exports = router;
