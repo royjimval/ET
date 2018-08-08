@@ -76,16 +76,19 @@ export default class NavBarAdmin extends Component {
               </div>
             </Link>
 
-            <div className="contenedor" id="seis">
-              <Row>
-                <Col>
-                  <img class="icon" src="assets/menu.svg" />
-                </Col>
-                <Col>
-                  <p className="texto">Categories</p>
-                </Col>
-              </Row>
-            </div>
+            <Link to="/addProduct" >
+              <div className="contenedor" id="seis">
+                <Row>
+                  <Col>
+                    <img class="icon" src="assets/menu.svg" />
+                  </Col>
+                  <Col>
+                    <p className="texto">Add Product</p>
+                  </Col>
+                </Row>
+              </div>
+
+            </Link>
 
 
             <div className="login right" id="uno">

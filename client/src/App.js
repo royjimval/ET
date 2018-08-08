@@ -15,6 +15,7 @@ import Grafica from './components/Admin/Graficas/grafica';
 import General from './components/Admin/General/General';
 import Usuario from './components/Admin/Usuario/Usuario';
 import Cashier from './components/cashier/cashier';
+import AddProduct from './components/Admin/addProduct/addProduct'
 class App extends Component {
   render() {
     return (
@@ -33,6 +34,7 @@ class App extends Component {
             <Route path="/General" component={General} />
             <Route path="/Usuario" component={Usuario} />
             <Route path="/Cashier" component={Cashier} />
+            <Route path="/addProduct" component={AddProduct} />
           </div>
         </Router>
   </Provider>
