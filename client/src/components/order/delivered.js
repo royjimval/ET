@@ -51,6 +51,16 @@ class Delivered extends Component {
                         <h6 className='left'>{preorder_item.price}</h6>
                         {this.sumPrices(preorder_item.price)}
                     </Col>
+                    <Col m={12}>
+                        <Col m={8}>
+                            {
+                                preorder_item.ingredients.map(each_Ingredient => {
+                                    return (
+                                        <p>{each_Ingredient}</p>
+                                    )
+                                })
+                            }</Col>
+                    </Col>
                 </Row>
             )
         }

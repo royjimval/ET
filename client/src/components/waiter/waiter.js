@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Row, Col, Card, Collection, CollectionItem, Icon, Button, Badge } from 'react-materialize'
 import '../waiter/waiter.css'
 import WaiterAssist from './WaiterAssist/WaiterAssist'
-import { getPreorderbytableFinished, updateDelivered, get_table1_Finished, get_table2_Finished, get_table3_Finished, get_table4_Finished, get_table5_Finished, get_table6_Finished } from '../../accions/preorderAccions'
+import { getPreorderbytableFinished, getPreorderbytableFinishedDelivered, updateDelivered, get_table1_Finished, get_table2_Finished, get_table3_Finished, get_table4_Finished, get_table5_Finished, get_table6_Finished } from '../../accions/preorderAccions'
 import PropTypes from 'prop-types';
 let cont1 = 0, cont2 = 0, cont3 = 0, cont4 = 0, cont5 = 0, cont6 = 0;
 
@@ -13,6 +13,7 @@ class WaiterClass extends Component {
 
     componentDidMount() {
         this.props.getPreorderbytableFinished();
+        this.props.getPreorderbytableFinishedDelivered();
 
         this.props.get_table1_Finished()
         this.props.get_table2_Finished()
@@ -25,6 +26,7 @@ class WaiterClass extends Component {
 
     seeOrderFinished = (table) => {
         this.props.getPreorderbytableFinished(table);
+        this.props.getPreorderbytableFinishedDelivered(table);
     }
 
     updateDelivered = (preorder) => {
@@ -42,14 +44,14 @@ class WaiterClass extends Component {
 
         if (cont1 === 0) {
             return (
-                <Col s={12} m={6} l={4}>
+                <Col s={12} m={12} l={12}>
                     <Card className='grey hoverable' textClassName='white-text' title="Table 1"></Card>
                 </Col>
             )
         }
         else {
             return (
-                <Col s={12} m={6} l={4}>
+                <Col s={12} m={12} l={12}>
                     <Card onClick={() => this.seeOrderFinished("1")} className='blue hoverable' textClassName='white-text' title="Table 1"><Badge className="custom-badge red white-text">{cont1}</Badge></Card>
                 </Col>
             )
@@ -64,14 +66,14 @@ class WaiterClass extends Component {
 
         if (cont2 === 0) {
             return (
-                <Col s={12} m={6} l={4}>
-                    <Card className='grey hoverable' textClassName='white-text' title="Table 2"></Card>
+                <Col s={12} m={12} l={12}>
+                    <Card onClick={() => this.seeOrderFinished("2")} className='grey hoverable' textClassName='white-text' title="Table 2"><Badge className="custom-badge red white-text">{cont2}</Badge></Card>
                 </Col>
             )
         }
         else {
             return (
-                <Col s={12} m={6} l={4}>
+                <Col s={12} m={12} l={12}>
                     <Card onClick={() => this.seeOrderFinished("2")} className='blue hoverable' textClassName='white-text' title="Table 2"><Badge className="custom-badge red white-text">{cont2}</Badge></Card>
                 </Col>
             )
@@ -86,14 +88,14 @@ class WaiterClass extends Component {
 
         if (cont3 === 0) {
             return (
-                <Col s={12} m={6} l={4}>
+                <Col s={12} m={12} l={12}>
                     <Card className='grey hoverable' textClassName='white-text' title="Table 3"></Card>
                 </Col>
             )
         }
         else {
             return (
-                <Col s={12} m={6} l={4}>
+                <Col s={12} m={12} l={12}>
                     <Card onClick={() => this.seeOrderFinished("3")} className='blue hoverable' textClassName='white-text' title="Table 3"><Badge className="custom-badge red white-text">{cont3}</Badge></Card>
                 </Col>
             )
@@ -108,14 +110,14 @@ class WaiterClass extends Component {
 
         if (cont4 === 0) {
             return (
-                <Col s={12} m={6} l={4}>
+                <Col s={12} m={12} l={12}>
                     <Card className='grey hoverable' textClassName='white-text' title="Table 4"></Card>
                 </Col>
             )
         }
         else {
             return (
-                <Col s={12} m={6} l={4}>
+                <Col s={12} m={12} l={12}>
                     <Card onClick={() => this.seeOrderFinished("4")} className='blue hoverable' textClassName='white-text' title="Table 4"><Badge className="custom-badge red white-text">{cont4}</Badge></Card>
                 </Col>
             )
@@ -130,14 +132,14 @@ class WaiterClass extends Component {
 
         if (cont5 === 0) {
             return (
-                <Col s={12} m={6} l={4}>
+                <Col s={12} m={12} l={12}>
                     <Card className='grey hoverable' textClassName='white-text' title="Table 5"></Card>
                 </Col>
             )
         }
         else {
             return (
-                <Col s={12} m={6} l={4}>
+                <Col s={12} m={12} l={12}>
                     <Card onClick={() => this.seeOrderFinished("5")} className='blue hoverable' textClassName='white-text' title="Table 5"><Badge className="custom-badge red white-text">{cont5}</Badge></Card>
                 </Col>
             )
@@ -152,14 +154,14 @@ class WaiterClass extends Component {
 
         if (cont6 === 0) {
             return (
-                <Col s={12} m={6} l={4}>
+                <Col s={12} m={12} l={12}>
                     <Card className='grey hoverable' textClassName='white-text' title="Table 6"></Card>
                 </Col>
             )
         }
         else {
             return (
-                <Col s={12} m={6} l={4}>
+                <Col s={12} m={12} l={12}>
                     <Card onClick={() => this.seeOrderFinished("6")} className='blue hoverable' textClassName='white-text' title="Table 6"><Badge className="custom-badge red white-text">{cont6}</Badge></Card>
                 </Col>
             )
@@ -167,7 +169,8 @@ class WaiterClass extends Component {
     }
 
     render() {
-        const { preorder } = this.props.preorder
+        const { preorderWaiter } = this.props.preorderWaiter
+        const { preorderWaiterDelivered} = this.props.preorderWaiterDelivered
 
         const { table1_finished } = this.props.table1_finished
         const { table2_finished } = this.props.table2_finished
@@ -183,7 +186,7 @@ class WaiterClass extends Component {
                 <Row>
                     <h3 className='center'>Tables</h3>
 
-                    <Col m={6}>
+                    <Col m={2}>
                         {
                             this.changecolor1(table1_finished)
                         }
@@ -204,11 +207,11 @@ class WaiterClass extends Component {
                         }
                     </Col>
 
-                    <Col m={6} >
-                        <Col s={12} m={12}>
-                            <Collection className='z-depth-1-half' header="table of descriptions.">
+                    <Col m={10} >
+                        <Col s={6} m={6}>
+                            <Collection className='z-depth-1-half' header="Entries.">
                                 {
-                                    preorder.map(eachPreorder => {
+                                    preorderWaiter.map(eachPreorder => {
                                         return (
                                             <CollectionItem>
                                                 <Row>
@@ -218,8 +221,41 @@ class WaiterClass extends Component {
                                         )
                                     })
                                 }
-                                <Button className="blue lighten-1" waves='light' onClick={() => this.updateDelivered(preorder)} >Delivered<Icon left>check</Icon></Button>
+                                <Button className="blue lighten-1" waves='light' onClick={() => this.updateDelivered(preorderWaiter)} >Delivered<Icon left>check</Icon></Button>
                             </Collection>
+                        </Col>
+                        <Col s={6} m={6}>
+                            
+                            <Col s={12} m={12} l={12} xl={12}>
+                                <Collection className='z-depth-1-half' header="Exist">
+                                    <CollectionItem>
+                                        {
+                                            preorderWaiterDelivered.map((preorder_item) =>
+                                                (
+                                                    <Row>
+                                                        <Col m={8}>
+                                                            <h6 className='left'>{preorder_item.name}</h6>
+                                                        </Col>
+                                                        <Col m={2}>
+                                                            <h6 className='left'>{preorder_item.price}</h6>
+                                                        </Col>
+                                                        <Col m={12}>
+                                                            <Col m={8}>
+                                                                {
+                                                                    preorder_item.ingredients.map(each_Ingredient => {
+                                                                        return (
+                                                                            <p>{each_Ingredient}</p>
+                                                                        )
+                                                                    })
+                                                                }</Col>
+                                                        </Col>
+                                                    </Row>
+                                                ))
+                                        }
+                                    </CollectionItem>
+                                </Collection>
+                            </Col>
+
                         </Col>
 
                     </Col>
@@ -233,7 +269,9 @@ class WaiterClass extends Component {
 
 WaiterClass.propTypes = {
     getPreorderbytableFinished: PropTypes.func.isRequired,
-    preorder: PropTypes.object.isRequired,
+    preorderWaiter: PropTypes.object.isRequired,
+    getPreorderbytableFinishedDelivered: PropTypes.func.isRequired,
+    preorderWaiterDelivered: PropTypes.object.isRequired,
 
     updateDelivered: PropTypes.func.isRequired,
 
@@ -253,7 +291,8 @@ WaiterClass.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    preorder: state.preorder,
+    preorderWaiter: state.preorder,
+    preorderWaiterDelivered: state.preorder,
 
     table1_finished: state.preorder,
     table2_finished: state.preorder,
@@ -265,6 +304,6 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps, { getPreorderbytableFinished, updateDelivered, get_table1_Finished, get_table2_Finished, get_table3_Finished, get_table4_Finished, get_table5_Finished, get_table6_Finished })(WaiterClass);
+export default connect(mapStateToProps, { getPreorderbytableFinished, getPreorderbytableFinishedDelivered, updateDelivered, get_table1_Finished, get_table2_Finished, get_table3_Finished, get_table4_Finished, get_table5_Finished, get_table6_Finished })(WaiterClass);
 
 

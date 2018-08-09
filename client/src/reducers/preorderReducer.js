@@ -1,7 +1,9 @@
-import { ADD_PREORDER, GET_PREORDER, DELET_PREORDER, PUT_PREORDER, GET_PREORDER_BYTABLE, GET_PRODUCT_CASHIER, GET_TABLE1, GET_TABLE2, GET_TABLE3, GET_TABLE6, GET_TABLE4, GET_TABLE5, GET_TABLE1_FINISHED, GET_TABLE2_FINISHED, GET_TABLE3_FINISHED, GET_TABLE4_FINISHED, GET_TABLE5_FINISHED, GET_TABLE6_FINISHED } from '../accions/types';
+import { ADD_PREORDER, GET_PREORDER, DELET_PREORDER, GET_PREORDER_BYTABLE_FINISHED_DELIVERED, PUT_PREORDER, GET_PREORDER_BYTABLE, GET_PRODUCT_CASHIER, GET_TABLE1, GET_TABLE2, GET_TABLE3, GET_TABLE6, GET_TABLE4, GET_TABLE5, GET_TABLE1_FINISHED, GET_TABLE2_FINISHED, GET_TABLE3_FINISHED, GET_TABLE4_FINISHED, GET_TABLE5_FINISHED, GET_TABLE6_FINISHED, GET_PREORDER_BYTABLE_WAITER } from '../accions/types';
 
 const initialState = {
   preorder: [],
+  preorderWaiter: [],
+  preorderWaiterDelivered: [],
   table1: [],
   table2: [],
   table3: [],
@@ -32,6 +34,18 @@ export default function (state = initialState, action) {
       return {
         ...state,
         preorder: action.payload,
+        loading: true
+      };
+    case GET_PREORDER_BYTABLE_WAITER:
+      return {
+        ...state,
+        preorderWaiter: action.payload,
+        loading: true
+      };
+    case GET_PREORDER_BYTABLE_FINISHED_DELIVERED:
+      return {
+        ...state,
+        preorderWaiterDelivered: action.payload,
         loading: true
       };
     case GET_PRODUCT_CASHIER:

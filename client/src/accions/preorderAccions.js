@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ADD_PREORDER, GET_PREORDER, DELET_PREORDER, GET_PREORDER_BYTABLE, GET_PRODUCT_CASHIER, GET_TABLE1, GET_TABLE2, GET_TABLE3, GET_TABLE4, GET_TABLE5, GET_TABLE6, GET_TABLE1_FINISHED, GET_TABLE2_FINISHED, GET_TABLE3_FINISHED, GET_TABLE4_FINISHED, GET_TABLE5_FINISHED,GET_TABLE6_FINISHED } from './types';
+import { ADD_PREORDER, GET_PREORDER, DELET_PREORDER, GET_PREORDER_BYTABLE,GET_PREORDER_BYTABLE_WAITER, GET_PREORDER_BYTABLE_FINISHED_DELIVERED, GET_PRODUCT_CASHIER, GET_TABLE1, GET_TABLE2, GET_TABLE3, GET_TABLE4, GET_TABLE5, GET_TABLE6, GET_TABLE1_FINISHED, GET_TABLE2_FINISHED, GET_TABLE3_FINISHED, GET_TABLE4_FINISHED, GET_TABLE5_FINISHED,GET_TABLE6_FINISHED } from './types';
 
 export const addPreorder = item => dispatch => {
   axios.post('/api/preorder', item).then(res =>
@@ -20,6 +20,8 @@ export const getPreorder = item => dispatch => {
 
     );
 };
+
+
 export const getPreorderbytable = item => dispatch => {
   axios.get(`/api/preorder/${item}`)
     .then(res =>
@@ -36,7 +38,18 @@ export const getPreorderbytableFinished = item => dispatch => {
   axios.get(`/api/preorder/finished/${item}`)
     .then(res =>
       dispatch({
-        type: GET_PREORDER_BYTABLE,
+        type: GET_PREORDER_BYTABLE_WAITER,
+        payload: res.data,
+      },
+        console.log(res.data))
+    );
+};
+
+export const getPreorderbytableFinishedDelivered = item => dispatch => {
+  axios.get(`/api/preorder/finished/delivered/${item}`)
+    .then(res =>
+      dispatch({
+        type: GET_PREORDER_BYTABLE_FINISHED_DELIVERED,
         payload: res.data,
       },
         console.log(res.data))
