@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ADD_PREORDER, GET_PREORDER, DELET_PREORDER, GET_PREORDER_BYTABLE, GET_PRODUCT_CASHIER, GET_TABLE1, GET_TABLE2, GET_TABLE3, GET_TABLE4, GET_TABLE5, GET_TABLE6 } from './types';
+import { ADD_PREORDER, GET_PREORDER, DELET_PREORDER, GET_PREORDER_BYTABLE, GET_PRODUCT_CASHIER, GET_TABLE1, GET_TABLE2, GET_TABLE3, GET_TABLE4, GET_TABLE5, GET_TABLE6, GET_TABLE1_FINISHED, GET_TABLE2_FINISHED, GET_TABLE3_FINISHED, GET_TABLE4_FINISHED, GET_TABLE5_FINISHED,GET_TABLE6_FINISHED } from './types';
 
 export const addPreorder = item => dispatch => {
   axios.post('/api/preorder', item).then(res =>
@@ -189,5 +189,77 @@ export const get_table6 = () => dispatch => {
         payload: res.data
       })
 
+    );
+};
+
+export const get_table1_Finished = () => dispatch => {
+  const table = 1;
+  axios.get(`/api/preorder/finished/${table}`)
+    .then(res =>
+      dispatch({
+        type: GET_TABLE1_FINISHED,
+        payload: res.data,
+      },
+        console.log(res.data))
+    );
+}; 
+
+export const get_table2_Finished = () => dispatch => {
+  const table = 2;
+  axios.get(`/api/preorder/finished/${table}`)
+    .then(res =>
+      dispatch({
+        type: GET_TABLE2_FINISHED,
+        payload: res.data,
+      },
+        console.log(res.data))
+    );
+};
+
+export const get_table3_Finished = () => dispatch => {
+  const table = 3;
+  axios.get(`/api/preorder/finished/${table}`)
+    .then(res =>
+      dispatch({
+        type: GET_TABLE3_FINISHED,
+        payload: res.data,
+      },
+        console.log(res.data))
+    );
+};
+
+export const get_table4_Finished = () => dispatch => {
+  const table = 4;
+  axios.get(`/api/preorder/finished/${table}`)
+    .then(res =>
+      dispatch({
+        type: GET_TABLE4_FINISHED,
+        payload: res.data,
+      },
+        console.log(res.data))
+    );
+};
+
+export const get_table5_Finished = () => dispatch => {
+  const table = 5;
+  axios.get(`/api/preorder/finished/${table}`)
+    .then(res =>
+      dispatch({
+        type: GET_TABLE5_FINISHED,
+        payload: res.data,
+      },
+        console.log(res.data))
+    );
+};
+
+export const get_table6_Finished = () => dispatch => {
+  const table = 6;
+  axios.get(`/api/preorder/finished/${table}`)
+    .then(res =>
+      dispatch({
+        type: GET_TABLE6_FINISHED,
+        payload: res.data,
+      },
+        console.log(res.data))
     );
 };

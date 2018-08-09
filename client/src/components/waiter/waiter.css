@@ -16,3 +16,18 @@
     height: 500px;
     overflow-y: scroll;
 }
+
+.scrl{
+    width: 100%;
+    overflow-x: auto;
+}
+
+.scrl::-webkit-scrollbar { 
+    display: none; 
+}
+
+.card .card-content {
+    padding: 24px;
+    border-radius: 0 0 2px 2px;
+    height: 150px;
+}
