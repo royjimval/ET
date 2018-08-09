@@ -17,6 +17,11 @@ router.get('/finished/:idtable', async (req, res) => {
     res.json(preorder);
 }); 
 
+router.get('/finished/delivered/:idtable', async (req, res) => {
+    const preorder = await Preorder.find({ idtable: req.params.idtable, sended: true, finished: true, delivered: true, noOrder: "0" })
+    res.json(preorder);
+}); 
+
 router.get('/Cashier/:idtable', async (req, res) => {
     const preorder = await Preorder.find({ idtable: req.params.idtable, sended: true,  noOrder:"0" })
     res.json(preorder);
