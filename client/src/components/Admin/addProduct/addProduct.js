@@ -37,19 +37,6 @@ class addProductClass extends Component {
         const checkedCheckboxesValuesExtra = checkedCheckboxesExtra.map(input => input.value);
         console.log('checked extra:', checkedCheckboxesValuesExtra);
 
-        // add_food = (Products) => {
-        //     const idtable = "2"
-        //     const name = Products.name
-        //     const ingredients = Products.ingredients
-        //     const price = Products.price
-        //     const data = { idtable, name, ingredients, price }
-        //     console.log(idtable)
-        //     this.props.addPreorder(data);
-        //     toast.info(name + " is added now to your preorder :) ", {
-        //         position: toast.POSITION.BOTTOM_RIGHT,
-        //         className: 'foo-bar'
-        //     });
-        // }
         const nameValue = name.value;
         const categoryValue = category.value;
         const priceValue = price.value;

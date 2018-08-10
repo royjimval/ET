@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Parallax, Row, Button, Navbar, NavItem, Icon, Col } from 'react-materialize'
+import { Parallax, Row, Button, Navbar, NavItem, Col } from 'react-materialize'
 import { Link } from 'react-router-dom';
 import Assist from '../modal/assist'
 import { connect } from 'react-redux';
@@ -16,7 +16,6 @@ class Header extends Component {
         const data = {
             idtable
         }
-        console.log(data);
         this.props.addItem(data);
         toast.info("A waiter will attend you soon :)", {
             position: toast.POSITION.TOP_RIGHT,

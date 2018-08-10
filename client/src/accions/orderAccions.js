@@ -33,7 +33,6 @@ export const deleteOrder = id => dispatch => {
 };
 
 export const addOrder = item => dispatch => {
-  console.log(item.new_id)
   axios.post('/api/order/', item).then(res =>
     dispatch({
       type: ADD_ORDER,

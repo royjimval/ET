@@ -77,7 +77,6 @@ export const getproduct_Dessert = () => dispatch => {
 
 
 export const addProduct = item => dispatch => {
-  console.log(item)
   axios.post('/api/food', item).then(res =>
     dispatch({
       type: ADD_PRODUCT,

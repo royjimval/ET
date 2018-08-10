@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { Collection, CollectionItem } from 'react-materialize'
 import './UserData.css';
-import { Row } from '../../../../../node_modules/react-materialize';
-import Col from '../../../../../node_modules/react-materialize/lib/Col';
 export default class UserData extends Component {
     render() {
         return (

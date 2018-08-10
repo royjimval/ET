@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Col, Collection, CollectionItem, Row } from '../../../../node_modules/react-materialize';
 import './chef.css'
-import { getPreorderbytable, updateFinished, get_table1, get_table2, get_table3, get_table4, get_table5, get_table6 } from '../../accions/preorderAccions';
+import { getPreorderbytable, getProductCashier, updateFinished, get_table1, get_table2, get_table3, get_table4, get_table5, get_table6 } from '../../accions/preorderAccions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -16,6 +16,8 @@ class Chef extends Component {
 
     componentDidMount() {
         this.props.getPreorderbytable()
+        this.props.getProductCashier()
+        
         //this.interval7 = setInterval(() => this.props.getPreorderbytable(), 5000);
         this.interval1 = setInterval(() => this.props.get_table1(), 2000);
         this.interval2 = setInterval(() => this.props.get_table2(), 2000);
@@ -52,7 +54,7 @@ class Chef extends Component {
         if (cont1 === 0) {
             return (
                 <Col m={2} className='center'>
-                    <Button className='grey' large>Table 1</Button>
+                    <Button onClick={() => this.sendTable("1")} className='gray' large>Table 1 </Button>
                 </Col>
             )
         }
@@ -75,7 +77,7 @@ class Chef extends Component {
         if (cont2 === 0) {
             return (
                 <Col m={2} className='center'>
-                    <Button className='grey' large>Table 2</Button>
+                    <Button onClick={() => this.sendTable("2")} className='gray' large>Table 2 <Badge className="custom-badge red white-text">{cont2}</Badge></Button>
                 </Col>
             )
         }
@@ -181,15 +183,20 @@ class Chef extends Component {
     sendTable(table){
         lastTable=table
         this.seeOrder(lastTable)
+        this.seeOrderWaiter(lastTable)
     }
 
     seeOrder = (table) => {
         this.props.getPreorderbytable(table);
-        console.log(lastTable);
+    }
+
+    seeOrderWaiter = (table) => {
+        this.props.getProductCashier(table);
     }
 
     render() {
         const { preorder } = this.props.preorder
+        const { preorderCashier } = this.props.preorderCashier
         const { table1 } = this.props.table1
         const { table2 } = this.props.table2
         const { table3 } = this.props.table3
@@ -230,7 +237,7 @@ class Chef extends Component {
                 </Row>
                 <div className='m-top20'/>
 
-                <Row className='container grey lighten-3'>
+                {/* <Row className='container grey lighten-3'>
                     {
                         preorder.map(eachPreorder => {
                             return (
@@ -251,9 +258,57 @@ class Chef extends Component {
 
                         })
                     }
+                </Row> */}
+                <Row>
+                    <Col className='offset-m1' m={5}>
+                        <Collection header="Entries">
+                            {
+                                preorder.map(eachPreorder => {
+                                    return (
+                                        <Col m={3}>
+                                            <Collection>
+                                                <CollectionItem className='orange white-text'><Button onClick={() => { updateFinished(eachPreorder), this.seeOrder(lastTable) }} waves='light' flat className='transparent white-text'> {eachPreorder.name}</Button></CollectionItem>
+                                                {
+                                                    eachPreorder.ingredients.map(eachIngredients => {
+                                                        return (
+                                                            <CollectionItem className='black-text'>{eachIngredients}</CollectionItem>
+                                                        )
+                                                    })
+                                                }
+
+                                            </Collection>
+                                        </Col>
+                                    )
+
+                                })
+                            }
+                        </Collection>
+                    </Col>
+                    <Col m={5}>
+                        <Collection header="Exits">
+                            {
+                                preorderCashier.map(eachPreorder => {
+                                    return (
+                                        <Col m={3}>
+                                            <Collection>
+                                                <CollectionItem className='gray black-text'>{eachPreorder.name}</CollectionItem>
+                                                {
+                                                    eachPreorder.ingredients.map(eachIngredients => {
+                                                        return (
+                                                            <CollectionItem className='black-text'>{eachIngredients}</CollectionItem>
+                                                        )
+                                                    })
+                                                }
+
+                                            </Collection>
+                                        </Col>
+                                    )
+
+                                })
+                            }
+                        </Collection>
+                    </Col>
                 </Row>
-
-
 
             </div>
         )
@@ -263,6 +318,8 @@ Chef.propTypes = {
     getPreorder: PropTypes.func.isRequired,
     preorder: PropTypes.object.isRequired,
     updateFinished: PropTypes.func.isRequired,
+    getPreorderbytable: PropTypes.func.isRequired,
+    preorderCashier: PropTypes.object.isRequired,
     get_table1: PropTypes.func.isRequired,
     get_table2: PropTypes.func.isRequired,
     get_table3: PropTypes.func.isRequired,
@@ -284,6 +341,7 @@ Chef.propTypes = {
 
 const mapStateToProps = state => ({
     preorder: state.preorder,
+    preorderCashier: state.preorder,
     table1: state.preorder,
     table2: state.preorder,
     table3: state.preorder,
@@ -293,4 +351,4 @@ const mapStateToProps = state => ({
 
 });
 
-export default connect(mapStateToProps, { getPreorderbytable, updateFinished, get_table1, get_table2, get_table3, get_table4, get_table5, get_table6 })(Chef);
+export default connect(mapStateToProps, { getPreorderbytable, getProductCashier, updateFinished, get_table1, get_table2, get_table3, get_table4, get_table5, get_table6 })(Chef);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './navbar.css';
-import { Parallax, Row, Button, Navbar, NavItem, Icon, Col } from 'react-materialize'
+import { Parallax, Row, Navbar, Col } from 'react-materialize'
 import { Link } from 'react-router-dom';
 
 
