@@ -1,10 +1,19 @@
 import axios from 'axios';
-import { ADD_PREORDER, GET_PREORDER, DELET_PREORDER, GET_PREORDER_BYTABLE,GET_PREORDER_BYTABLE_WAITER, GET_PREORDER_BYTABLE_FINISHED_DELIVERED, GET_PRODUCT_CASHIER, GET_TABLE1, GET_TABLE2, GET_TABLE3, GET_TABLE4, GET_TABLE5, GET_TABLE6, GET_TABLE1_FINISHED, GET_TABLE2_FINISHED, GET_TABLE3_FINISHED, GET_TABLE4_FINISHED, GET_TABLE5_FINISHED,GET_TABLE6_FINISHED } from './types';
+import { ADD_PREORDER, ADD_DRINK, GET_PREORDER, DELET_PREORDER, GET_PREORDER_BYTABLE,GET_PREORDER_BYTABLE_WAITER, GET_PREORDER_BYTABLE_FINISHED_DELIVERED, GET_PRODUCT_CASHIER, GET_TABLE1, GET_TABLE2, GET_TABLE3, GET_TABLE4, GET_TABLE5, GET_TABLE6, GET_TABLE1_FINISHED, GET_TABLE2_FINISHED, GET_TABLE3_FINISHED, GET_TABLE4_FINISHED, GET_TABLE5_FINISHED,GET_TABLE6_FINISHED } from './types';
 
 export const addPreorder = item => dispatch => {
   axios.post('/api/preorder', item).then(res =>
     dispatch({
       type: ADD_PREORDER,
+      payload: res.data
+    })
+  );
+};
+
+export const addDrink = item => dispatch => {
+  axios.post('/api/preorder/drink', item).then(res =>
+    dispatch({
+      type: ADD_DRINK,
       payload: res.data
     })
   );
@@ -81,8 +90,22 @@ export const putPreorder = (id, idtable, name, ingredients, price, start, finish
     .then(response => {
       console.log(response);
     })
+};
 
-
+export const putDrink = (id, idtable, name, ingredients, price, start, finished, delivered, noOrder) => {
+  axios.put(`/api/preorder/drink/${id}`, {
+    idtable: idtable,
+    name: name,
+    ingredients: ingredients,
+    price: price,
+    sended: true,
+    finished: true,
+    delivered: delivered,
+    noOrder: noOrder,
+  })
+    .then(response => {
+      console.log(response);
+    })
 };
 
 export const updateFinished = (item) => {

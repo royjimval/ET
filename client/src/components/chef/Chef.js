@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Col, Collection, CollectionItem, Row } from '../../../../node_modules/react-materialize';
 import './chef.css'
-import { getPreorderbytable, getPreorderbytableFinished, updateFinished, get_table1, get_table2, get_table3, get_table4, get_table5, get_table6 } from '../../accions/preorderAccions';
+import { getPreorderbytable, getProductCashier, updateFinished, get_table1, get_table2, get_table3, get_table4, get_table5, get_table6 } from '../../accions/preorderAccions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -16,7 +16,7 @@ class Chef extends Component {
 
     componentDidMount() {
         this.props.getPreorderbytable()
-        this.props.getPreorderbytableFinished()
+        this.props.getProductCashier()
         
         //this.interval7 = setInterval(() => this.props.getPreorderbytable(), 5000);
         this.interval1 = setInterval(() => this.props.get_table1(), 2000);
@@ -188,16 +188,15 @@ class Chef extends Component {
 
     seeOrder = (table) => {
         this.props.getPreorderbytable(table);
-        console.log(lastTable);
     }
 
     seeOrderWaiter = (table) => {
-        this.props.getPreorderbytableFinished(table);
+        this.props.getProductCashier(table);
     }
 
     render() {
         const { preorder } = this.props.preorder
-        const { preorderWaiter } = this.props.preorderWaiter
+        const { preorderCashier } = this.props.preorderCashier
         const { table1 } = this.props.table1
         const { table2 } = this.props.table2
         const { table3 } = this.props.table3
@@ -288,7 +287,7 @@ class Chef extends Component {
                     <Col m={5}>
                         <Collection header="Exits">
                             {
-                                preorderWaiter.map(eachPreorder => {
+                                preorderCashier.map(eachPreorder => {
                                     return (
                                         <Col m={3}>
                                             <Collection>
@@ -319,8 +318,8 @@ Chef.propTypes = {
     getPreorder: PropTypes.func.isRequired,
     preorder: PropTypes.object.isRequired,
     updateFinished: PropTypes.func.isRequired,
-    getPreorderbytableFinished: PropTypes.func.isRequired,
-    preorderWaiter: PropTypes.object.isRequired,
+    getPreorderbytable: PropTypes.func.isRequired,
+    preorderCashier: PropTypes.object.isRequired,
     get_table1: PropTypes.func.isRequired,
     get_table2: PropTypes.func.isRequired,
     get_table3: PropTypes.func.isRequired,
@@ -342,7 +341,7 @@ Chef.propTypes = {
 
 const mapStateToProps = state => ({
     preorder: state.preorder,
-    preorderWaiter: state.preorder,
+    preorderCashier: state.preorder,
     table1: state.preorder,
     table2: state.preorder,
     table3: state.preorder,
@@ -352,4 +351,4 @@ const mapStateToProps = state => ({
 
 });
 
-export default connect(mapStateToProps, { getPreorderbytable, getPreorderbytableFinished, updateFinished, get_table1, get_table2, get_table3, get_table4, get_table5, get_table6 })(Chef);
+export default connect(mapStateToProps, { getPreorderbytable, getProductCashier, updateFinished, get_table1, get_table2, get_table3, get_table4, get_table5, get_table6 })(Chef);

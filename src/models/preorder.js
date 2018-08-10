@@ -11,7 +11,8 @@ const preorder = new Schema({
 	sended: {type: Boolean, required: true, default: false},
 	finished: { type: Boolean, required: true, default: false},
 	delivered: { type: Boolean, required: true, default : false },
-	noOrder: { type: String, default:"0" }
+	noOrder: { type: String, default:"0" },
+	category: { type: String, required: false }
 
 });
 

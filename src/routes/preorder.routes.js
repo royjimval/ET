@@ -28,11 +28,12 @@ router.get('/Cashier/:idtable', async (req, res) => {
 }); 
 
 router.post('/', async (req, res) => {
-    const { idtable, name, ingredients, price, noOrder } = req.body;
-    const preorder = new Preorder({ idtable, name, ingredients, price, noOrder });
+    const { idtable, name, ingredients, price, noOrder, category } = req.body;
+    const preorder = new Preorder({ idtable, name, ingredients, price, noOrder, category });
     await preorder.save();
     res.json({status: 'Preorder Saved'});
   });
+
 
 router.delete('/:id', async (req, res) => {
     await Preorder.findByIdAndRemove(req.params.id);
@@ -47,5 +48,12 @@ router.put('/:id', async (req, res) => {
     res.json({ status: 'preorder update' });
 });
 
+router.put('/drink/:id', async (req, res) => {
+    console.log(req.body);
+    const { idtable, name, ingredients, price, sended, start, finished, delivered, noOrder } = req.body;
+    const preorder = { idtable, name, ingredients, price, sended, start, finished, delivered, noOrder };
+    await Preorder.findByIdAndUpdate(req.params.id, preorder);
+    res.json({ status: 'preorder update' });
+});
 
 module.exports = router;

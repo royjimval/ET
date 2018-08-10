@@ -51,7 +51,7 @@ sumPrices(preorder){
     };
 
     render() {
-        const { preorder } = this.props.preorder;
+        const { preorderCashier } = this.props.preorderCashier;
         const { id_order } = this.props.id_order;
         
         return (
@@ -61,10 +61,10 @@ sumPrices(preorder){
                 <Button waves='light' onClick={() => this.getProducts("2")} > Table 2<Icon left>save</Icon></Button>
 
                 <Table >
-                    {this.sumPrices(preorder)}
+                    {this.sumPrices(preorderCashier)}
 
                 {
-                    preorder.map((preorder_item) =>
+                        preorderCashier.map((preorder_item) =>
                         (
                                 <thead>
                                     <tr>
@@ -85,7 +85,7 @@ sumPrices(preorder){
                     <Row>
                     <h1>{total}</h1>
                     </Row>
-                    <Button waves='light' onClick={() => this.onPutPreorder(preorder, id_order)} >PAY<Icon left>save</Icon></Button>
+                    <Button waves='light' onClick={() => this.onPutPreorder(preorderCashier, id_order)} >PAY<Icon left>save</Icon></Button>
                 </Table>
 
             </div>
@@ -95,7 +95,7 @@ sumPrices(preorder){
 
 Cashier.propTypes = {
     getProductCashier: PropTypes.func.isRequired,
-    preorder: PropTypes.object.isRequired,
+    preorderCashier: PropTypes.object.isRequired,
     get_id_order: PropTypes.func.isRequired,
     id_order: PropTypes.object.isRequired,
     addOrder: PropTypes.func.isRequired
@@ -104,7 +104,7 @@ Cashier.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    preorder: state.preorder,
+    preorderCashier: state.preorder,
     id_order: state.id_order
 });
 

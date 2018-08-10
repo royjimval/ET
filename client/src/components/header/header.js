@@ -16,7 +16,6 @@ class Header extends Component {
         const data = {
             idtable
         }
-        console.log(data);
         this.props.addItem(data);
         toast.info("A waiter will attend you soon :)", {
             position: toast.POSITION.TOP_RIGHT,
