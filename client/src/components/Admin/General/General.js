@@ -24,7 +24,7 @@ export default class General extends Component {
         // Ajax calls here
         this.setState({
             chartData: {
-                labels: ['Drinks', 'BreackFasts', 'Meal', 'Dinners', 'Desserts'],
+                labels: ['Drinks', 'Breakfast', 'Meal', 'Dinners', 'Desserts'],
                 fontColor:"white",
                 datasets: [
                     {
@@ -45,7 +45,6 @@ export default class General extends Component {
                         ]
                     }
                 ],
-                fontColor:"white"
             }
         });
     }

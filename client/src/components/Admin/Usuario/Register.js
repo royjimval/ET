@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Register.css';
-import { Row, Input, Icon } from '../../../../../node_modules/react-materialize';
-import Col from '../../../../../node_modules/react-materialize/lib/Col';
+import { Input, Icon } from '../../../../../node_modules/react-materialize';
 
 export default class Register extends Component {
     render() {
