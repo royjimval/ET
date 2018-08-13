@@ -16,24 +16,24 @@ class Chef extends Component {
 
     componentDidMount() {
         this.props.getPreorderbytable()
+        this.interval1 = setInterval(() => this.updateCosults(), 2000);
         this.props.getProductCashier()
-
-        this.interval1 = setInterval(() => this.props.get_table1(), 2000);
-        this.interval2 = setInterval(() => this.props.get_table2(), 2000);
-        this.interval3 = setInterval(() => this.props.get_table3(), 2000);
-        this.interval4 = setInterval(() => this.props.get_table4(), 2000);
-        this.interval5 = setInterval(() => this.props.get_table5(), 2000);
-        this.interval6 = setInterval(() => this.props.get_table6(), 2000);
       }
-    
+      
       componentWillUnmount() {
         clearInterval(this.interval1);
-        clearInterval(this.interval2);
-        clearInterval(this.interval3);
-        clearInterval(this.interval4);
-        clearInterval(this.interval5);
-        clearInterval(this.interval6);
       }
+      
+      updateCosults(){
+          this.props.get_table1()
+          this.props.get_table2()
+          this.props.get_table3()
+          this.props.get_table4()
+          this.props.get_table5()
+          this.props.get_table6()
+          
+      }
+    
 
     updateFinished (preorder){
         this.seeOrder(lastTable)
@@ -75,7 +75,7 @@ class Chef extends Component {
         if (cont2 === 0) {
             return (
                 <Col m={2} className='center'>
-                    <Button onClick={() => this.sendTable("2")} className='gray' large>Table 2 <Badge className="custom-badge red white-text">{cont2}</Badge></Button>
+                    <Button onClick={() => this.sendTable("2")} className='gray' large>Table 2</Button>
                 </Col>
             )
         }
@@ -234,29 +234,6 @@ class Chef extends Component {
 
                 </Row>
                 <div className='m-top20'/>
-
-                {/* <Row className='container grey lighten-3'>
-                    {
-                        preorder.map(eachPreorder => {
-                            return (
-                                <Col m={3}>
-                                    <Collection>
-                                        <CollectionItem className='orange white-text'><Button onClick={() => {updateFinished(eachPreorder),this.timeout = setTimeout(() => this.seeOrder(lastTable), 100);}} waves='light' flat className='transparent white-text'> {eachPreorder.name}</Button></CollectionItem>
-                                        {
-                                            eachPreorder.ingredients.map(eachIngredients => {
-                                                return (
-                                                    <CollectionItem className='black-text'>{eachIngredients}</CollectionItem>
-                                                )
-                                            })
-                                        }
-
-                                    </Collection>
-                                </Col>
-                            )
-
-                        })
-                    }
-                </Row> */}
                 <Row>
                     <Col className='offset-m1' m={5}>
                         <Collection header="Entries">
@@ -265,7 +242,7 @@ class Chef extends Component {
                                     return (
                                         <Col m={3}>
                                             <Collection>
-                                                <CollectionItem className='orange white-text'><Button onClick={() => { updateFinished(eachPreorder), this.seeOrder(lastTable) }} waves='light' flat className='transparent white-text'> {eachPreorder.name}</Button></CollectionItem>
+                                                <CollectionItem className='orange white-text'><Button onClick={() => { updateFinished(eachPreorder), setTimeout(()=>this.seeOrder(lastTable),200) }} waves='light' flat className='transparent white-text'> {eachPreorder.name}</Button></CollectionItem>
                                                 {
                                                     eachPreorder.ingredients.map(eachIngredients => {
                                                         return (

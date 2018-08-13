@@ -9,8 +9,13 @@ import '../waiter.css'
 
 
 class WaiterAssist extends Component {
+
   componentDidMount() {
-    this.props.getItems();
+    this.interval1 = setInterval(() => this.props.getItems(), 2000);
+  }
+  
+  componentWillUnmount() {
+    clearInterval(this.interval1);
   }
 
   onDeleteClick = id => {

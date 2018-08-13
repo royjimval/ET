@@ -5,7 +5,7 @@ import '../waiter/waiter.css'
 import WaiterAssist from './WaiterAssist/WaiterAssist'
 import { getPreorderbytableFinished, getPreorderbytableFinishedDelivered, updateDelivered, get_table1_Finished, get_table2_Finished, get_table3_Finished, get_table4_Finished, get_table5_Finished, get_table6_Finished } from '../../accions/preorderAccions'
 import PropTypes from 'prop-types';
-let cont1 = 0, cont2 = 0, cont3 = 0, cont4 = 0, cont5 = 0, cont6 = 0;
+let cont1 = 0, cont2 = 0, cont3 = 0, cont4 = 0, cont5 = 0, cont6 = 0; let lastTable="";
 
 
 
@@ -14,19 +14,30 @@ class WaiterClass extends Component {
     componentDidMount() {
         this.props.getPreorderbytableFinished();
         this.props.getPreorderbytableFinishedDelivered();
-
+        this.interval1 = setInterval(() => this.updateCosults(), 2000);
+      }
+      
+      componentWillUnmount() {
+        clearInterval(this.interval1);
+      }
+      
+      updateCosults(){
         this.props.get_table1_Finished()
         this.props.get_table2_Finished()
         this.props.get_table3_Finished()
         this.props.get_table4_Finished()
         this.props.get_table5_Finished()
         this.props.get_table6_Finished()
-
-    }
+      }
 
     seeOrderFinished = (table) => {
         this.props.getPreorderbytableFinished(table);
         this.props.getPreorderbytableFinishedDelivered(table);
+    }
+
+    sendTable(table){
+        lastTable=table
+        this.seeOrderFinished(lastTable)
     }
 
     updateDelivered = (preorder) => {
@@ -45,14 +56,14 @@ class WaiterClass extends Component {
         if (cont1 === 0) {
             return (
                 <Col s={12} m={12} l={12}>
-                    <Card className='grey hoverable' textClassName='white-text' title="Table 1"></Card>
+                    <Card onClick={() => this.sendTable("1")} className='grey hoverable' textClassName='white-text' title="Table 1"></Card>
                 </Col>
             )
         }
         else {
             return (
                 <Col s={12} m={12} l={12}>
-                    <Card onClick={() => this.seeOrderFinished("1")} className='blue hoverable' textClassName='white-text' title="Table 1"><Badge className="custom-badge red white-text">{cont1}</Badge></Card>
+                    <Card onClick={() => this.sendTable("1")} className='blue hoverable' textClassName='white-text' title="Table 1"><Badge className="custom-badge red white-text">{cont1}</Badge></Card>
                 </Col>
             )
         }
@@ -67,14 +78,14 @@ class WaiterClass extends Component {
         if (cont2 === 0) {
             return (
                 <Col s={12} m={12} l={12}>
-                    <Card onClick={() => this.seeOrderFinished("2")} className='grey hoverable' textClassName='white-text' title="Table 2"><Badge className="custom-badge red white-text">{cont2}</Badge></Card>
+                    <Card onClick={() => this.sendTable("2")} className='grey hoverable' textClassName='white-text' title="Table 2"></Card>
                 </Col>
             )
         }
         else {
             return (
                 <Col s={12} m={12} l={12}>
-                    <Card onClick={() => this.seeOrderFinished("2")} className='blue hoverable' textClassName='white-text' title="Table 2"><Badge className="custom-badge red white-text">{cont2}</Badge></Card>
+                    <Card onClick={() => this.sendTable("2")} className='blue hoverable' textClassName='white-text' title="Table 2"><Badge className="custom-badge red white-text">{cont2}</Badge></Card>
                 </Col>
             )
         }
@@ -89,14 +100,14 @@ class WaiterClass extends Component {
         if (cont3 === 0) {
             return (
                 <Col s={12} m={12} l={12}>
-                    <Card className='grey hoverable' textClassName='white-text' title="Table 3"></Card>
+                    <Card onClick={() => this.sendTable("3")} className='grey hoverable' textClassName='white-text' title="Table 3"></Card>
                 </Col>
             )
         }
         else {
             return (
                 <Col s={12} m={12} l={12}>
-                    <Card onClick={() => this.seeOrderFinished("3")} className='blue hoverable' textClassName='white-text' title="Table 3"><Badge className="custom-badge red white-text">{cont3}</Badge></Card>
+                    <Card onClick={() => this.sendTable("3")} className='blue hoverable' textClassName='white-text' title="Table 3"><Badge className="custom-badge red white-text">{cont3}</Badge></Card>
                 </Col>
             )
         }
@@ -111,14 +122,14 @@ class WaiterClass extends Component {
         if (cont4 === 0) {
             return (
                 <Col s={12} m={12} l={12}>
-                    <Card className='grey hoverable' textClassName='white-text' title="Table 4"></Card>
+                    <Card onClick={() => this.sendTable("4")}  className='grey hoverable' textClassName='white-text' title="Table 4"></Card>
                 </Col>
             )
         }
         else {
             return (
                 <Col s={12} m={12} l={12}>
-                    <Card onClick={() => this.seeOrderFinished("4")} className='blue hoverable' textClassName='white-text' title="Table 4"><Badge className="custom-badge red white-text">{cont4}</Badge></Card>
+                    <Card onClick={() => this.sendTable("4")} className='blue hoverable' textClassName='white-text' title="Table 4"><Badge className="custom-badge red white-text">{cont4}</Badge></Card>
                 </Col>
             )
         }
@@ -133,14 +144,14 @@ class WaiterClass extends Component {
         if (cont5 === 0) {
             return (
                 <Col s={12} m={12} l={12}>
-                    <Card className='grey hoverable' textClassName='white-text' title="Table 5"></Card>
+                    <Card onClick={() => this.sendTable("5")} className='grey hoverable' textClassName='white-text' title="Table 5"></Card>
                 </Col>
             )
         }
         else {
             return (
                 <Col s={12} m={12} l={12}>
-                    <Card onClick={() => this.seeOrderFinished("5")} className='blue hoverable' textClassName='white-text' title="Table 5"><Badge className="custom-badge red white-text">{cont5}</Badge></Card>
+                    <Card onClick={() => this.sendTable("5")} className='blue hoverable' textClassName='white-text' title="Table 5"><Badge className="custom-badge red white-text">{cont5}</Badge></Card>
                 </Col>
             )
         }
@@ -155,14 +166,14 @@ class WaiterClass extends Component {
         if (cont6 === 0) {
             return (
                 <Col s={12} m={12} l={12}>
-                    <Card className='grey hoverable' textClassName='white-text' title="Table 6"></Card>
+                    <Card onClick={() => this.sendTable("6")} className='grey hoverable' textClassName='white-text' title="Table 6"></Card>
                 </Col>
             )
         }
         else {
             return (
                 <Col s={12} m={12} l={12}>
-                    <Card onClick={() => this.seeOrderFinished("6")} className='blue hoverable' textClassName='white-text' title="Table 6"><Badge className="custom-badge red white-text">{cont6}</Badge></Card>
+                    <Card onClick={() => this.sendTable("6")} className='blue hoverable' textClassName='white-text' title="Table 6"><Badge className="custom-badge red white-text">{cont6}</Badge></Card>
                 </Col>
             )
         }
@@ -221,7 +232,7 @@ class WaiterClass extends Component {
                                         )
                                     })
                                 }
-                                <Button className="blue lighten-1" waves='light' onClick={() => this.updateDelivered(preorderWaiter)} >Delivered<Icon left>check</Icon></Button>
+                                <Button className="blue lighten-1" waves='light' onClick={() => {this.updateDelivered(preorderWaiter),setTimeout(()=>this.sendTable(lastTable),400)}} >Delivered<Icon left>check</Icon></Button>
                             </Collection>
                         </Col>
                         <Col s={6} m={6}>
