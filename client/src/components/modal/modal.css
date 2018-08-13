@@ -1,7 +1,7 @@
 .cicrle-img {
     object-fit: cover;
     width: 100%;
-    height: 400px;
+    height: 250px;
     border: 5px solid #eee;
     -webkit-box-shadow: 4px 4px 4px rgba(0,0,0,0.2);
     -moz-box-shadow: 4px 4px 4px rgba(0,0,0,0.2);
@@ -17,3 +17,8 @@
    h5{
     font-family: 'Pacifico';
    }
+
+   .brd {
+    background-color: #0003;
+    border-radius: 5px;
+}

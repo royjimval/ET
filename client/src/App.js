@@ -3,6 +3,9 @@ import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
+import jwt_decode from 'jwt-decode'
+import setAuthToken from './utils/setAuthToken'
+import {setCurrentUser} from './accions/auhActions'
 
 import ClientStart from './components/start/ClientStart';
 import Login from './components/start/login';
@@ -15,8 +18,20 @@ import Grafica from './components/Admin/Graficas/grafica';
 import General from './components/Admin/General/General';
 import Usuario from './components/Admin/Usuario/Usuario';
 import Cashier from './components/cashier/cashier';
+
+
+//check for tokens
+if(localStorage.jwtToken){
+  //set auth token header auth
+  setAuthToken(localStorage.jwtToken);
+  //decode token to use data user
+  const decoded = jwt_decode(localStorage.jwtToken);
+  //set user ans is aunthenticated
+  store.dispatch(setCurrentUser(decoded));
+}
 import AddProduct from './components/Admin/addProduct/addProduct'
 import ReportsView from './components/Admin/Reports/ReportsView';
+
 class App extends Component {
   render() {
     return (

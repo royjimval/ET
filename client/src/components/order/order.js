@@ -11,7 +11,8 @@ let total = 0;
 
 class Order extends Component {
     componentDidMount() {
-        this.interval = setInterval(() => this.props.getPreorder("2"), 2000);
+        const table =this.props.auth.user.name
+        this.interval = setInterval(() => this.props.getPreorder(table), 2000);
         this.resetTotal();
       }
     
@@ -42,7 +43,6 @@ if(item.category === "Drink"){
 
     sumPrice(price) {
         total = total + price
-
     }
 
 
@@ -139,11 +139,16 @@ if(item.category === "Drink"){
 Order.propTypes = {
     getPreorder: PropTypes.func.isRequired,
     preorder: PropTypes.object.isRequired,
+
+    auth: PropTypes.object.isRequired,
+
     putDrink: PropTypes.object.isRequired
+
 };
 
 const mapStateToProps = state => ({
-    preorder: state.preorder
+    preorder: state.preorder,
+    auth: state.auth
 });
 
 

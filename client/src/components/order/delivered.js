@@ -9,7 +9,8 @@ let totals = 0;
 
 class Delivered extends Component {
     componentDidMount() {
-        this.props.getPreorder("2");
+        const table = this.props.auth.user.name
+        this.props.getPreorder(table);
         this.resetTotal();
     }
 
@@ -109,11 +110,12 @@ class Delivered extends Component {
 Delivered.propTypes = {
     getPreorder: PropTypes.func.isRequired,
     preorder: PropTypes.object.isRequired,
-
+    auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-    preorder: state.preorder
+    preorder: state.preorder,
+    auth: state.auth
 });
 
 
