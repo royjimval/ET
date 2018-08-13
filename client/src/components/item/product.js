@@ -52,7 +52,8 @@ class Item extends Component {
         const name = Products.name
         const ingredients = Products.ingredients
         const price = Products.price
-        const data = { idtable, name, ingredients, price }
+        const category = "Drink"
+        const data = { idtable, name, ingredients, price, category}
         console.log(idtable)
         this.props.addPreorder(data);
         toast.info(name + " is added now to your preorder :) ", {

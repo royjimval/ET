@@ -9,7 +9,7 @@ const food = new Schema({
 	price: {type: Number, required: true},
 	ingredients:[[{type: String, required: true}]],
 	extra:[[{type: String, required: true}]],
-	photo: { data: Buffer, contentType: String }
+	photo: { type: String, required: true }
 
 });
 

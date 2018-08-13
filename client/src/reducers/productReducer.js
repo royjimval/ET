@@ -1,4 +1,4 @@
-import {GET_PRODUCT, PRODUCT_LOADING, ADD_PRODUCT, GET_PRODUCT_BREAKFAST, GET_PRODUCT_MEAL, GET_PRODUCT_DINNER, GET_PRODUCT_DRINK, GET_PRODUCT_DESSERT} from '../accions/types';
+import {GET_PRODUCT, PRODUCT_LOADING, GET_PRODUCT_BREAKFAST, GET_PRODUCT_MEAL, GET_PRODUCT_DINNER, GET_PRODUCT_DRINK, GET_PRODUCT_DESSERT} from '../accions/types';
   
   const initialState = {
     product: [],
@@ -48,11 +48,7 @@ import {GET_PRODUCT, PRODUCT_LOADING, ADD_PRODUCT, GET_PRODUCT_BREAKFAST, GET_PR
           dessert: action.payload,
           loading: true
         };
-      case ADD_PRODUCT:
-      return {
-        ...state,
-        product: [action.payload, ...state.items]
-        };
+
       case PRODUCT_LOADING:
       return {
           ...state,

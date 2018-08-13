@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Parallax, Row, Button, Navbar, NavItem, Icon, Col } from 'react-materialize'
+import { Parallax, Row, Button, Navbar, NavItem, Col } from 'react-materialize'
 import { Link } from 'react-router-dom';
 import Assist from '../modal/assist'
 import { connect } from 'react-redux';
@@ -16,7 +16,6 @@ class Header extends Component {
         const data = {
             idtable
         }
-        console.log(data);
         this.props.addItem(data);
         toast.info("A waiter will attend you soon :)", {
             position: toast.POSITION.TOP_RIGHT,
@@ -42,7 +41,7 @@ class Header extends Component {
                                 <NavItem className='right'>
                                     <form onSubmit={this.handleSubmit}>
                                         <Button className='transparent white-text wb' flat><img className='menu-icon-w' src='assets/waiter.svg' width='30px'/>Waiter
-                                        <input type="button" className='hide' value="1" required type="text" ref={(Table) => this.getTable = Table}></input>
+                                        <input type="button" className='hide' value="2" required type="text" ref={(Table) => this.getTable = Table}></input>
                                         </Button>
                                     </form>
                                 </NavItem>

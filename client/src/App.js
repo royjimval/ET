@@ -19,6 +19,7 @@ import General from './components/Admin/General/General';
 import Usuario from './components/Admin/Usuario/Usuario';
 import Cashier from './components/cashier/cashier';
 
+
 //check for tokens
 if(localStorage.jwtToken){
   //set auth token header auth
@@ -28,6 +29,8 @@ if(localStorage.jwtToken){
   //set user ans is aunthenticated
   store.dispatch(setCurrentUser(decoded));
 }
+import AddProduct from './components/Admin/addProduct/addProduct'
+import ReportsView from './components/Admin/Reports/ReportsView';
 
 class App extends Component {
   render() {
@@ -47,6 +50,8 @@ class App extends Component {
             <Route path="/General" component={General} />
             <Route path="/Usuario" component={Usuario} />
             <Route path="/Cashier" component={Cashier} />
+            <Route path="/addProduct" component={AddProduct} />
+            <Route path="/ReportsView" component={ReportsView} />
           </div>
         </Router>
   </Provider>

@@ -6,8 +6,11 @@ import productReducer from './productReducer';
 import categoryReducer from './categoryReducer';
 import preorderReducer from './preorderReducer';
 import id_orderReducer from './id_orderReducer';
+
 import errorReducer from './errorReducer';
 import registerReducer from './registerReducer'
+
+import ingredientReducer from './ingredientsReducer';
 
 export default combineReducers({
   item: itemReducer,
@@ -16,7 +19,11 @@ export default combineReducers({
   category : categoryReducer,
   preorder : preorderReducer,
   id_order: id_orderReducer,
+
   auth: authReducer,
   errors: errorReducer,
-  rightRe: registerReducer
+  rightRe: registerReducer,
+
+  ingredients: ingredientReducer
+
 });

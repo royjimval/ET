@@ -1,25 +1,57 @@
 .divFiltros{
-    margin-top: 1%;
+    margin-top: 3%;
 	margin-left: 5%;
 	width: 90%;
-	height:490px;
+	height:100%;
 	padding: 20px 40px;
 	box-sizing: border-box;
     background: rgba(0,0,0,.5);
-    border-radius: 2%;
+    border-radius: 10px;
     color: #fff;
 }
 
 .btnsearch{
-
+    background:  linear-gradient(760deg,#30c22bf6 0%,#3f5efb 190%);
+    height: 100%;
     margin-top: 12%;
-    margin-left: 15%;
-    background: #2dff26;
-    font-size: 1ch;
 }
 
 .btnsearch:hover
 {
 	background: #efed40;
-	color: #262626;
+	color: #000000;
 }
+
+.iconsearch{
+    margin-top: 15px;
+}
+
+.tbbodyProducts {
+    display:block;
+    height:300px;
+    overflow:auto;
+    }
+    thead, .tbbodyProducts tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+    }
+    thead {
+    width: calc( 100% - 1em )
+    }
+    table {
+    width:100%;
+    }
+
+    .tableproduct{
+        margin-top: -3%;
+    }
+
+    .iiconsproducts{
+        color:  #30c22bf6;
+    }
+    
+    #miImagen{
+        width: 200px;
+        height: 200px;
+        }

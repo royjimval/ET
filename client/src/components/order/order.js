@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Row, Col, Collection, CollectionItem, Button } from 'react-materialize'
 import Nav from '../header/header'
-import { getPreorder, deletePreorder, putPreorder } from '../../accions/preorderAccions'
+import { getPreorder, deletePreorder, putPreorder, putDrink } from '../../accions/preorderAccions'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { toast } from 'react-toastify'
@@ -27,9 +27,14 @@ class Order extends Component {
     };
 
     onPutPreorder = (preorder) => {
-        preorder.map((item) => (
-            putPreorder(item._id, item.idtable, item.name, item.ingredients, item.price, item.start, item.finished, item.delivered, item.noOrder)
-        ))
+        preorder.map((item) => {
+if(item.category === "Drink"){
+    putDrink(item._id, item.idtable, item.name, item.ingredients, item.price, item.start, item.finished, item.delivered, item.noOrder)
+}else{
+    putPreorder(item._id, item.idtable, item.name, item.ingredients, item.price, item.start, item.finished, item.delivered, item.noOrder)
+
+}
+        })
         toast.info("Your order is being prepared by the chef ;)", {
             position: toast.POSITION.TOP_RIGHT,
             className: 'black'
@@ -134,7 +139,11 @@ class Order extends Component {
 Order.propTypes = {
     getPreorder: PropTypes.func.isRequired,
     preorder: PropTypes.object.isRequired,
-    auth: PropTypes.object.isRequired
+
+    auth: PropTypes.object.isRequired,
+
+    putDrink: PropTypes.object.isRequired
+
 };
 
 const mapStateToProps = state => ({
@@ -143,4 +152,4 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps, { getPreorder, deletePreorder, putPreorder })(Order);
+export default connect(mapStateToProps, { getPreorder, putDrink, deletePreorder, putPreorder })(Order);

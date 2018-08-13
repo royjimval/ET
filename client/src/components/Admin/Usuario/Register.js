@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Register.css';
+
 import { Input, Icon, Collapsible, CollapsibleItem, Row } from '../../../../../node_modules/react-materialize';
 import { connect } from 'react-redux';
 import {registerUser} from '../../../accions/auhActions'
