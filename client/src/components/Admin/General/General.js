@@ -50,7 +50,7 @@ export default class General extends Component {
     }
     render() {
         return (
-            <div class="bg-img1">
+            <div >
                 <Row>
                     <Col m={12} >
                         <NavBarAdmin />
