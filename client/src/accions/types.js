@@ -39,3 +39,7 @@ export const GET_TABLE3 = "GET_TABLE3";
 export const GET_TABLE4 = "GET_TABLE4";
 export const GET_TABLE5 = "GET_TABLE5";
 export const GET_TABLE6 = "GET_TABLE6";
+
+export const GET_ERRORS = "GET_ERRORS";
+export const GET_REGISTER_RIGHT = "GET_REGISTER_RIGHT";
+export const SET_CURRENT_USER ="SET_CURRENT_USER";

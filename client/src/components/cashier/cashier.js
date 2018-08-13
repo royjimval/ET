@@ -99,8 +99,6 @@ Cashier.propTypes = {
     get_id_order: PropTypes.func.isRequired,
     id_order: PropTypes.object.isRequired,
     addOrder: PropTypes.func.isRequired
-    // updateId_order: PropTypes.object.isRequired
-
 };
 
 const mapStateToProps = state => ({

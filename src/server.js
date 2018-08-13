@@ -1,5 +1,8 @@
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser')
+const passport = require('passport')
+const cors = require('cors');
 
 const app = express();
 
@@ -11,6 +14,18 @@ app.set('port', process.env.PORT || 4000);
 
 // Middlewares
 app.use(express.json());
+
+//body parser middleware
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
+
+//permisions for front
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true
+}));
+
+
 
 // Routes
 app.use('/api/eatable', require('../src/routes/menu.routes.js'));
@@ -30,6 +45,11 @@ app.use('/api/attention', require('../src/routes/attention.routes'));
 app.use('/api/preorder', require('../src/routes/preorder.routes'));
 app.use('/api/id_order', require('../src/routes/id_order.routes'));
 
+//passport middleware
+app.use(passport.initialize());
+
+//passport config
+require('../config/passport')(passport)
 
 // Set CORS here
 app.use(function(req, res, next) {
@@ -42,3 +62,4 @@ app.use(function(req, res, next) {
 app.listen(app.get('port'), () => {
   console.log(`Server on port ${app.get('port')}`);
 });
+

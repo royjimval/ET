@@ -11,7 +11,8 @@ let total = 0;
 
 class Order extends Component {
     componentDidMount() {
-        this.interval = setInterval(() => this.props.getPreorder("2"), 2000);
+        const table =this.props.auth.user.name
+        this.interval = setInterval(() => this.props.getPreorder(table), 2000);
         this.resetTotal();
       }
     
@@ -36,9 +37,7 @@ class Order extends Component {
     };
 
     sumPrice(price) {
-        console.log(total)
         total = total + price
-
     }
 
 
@@ -123,15 +122,6 @@ class Order extends Component {
                         <Row>
                             <Delivere />
                         </Row>
-                        {/* <Row>
-                            <Col m={10} className=''>
-                                <Collection>
-                                <CollectionItem>
-                                        <h1>k pedo prro</h1>
-                                </CollectionItem>
-                                </Collection>
-                            </Col>
-                        </Row> */}
                     </Col>
 
 
@@ -144,11 +134,12 @@ class Order extends Component {
 Order.propTypes = {
     getPreorder: PropTypes.func.isRequired,
     preorder: PropTypes.object.isRequired,
-
+    auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-    preorder: state.preorder
+    preorder: state.preorder,
+    auth: state.auth
 });
 
 

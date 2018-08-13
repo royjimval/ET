@@ -2,15 +2,17 @@ import React, { Component } from 'react'
 import { Row, Col, Button } from 'react-materialize';
 import { Link } from 'react-router-dom';
 import './start.css'
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-export default class ClientStart extends Component {
+class ClientStart extends Component {
   render() {
     return (
       <div>
         <div className='bg-img  valign-wrapper'>
           <Row className='container'>
             <Col s={12} m={12} l={12} className=''>
-              <h2 className='white-text center'>Table X</h2>
+              <h2 className='white-text center'>Table {this.props.auth.user.name}</h2>
               <Link href="/Menu" to="/Menu">
                 <Button className='animated infinite pulse btns'>Start</Button>
               </Link>
@@ -21,3 +23,13 @@ export default class ClientStart extends Component {
     )
   }
 }
+
+ClientStart.propTypes={
+  auth: PropTypes.object.isRequired
+}
+
+const mapStateToProps = state =>({
+  auth: state.auth
+})
+
+export default connect(mapStateToProps)(ClientStart)

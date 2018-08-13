@@ -48,7 +48,7 @@ class Item extends Component {
     }
 
     add_Preorder = (Products) => {
-        const idtable = "2"
+        const idtable = this.props.auth.user.name
         const name = Products.name
         const ingredients = Products.ingredients
         const price = Products.price
@@ -330,7 +330,8 @@ Item.propTypes = {
     meal: PropTypes.object.isRequired,
     dinner: PropTypes.object.isRequired,
     drink: PropTypes.object.isRequired,
-    dessert: PropTypes.object.isRequired
+    dessert: PropTypes.object.isRequired,
+    auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -339,8 +340,8 @@ const mapStateToProps = state => ({
     meal: state.product,
     dinner: state.product,
     drink: state.product,
-    dessert: state.product
-
+    dessert: state.product,
+    auth: state.auth
 });
 
 
