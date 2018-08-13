@@ -9,20 +9,17 @@ export default class ReportsView extends Component {
     render() {
         return (
             <div>
-                <div class="bg-img1">
+                <div>
                     <Row>
-                        
-                            <NavBarAdmin />
-                    
+                        <NavBarAdmin />
                     </Row>
                     <Row >
                         <Col m={12} >
-                            <Reports/>
+                            <Reports />
                         </Col>
                     </Row>
                     <Row >
                         <Col m={12} >
-
                         </Col>
                     </Row>
                 </div>

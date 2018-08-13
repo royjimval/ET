@@ -16,6 +16,7 @@ import General from './components/Admin/General/General';
 import Usuario from './components/Admin/Usuario/Usuario';
 import Cashier from './components/cashier/cashier';
 import AddProduct from './components/Admin/addProduct/addProduct'
+import ReportsView from './components/Admin/Reports/ReportsView';
 class App extends Component {
   render() {
     return (
@@ -35,6 +36,7 @@ class App extends Component {
             <Route path="/Usuario" component={Usuario} />
             <Route path="/Cashier" component={Cashier} />
             <Route path="/addProduct" component={AddProduct} />
+            <Route path="/ReportsView" component={ReportsView} />
           </div>
         </Router>
   </Provider>
