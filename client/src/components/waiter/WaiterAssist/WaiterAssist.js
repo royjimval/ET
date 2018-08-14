@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Navbar, NavItem } from 'react-materialize'
+import { Button, Navbar, NavItem, Parallax} from 'react-materialize'
 import Confirmation from '../../modal/confirmation'
 import { connect } from 'react-redux';
 import { getItems, deleteItem } from '../../../accions/itemAccions'
@@ -27,11 +27,14 @@ class WaiterAssist extends Component {
     const { items } = this.props.item;
     return (
       <div>
+        <div>
+          <Parallax className='header' imageSrc="https://source.unsplash.com/collection/1113375/900x550" />
+        </div>
         <Navbar className='nav-color scrl'>
           {
             items.map((item) => (
               <NavItem>
-                <Button className='orange darken-1 white-text' onClick={this.onDeleteClick.bind(this, item._id)}>table {item.idtable}</Button>
+                <Button className='red white-text' onClick={this.onDeleteClick.bind(this, item._id)}>table {item.idtable}</Button>
               </NavItem>
             ))
           }

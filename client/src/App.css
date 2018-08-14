@@ -1,19 +1,17 @@
-@import url('https://fonts.googleapis.com/css?family=Patua+One');
-
-.b-green{
-    background: rgb(131, 170, 24);
-}
-.navbar-brand{
-    padding-left: 5%;
-    font-family: 'Patua One', cursive;
-}
-
-.responsive-img {
-    object-fit: cover;
-    width: 100%;
-    height: 150px;
-  }
-  
-  .nav-color{
+.nav-color{
     background:  linear-gradient(to left,#00c853,#0097a7);
+  }
+
+  .no-marg-b{
+    margin-bottom: 0px;
+  }
+  .half-marg-b{
+    margin-bottom: 10px;
+  }
+
+  .hue-r240{
+    filter: hue-rotate(240deg);
+  }
+  .hue-r100{
+    filter: hue-rotate(100deg);
   }

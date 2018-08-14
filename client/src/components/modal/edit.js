@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Row, Col, Modal, MediaBox, Input } from 'react-materialize';
+import { Row, Col, Modal, MediaBox, Input, Icon } from 'react-materialize';
 import { toast } from 'react-toastify'
 import { addPreorder } from '../../accions/preorderAccions'
 import PropTypes from 'prop-types';
@@ -114,10 +114,13 @@ class modalEdit extends Component {
     {
         if(this.state.price===0){
             return(
-            <h4>${this.props.datapass.price}</h4>)
+            <h4 className="center-align">${this.props.datapass.price}</h4>
+            )
         }
         else{
-            return(<h4>${this.state.price}</h4>)
+            return(
+                <h4 className='center-align'>${this.state.price}</h4>
+            )
         }
     }
 
@@ -127,20 +130,18 @@ class modalEdit extends Component {
             < div key={this.props.datapass._id}>
                 <Modal id="modal_for_categorys" fixedFooter key={this.props.datapass._id} className='center' header={this.props.datapass.name} actions={
                     <div>
-                        <Button modal="close" onClick={()=>{this.setCountToOne()}} className="right red btns1">X</Button>
+                        <Button className='red' waves="light" modal="close" onClick={()=>{this.setCountToOne()}} ><Icon>close</Icon></Button>
                     </div>
                 }>
                     <Row>
                         <Col s={6} m={6} l={6}>
-                            <Row className=' center-align'>
-                                <MediaBox className=" cicrle-img" src={this.props.datapass.photo} caption="A demo media box1" />
+                            <Row className='half-marg-b center-align'>
+                                <MediaBox className="modal-img" src={this.props.datapass.photo} caption={this.props.datapass.name} />
                             </Row>
-                            <Row>
-                                <Col s={6} m={6}>
-                                    <Col s={4} m={4}><Button className="btns" onClick={() => this.sumCount()}>+  </Button></Col>
-                                    <Col s={4} m={4}><h4 className='center'>  {this.state.count}</h4></Col>
-                                    <Col s={4} m={4}><Button className="btns" onClick={() => this.resCount()}>−  </Button></Col>
-                                </Col>
+                            <Row className="valign-wrapper">
+                            <Button className='green accent-4' waves="light" onClick={() => this.resCount()}><Icon>keyboard_arrow_down</Icon></Button>
+                            <Col s={2} m={2}><h5>{this.state.count}</h5></Col>
+                            <Button className='green accent-4' waves="light" onClick={() => this.sumCount()}><Icon>keyboard_arrow_up</Icon></Button>
                                 <Col s={6} m={6}>                                    
                                         { this.returnPrice()}
                                 </Col>
@@ -148,31 +149,34 @@ class modalEdit extends Component {
                         </Col>
                         <form onSubmit={this.handleSubmit} ref={form => this.form = form}>
                             <Col s={6} m={6} l={6}>
-                                <h4 className='center'>Ingredientes</h4>
-                                <Row>
+                                <h5 className='center'>Ingredients</h5>
+                                <Row className="no-marg-b">
                                     {this.props.datapass.ingredients.map(ingredien => {
                                         return (
-                                            <Input m={4} className='brd' name="FoodIngredients" type='checkbox' checked key={ingredien} value={ingredien} label={ingredien} />
+                                            <Col m={4}>
+                                            <Input name="FoodIngredients" type='checkbox' checked key={ingredien} value={ingredien} label={ingredien} />
+                                            </Col>
                                         )
                                     })}
                                 </Row>
                                 <Row>
-                                    <Col s={12} m={12} l={12} className=''>
-                                        <h4 className='center'>Extra</h4>
-                                        <h5>each extra ingredient cost 15 pesos plus</h5>
-                                        <Row className=''>
+                                    <Col s={12} m={12} l={12}>
+                                        <h5 className='center'>Extras</h5>
+                                        <Row className='no-marg-b'>
                                             {
                                                 this.props.datapass.extra.map(extra => {
                                                     return (
-                                                        <Input className='center' m={4} onClick={()=>this.getTotalProduct()} name="FoodExtra" type='checkbox' key={extra[0]} value={extra[0]} label={extra[0]} />
+                                                        <Col m={4}>
+                                                        <Input className='center' onClick={()=>this.getTotalProduct()} name="FoodExtra" type='checkbox' key={extra[0]} value={extra[0]} label={extra[0]} />
+                                                        </Col>
                                                     )
                                                 })
                                             }
                                         </Row>
+                                        <p className='center-align grey-text'><strong>each extra ingredient has a price</strong></p>
                                     </Col>
                                 </Row>
-                                <br />
-                                <Button modal="close" className="btns">Add</Button>
+                                <Button large className='green accent-4' waves="light" modal="close">Add</Button>
                             </Col>
                         </form>
                     </Row>

@@ -1,4 +1,10 @@
-.lst-scrl{
-    height: 65vh;
-    overflow-y9: scroll;
+.order-delivered {
+	min-height: 100px;
+	max-height: 400px;
+	overflow-y: scroll;
+}
+.order-preorder {
+	min-height: 0px;
+	max-height: 400px;
+	overflow-y: scroll;
 }

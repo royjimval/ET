@@ -12,9 +12,9 @@ class ClientStart extends Component {
         <div className='bg-img  valign-wrapper'>
           <Row className='container'>
             <Col s={12} m={12} l={12} className=''>
-              <h2 className='white-text center'>Table {this.props.auth.user.name}</h2>
+              <h2 className='white-text center title'>Table {this.props.auth.user.name}</h2>
               <Link href="/Menu" to="/Menu">
-                <Button className='animated infinite pulse btns'>Start</Button>
+                <Button className='start-btn'>Start</Button>
               </Link>
             </Col>
           </Row>

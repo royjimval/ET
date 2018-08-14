@@ -71,7 +71,7 @@ class Item extends Component {
         return (
 
             <div>
-                <Nav />
+                <Nav Title="Menu" />
                 <Collapsible popout >
                     {/* Starts Brakfast Component */}
                     <CollapsibleItem className='indigo lighten-2' header='BREAKFASTS' icon='arrow_drop_down'>
@@ -83,11 +83,11 @@ class Item extends Component {
                                         <div class=" cardd z-depth-3" >
                                             <div >
                                                 <Row className='hdr'>
-                                                    <Col s={9} m={9} className="left-align">
-                                                        <h5>{product_item.name}</h5>
+                                                    <Col s={8} m={8} className="left-align">
+                                                        <h5 className="pName">{product_item.name}</h5>
                                                     </Col>
-                                                    <Col s={3} m={3} className="right-align">
-                                                        <h5 className='green-text'>${product_item.price}</h5>
+                                                    <Col s={4} m={4} className="left-align">
+                                                        <h5 className='pPrice green-text'>${product_item.price}</h5>
                                                     </Col>
                                                 </Row>
                                             </div>

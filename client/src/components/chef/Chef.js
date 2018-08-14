@@ -44,139 +44,197 @@ class Chef extends Component {
 
 
     changecolor1(table1) {
-        cont1 = 0;
-        table1.map(() => {
-            cont1 = cont1 + 1;
-        })
+		cont1 = 0;
+		table1.map((each_item) => {
+			cont1 = cont1 + 1;
+		});
 
-        if (cont1 === 0) {
-            return (
-                <Col m={2} className='center'>
-                    <Button onClick={() => this.sendTable("1")} className='gray' large>Table 1 </Button>
-                </Col>
-            )
-        }
-        else {
-            return (
-                <Col m={2} className='center'>
-                    <Button onClick={() => this.sendTable("1")} className='blue' large>Table 1 <Badge className="custom-badge red white-text">{cont1}</Badge></Button>
-                </Col>
-            )
-        }
-    }
+		if (cont1 === 0) {
+			return (
+				<Col s={2} m={2} l={2} xl={2} className="center">
+					<Button onClick={() => this.sendTable('1')} className="ch-btn cyan darken-2">
+						<Row className="no-marg-b">
+							<img src="assets/table.svg" alt="Table Icon" width="40px" />
+						</Row>
+						<Row className="no-marg-b">Table 1</Row>
+					</Button>
+				</Col>
+			);
+		} else {
+			return (
+				<Col s={2} m={2} l={2} xl={2} className="center">
+					<Button onClick={() => this.sendTable('1')} className="ch-btn green">
+						<Row className="no-marg-b">
+							<img src="assets/table.svg" alt="Table Icon" width="40px" />
+						</Row>
+						<Row className="no-marg-b">Table 1</Row>
+					</Button>
+					<Badge className="chef-badge red white-text">{cont1}</Badge>
+				</Col>
+			);
+		}
+	}
 
+	changecolor2(table2) {
+		cont2 = 0;
+		table2.map((each_item) => {
+			cont2 = cont2 + 1;
+		});
 
-    changecolor2(table2) {
-        cont2 = 0;
-        table2.map(() => {
-            cont2 = cont2 + 1;
-        })
+		if (cont2 === 0) {
+			return (
+				<Col s={2} m={2} l={2} xl={2} className="center">
+					<Button onClick={() => this.sendTable('2')} className="ch-btn cyan darken-2">
+						<Row className="no-marg-b">
+							<img src="assets/table.svg" alt="Table Icon" width="40px" />
+						</Row>
+						<Row className="no-marg-b">Table 2</Row>
+					</Button>
+				</Col>
+			);
+		} else {
+			return (
+				<Col s={2} m={2} l={2} xl={2} className="center">
+					<Button onClick={() => this.sendTable('2')} className="ch-btn green">
+						<Row className="no-marg-b">
+							<img src="assets/table.svg" alt="Table Icon" width="40px" />
+						</Row>
+						<Row className="no-marg-b">Table 2</Row>
+					</Button>
+					<Badge className="chef-badge red white-text">{cont2}</Badge>
+				</Col>
+			);
+		}
+	}
 
-        if (cont2 === 0) {
-            return (
-                <Col m={2} className='center'>
-                    <Button onClick={() => this.sendTable("2")} className='gray' large>Table 2</Button>
-                </Col>
-            )
-        }
-        else {
-            return (
-                <Col m={2} className='center'>
-                    <Button onClick={() => this.sendTable("2")} className='blue' large>Table 2 <Badge className="custom-badge red white-text">{cont2}</Badge></Button>
-                </Col>
-            )
-        }
-    }
+	changecolor3(table3) {
+		cont3 = 0;
+		table3.map((each_item) => {
+			cont3 = cont3 + 1;
+		});
 
-    changecolor3(table3) {
-        cont3 = 0;
-        table3.map(() => {
-            cont3 = cont3 + 1;
-        })
+		if (cont3 === 0) {
+			return (
+				<Col s={2} m={2} l={2} xl={2} className="center">
+					<Button onClick={() => this.sendTable('3')} className="ch-btn cyan darken-2">
+						<Row className="no-marg-b">
+							<img src="assets/table.svg" alt="Table Icon" width="40px" />
+						</Row>
+						<Row className="no-marg-b">Table 3</Row>
+					</Button>
+				</Col>
+			);
+		} else {
+			return (
+				<Col s={2} m={2} l={2} xl={2} className="center">
+					<Button onClick={() => this.sendTable('3')} className="ch-btn green">
+						<Row className="no-marg-b">
+							<img src="assets/table.svg" alt="Table Icon" width="40px" />
+						</Row>
+						<Row className="no-marg-b">Table 3</Row>
+					</Button>
+					<Badge className="chef-badge red white-text">{cont3}</Badge>
+				</Col>
+			);
+		}
+	}
 
-        if (cont3 === 0) {
-            return (
-                <Col m={2} className='center'>
-                    <Button className='grey' large>Table 3</Button>
-                </Col>
-            )
-        }
-        else {
-            return (
-                <Col m={2} className='center'>
-                    <Button onClick={() => this.sendTable("3")} className='blue' large>Table 3 <Badge className="custom-badge red white-text">{cont3}</Badge></Button>
-                </Col>
-            )
-        }
-    }
+	changecolor4(table4) {
+		cont4 = 0;
+		table4.map((each_item) => {
+			cont4 = cont4 + 1;
+		});
 
-    changecolor4(table4) {
-        cont4 = 0;
-        table4.map(() => {
-            cont4 = cont4 + 1;
-        })
+		if (cont4 === 0) {
+			return (
+				<Col s={2} m={2} l={2} xl={2} className="center">
+					<Button onClick={() => this.sendTable('4')} className="ch-btn cyan darken-2">
+						<Row className="no-marg-b">
+							<img src="assets/table.svg" alt="Table Icon" width="40px" />
+						</Row>
+						<Row className="no-marg-b">Table 4</Row>
+					</Button>{' '}
+				</Col>
+			);
+		} else {
+			return (
+				<Col s={2} m={2} l={2} xl={2} className="center">
+					<Button onClick={() => this.sendTable('4')} className="ch-btn green">
+						<Row className="no-marg-b">
+							<img src="assets/table.svg" alt="Table Icon" width="40px" />
+						</Row>
+						<Row className="no-marg-b">Table 4</Row>
+					</Button>
+					<Badge className="chef-badge red white-text">{cont4}</Badge>
+				</Col>
+			);
+		}
+	}
 
-        if (cont4 === 0) {
-            return (
-                <Col m={2} className='center'>
-                    <Button className='grey' large>Table 4</Button>
-                </Col>
-            )
-        }
-        else {
-            return (
-                <Col m={2} className='center'>
-                    <Button onClick={() => this.sendTable("4")} className='blue' large>Table 4 <Badge className="custom-badge red white-text">{cont4}</Badge></Button>
-                </Col>
-            )
-        }
-    }
+	changecolor5(table5) {
+		cont5 = 0;
+		table5.map((each_item) => {
+			cont5 = cont5 + 1;
+		});
 
+		if (cont5 === 0) {
+			return (
+				<Col s={2} m={2} l={2} xl={2} className="center">
+					<Button onClick={() => this.sendTable('5')} className="ch-btn cyan darken-2">
+						<Row className="no-marg-b">
+							<img src="assets/table.svg" alt="Table Icon" width="40px" />
+						</Row>
+						<Row className="no-marg-b">Table 5</Row>
+					</Button>{' '}
+				</Col>
+			);
+		} else {
+			return (
+				<Col s={2} m={2} l={2} xl={2} className="center">
+					<Button onClick={() => this.sendTable('5')} className="ch-btn green">
+						<Row className="no-marg-b">
+							<img src="assets/table.svg" alt="Table Icon" width="40px" />
+						</Row>
+						<Row className="no-marg-b">Table 5</Row>
+					</Button>
+					<Badge className="chef-badge red white-text">{cont5}</Badge>
+				</Col>
+			);
+		}
+	}
 
-    changecolor5(table5) {
-        cont5 = 0;
-        table5.map(() => {
-            cont5 = cont5 + 1;
-        })
+	changecolor6(table6) {
+		cont6 = 0;
+		table6.map((each_item) => {
+			cont6 = cont6 + 1;
+		});
 
-        if (cont5 === 0) {
-            return (
-                <Col m={2} className='center'>
-                    <Button className='grey' large>Table 5</Button>
-                </Col>
-            )
-        }
-        else {
-            return (
-                <Col m={2} className='center'>
-                    <Button onClick={() => this.sendTable("5")} className='blue' large>Table 5 <Badge className="custom-badge red white-text">{cont5}</Badge></Button>
-                </Col>
-            )
-        }
-    }
-
-
-    changecolor6(table6) {
-        cont6 = 0;
-        table6.map(() => {
-            cont6 = cont6 + 1;
-        })
-
-        if (cont6 === 0) {
-            return (
-                <Col m={2} className='center'>
-                    <Button className='grey' large>Table 6</Button>
-                </Col>
-            )
-        }
-        else {
-            return (
-                <Col m={2} className='center'>
-                    <Button onClick={() => this.sendTable("6")} className='blue' large>Table 6 <Badge className="custom-badge red white-text">{cont6}</Badge></Button>
-                </Col>
-            )
-        }
-    }
+		if (cont6 === 0) {
+			return (
+				<Col s={2} m={2} l={2} xl={2} className="center">
+					<Button onClick={() => this.sendTable('5')} className="ch-btn cyan darken-2">
+						<Row className="no-marg-b">
+							<img src="assets/table.svg" alt="Table Icon" width="40px" />
+						</Row>
+						<Row className="no-marg-b">Table 5</Row>
+					</Button>{' '}
+					{' '}
+				</Col>
+			);
+		} else {
+			return (
+				<Col s={2} m={2} l={2} xl={2} className="center">
+					<Button onClick={() => this.sendTable('5')} className="ch-btn green">
+						<Row className="no-marg-b">
+							<img src="assets/table.svg" alt="Table Icon" width="40px" />
+						</Row>
+						<Row className="no-marg-b">Table 5</Row>
+					</Button>
+					<Badge className="chef-badge red white-text">{cont5}</Badge>
+				</Col>
+			);
+		}
+	}
 
     sendTable(table){
         lastTable=table
@@ -237,10 +295,11 @@ class Chef extends Component {
                 <Row>
                     <Col className='offset-m1' m={5}>
                         <Collection header="Entries">
+						<div className='scrollExits'>
                             {
                                 preorder.map(eachPreorder => {
                                     return (
-                                        <Col m={3}>
+                                        <Col m={4}>
                                             <Collection>
                                                 <CollectionItem className='orange white-text'><Button onClick={() => { updateFinished(eachPreorder), setTimeout(()=>this.seeOrder(lastTable),200) }} waves='light' flat className='transparent white-text'> {eachPreorder.name}</Button></CollectionItem>
                                                 {
@@ -256,33 +315,39 @@ class Chef extends Component {
                                     )
 
                                 })
-                            }
+							}
+							</div>
                         </Collection>
                     </Col>
-                    <Col m={5}>
-                        <Collection header="Exits">
-                            {
-                                preorderCashier.map(eachPreorder => {
-                                    return (
-                                        <Col m={3}>
-                                            <Collection>
-                                                <CollectionItem className='gray black-text'>{eachPreorder.name}</CollectionItem>
-                                                {
-                                                    eachPreorder.ingredients.map(eachIngredients => {
-                                                        return (
-                                                            <CollectionItem className='black-text'>{eachIngredients}</CollectionItem>
-                                                        )
-                                                    })
-                                                }
-
-                                            </Collection>
-                                        </Col>
-                                    )
-
-                                })
-                            }
-                        </Collection>
-                    </Col>
+					<Col m={5}>
+						<Collection header="Exits">
+						<div className='scrollExits'>
+							{
+								preorderCashier.map(eachPreorder => {
+									return (
+										<CollectionItem>
+										<Row className="no-marg-b">
+											<Col s={12} m={12} l={12} xl={12}>{eachPreorder.name}</Col>
+											<Col s={12} m={12} l={12} xl={12}>
+												{
+													eachPreorder.ingredients.map(eachIngredients => {
+														return (
+															<Col s={4} m={4} l={4} xl={4}>
+															<p className='black-text'>{eachIngredients}</p>
+															</Col>
+														)
+													})
+												}
+											</Col>
+										</Row>
+										</CollectionItem>
+									)
+									
+								})
+							}
+							</div>
+						</Collection>
+					</Col>
                 </Row>
 
             </div>

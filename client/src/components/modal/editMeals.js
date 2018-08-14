@@ -84,8 +84,8 @@ class modalEdit extends Component {
 
                         <Col s={6} m={6} l={6}>
 
-                            <Row className=' center-align'>
-                                <MediaBox className=" cicrle-img" src={this.props.datapass.photo} caption="A demo media box1" />
+                            <Row className='center-align'>
+                            <img className="modal-img" src={this.props.datapass.photo} alt={this.props.datapass.photo}/>
                             </Row>
                         </Col>
                         <form onSubmit={this.handleSubmit} ref={form => this.form = form}>

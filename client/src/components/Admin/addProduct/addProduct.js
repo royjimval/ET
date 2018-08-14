@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import NavBarAdmin from '../navbar/navbar';
-import { Row, Input, Button } from '../../../../../node_modules/react-materialize';
-import Col from '../../../../../node_modules/react-materialize/lib/Col';
+import { Col, Collapsible, CollapsibleItem, Row, Input, Button } from '../../../../../node_modules/react-materialize';
 import { get_ingredients } from '../../../accions/ingredientsAccions'
 import { addProduct } from '../../../accions/productAccion'
 import PropTypes from 'prop-types'
 import { ToastContainer, toast } from 'react-toastify';
 import { connect } from 'react-redux'
-
+import "./addProduct.css"
 
 
 
@@ -62,51 +61,68 @@ class addProductClass extends Component {
                 <ToastContainer />
 
 
-                    <Row>
-                        <form onSubmit={this.handlesumit} ref={form => this.form = form}>
-                        <Input name='name' s={6} label="Name" />
-                        <Input  name='category' s={12} type='select' label="Materialize Select" defaultValue='2'>
-                            <option value='Breakfast'>Breakfast</option>
-                            <option value='Meal'>Meal</option>
-                            <option value='Dessert'>Dessert</option>
-                            <option value='Dinner'>Dinner</option>
-                            <option value='Drink'>Drink</option>
+                   				<Row>
+					<form onSubmit={this.handlesumit} ref={(form) => (this.form = form)}>
+						<Row className="no-marg-b">
+							<Col m={4} className='addProduct-wrapper'>
+								<Input name="name" s={12} label="Name" />
+								<Input name="category" s={12} type="select" label="Category" defaultValue="2">
+									<option value="Breakfast">Breakfast</option>
+									<option value="Meal">Meal</option>
+									<option value="Dessert">Dessert</option>
+									<option value="Dinner">Dinner</option>
+									<option value="Drink">Drink</option>
+								</Input>
 
-                        </Input> 
-                        
-                        <Input name='price' label="Price" s={6} />
+								<Input name="price" label="Price" s={12} />
 
-                        <Col m={6}>
-                        <label>Ingredients</label>
-                        <Row>
-                        {
-                            ingredients.map(eachIngredient => {
-                                return(
-                                    <Input name='ingredients' type='checkbox' value={eachIngredient.name} label={eachIngredient.name} />                       
-                                )
-                            })
-                        }
-                        </Row>
-                        </Col>
-
-                        <Col m={6}>
-                            <label>Extra</label>
-                            <Row>
-                                {
-                                    ingredients.map(eachIngredient => {
-                                        return (
-                                            <Input name='extra' type='checkbox' value={eachIngredient.name} label={eachIngredient.name} />
-                                        )
-                                    })
-                                }
-                            </Row>
-                        </Col>
-
-                        <Input name ='photo' label="Photo" s={6} />
-
-                        <Button>ADD</Button>
-                        </form>
-                    </Row>
+								<Input name="photo" label="Photo" s={12} />
+                                <Input type="file"  label="File" s={12}/>
+								<Row className="center-align no-marg-b">
+									<Button className='green' waves="light" large >ADD</Button>
+								</Row>
+							</Col>
+							<Col m={8}>
+								<Row className="">
+									<Collapsible>
+										<CollapsibleItem header={<p className="black-text">Ingredients</p>}>
+											<Row className="no-marg-b">
+												{ingredients.map((eachIngredient) => {
+													return (
+														<Col m={3}>
+															<Input
+																name="ingredients"
+																type="checkbox"
+																value={eachIngredient.name}
+																label={eachIngredient.name}
+															/>
+														</Col>
+													);
+												})}
+											</Row>
+										</CollapsibleItem>
+										<CollapsibleItem header={<p className="black-text">Extras</p>}>
+											<Row className="no-marg-b">
+												{ingredients.map((eachIngredient) => {
+													return (
+														<Col m={3}>
+															<Input
+																name="extra"
+																type="checkbox"
+																value={eachIngredient.name}
+																label={eachIngredient.name}
+															/>
+														</Col>
+													);
+												})}
+											</Row>
+										</CollapsibleItem>
+									</Collapsible>
+								</Row>
+							</Col>
+						</Row>
+					</form>
+				</Row>
 
             </div>
         )
