@@ -3,21 +3,21 @@
     margin: 0;
 }
 
-.custom-badge{ 
-    width: 10px;
-    margin-top: 10px;
+.chef-badge{
+    user-select: none;
+    min-width: 10px !important;
+    width: 30px;
+    height: 30px !important;
+    line-height: 2 !important;
     border-radius: 100px;
-    min-width: 1rem;
-    padding: 0 10px;
-    text-align: center;
-    font-size: 1rem;
-    line-height: 10px;
-    height: 10px;
-    color: #f3f3f3;
     box-sizing: border-box;
     position: relative;
-    top: -25px;
-    left: 40px;
+    left: -50px;
+    top: -10px;
+}
+
+.ch-btn>img{
+    margin-bottom: -20px;
 }
 
 .m-top20{
@@ -26,4 +26,14 @@
 
 .container{
    width: 90%; 
+}
+
+.ch-btn{
+    height: 90%;
+}
+
+.scrollExits{
+    min-height: 50px;
+    height: 70vh;
+    overflow-y: scroll;
 }

@@ -55,16 +55,31 @@ class WaiterClass extends Component {
 
         if (cont1 === 0) {
             return (
-                <Col s={12} m={12} l={12}>
-                    <Card onClick={() => this.sendTable("1")} className='grey hoverable' textClassName='white-text' title="Table 1"></Card>
-                </Col>
+                <Row className="half-marg-b">
+                    <Col s={12} m={12} l={12} xl={12} className="center">
+                        <Button onClick={() => this.sendTable('1')} className="ch-btn cyan darken-2">
+                            <Row className="no-marg-b">
+                                <img src="assets/table.svg" alt="Table Icon" width="40px" />
+                            </Row>
+                            <Row className="no-marg-b">Table 1</Row>
+                        </Button>
+                    </Col>
+                </Row>
             )
         }
         else {
             return (
-                <Col s={12} m={12} l={12}>
-                    <Card onClick={() => this.sendTable("1")} className='blue hoverable' textClassName='white-text' title="Table 1"><Badge className="custom-badge red white-text">{cont1}</Badge></Card>
-                </Col>
+                <Row className="half-marg-b">
+                    <Col s={12} m={12} l={12} xl={12} className="center">
+                    <div className="badge-waiter">{cont1}</div>
+                        <Button onClick={() => this.sendTable('1')} className="ch-btn green accent 1">
+                            <Row className="no-marg-b">
+                                <img src="assets/table.svg" alt="Table Icon" width="40px" />
+                            </Row>
+                            <Row className="no-marg-b">Table 1</Row>
+                        </Button>
+                    </Col>
+                </Row>
             )
         }
     }
@@ -77,16 +92,31 @@ class WaiterClass extends Component {
 
         if (cont2 === 0) {
             return (
-                <Col s={12} m={12} l={12}>
-                    <Card onClick={() => this.sendTable("2")} className='grey hoverable' textClassName='white-text' title="Table 2"></Card>
-                </Col>
+                <Row className="half-marg-b">
+                    <Col s={12} m={12} l={12} xl={12} className="center">
+                        <Button onClick={() => this.sendTable('2')} className="ch-btn cyan darken-2">
+                            <Row className="no-marg-b">
+                                <img src="assets/table.svg" alt="Table Icon" width="40px" />
+                            </Row>
+                            <Row className="no-marg-b">Table 2</Row>
+                        </Button>
+                    </Col>
+                </Row>
             )
         }
         else {
             return (
-                <Col s={12} m={12} l={12}>
-                    <Card onClick={() => this.sendTable("2")} className='blue hoverable' textClassName='white-text' title="Table 2"><Badge className="custom-badge red white-text">{cont2}</Badge></Card>
-                </Col>
+                <Row className="half-marg-b">
+                    <Col s={12} m={12} l={12} xl={12} className="center">
+                    <div className="badge-waiter">{cont2}</div>
+                        <Button onClick={() => this.sendTable('2')} className="ch-btn green accent-1">
+                            <Row className="no-marg-b">
+                                <img src="assets/table.svg" alt="Table Icon" width="40px" />
+                            </Row>
+                            <Row className="no-marg-b">Table 2</Row>
+                        </Button>
+                    </Col>
+                </Row>
             )
         }
     }
@@ -99,16 +129,31 @@ class WaiterClass extends Component {
 
         if (cont3 === 0) {
             return (
-                <Col s={12} m={12} l={12}>
-                    <Card onClick={() => this.sendTable("3")} className='grey hoverable' textClassName='white-text' title="Table 3"></Card>
-                </Col>
+                <Row className="half-marg-b">
+                    <Col s={12} m={12} l={12} xl={12} className="center">
+                        <Button onClick={() => this.sendTable('3')} className="ch-btn cyan darken-2">
+                            <Row className="no-marg-b">
+                                <img src="assets/table.svg" alt="Table Icon" width="40px" />
+                            </Row>
+                            <Row className="no-marg-b">Table 3</Row>
+                        </Button>
+                    </Col>
+                </Row>
             )
         }
         else {
             return (
-                <Col s={12} m={12} l={12}>
-                    <Card onClick={() => this.sendTable("3")} className='blue hoverable' textClassName='white-text' title="Table 3"><Badge className="custom-badge red white-text">{cont3}</Badge></Card>
-                </Col>
+                <Row className="half-marg-b">
+                    <Col s={12} m={12} l={12} xl={12} className="center">
+                    <div className="badge-waiter">{cont3}</div>
+                        <Button onClick={() => this.sendTable('3')} className="ch-btn green accent-1">
+                            <Row className="no-marg-b">
+                                <img src="assets/table.svg" alt="Table Icon" width="40px" />
+                            </Row>
+                            <Row className="no-marg-b">Table 3</Row>
+                        </Button>
+                    </Col>
+                </Row>
             )
         }
     }
@@ -121,16 +166,31 @@ class WaiterClass extends Component {
 
         if (cont4 === 0) {
             return (
-                <Col s={12} m={12} l={12}>
-                    <Card onClick={() => this.sendTable("4")}  className='grey hoverable' textClassName='white-text' title="Table 4"></Card>
-                </Col>
+                <Row className="half-marg-b">
+                    <Col s={12} m={12} l={12} xl={12} className="center">
+                        <Button onClick={() => this.sendTable('4')} className="ch-btn cyan darken-2">
+                            <Row className="no-marg-b">
+                                <img src="assets/table.svg" alt="Table Icon" width="40px" />
+                            </Row>
+                            <Row className="no-marg-b">Table 4</Row>
+                        </Button>
+                    </Col>
+                </Row>
             )
         }
         else {
             return (
-                <Col s={12} m={12} l={12}>
-                    <Card onClick={() => this.sendTable("4")} className='blue hoverable' textClassName='white-text' title="Table 4"><Badge className="custom-badge red white-text">{cont4}</Badge></Card>
-                </Col>
+                <Row className="half-marg-b">
+                    <Col s={12} m={12} l={12} xl={12} className="center">
+                    <div className="badge-waiter">{cont4}</div>
+                        <Button onClick={() => this.sendTable('4')} className="ch-btn green accent-1">
+                            <Row className="no-marg-b">
+                                <img src="assets/table.svg" alt="Table Icon" width="40px" />
+                            </Row>
+                            <Row className="no-marg-b">Table </Row>
+                        </Button>
+                    </Col>
+                </Row>
             )
         }
     }
@@ -143,16 +203,31 @@ class WaiterClass extends Component {
 
         if (cont5 === 0) {
             return (
-                <Col s={12} m={12} l={12}>
-                    <Card onClick={() => this.sendTable("5")} className='grey hoverable' textClassName='white-text' title="Table 5"></Card>
-                </Col>
+                <Row className="half-marg-b">
+                    <Col s={12} m={12} l={12} xl={12} className="center">
+                        <Button onClick={() => this.sendTable('5')} className="ch-btn cyan darken-2">
+                            <Row className="no-marg-b">
+                                <img src="assets/table.svg" alt="Table Icon" width="40px" />
+                            </Row>
+                            <Row className="no-marg-b">Table 5</Row>
+                        </Button>
+                    </Col>
+                </Row>
             )
         }
         else {
             return (
-                <Col s={12} m={12} l={12}>
-                    <Card onClick={() => this.sendTable("5")} className='blue hoverable' textClassName='white-text' title="Table 5"><Badge className="custom-badge red white-text">{cont5}</Badge></Card>
-                </Col>
+                <Row className="half-marg-b">
+                    <Col s={12} m={12} l={12} xl={12} className="center">
+                    <div className="badge-waiter">{cont5}</div>
+                        <Button onClick={() => this.sendTable('5')} className="ch-btn green accent-1">
+                            <Row className="no-marg-b">
+                                <img src="assets/table.svg" alt="Table Icon" width="40px" />
+                            </Row>
+                            <Row className="no-marg-b">Table 5</Row>
+                        </Button>
+                    </Col>
+                </Row>
             )
         }
     }
@@ -165,16 +240,31 @@ class WaiterClass extends Component {
 
         if (cont6 === 0) {
             return (
-                <Col s={12} m={12} l={12}>
-                    <Card onClick={() => this.sendTable("6")} className='grey hoverable' textClassName='white-text' title="Table 6"></Card>
-                </Col>
+                <Row className="half-marg-b">
+                    <Col s={12} m={12} l={12} xl={12} className="center">
+                        <Button onClick={() => this.sendTable('6')} className="ch-btn cyan darken-2">
+                            <Row className="no-marg-b">
+                                <img src="assets/table.svg" alt="Table Icon" width="40px" />
+                            </Row>
+                            <Row className="no-marg-b">Table 6</Row>
+                        </Button>
+                    </Col>
+                </Row>
             )
         }
         else {
             return (
-                <Col s={12} m={12} l={12}>
-                    <Card onClick={() => this.sendTable("6")} className='blue hoverable' textClassName='white-text' title="Table 6"><Badge className="custom-badge red white-text">{cont6}</Badge></Card>
-                </Col>
+                <Row className="half-marg-b">
+                    <Col s={12} m={12} l={12} xl={12} className="center">
+                    <div className="badge-waiter">{cont6}</div>
+                        <Button onClick={() => this.sendTable('6')} className="ch-btn green accent-1">
+                            <Row className="no-marg-b">
+                                <img src="assets/table.svg" alt="Table Icon" width="40px" />
+                            </Row>
+                            <Row className="no-marg-b">Table 6</Row>
+                        </Button>
+                    </Col>
+                </Row>
             )
         }
     }
@@ -220,30 +310,35 @@ class WaiterClass extends Component {
 
                     <Col m={10} >
                         <Col s={6} m={6}>
-                            <Collection className='z-depth-1-half' header="Entries.">
+                            <Collection className='z-depth-1-half' header="Entries">
+                            <div className="scrolleable">
                                 {
                                     preorderWaiter.map(eachPreorder => {
                                         return (
-                                            <CollectionItem>
+                            <CollectionItem>
                                                 <Row>
                                                     <Col m={6}>{eachPreorder.name}</Col>
                                                 </Row>
-                                            </CollectionItem>
+                                </CollectionItem>
                                         )
                                     })
                                 }
+                                </div>
+                                <CollectionItem className="center-align">
                                 <Button className="blue lighten-1" waves='light' onClick={() => {this.updateDelivered(preorderWaiter),setTimeout(()=>this.sendTable(lastTable),400)}} >Delivered<Icon left>check</Icon></Button>
+                                </CollectionItem>
                             </Collection>
                         </Col>
                         <Col s={6} m={6}>
                             
                             <Col s={12} m={12} l={12} xl={12}>
-                                <Collection className='z-depth-1-half' header="Exist">
-                                    <CollectionItem>
-                                        {
-                                            preorderWaiterDelivered.map((preorder_item) =>
-                                                (
-                                                    <Row>
+                                <Collection className='z-depth-1-half' header="Exits">
+                                <div className="scrolleable">
+                                    {
+                                        preorderWaiterDelivered.map((preorder_item) =>
+                                        (
+                                            <CollectionItem>
+                                                    <Row className='no-marg-b'>
                                                         <Col m={8}>
                                                             <h6 className='left'>{preorder_item.name}</h6>
                                                         </Col>
@@ -251,19 +346,21 @@ class WaiterClass extends Component {
                                                             <h6 className='left'>{preorder_item.price}</h6>
                                                         </Col>
                                                         <Col m={12}>
-                                                            <Col m={8}>
                                                                 {
                                                                     preorder_item.ingredients.map(each_Ingredient => {
                                                                         return (
+                                                                            <Col m={4}>
                                                                             <p>{each_Ingredient}</p>
+                                                                            </Col>
                                                                         )
                                                                     })
-                                                                }</Col>
+                                                                }
                                                         </Col>
                                                     </Row>
-                                                ))
+                                                </CollectionItem>
+                                            ))
                                         }
-                                    </CollectionItem>
+                                        </div>
                                 </Collection>
                             </Col>
 

@@ -1,19 +1,6 @@
-.b-g{
-    width: 80%;
-    border: 5px solid white;
-    border-radius: 8px;
-}
-
-.b-g:hover{
-    background-color: aqua;
-}
-
-.btn-wide{
-    width: 100%;
-}
-
 .scrolleable{
-    height: 500px;
+    min-height: 100px;
+    height: 400px;
     overflow-y: scroll;
 }
 
@@ -30,4 +17,15 @@
     padding: 24px;
     border-radius: 0 0 2px 2px;
     height: 150px;
+}
+
+.badge-waiter{
+    position: relative;
+    top: 15px;
+    left: 75%;
+    color: white;
+    text-align: center;
+    background-color: red;
+    width: 20px;
+    border-radius: 20px;
 }

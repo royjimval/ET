@@ -21,14 +21,14 @@ class Delivered extends Component {
     isCooked(preorder_item) {
         if (preorder_item.finished === true) {
             return (
-                <Row>
+                <Row className="no-marg-b">
                     <Col s={4} className='secondary-content'>
                         <Icon>check_circle</Icon>
                     </Col>
                 </Row>)
         } else {
             return (
-                <Row>
+                <Row className="no-marg-b">
                     <Col s={4} className='secondary-content'>
                         <Preloader size='small' />
                     </Col>
@@ -39,7 +39,8 @@ class Delivered extends Component {
     isSended(preorder_item) {
         if (preorder_item.sended === true) {
             return(
-                <Row>
+                <CollectionItem>
+                <Row className="no-marg-b">
                     <Col m={2} className='center-align'>
                         {
                             this.isCooked(preorder_item)
@@ -53,16 +54,18 @@ class Delivered extends Component {
                         {this.sumPrices(preorder_item.price)}
                     </Col>
                     <Col m={12}>
-                        <Col m={8}>
                             {
                                 preorder_item.ingredients.map(each_Ingredient => {
                                     return (
+                                        <Col m={4}>
                                         <p>{each_Ingredient}</p>
+                                        </Col> 
                                     )
                                 })
-                            }</Col>
+                            }
                     </Col>
                 </Row>
+                </CollectionItem>
             )
         }
     }
@@ -76,21 +79,21 @@ class Delivered extends Component {
         const { preorder } = this.props.preorder;
         return (
             <div>
-                <Row>
+                <Row className='no-marg-b'>
                     <Col m={10} l={10} xl={10}>
                         <Collection header="Delivered" className='z-depth-1-half'>
-                            <CollectionItem>
+                            <div className="order-delivered" >
                             {this.resetTotal()}
                                 {
                                     preorder.map((preorder_item) =>
                                         (
                                             this.isSended(preorder_item)
-
                                         ))
                                 }
-                            </CollectionItem>
+                                
+                            </div>
                             <CollectionItem>
-                                <Row>
+                                <Row className='no-marg-b'>
                                     <Col m={6}>
                                         <h4 className='right'>Total:</h4>
                                     </Col>

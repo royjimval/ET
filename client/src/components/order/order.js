@@ -87,23 +87,25 @@ if(item.category === "Drink"){
         const { preorder } = this.props.preorder;
         return (
             <div>
-                <Nav />
+                <Nav Title="My Order"/>
                 <Row>
                     <Col m={5} className='offset-m1'>
                         <Col m={12}>
                             <Collection header="Pre-Order" className='z-depth-1-half'>
-                                <CollectionItem className='lst-scrl'>
+                            <div className="order-delivered" >
+                            <CollectionItem>
                                 {this.resetTotal()}
                                     {
                                         
                                         preorder.map((preorder_item) =>
-
-                                            (
-                                                this.isSended(preorder_item)
-
-                                            ))
+                                        
+                                        (
+                                            this.isSended(preorder_item)
+                                            
+                                        ))
                                     }
-                                </CollectionItem>
+                                    </CollectionItem>
+                                </div>
                                 <CollectionItem>
                                     <Row>
                                         <Col m={6}>

@@ -27,8 +27,8 @@ class Header extends Component {
             <div>
                 <Row>
                     <div className='container'>
-                        <h1 className='centered'>
-                            Menu
+                        <h1 className='centered ls'>
+                            {this.props.Title}
                         </h1>
                     </div>
                     <div>
