@@ -34,8 +34,8 @@ router.get('/Dessert', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    const { nameValue, categoryValue, priceValue, checkedCheckboxesValuesIngredients, checkedCheckboxesValuesExtra, photoValue } = req.body;
-    const food = new Food({ name:nameValue, category:categoryValue, price:priceValue, ingredients:checkedCheckboxesValuesIngredients, extra:checkedCheckboxesValuesExtra, photo:photoValue });
+    const { nameValue, categoryValue, priceValue, checkedCheckboxesValuesIngredients, extraIngredients, photoValue } = req.body;
+    const food = new Food({ name:nameValue, category:categoryValue, price:priceValue, ingredients:checkedCheckboxesValuesIngredients, extra:extraIngredients, photo:photoValue });
     await food.save();
     res.json({status: 'food Saved'});
   });

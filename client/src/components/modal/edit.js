@@ -36,17 +36,10 @@ class modalEdit extends Component {
         const { FoodExtra } = this.form;
         const checkboxArrayExtra = Array.prototype.slice.call(FoodExtra);
         const checkedCheckboxesExtra = checkboxArrayExtra.filter(input => input.checked);
-        const checkedCheckboxesValuesExtra = checkedCheckboxesExtra.map(input => "Extra " + input.value);
-        console.log('checked extra:', checkedCheckboxesValuesExtra);
+        const checkedCheckboxesValuesExtra = checkedCheckboxesExtra.map(input => "Extra " + input.value.split('$',1));
+        const checkedExtraPrice = checkedCheckboxesExtra.map(input => input.value);
 
-        let extraItems = 0;
-        checkedCheckboxesValuesExtra.map(() => {
-            return (
-                extraItems++
-            )
-        })
-
-        const extraPrice = 15 * extraItems;
+        let extraPrice = this.getExtraPrice(checkedExtraPrice)
 
         const total_Price = this.props.datapass.price + extraPrice;
 
@@ -58,18 +51,25 @@ class modalEdit extends Component {
         const { FoodExtra } = this.form;
         const checkboxArrayExtra = Array.prototype.slice.call(FoodExtra);
         const checkedCheckboxesExtra = checkboxArrayExtra.filter(input => input.checked);
-        const checkedCheckboxesValuesExtra = checkedCheckboxesExtra.map(input => "Extra " + input.value);
+        const checkedCheckboxesValueExtra = checkedCheckboxesExtra.map(input =>input.value);
 
-        let extraItems = 0;
-        checkedCheckboxesValuesExtra.map(() => {
-            return (
-                extraItems++
-            )
-        })
+        let sumExtra =this.getExtraPrice(checkedCheckboxesValueExtra);
 
-        const extraPrice = 15 * extraItems;
+        const extraPrice = sumExtra;
         let preTOtal = this.props.datapass.price + extraPrice;
         this.setState({price:(preTOtal*numberC)})
+    }
+
+    getExtraPrice(checkedCheckboxesValueExtra){
+        let sumExtra =0;
+        let labelCost='';
+        let extra=0;
+        checkedCheckboxesValueExtra.map(item => {
+            labelCost = item.split('$')
+            extra= parseInt(labelCost[1])
+            sumExtra=sumExtra+extra
+        })
+        return(sumExtra)
     }
 
     add_Preorder = (total_price, list_ingredients, list_extra) => {
@@ -154,7 +154,7 @@ class modalEdit extends Component {
                                     {this.props.datapass.ingredients.map(ingredien => {
                                         return (
                                             <Col m={4}>
-                                            <Input name="FoodIngredients" type='checkbox' checked key={ingredien} value={ingredien} label={ingredien} />
+                                            <Input name="FoodIngredients" type='checkbox' checked key={ingredien[0]} value={ingredien[0]} label={ingredien[0]} />
                                             </Col>
                                         )
                                     })}
@@ -167,7 +167,7 @@ class modalEdit extends Component {
                                                 this.props.datapass.extra.map(extra => {
                                                     return (
                                                         <Col m={4}>
-                                                        <Input className='center' onClick={()=>this.getTotalProduct()} name="FoodExtra" type='checkbox' key={extra[0]} value={extra[0]} label={extra[0]} />
+                                                        <Input className='center' onClick={()=>this.getTotalProduct()} name="FoodExtra" type='checkbox' key={extra[0]} value={extra[0]+" $"+extra[1]} label={extra[0]+" $"+extra[1]} />
                                                         </Col>
                                                     )
                                                 })

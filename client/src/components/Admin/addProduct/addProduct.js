@@ -34,20 +34,30 @@ class addProductClass extends Component {
         const checkboxArrayExtra = Array.prototype.slice.call(extra);
         const checkedCheckboxesExtra = checkboxArrayExtra.filter(input => input.checked);
         const checkedCheckboxesValuesExtra = checkedCheckboxesExtra.map(input => input.value);
-        console.log('checked extra:', checkedCheckboxesValuesExtra);
+		console.log('checked extra:', checkedCheckboxesValuesExtra);
+
+		let extraIngredients = [];
+		let extraIngredient;
+		checkedCheckboxesValuesExtra.map(items=>{
+			extraIngredient = items.split(" ")
+			extraIngredients.push([extraIngredient[0],extraIngredient[1]])
+		})
+		
 
         const nameValue = name.value;
         const categoryValue = category.value;
         const priceValue = price.value;
         const photoValue = photo.value;
-        const data = { nameValue, categoryValue, priceValue, checkedCheckboxesValuesIngredients, checkedCheckboxesValuesExtra, photoValue}
+        const data = { nameValue, categoryValue, priceValue, checkedCheckboxesValuesIngredients, extraIngredients, photoValue}
         console.log(data)
-        this.props.addProduct(data)
+		this.props.addProduct(data)
+		console.log(data)
         toast.info(nameValue + " is added now to your Menu :) ", {
             position: toast.POSITION.BOTTOM_RIGHT,
             className: 'foo-bar'
         });
-    }
+	}
+
 
 
     render() {
@@ -109,7 +119,7 @@ class addProductClass extends Component {
 															<Input
 																name="extra"
 																type="checkbox"
-																value={eachIngredient.name}
+																value={eachIngredient.name+" "+eachIngredient.Sellprice}
 																label={eachIngredient.name}
 															/>
 														</Col>

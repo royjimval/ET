@@ -8,7 +8,7 @@ const food = new Schema({
 	category: {type: String, required: true},
 	price: {type: Number, required: true},
 	ingredients:[[{type: String, required: true}]],
-	extra:[[{type: String, required: true}]],
+	extra:[[]],
 	photo: { type: String, required: true }
 
 });
