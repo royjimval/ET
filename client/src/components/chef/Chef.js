@@ -36,11 +36,10 @@ class Chef extends Component {
     
 
     updateFinished (preorder){
-        this.seeOrder(lastTable)
         preorder.map((item) => (
             this.props.updateFinished(item._id, item.idtable, item.name, item.ingredients, item.price, item.sended, item.start, item.finished, item.delivered, item.noOrder)
         ))
-    }
+	}
 
 
     changecolor1(table1) {
@@ -302,7 +301,7 @@ class Chef extends Component {
                                     return (
                                         <Col m={4}>
                                             <Collection>
-                                                <CollectionItem className='orange white-text'><Button onClick={() => { updateFinished(eachPreorder), setTimeout(()=>this.seeOrder(lastTable),200) }} waves='light' flat className='transparent white-text'> {eachPreorder.name}</Button></CollectionItem>
+                                                <CollectionItem className='orange white-text'><Button onClick={() => { updateFinished(eachPreorder), setTimeout(()=>this.seeOrder(lastTable),100) }} waves='light' flat className='transparent white-text'> {eachPreorder.name}</Button></CollectionItem>
                                                 {
                                                     eachPreorder.ingredients.map(eachIngredients => {
                                                         return (
