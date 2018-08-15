@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './navbar.css';
-import { Parallax, Row, Navbar, Col } from 'react-materialize'
+import { Parallax, Row, Navbar, NavItem, Col } from 'react-materialize'
 import { Link } from 'react-router-dom';
 
 
@@ -12,6 +12,15 @@ export default class NavBarAdmin extends Component {
           <div>
             <Parallax className='header' imageSrc="https://source.unsplash.com/collection/281387/900x200" />
           </div>
+          <Navbar className="nav-color">
+            <NavItem href='components.html'>General</NavItem>
+            <NavItem href='components.html'>Users</NavItem>
+            <NavItem href='components.html'>Inventory</NavItem>
+            <NavItem href='components.html'>Cashier</NavItem>
+            <NavItem href='components.html'>Reports</NavItem>
+            <NavItem href='components.html'>Add Product</NavItem>
+            <NavItem  className="right" href='components.html'>Log Out</NavItem>
+          </Navbar>
           <Navbar className="nabAdmin">
             <Link to="/General">
               <div className="contenedor" id="uno">

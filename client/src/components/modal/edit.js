@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import { Row, Col, Modal, MediaBox, Input, Icon } from 'react-materialize';
+import { Button, Row, Col, Modal, MediaBox, Input, Icon } from '../../../../node_modules/react-materialize';
 import { toast } from 'react-toastify'
 import { addPreorder } from '../../accions/preorderAccions'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './modal.css'
 import '../item/item.css';
-import Button from '../../../../node_modules/react-materialize/lib/Button';
 let numberC = 0;
 
 class modalEdit extends Component {
@@ -130,7 +129,7 @@ class modalEdit extends Component {
             < div key={this.props.datapass._id}>
                 <Modal id="modal_for_categorys" fixedFooter key={this.props.datapass._id} className='center' header={this.props.datapass.name} actions={
                     <div>
-                        <Button className='red' waves="light" modal="close" onClick={()=>{this.setCountToOne()}} ><Icon>close</Icon></Button>
+                        <Button className='red' waves="light" modal="close" onClick={() => { this.setCountToOne() }} ><Icon>close</Icon></Button>
                     </div>
                 }>
                     <Row>
@@ -139,11 +138,11 @@ class modalEdit extends Component {
                                 <MediaBox className="modal-img" src={this.props.datapass.photo} caption={this.props.datapass.name} />
                             </Row>
                             <Row className="valign-wrapper">
-                            <Button className='green accent-4' waves="light" onClick={() => this.resCount()}><Icon>keyboard_arrow_down</Icon></Button>
-                            <Col s={2} m={2}><h5>{this.state.count}</h5></Col>
-                            <Button className='green accent-4' waves="light" onClick={() => this.sumCount()}><Icon>keyboard_arrow_up</Icon></Button>
-                                <Col s={6} m={6}>                                    
-                                        { this.returnPrice()}
+                                <Button className='green accent-4' waves="light" onClick={() => this.resCount()}><Icon>keyboard_arrow_down</Icon></Button>
+                                <Col s={2} m={2}><h5>{this.state.count}</h5></Col>
+                                <Button className='green accent-4' waves="light" onClick={() => this.sumCount()}><Icon>keyboard_arrow_up</Icon></Button>
+                                <Col s={6} m={6}>
+                                    {this.returnPrice()}
                                 </Col>
                             </Row>
                         </Col>
@@ -154,7 +153,9 @@ class modalEdit extends Component {
                                     {this.props.datapass.ingredients.map(ingredien => {
                                         return (
                                             <Col m={4}>
+
                                             <Input name="FoodIngredients" type='checkbox' checked key={ingredien[0]} value={ingredien[0]} label={ingredien[0]} />
+
                                             </Col>
                                         )
                                     })}
@@ -167,7 +168,9 @@ class modalEdit extends Component {
                                                 this.props.datapass.extra.map(extra => {
                                                     return (
                                                         <Col m={4}>
+
                                                         <Input className='center' onClick={()=>this.getTotalProduct()} name="FoodExtra" type='checkbox' key={extra[0]} value={extra[0]+" $"+extra[1]} label={extra[0]+" $"+extra[1]} />
+
                                                         </Col>
                                                     )
                                                 })

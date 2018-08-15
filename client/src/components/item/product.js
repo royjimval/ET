@@ -70,49 +70,54 @@ class Item extends Component {
         const { dessert } = this.props.dessert;
         return (
 
+            
             <div>
+
+{/*             <Row>
+                    <Col s={6} m={4} l={3} xl={3} key={product_item._id}>
+                        <div className="card z-depth-3">
+                            <div className='card-header'>
+                                <Row className="no-marg-b">
+                                    <Col s={12} m={12} l={12} xl={12}>
+                                        <p class="left-align title truncate">{product_item.name}</p>
+                                    </Col>
+                                    <Col s={12} m={12} l={12} xl={12}>
+                                        <p className="left-align title green-text">${product_item.price}</p>
+                                    </Col>
+                                </Row>
+                            </div>
+                            <img className="card-img" src={product_item.photo} alt={product_item.name} />
+                            <div className="card-footer center">
+                                <button data-target="modal_for_categorys" className="card-btn" onClick={() => this.datamodal(product_item)}>Add Product</button>
+                            </div>
+                        </div>
+                    </Col>
+            </Row> */}
+
                 <Nav Title="Menu" />
                 <Collapsible popout >
                     {/* Starts Brakfast Component */}
                     <CollapsibleItem className='indigo lighten-2' header='BREAKFASTS' icon='arrow_drop_down'>
-                        <Row>
+                        <Row className="no-marg-b">
                             <div className='space'></div>
                             {
                                 breakfast.map((product_item) => (
-                                    <Col s={8} m={3} l={3} className='push-s2 center' key={product_item._id} >
-                                        <div class=" cardd z-depth-3" >
-                                            <div >
-                                                <Row className='hdr'>
-                                                    <Col s={8} m={8} className="left-align">
-                                                        <h5 className="pName">{product_item.name}</h5>
+                                    <Col s={6} m={4} l={3} xl={3} key={product_item._id}>
+                                        <div className="card z-depth-3">
+                                            <div className='card-header'>
+                                                <Row className="no-marg-b">
+                                                    <Col s={12} m={12} l={12} xl={12}>
+                                                        <p class="left-align title truncate">{product_item.name}</p>
                                                     </Col>
-                                                    <Col s={4} m={4} className="left-align">
-                                                        <h5 className='pPrice green-text'>${product_item.price}</h5>
+                                                    <Col s={12} m={12} l={12} xl={12}>
+                                                        <p className="left-align title green-text">${product_item.price}</p>
                                                     </Col>
                                                 </Row>
                                             </div>
-                                            <img class="crdImg" src={product_item.photo} alt=""></img>
-
-                                            <div class="center supporting_text">
-                                                <div className='hide-on-med-and-down'>
-                                                    <Row>
-                                                        <Col m={12}>
-                                                            <button data-target="modal_for_categorys" className='btns' onClick={() => this.datamodal(product_item)}>ADD TO ORDER</button>
-                                                        </Col>
-                                                    </Row>
-                                                </div>
-
-                                                <div className='hide-on-med-and-up show-on-medium-and-down'>
-                                                    <Row>
-                                                        <Col s={12} m={12}>
-                                                            <Button flat className='icn-btn' data-target="modal_for_categorys" onClick={() => this.datamodal(product_item)}>
-                                                                <Icon small>edit</Icon>
-                                                            </Button>
-                                                        </Col>
-                                                    </Row>
-                                                </div>
+                                            <img className="card-img" src={product_item.photo} alt={product_item.name} />
+                                            <div className="card-footer center">
+                                                <button data-target="modal_for_categorys" className="card-btn" onClick={() => this.datamodal(product_item)}>Add Product</button>
                                             </div>
-
                                         </div>
                                     </Col>
                                 ))
@@ -122,44 +127,25 @@ class Item extends Component {
 
                     {/* Start Meal COmponent */}
                     <CollapsibleItem className='grey darken-1' header='MEALS' icon='arrow_drop_down'>
-                        <Row>
-                            <div className='space'></div>
+                        <Row className="no-marg-b">
                             {
                                 meal.map((product_item) => (
-                                    <Col s={8} m={3} l={3} className='push-s2 center' key={product_item._id} >
-                                        <div class=" cardd z-depth-3" >
-                                            <div >
-                                                <Row className='hdr'>
-                                                    <Col s={9} m={9} className="left-align">
-                                                        <h5>{product_item.name}</h5>
+                                    <Col s={6} m={4} l={3} xl={3} key={product_item._id}>
+                                        <div className="card z-depth-3">
+                                            <div className='card-header'>
+                                                <Row className="no-marg-b">
+                                                    <Col s={12} m={12} l={12} xl={12}>
+                                                        <p class="left-align title truncate">{product_item.name}</p>
                                                     </Col>
-                                                    <Col s={3} m={3} className="right-align">
-                                                        <h5 className='green-text'>${product_item.price}</h5>
+                                                    <Col s={12} m={12} l={12} xl={12}>
+                                                        <p className="left-align title green-text">${product_item.price}</p>
                                                     </Col>
                                                 </Row>
                                             </div>
-                                            <img class="crdImg" src={product_item.photo} alt=""></img>
-
-                                            <div class="center supporting_text">
-                                                <div className='hide-on-med-and-down'>
-                                                    <Row>
-                                                        <Col m={12}>
-                                                            <button data-target="modal_for_categorys" className='btns' onClick={() => this.datamodal(product_item)}>ADD TO ORDER</button>
-                                                        </Col>
-                                                    </Row>
-                                                </div>
-
-                                                <div className='hide-on-med-and-up show-on-medium-and-down'>
-                                                    <Row>
-                                                        <Col s={12} m={12}>
-                                                            <Button flat className='icn-btn' data-target="modal_for_categorys" onClick={() => this.datamodal(product_item)}>
-                                                                <Icon small>edit</Icon>
-                                                            </Button>
-                                                        </Col>
-                                                    </Row>
-                                                </div>
+                                            <img className="card-img" src={product_item.photo} alt={product_item.name} />
+                                            <div className="card-footer center">
+                                                <button data-target="modal_for_categorys" className="card-btn" onClick={() => this.datamodal(product_item)}>Add Product</button>
                                             </div>
-
                                         </div>
                                     </Col>
                                 ))
@@ -169,44 +155,25 @@ class Item extends Component {
 
                     {/* Start Dinner Component */}
                     <CollapsibleItem className='red lighten-1' header='DINNERS' icon='arrow_drop_down'>
-                        <Row>
-                            <div className='space'></div>
+                        <Row className="no-marg-b">
                             {
                                 dinner.map((product_item) => (
-                                    <Col s={8} m={3} l={3} className='push-s2 center' key={product_item._id} >
-                                        <div class=" cardd z-depth-3" >
-                                            <div >
-                                                <Row className='hdr'>
-                                                    <Col s={9} m={9} className="left-align">
-                                                        <h5>{product_item.name}</h5>
+                                    <Col s={6} m={4} l={3} xl={3} key={product_item._id}>
+                                        <div className="card z-depth-3">
+                                            <div className='card-header'>
+                                                <Row className="no-marg-b">
+                                                    <Col s={12} m={12} l={12} xl={12}>
+                                                        <p class="left-align title truncate">{product_item.name}</p>
                                                     </Col>
-                                                    <Col s={3} m={3} className="right-align">
-                                                        <h5 className='green-text'>${product_item.price}</h5>
+                                                    <Col s={12} m={12} l={12} xl={12}>
+                                                        <p className="left-align title green-text">${product_item.price}</p>
                                                     </Col>
                                                 </Row>
                                             </div>
-                                            <img class="crdImg" src={product_item.photo} alt=""></img>
-
-                                            <div class="center supporting_text">
-                                                <div className='hide-on-med-and-down'>
-                                                    <Row>
-                                                        <Col m={12}>
-                                                            <button data-target="modal_for_categorys" className='btns' onClick={() => this.datamodal(product_item)}>ADD TO ORDER</button>
-                                                        </Col>
-                                                    </Row>
-                                                </div>
-
-                                                <div className='hide-on-med-and-up show-on-medium-and-down'>
-                                                    <Row>
-                                                        <Col s={12} m={12}>
-                                                            <Button flat className='icn-btn' data-target="modal_for_categorys" onClick={() => this.datamodal(product_item)}>
-                                                                <Icon small>edit</Icon>
-                                                            </Button>
-                                                        </Col>
-                                                    </Row>
-                                                </div>
+                                            <img className="card-img" src={product_item.photo} alt={product_item.name} />
+                                            <div className="card-footer center">
+                                                <button data-target="modal_for_categorys" className="card-btn" onClick={() => this.datamodal(product_item)}>Add Product</button>
                                             </div>
-
                                         </div>
                                     </Col>
                                 ))
@@ -216,44 +183,25 @@ class Item extends Component {
 
                     {/* Start Dessert Component */}
                     <CollapsibleItem className=' yellow lighten-2' header='DESSERTS' icon='arrow_drop_down'>
-                        <Row>
-                            <div className='space'></div>
+                        <Row className="no-marg-b">
                             {
                                 dessert.map((product_item) => (
-                                    <Col s={8} m={3} l={3} className='push-s2 center' key={product_item._id} >
-                                        <div class=" cardd z-depth-3" >
-                                            <div >
-                                                <Row className='hdr'>
-                                                    <Col s={9} m={9} className="left-align">
-                                                        <h5>{product_item.name}</h5>
+                                    <Col s={6} m={4} l={3} xl={3} key={product_item._id}>
+                                        <div className="card z-depth-3">
+                                            <div className='card-header'>
+                                                <Row className="no-marg-b">
+                                                    <Col s={12} m={12} l={12} xl={12}>
+                                                        <p class="left-align title truncate">{product_item.name}</p>
                                                     </Col>
-                                                    <Col s={3} m={3} className="right-align">
-                                                        <h5 className='green-text'>${product_item.price}</h5>
+                                                    <Col s={12} m={12} l={12} xl={12}>
+                                                        <p className="left-align title green-text">${product_item.price}</p>
                                                     </Col>
                                                 </Row>
                                             </div>
-                                            <img class="crdImg" src={product_item.photo} alt=""></img>
-
-                                            <div class="center supporting_text">
-                                                <div className='hide-on-med-and-down'>
-                                                    <Row>
-                                                        <Col m={12}>
-                                                            <button data-target="modal_for_categorys" className='btns' onClick={() => this.datamodal(product_item)}>ADD TO ORDER</button>
-                                                        </Col>
-                                                    </Row>
-                                                </div>
-
-                                                <div className='hide-on-med-and-up show-on-medium-and-down'>
-                                                    <Row>
-                                                        <Col s={12} m={12}>
-                                                            <Button flat className='icn-btn' data-target="modal_for_categorys" onClick={() => this.datamodal(product_item)}>
-                                                                <Icon small>edit</Icon>
-                                                            </Button>
-                                                        </Col>
-                                                    </Row>
-                                                </div>
+                                            <img className="card-img" src={product_item.photo} alt={product_item.name} />
+                                            <div className="card-footer center">
+                                                <button data-target="modal_for_categorys" className="card-btn" onClick={() => this.datamodal(product_item)}>Add Product</button>
                                             </div>
-
                                         </div>
                                     </Col>
                                 ))
@@ -263,47 +211,28 @@ class Item extends Component {
 
                     {/* Start Drinks Component */}
                     <CollapsibleItem className='light-green accent-1' header='DRINKS' icon='arrow_drop_down'>
-
-                        <Row>
-                            <div className='space'></div>
+                        <Row className="no-marg-b">
                             {
                                 drink.map((product_item) => (
-                                    <Col s={8} m={3} l={3} className='push-s2 center' key={product_item._id} >
-                                        <div class=" cardd z-depth-3" >
-                                            <div >
-                                                <Row className='hdr'>
-                                                    <Col s={9} m={9} className="left-align">
-                                                        <h5>{product_item.name}</h5>
+                                    <Col s={6} m={4} l={3} xl={3} key={product_item._id}>
+                                        <div className="card z-depth-3">
+                                            <div className='card-header'>
+                                                <Row className="no-marg-b">
+                                                    <Col s={12} m={12} l={12} xl={12}>
+                                                        <p class="left-align title truncate">{product_item.name}</p>
                                                     </Col>
-                                                    <Col s={3} m={3} className="right-align">
-                                                        <h5 className='green-text'>${product_item.price}</h5>
+                                                    <Col s={12} m={12} l={12} xl={12}>
+                                                        <p className="left-align title green-text">${product_item.price}</p>
                                                     </Col>
                                                 </Row>
                                             </div>
-                                            <img class="crdImg" src={product_item.photo} alt=""></img>
-
-                                            <div class="center supporting_text">
-                                                <div className='hide-on-med-and-down'>
-                                                    <Row>
-                                                        <Col m={12}>
-                                                            <Button className='btns' onClick={() => this.add_Preorder(product_item)} >ADD TO ORDER</Button>
-                                                        </Col>
-                                                    </Row>
-                                                </div>
-
-                                                <div className='hide-on-med-and-up show-on-medium-and-down'>
-                                                    <Row>
-                                                        <Col s={12} m={12}>
-                                                            <Icon small className='icn-btn'>add_circle</Icon>
-                                                        </Col>
-                                                    </Row>
-                                                </div>
+                                            <img className="card-img" src={product_item.photo} alt={product_item.name} />
+                                            <div className="card-footer center">
+                                                <button data-target="modal_for_categorys" className="card-btn" onClick={() => this.datamodal(product_item)}>Add Product</button>
                                             </div>
-
                                         </div>
                                     </Col>
                                 ))
-
                             }
                         </Row>
                     </CollapsibleItem>

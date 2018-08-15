@@ -1,17 +1,19 @@
-.nav-color{
-    background:  linear-gradient(to left,#00c853,#0097a7);
-  }
+.nav-color {
+    background: linear-gradient(to left, #00c853, #0097a7);
+}
 
-  .no-marg-b{
+.no-marg-b {
     margin-bottom: 0px;
-  }
-  .half-marg-b{
-    margin-bottom: 10px;
-  }
+}
 
-  .hue-r240{
+.half-marg-b {
+    margin-bottom: 10px;
+}
+
+.hue-r240 {
     filter: hue-rotate(240deg);
-  }
-  .hue-r100{
+}
+
+.hue-r100 {
     filter: hue-rotate(100deg);
-  }
+}

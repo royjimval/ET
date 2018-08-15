@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Parallax, Row, Button, Navbar, NavItem, Col } from 'react-materialize'
+import { Parallax, Row, Button, Navbar, NavItem} from 'react-materialize'
 import { Link } from 'react-router-dom';
 import Assist from '../modal/assist'
 import { connect } from 'react-redux';
@@ -25,7 +25,7 @@ class Header extends Component {
     render() {
         return (
             <div>
-                <Row>
+                <Row className="no-marg-b">
                     <div className='container'>
                         <h1 className='centered ls'>
                             {this.props.Title}
@@ -35,7 +35,7 @@ class Header extends Component {
                         <Parallax className='header' imageSrc="https://images.pexels.com/photos/326281/pexels-photo-326281.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
                     </div>
                     <div>
-                        <Row className='center'>
+                        <Row className='center no-marg-b'>
                             <Navbar className='nav-color  center'>
                                 <NavItem componentClass={Link} href="/Menu" to="/Menu"><img className='menu-icon' src='assets/menu.svg' width='30px'/> MENU</NavItem>
                                 <NavItem className='right'>
@@ -50,9 +50,6 @@ class Header extends Component {
                         </Row>
                         <ToastContainer />
                     </div>
-                </Row>
-                <Row className='right-align'>
-                    <Col m={4} className='offset-m7'> </Col>
                 </Row>
                 <Assist />
             </div>

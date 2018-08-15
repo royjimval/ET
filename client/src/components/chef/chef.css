@@ -1,39 +1,72 @@
-.hedr{
+.hedr {
     line-height: 180%;
     margin: 0;
 }
 
-.chef-badge{
-    user-select: none;
-    min-width: 10px !important;
-    width: 30px;
-    height: 30px !important;
-    line-height: 2 !important;
-    border-radius: 100px;
-    box-sizing: border-box;
-    position: relative;
-    left: -50px;
-    top: -10px;
+.chef-badge {
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    top: 170px;
+    left: 160px;
+    padding: 5px 8px;
+    border-radius: 15px;
 }
 
-.ch-btn>img{
+.ch-btn>img {
     margin-bottom: -20px;
 }
 
-.m-top20{
-    margin-top:20px;
+.m-top20 {
+    margin-top: 20px;
 }
 
-.container{
-   width: 90%; 
+.container {
+    width: 90%;
 }
 
-.ch-btn{
+.ch-btn {
     height: 90%;
 }
 
-.scrollExits{
+.scrollExits {
     min-height: 50px;
     height: 70vh;
     overflow-y: scroll;
+}
+
+/*Mobile Devices, s*/
+
+@media only screen and (max-width: 600px) {
+.chef-badge {
+    top: 170px;
+    left:5160px;
+}
+}
+
+/*Tablet Devices, m*/
+
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+.chef-badge {
+    top: 170px;
+    left:100px;
+}
+}
+
+/*Desktop Devices, l*/
+
+@media only screen and (min-width: 993px) {
+.chef-badge {
+    top: 170px;
+    left:125px;
+}
+}
+
+/*Desktop Devices, xl*/
+
+@media only screen and (min-width: 1200px) {
+    .chef-badge {
+    top: 170px;
+    left: 150px;
+}
 }
