@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Pacifico');
-
-.header{
+.header {
     width: 100%;
     height: 100px;
-    object-position: 50% 50%;    
+    object-position: 50% 50%;
     object-fit: cover;
 }
 
-.b-red{
+.b-red {
     border: 1px solid red;
 }
 
@@ -21,19 +20,25 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-20%);
-    color: white ;
+    transform: translate(-50%, -20%);
+    color: white;
     font-family: 'Pacifico', cursive;
     font-size: 50px;
+    text-shadow:
+    1px 1px 0 #fa8072,
+    2px 2px 0 #fa8072,
+    3px 3px 0 #fa8072,
+    4px 4px 0 #fa8072,
+    5px 5px 0 #fa8072;
 }
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 600px) {
     .centered {
         font-size: 40px;
     }
 }
 
-.btn-r{
+.btn-r {
     text-decoration: none;
     border-style: none;
     border-radius: 100%;
@@ -41,12 +46,12 @@
     padding: 8%;
 }
 
-.logo-img{
-    max-height: 64px!important;
-    padding: 15px 0!important;
+.logo-img {
+    max-height: 64px !important;
+    padding: 15px 0 !important;
 }
 
-.nav-width{
+.nav-width {
     width: 120px;
 }
 
@@ -64,6 +69,6 @@
     left: -5px;
 }
 
-.wb{
+.wb {
     margin-top: -10px;
 }

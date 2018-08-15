@@ -63,13 +63,14 @@ class Chef extends Component {
 		} else {
 			return (
 				<Col s={2} m={2} l={2} xl={2} className="center">
+					<span className="chef-badge red white-text">{cont1}</span>
 					<Button onClick={() => this.sendTable('1')} className="ch-btn green">
 						<Row className="no-marg-b">
 							<img src="assets/table.svg" alt="Table Icon" width="40px" />
 						</Row>
 						<Row className="no-marg-b">Table 1</Row>
+					{/* <Badge className="chef-badge red white-text">{cont1}</Badge> */}
 					</Button>
-					<Badge className="chef-badge red white-text">{cont1}</Badge>
 				</Col>
 			);
 		}
