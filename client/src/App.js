@@ -37,9 +37,10 @@ class App extends Component {
     return (
       <Provider store = { store } >
         <Router>
-          <div>
-            <Route exact path="/" component={ClientStart} />      
-            <Route exact path="/Login" component={Login} />      
+          <div>     
+            <Route exact path="/" component={Login} />      
+            <Route exact path="/ClientStart" component={ClientStart} />  
+
             <Route exact path="/Menu" component={Item} />      
             <Route exact path="/Admin" component={NavBarAdmin} />
             <Route exact path="/Nav" component={Item} />

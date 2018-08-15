@@ -22,7 +22,7 @@ class LogIn extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.auth.isAuthenticated) {
-            this.props.history.push('/')
+            this.props.history.push('/ClientStart')
         }
         if (nextProps.errors) {
             this.setState({ errors: nextProps.errors });
