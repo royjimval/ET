@@ -1,218 +1,112 @@
-.space{
-  margin: 20px;
+/*Mobile Devices, s*/
+
+@media only screen and (max-width: 600px) {}
+
+/*Tablet Devices, m*/
+
+@media only screen and (min-width: 601px) and (max-width: 992px) {}
+
+/*Desktop Devices, l*/
+
+@media only screen and (min-width: 993px) {}
+
+/*Desktop Devices, xl*/
+
+@media only screen and (min-width: 1200px) {}
+
+.card {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 10px;
 }
-.hdr{
-  padding-bottom: 0px;
+
+.card:hover {
+    animation-delay: 1000000s;
+    animation: anim2 3s infinite;
 }
-.icn-btn {
-    text-align: center;
-    cursor: pointer;
-    font-size:16px;
-    padding:5px 10px;
-    outline: none;
-    color: white;
-    background-color: #00c853;
-    border: none;
-    border-radius:5px;
-    box-shadow: 0 6px #43a047;
-    margin-bottom: 15px;
-    }
-  
-    .icn-btn:hover{
-      background-color: #2ecc71;
-    }
-  
-    .icn-btn:active {
-      background-color: #2ecc71;
-      box-shadow: 0 5px #95a5a6;
-      transform: translateY(4px);
-    }
-  
-  .btns {
-    width: 90%;
-    text-align: center;
-    cursor: pointer;
-    font-size:16px;
-    padding:5px 30px;
-    outline: none;
-    color: white;
-    background-color: #00c853;
-    border: none;
-    border-radius:5px;
-    box-shadow: 0 6px #43a047;
-    }
-    .btns1 {
-    text-align: center;
-    cursor: pointer;
-    font-size:16px;
-    padding:5px 30px;
-    outline: none;
-    color: white;
-    background-color: #00c853;
-    border: none;
-    border-radius:5px;
-    box-shadow: 0 6px #922626;
-    }
-  
-    .btns:hover{
-      background-color: #2ecc71;
-    }
-    
-    .btns:active {
-      background-color: #2ecc71;
-      box-shadow: 0 5px #95a5a6;
-      transform: translateY(4px);
-    }
-    
-  
-    .cardd {
-      width: 100%;
-      height: fixed;
-      padding-bottom: 100px;
-      padding-top: 10px;
-      background-color: #ffffff;
-      border-radius: 10px;
-    }
-    .supporting_text {
-      margin-bottom: 20px;
-    }
-  
-  
-  /*Mobile Devices, s*/
-  @media only screen and (max-width: 600px){
 
-    .pName,.pPrice{
-      font-size: 20px;
-    }
-      .cardd {
-          width: 100%;
-          height: fixed;
-          padding-bottom: 10px;
-          background-color: #ffffff;
-          border-radius: 10px;
-          border: 2.5px solid #eceff1;
-          margin-bottom: 20px;
-        }
-      .crdImg{
-        width: 100%;
-        height: 150px;
-        object-fit: cover;
-        margin-top: -15px;
-      }
+.card-header {
+  padding: 8px;
+}
 
-      .icn-btn {
-        text-align: center;
-        cursor: pointer;
-        font-size:16px;
-        padding:5px 20px;
-        outline: none;
-        color: white;
-        background-color: #00c853;
-        border: none;
-        border-radius:5px;
-        box-shadow: 0 6px #43a047;
-        }
-        .supporting_text {
-          padding-top: 8px;
-          margin-bottom: -25px;
-        }
-    }
-  
-   /*Tablet Devices, m*/
-  @media only screen and (min-width: 601px) and (max-width: 992px){
-        .cardd {
-          width: 100%;
-          height: fixed;
-          padding-bottom: 0px;
-          background-color: #ffffff;
-          border-radius: 10px;
-          border: 2.5px solid #eceff1;
-          margin-bottom: 20px;
-  
-        }
-        .pName,.pPrice{
-          font-size: 16px;
-        }
-  
-        .btns {
-      color: #757575;
-      height: 36px;
-      margin: 0;
-      background-color: #ffffff;
-      border: none;
-      font-size: 14px;
-      text-transform: uppercase;
-      border-radius: 2px;
-      
-    }
-  
-    .crdImg{
-      width: 100%;
-      height: 100px;
-      object-fit: cover;
-      margin-top: -15px;
-    }
-    .supporting_text {
-      padding-top: 8px;
-      margin-bottom: -15px;
-    }
-    }
-  
-  /*Desktop Devices, l*/
-  @media only screen and (min-width: 993px){
-      .cardd {
-        width: 100%;
-        height: fixed;
-          padding-bottom: 10px;
-          background-color: #ffffff;
-          border-radius: 10px;
-          margin-bottom: 20px;
-          border: 2.5px solid #eceff1;
-  
-        }
-  
-        .btn:hover {
-          background-color: #00af49 ;
-        }
-  
-        .crdImg{
-          width: 100%;
-          height: 200px;
-          object-fit: cover;
-          margin-top: -15px;
-        }
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1;
+  padding: 0;
+  margin: 1px;
+}
 
-        .card>h5{
-          font-size: 16px;
-        }
-        
-    }
-  
-  /*Desktop Devices, xl*/
-  @media only screen and (min-width: 1200px){
-      .cardd {
-        width: 100%;
-        height: fixed;
-          padding: 0px;
-          background-color: #ffffff;
-          border-radius: 10px;
-          margin-bottom: 20px;
-          border: 2.5px solid #eceff1;
-  
-        }
-  
-        .crdImg{
-          width: 100%;
-          height: 200px;
-          object-fit: cover;
-          margin-top: -15px;
-        }
-  
-        .supporting_text {
-          padding-top: 8px;
-        }
-      
-    }
+.card-img {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: 200px;
+  margin: 0;
+  padding: 0;
+  background-color: #DDDDDD;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
+.card-img:before {
+  content: "";
+  display: block;
+  padding-top: 56.25%;
+}
 
+.card-footer {
+  padding-bottom: 12px;
+  padding-top: 8px;
+}
+
+.card-btn {
+  color: #fafafa;
+  height: 36px;
+  padding: 0 10px;
+  background-color: #00c853;
+  border: none;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: 5px;
+  box-shadow: #43a047 0px 5px 0px;
+}
+
+.card-btn:hover {
+  background-color: #43a047;
+  box-shadow: #00c853 0px 5px 0px;
+}
+
+.card-btn:active {
+  box-shadow: #00c853 0px 1px 0px;
+  transform: translateY(4px);
+}
+
+.card-btn:focus {
+  background-color: #00c853;
+}
+
+@keyframes anim1 {
+    0% {
+        background-color: #ffffff;
+    }
+    33.33% {
+        background-color: #e7e7e7;
+    }
+    100% {
+        background-color: #ffffff;
+    }
+}
+
+@keyframes anim2 {
+    0% {
+        background-color: #ff6a50;
+    }
+    33.33% {
+        background-color: #fdf253;
+    }
+    100% {
+        background-color: #ff6a50;
+    }
+}
 
