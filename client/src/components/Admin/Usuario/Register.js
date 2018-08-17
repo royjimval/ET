@@ -74,6 +74,7 @@ class Register extends Component {
                             <option value='Table'>Table</option>
                             <option value='Waiter'>Waiter</option>
                             <option value='Cashier'>Cashier</option>
+                            <option value='all'>Admin</option>
                         </Input>
                         <span style={{ color: "red" }}>{errors.role}</span>
                     </div>

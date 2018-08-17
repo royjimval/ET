@@ -11,7 +11,7 @@ import '../waiter.css'
 class WaiterAssist extends Component {
 
   componentDidMount() {
-    this.interval1 = setInterval(() => this.props.getItems(), 2000);
+    this.interval1 = setInterval(() => this.props.getItems(), 1000);
   }
   
   componentWillUnmount() {
@@ -33,8 +33,8 @@ class WaiterAssist extends Component {
         <Navbar className='nav-color scrl'>
           {
             items.map((item) => (
-              <NavItem>
-                <Button className='red white-text' onClick={this.onDeleteClick.bind(this, item._id)}>table {item.idtable}</Button>
+              <NavItem onClick={this.onDeleteClick.bind(this, item._id)}>
+                <Button className='red white-text'>table {item.idtable}</Button>
               </NavItem>
             ))
           }

@@ -7,19 +7,21 @@ import { connect } from 'react-redux'
 import { toast } from 'react-toastify'
 import './order.css'
 import Delivere from './delivered'
-let total = 0;
+let total = 0; let count = 0;let table;
 
 class Order extends Component {
     componentDidMount() {
-        const table =this.props.auth.user.name
-        this.interval = setInterval(() => this.props.getPreorder(table), 2000);
+        table = this.props.auth.user.name
+        //this.interval = setInterval(() => this.props.getPreorder(table), 2000);
+        this.props.getPreorder(table)
         this.resetTotal();
-      }
-    
-      componentWillUnmount() {
+    }
+
+    componentWillUnmount() {
+        count = 0;
         clearInterval(this.interval);
-      }
-    
+    }
+
 
     onDeletePreorder = (id) => {
         this.props.deletePreorder(id);
@@ -28,13 +30,14 @@ class Order extends Component {
 
     onPutPreorder = (preorder) => {
         preorder.map((item) => {
-if(item.category === "Drink"){
-    putDrink(item._id, item.idtable, item.name, item.ingredients, item.price, item.start, item.finished, item.delivered, item.noOrder)
-}else{
-    putPreorder(item._id, item.idtable, item.name, item.ingredients, item.price, item.start, item.finished, item.delivered, item.noOrder)
+            if (item.category === "Drink") {
+                putDrink(item._id, item.idtable, item.name, item.ingredients, item.price, item.start, item.finished, item.delivered, item.noOrder)
+            } else {
+                putPreorder(item._id, item.idtable, item.name, item.ingredients, item.price, item.start, item.finished, item.delivered, item.noOrder)
 
-}
+            }
         })
+        this.props.getPreorder(table)
         toast.info("Your order is being prepared by the chef ;)", {
             position: toast.POSITION.TOP_RIGHT,
             className: 'black'
@@ -43,6 +46,7 @@ if(item.category === "Drink"){
 
     sumPrice(price) {
         total = total + price
+        count++
     }
 
 
@@ -58,7 +62,7 @@ if(item.category === "Drink"){
                         {this.sumPrice(preorder_item.price)}
                     </Col>
                     <Col m={12}>
-                        <Col m={8}>
+                        <Col m={6}>
                             {
                                 preorder_item.ingredients.map(each_Ingredient => {
                                     return (
@@ -66,7 +70,7 @@ if(item.category === "Drink"){
                                     )
                                 })
                             }</Col>
-                        <Col m={4}>
+                        <Col m={6}>
                             <div className='valign-wrapper'>
                                 <Button className='red right' waves='light' onClick={() => this.onDeletePreorder(preorder_item._id)} >Remove</Button>
 
@@ -79,62 +83,89 @@ if(item.category === "Drink"){
         }
     }
 
-    resetTotal(){
-        total=0;
+    resetTotal() {
+        total = 0;
+        count = 0;
+    }
+
+    hideButtonOrder(preorder) {
+        if (count > 0) {
+
+            return (
+                <div>
+                    <Row>
+                        <Col m={6}>
+                            <h4 className='right'>Total:</h4>
+                        </Col>
+                        <Col m={6}>
+                            <h4 className='left red-text'>${total}</h4>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col m={12} className=' center'>
+                            <Button className='green' waves='light' onClick={() => this.onPutPreorder(preorder)}>Make Order</Button>
+                        </Col>
+                    </Row>
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                </div>
+            )
+        }
     }
 
     render() {
         const { preorder } = this.props.preorder;
-        return (
-            <div>
-                <Nav Title="My Order"/>
-                <Row>
-                    <Col m={5} className='offset-m1'>
-                        <Col m={12}>
-                            <Collection header="Pre-Order" className='z-depth-1-half'>
-                            <div className="order-delivered" >
-                            <CollectionItem>
-                                {this.resetTotal()}
-                                    {
-                                        
-                                        preorder.map((preorder_item) =>
-                                        
-                                        (
-                                            this.isSended(preorder_item)
-                                            
-                                        ))
-                                    }
+
+        const role = this.props.auth.user.role
+        if (role === 'Table' || role === 'all') {
+
+            return (
+                <div>
+                    <Nav Title="My Order" />
+                    <Row>
+                        <Col m={5} className='offset-m1'>
+                            <Col m={12}>
+                                <Collection header="Pre-Order" className='z-depth-1-half'>
+                                    <div className="order-preorder" >
+                                        <CollectionItem>
+                                            {this.resetTotal()}
+                                            {
+
+                                                preorder.map((preorder_item) =>
+
+                                                    (
+                                                        this.isSended(preorder_item)
+
+                                                    ))
+                                            }
+                                        </CollectionItem>
+                                    </div>
+                                    <CollectionItem>
+                                        {this.hideButtonOrder(preorder)}
+
                                     </CollectionItem>
-                                </div>
-                                <CollectionItem>
-                                    <Row>
-                                        <Col m={6}>
-                                            <h4 className='right'>Total:</h4>
-                                        </Col>
-                                        <Col m={6}>
-                                            <h4 className='left red-text'>${total}</h4>
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col m={12} className=' center'>
-                                            <Button className='green' waves='light' onClick={() => this.onPutPreorder(preorder)}>Make Order</Button>
-                                        </Col>
-                                    </Row>
-                                </CollectionItem>
-                            </Collection>
+                                </Collection>
+                            </Col>
                         </Col>
-                    </Col>
 
-                    <Col m={6} className='offset m-6'>
-                        <Row>
-                            <Delivere />
-                        </Row>
-                    </Col>
+                        <Col m={6} className='offset m-6'>
+                            <Row>
+                                <Delivere />
+                            </Row>
+                        </Col>
 
 
-                </Row>
-            </div>
-        )
+                    </Row>
+                </div>
+            )
+        } else {
+            return (
+                <h1>No se puede mi joven</h1>
+            )
+        }
     }
 }
 

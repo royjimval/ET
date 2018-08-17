@@ -3,27 +3,45 @@ import { Row } from '../../../../../node_modules/react-materialize';
 import Col from '../../../../../node_modules/react-materialize/lib/Col';
 import Reports from './Reports';
 import NavBarAdmin from '../navbar/navbar';
-/* import './Reports.css' */
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-export default class ReportsView extends Component {
+class ReportsView extends Component {
     render() {
-        return (
-            <div>
+        const role = this.props.auth.user.role
+        if (role === 'all') {
+            return (
                 <div>
-                    <Row>
-                        <NavBarAdmin />
-                    </Row>
-                    <Row >
-                        <Col m={12} >
-                            <Reports />
-                        </Col>
-                    </Row>
-                    <Row >
-                        <Col m={12} >
-                        </Col>
-                    </Row>
+                    <div>
+                        <Row>
+                            <NavBarAdmin />
+                        </Row>
+                        <Row >
+                            <Col m={12} >
+                                <Reports />
+                            </Col>
+                        </Row>
+                        <Row >
+                            <Col m={12} >
+                            </Col>
+                        </Row>
+                    </div>
                 </div>
-            </div>
-        );
+            )
+        } else {
+            return (
+                <h1>No se puede mi joven</h1>
+            )
+        }
     }
 }
+
+ReportsView.propTypes = {
+    auth: PropTypes.object.isRequired
+}
+
+const mapStateToProps = state => ({
+    auth: state.auth
+})
+
+export default connect(mapStateToProps)(ReportsView)

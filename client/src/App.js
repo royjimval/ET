@@ -42,13 +42,12 @@ class App extends Component {
             <Route exact path="/ClientStart" component={ClientStart} />
             <Route exact path="/Menu" component={Item} />
             <Route exact path="/Admin" component={NavBarAdmin} />
-            <Route exact path="/Nav" component={Item} />
             <Route path="/Order" component={Order} />
             <Route path="/Waiter" component={Waiter} />
             <Route path="/Chef" component={Chef} />
             <Route exact path="/Grafica" component={Grafica} />
             <Route path="/General" component={General} />
-            <Route path="/Usuario" component={Usuario} />
+            <Route path="/User" component={Usuario} />
             <Route path="/Cashier" component={Cashier} />
             <Route path="/addProduct" component={AddProduct} />
             <Route path="/ReportsView" component={ReportsView} />
