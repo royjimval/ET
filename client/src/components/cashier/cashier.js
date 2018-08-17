@@ -102,33 +102,7 @@ sumPrices(preorder){
 				</Col>
 				</Row>
                 <Row>
-					{/* <Table >
-						{this.sumPrices(preorderCashier)}
 
-						{
-							preorderCashier.map((preorder_item) =>
-								(
-									<thead>
-										<tr>
-											<Col s={6} m={6}>
-												<th data-field="id"><strong className="">{preorder_item.name}</strong></th>
-											</Col>
-											<Col s={6} m={6}>
-												<th data-field="id" className="">{preorder_item.price}</th>
-
-											</Col>
-
-										</tr>
-									</thead>
-								))
-
-						}
-
-						<Row>
-							<h1>{total}</h1>
-						</Row>
-						<Button waves='light' onClick={() => this.onPutPreorder(preorderCashier, id_order)} >PAY<Icon left>save</Icon></Button>
-					</Table> */}
 					<Col s={4} m={4}>
 						{this.sumPrices(preorderCashier)}
 
