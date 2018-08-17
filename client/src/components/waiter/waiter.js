@@ -5,7 +5,7 @@ import '../waiter/waiter.css'
 import WaiterAssist from './WaiterAssist/WaiterAssist'
 import { getPreorderbytableFinished, getPreorderbytableFinishedDelivered, updateDelivered, get_table1_Finished, get_table2_Finished, get_table3_Finished, get_table4_Finished, get_table5_Finished, get_table6_Finished } from '../../accions/preorderAccions'
 import PropTypes from 'prop-types';
-let cont1 = 0, cont2 = 0, cont3 = 0, cont4 = 0, cont5 = 0, cont6 = 0; let lastTable="";
+let cont1 = 0, cont2 = 0, cont3 = 0, cont4 = 0, cont5 = 0, cont6 = 0; let lastTable = "";
 
 
 
@@ -15,28 +15,28 @@ class WaiterClass extends Component {
         this.props.getPreorderbytableFinished();
         this.props.getPreorderbytableFinishedDelivered();
         this.interval1 = setInterval(() => this.updateCosults(), 2000);
-      }
-      
-      componentWillUnmount() {
+    }
+
+    componentWillUnmount() {
         clearInterval(this.interval1);
-      }
-      
-      updateCosults(){
+    }
+
+    updateCosults() {
         this.props.get_table1_Finished()
         this.props.get_table2_Finished()
         this.props.get_table3_Finished()
         this.props.get_table4_Finished()
         this.props.get_table5_Finished()
         this.props.get_table6_Finished()
-      }
+    }
 
     seeOrderFinished = (table) => {
         this.props.getPreorderbytableFinished(table);
         this.props.getPreorderbytableFinishedDelivered(table);
     }
 
-    sendTable(table){
-        lastTable=table
+    sendTable(table) {
+        lastTable = table
         this.seeOrderFinished(lastTable)
     }
 
@@ -71,8 +71,8 @@ class WaiterClass extends Component {
             return (
                 <Row className="half-marg-b">
                     <Col s={12} m={12} l={12} xl={12} className="center">
-                    <div className="badge-waiter">{cont1}</div>
                         <Button onClick={() => this.sendTable('1')} className="ch-btn green accent 1">
+                            {/* <Row className="no-marg-b red-text"><h5><b>{cont1}</b></h5></Row> */}
                             <Row className="no-marg-b">
                                 <img src="assets/table.svg" alt="Table Icon" width="40px" />
                             </Row>
@@ -95,6 +95,7 @@ class WaiterClass extends Component {
                 <Row className="half-marg-b">
                     <Col s={12} m={12} l={12} xl={12} className="center">
                         <Button onClick={() => this.sendTable('2')} className="ch-btn cyan darken-2">
+                            {/* <Row className="no-marg-b white-text"><h5><b>-</b></h5></Row> */}
                             <Row className="no-marg-b">
                                 <img src="assets/table.svg" alt="Table Icon" width="40px" />
                             </Row>
@@ -108,7 +109,7 @@ class WaiterClass extends Component {
             return (
                 <Row className="half-marg-b">
                     <Col s={12} m={12} l={12} xl={12} className="center">
-                    <div className="badge-waiter">{cont2}</div>
+                        <div className="badge-waiter">{cont2}</div>
                         <Button onClick={() => this.sendTable('2')} className="ch-btn green accent-1">
                             <Row className="no-marg-b">
                                 <img src="assets/table.svg" alt="Table Icon" width="40px" />
@@ -145,7 +146,7 @@ class WaiterClass extends Component {
             return (
                 <Row className="half-marg-b">
                     <Col s={12} m={12} l={12} xl={12} className="center">
-                    <div className="badge-waiter">{cont3}</div>
+                        <div className="badge-waiter">{cont3}</div>
                         <Button onClick={() => this.sendTable('3')} className="ch-btn green accent-1">
                             <Row className="no-marg-b">
                                 <img src="assets/table.svg" alt="Table Icon" width="40px" />
@@ -182,7 +183,7 @@ class WaiterClass extends Component {
             return (
                 <Row className="half-marg-b">
                     <Col s={12} m={12} l={12} xl={12} className="center">
-                    <div className="badge-waiter">{cont4}</div>
+                        <div className="badge-waiter">{cont4}</div>
                         <Button onClick={() => this.sendTable('4')} className="ch-btn green accent-1">
                             <Row className="no-marg-b">
                                 <img src="assets/table.svg" alt="Table Icon" width="40px" />
@@ -219,7 +220,7 @@ class WaiterClass extends Component {
             return (
                 <Row className="half-marg-b">
                     <Col s={12} m={12} l={12} xl={12} className="center">
-                    <div className="badge-waiter">{cont5}</div>
+                        <div className="badge-waiter">{cont5}</div>
                         <Button onClick={() => this.sendTable('5')} className="ch-btn green accent-1">
                             <Row className="no-marg-b">
                                 <img src="assets/table.svg" alt="Table Icon" width="40px" />
@@ -256,7 +257,7 @@ class WaiterClass extends Component {
             return (
                 <Row className="half-marg-b">
                     <Col s={12} m={12} l={12} xl={12} className="center">
-                    <div className="badge-waiter">{cont6}</div>
+                        <div className="badge-waiter">{cont6}</div>
                         <Button onClick={() => this.sendTable('6')} className="ch-btn green accent-1">
                             <Row className="no-marg-b">
                                 <img src="assets/table.svg" alt="Table Icon" width="40px" />
@@ -269,9 +270,99 @@ class WaiterClass extends Component {
         }
     }
 
+    showDeliverButton(preorderWaiter) {
+        switch (lastTable) {
+            case '1': {
+                if (cont1 > 0) {
+                    return (
+                        <div>
+                            
+                                <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 200) }} >Delivered<Icon left>check</Icon></Button>
+                        </div>
+                    )
+                }else{
+                    return(
+                        <div></div>
+                    )
+                }
+            } break;
+            case '2': {
+                if (cont2 > 0) {
+                    return (
+                        <div>
+
+                                <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 200) }} >Delivered<Icon left>check</Icon></Button>
+
+                        </div>
+                    )
+                }else{
+                    return(
+                        <div></div>
+                    )
+                }
+            } break;
+            case '3': {
+                if (cont3 > 0) {
+                    return (
+                        <div>
+
+                                <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 200) }} >Delivered<Icon left>check</Icon></Button>
+
+                        </div>
+                    )
+                }else{
+                    return(
+                        <div></div>
+                    )
+                }
+            } break;
+            case '4': {
+                if (cont4 > 0) {
+                    return (
+                        <div>
+
+                                <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 200) }} >Delivered<Icon left>check</Icon></Button>
+
+                        </div>
+                    )
+                }else{
+                    return(
+                        <div></div>
+                    )
+                }
+            } break;
+            case '5': {
+                if (cont5 > 0) {
+                    return (
+                        <div>
+                                <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 200) }} >Delivered<Icon left>check</Icon></Button>
+                        </div>
+                    )
+                }else{
+                    return(
+                        <div></div>
+                    )
+                }
+            } break;
+            case '6': {
+                if (cont6 > 0) {
+                    return (
+                        <div>
+                                <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 200) }} >Delivered<Icon left>check</Icon></Button>
+                        </div>
+                    )
+                }else{
+                    return(
+                        <div></div>
+                    )
+                }
+            } break;
+        }
+    }
+
     render() {
         const { preorderWaiter } = this.props.preorderWaiter
-        const { preorderWaiterDelivered} = this.props.preorderWaiterDelivered
+        const { preorderWaiterDelivered } = this.props.preorderWaiterDelivered
 
         const { table1_finished } = this.props.table1_finished
         const { table2_finished } = this.props.table2_finished
@@ -280,97 +371,108 @@ class WaiterClass extends Component {
         const { table5_finished } = this.props.table5_finished
         const { table6_finished } = this.props.table6_finished
 
-        return (
+        const role = this.props.auth.user.role
+        if (role === 'Waiter' || role === 'all') {
 
-            <div>
-                <WaiterAssist />
-                <Row>
-                    <h3 className='center'>Tables</h3>
+            return (
 
-                    <Col m={2}>
-                        {
-                            this.changecolor1(table1_finished)
-                        }
-                        {
-                            this.changecolor2(table2_finished)
-                        }
-                        {
-                            this.changecolor3(table3_finished)
-                        }
-                        {
-                            this.changecolor4(table4_finished)
-                        }
-                        {
-                            this.changecolor5(table5_finished)
-                        }
-                        {
-                            this.changecolor6(table6_finished)
-                        }
-                    </Col>
+                <div>
+                    <WaiterAssist />
+                    <Row>
+                        <h3 className='center'>Tables</h3>
 
-                    <Col m={10} >
-                        <Col s={6} m={6}>
-                            <Collection className='z-depth-1-half' header="Entries">
-                            <div className="scrolleable">
-                                {
-                                    preorderWaiter.map(eachPreorder => {
-                                        return (
-                            <CollectionItem>
-                                                <Row>
-                                                    <Col m={6}>{eachPreorder.name}</Col>
-                                                </Row>
-                                </CollectionItem>
-                                        )
-                                    })
-                                }
-                                </div>
-                                <CollectionItem className="center-align">
-                                <Button className="blue lighten-1" waves='light' onClick={() => {this.updateDelivered(preorderWaiter),setTimeout(()=>this.sendTable(lastTable),400)}} >Delivered<Icon left>check</Icon></Button>
-                                </CollectionItem>
-                            </Collection>
+                        <Col m={2}>
+                            {
+                                this.changecolor1(table1_finished)
+                            }
+                            {
+                                this.changecolor2(table2_finished)
+                            }
+                            {
+                                this.changecolor3(table3_finished)
+                            }
+                            {
+                                this.changecolor4(table4_finished)
+                            }
+                            {
+                                this.changecolor5(table5_finished)
+                            }
+                            {
+                                this.changecolor6(table6_finished)
+                            }
                         </Col>
-                        <Col s={6} m={6}>
-                            
-                            <Col s={12} m={12} l={12} xl={12}>
-                                <Collection className='z-depth-1-half' header="Exits">
-                                <div className="scrolleable">
-                                    {
-                                        preorderWaiterDelivered.map((preorder_item) =>
-                                        (
-                                            <CollectionItem>
-                                                    <Row className='no-marg-b'>
-                                                        <Col m={8}>
-                                                            <h6 className='left'>{preorder_item.name}</h6>
-                                                        </Col>
-                                                        <Col m={2}>
-                                                            <h6 className='left'>{preorder_item.price}</h6>
-                                                        </Col>
-                                                        <Col m={12}>
-                                                                {
-                                                                    preorder_item.ingredients.map(each_Ingredient => {
-                                                                        return (
-                                                                            <Col m={4}>
-                                                                            <p>{each_Ingredient}</p>
-                                                                            </Col>
-                                                                        )
-                                                                    })
-                                                                }
-                                                        </Col>
-                                                    </Row>
-                                                </CollectionItem>
-                                            ))
+
+                        <Col m={10} >
+                            <Col s={6} m={6}>
+                                <Collection className='z-depth-1-half' header="Entries">
+                                    <div className="order-waiter">
+                                        {
+                                            preorderWaiter.map(eachPreorder => {
+                                                return (
+                                                    <CollectionItem>
+                                                        <Row>
+                                                            <Col m={6}>{eachPreorder.name}</Col>
+                                                        </Row>
+                                                    </CollectionItem>
+                                                )
+                                            })
                                         }
-                                        </div>
+                                    </div>
+                                    <CollectionItem className="center-align">
+                                    {this.showDeliverButton(preorderWaiter)}
+                                    </CollectionItem>
+
                                 </Collection>
+                            </Col>
+                            <Col s={6} m={6}>
+
+                                <Col s={12} m={12} l={12} xl={12}>
+                                    <Collection className='z-depth-1-half' header="Exits">
+                                        <div className="order-waiter">
+                                            {
+                                                preorderWaiterDelivered.map((preorder_item) =>
+                                                    (
+                                                        <CollectionItem>
+                                                            <Row className='no-marg-b'>
+                                                                <Col m={8}>
+                                                                    <h6 className='left'>{preorder_item.name}</h6>
+                                                                </Col>
+                                                                <Col m={2}>
+                                                                    <h6 className='left'>{preorder_item.price}</h6>
+                                                                </Col>
+                                                                <Col m={12}>
+                                                                    {
+                                                                        preorder_item.ingredients.map(each_Ingredient => {
+                                                                            return (
+                                                                                <Col m={4}>
+                                                                                    <p>{each_Ingredient}</p>
+                                                                                </Col>
+                                                                            )
+                                                                        })
+                                                                    }
+                                                                </Col>
+                                                            </Row>
+                                                        </CollectionItem>
+                                                    ))
+                                            }
+                                        </div>
+                                        <CollectionItem> <div></div>
+                                        </CollectionItem>
+                                    </Collection>
+                                </Col>
+
                             </Col>
 
                         </Col>
+                    </Row>
 
-                    </Col>
-                </Row>
-
-            </div>
-        )
+                </div>
+            )
+        } else {
+            return (
+                <h1>No se puede mi joven</h1>
+            )
+        }
     }
 
 }
@@ -396,6 +498,9 @@ WaiterClass.propTypes = {
     table4_finished: PropTypes.object.isRequired,
     table5_finished: PropTypes.object.isRequired,
     table6_finished: PropTypes.object.isRequired,
+
+    auth: PropTypes.object.isRequired
+
 };
 
 const mapStateToProps = state => ({
@@ -408,7 +513,7 @@ const mapStateToProps = state => ({
     table4_finished: state.preorder,
     table5_finished: state.preorder,
     table6_finished: state.preorder,
-
+    auth: state.auth
 });
 
 

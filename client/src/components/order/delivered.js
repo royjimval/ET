@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Row, Col, Collection, CollectionItem, Preloader, Icon } from 'react-materialize'
+import { Row, Col, Collection, CollectionItem, Preloader, Icon, Button } from 'react-materialize'
 import { getPreorder } from '../../accions/preorderAccions'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'

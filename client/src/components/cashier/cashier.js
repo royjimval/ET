@@ -52,142 +52,165 @@ sumPrices(preorder){
     render() {
         const { preorderCashier } = this.props.preorderCashier;
         const { id_order } = this.props.id_order;
-        
-        return (
-            <div>
-                <Nav />
-				<Row>
-				<Col s={2} m={2} l={2} xl={2} className="center">
-						<Button onClick={() => this.getProducts("1")} className="ch-btn cyan darken-2">
-						<Row className="no-marg-b">
-							<img src="assets/table.svg" alt="Table Icon" width="40px" />
-						</Row>
-						<Row className="no-marg-b">Table 1</Row>
-					</Button>
-				</Col><Col s={2} m={2} l={2} xl={2} className="center">
-						<Button onClick={() => this.getProducts("2")} className="ch-btn cyan darken-2">
-						<Row className="no-marg-b">
-							<img src="assets/table.svg" alt="Table Icon" width="40px" />
-						</Row>
-						<Row className="no-marg-b">Table 2</Row>
-					</Button>
-				</Col><Col s={2} m={2} l={2} xl={2} className="center">
-						<Button onClick={() => this.getProducts("3")} className="ch-btn cyan darken-2">
-						<Row className="no-marg-b">
-							<img src="assets/table.svg" alt="Table Icon" width="40px" />
-						</Row>
-						<Row className="no-marg-b">Table 3</Row>
-					</Button>
-				</Col><Col s={2} m={2} l={2} xl={2} className="center">
-						<Button onClick={() => this.getProducts("4")} className="ch-btn cyan darken-2">
-						<Row className="no-marg-b">
-							<img src="assets/table.svg" alt="Table Icon" width="40px" />
-						</Row>
-						<Row className="no-marg-b">Table 4</Row>
-					</Button>
-				</Col><Col s={2} m={2} l={2} xl={2} className="center">
-						<Button onClick={() => this.getProducts("5")} className="ch-btn cyan darken-2">
-						<Row className="no-marg-b">
-							<img src="assets/table.svg" alt="Table Icon" width="40px" />
-						</Row>
-						<Row className="no-marg-b">Table 5</Row>
-					</Button>
-				</Col><Col s={2} m={2} l={2} xl={2} className="center">
-						<Button onClick={() => this.getProducts("6")} className="ch-btn cyan darken-2">
-						<Row className="no-marg-b">
-							<img src="assets/table.svg" alt="Table Icon" width="40px" />
-						</Row>
-						<Row className="no-marg-b">Table 6</Row>
-					</Button>
-				</Col>
-				</Row>
-                <Row>
+		
+		const  role  = this.props.auth.user.role
+        if(role==='Cashier' || role==='all'){
 
-					<Col s={4} m={4}>
-						{this.sumPrices(preorderCashier)}
-
-						<Collection header="First Names">
-							{
-								preorderCashier.map((preorder_item) =>
-									(
-										<CollectionItem>
-										<Row>
-											<Col m={8}>
-												{preorder_item.name}
-											</Col>
-											<Col m={4}>
-												{preorder_item.price}
-											</Col>
-										</Row>
-										</CollectionItem>
-									))
-
-							}
-						</Collection>
-					</Col>
-					<Col s={4} m={4}>
-						<div className="cash-wrapper">
-							<Row className="center">
-								<Col className="right-align" m={6}>
-									<h5>Pay</h5>
-								</Col>
-								<Col className="left-align" m={6}>
-									<h5 className="red-text">$ {total}</h5>
-								</Col>
-								<Col className="right-align" m={6}>
-									<h5>Change</h5>
-								</Col>
-								<Col className="left-align" m={6}>
-									<h5 className="red-text">$ XXX.XX</h5>
-								</Col>
-							</Row>
-							<Row className="center no-marg-b">
-								<Input s={6} type="select" label="Exchange Rate" defaultValue="2">
-									<option value="1">US Dollars</option>
-									<option value="2">MX Pesos</option>
-								</Input>
-								<Input s={6} type="select" label="Materialize Select" defaultValue="2">
-									<option value="1">Option 1</option>
-									<option value="2">Option 2</option>
-									<option value="3">Option 3</option>
-								</Input>
-							</Row>
-							<Row className="center-align">
-								<Button onClick={() => this.onPutPreorder(preorderCashier, id_order)} >Pay</Button>
-							</Row>
-						</div>
-					</Col>
-					<Col m={4}>
-						<div className="cash-wrapper">
+			return (
+				<div>
+					<Nav />
+					<Row>
+					<Col s={2} m={2} l={2} xl={2} className="center">
+							<Button onClick={() => this.getProducts("1")} className="ch-btn cyan darken-2">
 							<Row className="no-marg-b">
-                                <div className="valign-wrapper">
-                                    <img src="assets/money.png" alt="" height="80px" />
-                                </div>
-                            </Row>
-                            <Row className="no-marg-b">
-                                <div className="center-wrapper">
-                                    <img className="hue-r100" src="assets/money.png" alt="" height="80px" />
-                                </div>
-                            </Row>
-                            <Row className="no-marg-b">
-                                <div className="valign-wrapper">
-                                    <img className="hue-r240" src="assets/money.png" alt="" height="80px" />
-                                </div>
-                            </Row>
-                            <Row className="no-marg-b">
-                                <Col className='center-align' m={6}>
-                                    <img src="assets/dollar.svg" alt="" height="70px"/>
-                                </Col>
-                                <Col className='center-align' m={6}>
-                                <img src="assets/dollar.svg" alt="" height="70px"/>
-                                </Col>
-                            </Row>
-						</div>
+								<img src="assets/table.svg" alt="Table Icon" width="40px" />
+							</Row>
+							<Row className="no-marg-b">Table 1</Row>
+						</Button>
+					</Col><Col s={2} m={2} l={2} xl={2} className="center">
+						<Button className="ch-btn cyan darken-2">
+							<Row className="no-marg-b">
+								<img src="assets/table.svg" alt="Table Icon" width="40px" />
+							</Row>
+							<Row className="no-marg-b">Table 2</Row>
+						</Button>
+					</Col><Col s={2} m={2} l={2} xl={2} className="center">
+						<Button className="ch-btn cyan darken-2">
+							<Row className="no-marg-b">
+								<img src="assets/table.svg" alt="Table Icon" width="40px" />
+							</Row>
+							<Row className="no-marg-b">Table 3</Row>
+						</Button>
+					</Col><Col s={2} m={2} l={2} xl={2} className="center">
+						<Button className="ch-btn cyan darken-2">
+							<Row className="no-marg-b">
+								<img src="assets/table.svg" alt="Table Icon" width="40px" />
+							</Row>
+							<Row className="no-marg-b">Table 4</Row>
+						</Button>
+					</Col><Col s={2} m={2} l={2} xl={2} className="center">
+						<Button className="ch-btn cyan darken-2">
+							<Row className="no-marg-b">
+								<img src="assets/table.svg" alt="Table Icon" width="40px" />
+							</Row>
+							<Row className="no-marg-b">Table 5</Row>
+						</Button>
+					</Col><Col s={2} m={2} l={2} xl={2} className="center">
+						<Button className="ch-btn cyan darken-2">
+							<Row className="no-marg-b">
+								<img src="assets/table.svg" alt="Table Icon" width="40px" />
+							</Row>
+							<Row className="no-marg-b">Table 6</Row>
+						</Button>
 					</Col>
-				</Row>
-
-            </div>
-        )
+					</Row>
+					<Row>
+						<Col s={4} m={4}>
+							<Collection header="First Names">
+								<CollectionItem>Alvin</CollectionItem>
+								<CollectionItem>Alvin</CollectionItem>
+								<CollectionItem>Alvin</CollectionItem>
+								<CollectionItem>Alvin</CollectionItem>
+							</Collection>
+						</Col>
+						<Col s={4} m={4}>
+							<div className="cash-wrapper">
+								<Row className="center">
+									<Col className="right-align" m={6}>
+										<h5>Pay</h5>
+									</Col>
+									<Col className="left-align" m={6}>
+										<h5 className="red-text">$ XXX.XX</h5>
+									</Col>
+									<Col className="right-align" m={6}>
+										<h5>Change</h5>
+									</Col>
+									<Col className="left-align" m={6}>
+										<h5 className="red-text">$ XXX.XX</h5>
+									</Col>
+								</Row>
+								<Row className="center no-marg-b">
+									<Input s={6} type="select" label="Exchange Rate" defaultValue="2">
+										<option value="1">US Dollars</option>
+										<option value="2">MX Pesos</option>
+									</Input>
+									<Input s={6} type="select" label="Materialize Select" defaultValue="2">
+										<option value="1">Option 1</option>
+										<option value="2">Option 2</option>
+										<option value="3">Option 3</option>
+									</Input>
+								</Row>
+								<Row className="center-align">
+									<Button>Check Out</Button>
+								</Row>
+							</div>
+						</Col>
+						<Col m={4}>
+							<div className="cash-wrapper">
+								<Row className="no-marg-b">
+									<div className="valign-wrapper">
+										<img src="assets/money.png" alt="" height="80px" />
+									</div>
+								</Row>
+								<Row className="no-marg-b">
+									<div className="center-wrapper">
+										<img className="hue-r100" src="assets/money.png" alt="" height="80px" />
+									</div>
+								</Row>
+								<Row className="no-marg-b">
+									<div className="valign-wrapper">
+										<img className="hue-r240" src="assets/money.png" alt="" height="80px" />
+									</div>
+								</Row>
+								<Row className="no-marg-b">
+									<Col className='center-align' m={6}>
+										<img src="assets/dollar.svg" alt="" height="70px"/>
+									</Col>
+									<Col className='center-align' m={6}>
+									<img src="assets/dollar.svg" alt="" height="70px"/>
+									</Col>
+								</Row>
+							</div>
+						</Col>
+					</Row>
+					<Button waves='light' onClick={() => this.getProducts("1")} > Table 1<Icon left>save</Icon></Button>
+					<Button waves='light' onClick={() => this.getProducts("2")} > Table 2<Icon left>save</Icon></Button>
+	
+					<Table >
+						{this.sumPrices(preorderCashier)}
+	
+					{
+							preorderCashier.map((preorder_item) =>
+							(
+									<thead>
+										<tr>
+											<Col s={6} m={6}>
+												<th data-field="id"><strong className="">{preorder_item.name}</strong></th>
+											</Col>
+											<Col s={6} m={6}>
+												<th data-field="id" className="">{preorder_item.price}</th>
+												
+											</Col>
+											
+										</tr>
+									</thead>
+							))
+	
+					}
+	
+						<Row>
+						<h1>{total}</h1>
+						</Row>
+						<Button waves='light' onClick={() => this.onPutPreorder(preorderCashier, id_order)} >PAY<Icon left>save</Icon></Button>
+					</Table>
+	
+				</div>
+			)
+		}else{
+            return(
+              <h1>No se puede mi joven</h1>
+            )
+        }
     }
 }
 
@@ -196,12 +219,14 @@ Cashier.propTypes = {
     preorderCashier: PropTypes.object.isRequired,
     get_id_order: PropTypes.func.isRequired,
     id_order: PropTypes.object.isRequired,
-    addOrder: PropTypes.func.isRequired
+	addOrder: PropTypes.func.isRequired,
+	auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
     preorderCashier: state.preorder,
-    id_order: state.id_order
+	id_order: state.id_order,
+	auth: state.auth
 });
 
 

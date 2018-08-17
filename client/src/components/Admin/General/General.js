@@ -6,9 +6,11 @@ import Note from '../Note/Note';
 import Calendar from '../Calendar/Calendar';
 import NavBarAdmin from '../navbar/navbar';
 import './General.css';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 
-export default class General extends Component {
+class General extends Component {
     constructor() {
         super();
         this.state = {
@@ -25,10 +27,10 @@ export default class General extends Component {
         this.setState({
             chartData: {
                 labels: ['Drinks', 'Breakfast', 'Meal', 'Dinners', 'Desserts'],
-                fontColor:"white",
+                fontColor: "white",
                 datasets: [
                     {
-                        label: 'Products',fontColor:"white",
+                        label: 'Products', fontColor: "white",
                         data: [
                             50000,
                             45000,
@@ -48,26 +50,46 @@ export default class General extends Component {
             }
         });
     }
+
     render() {
-        return (
-            <div >
-                <Row>
-                    <Col m={12} >
-                        <NavBarAdmin />
-                    </Col>
-                </Row>
-                <Row>
-                    <Col m={7} className=' colcalendar'>
-                        <Grafica chartData={this.state.chartData} location="Eatable" legendPosition="bottom" fontColor="white" />
-                    </Col>
-                    <Col m={2} className=''>
-                        <Calendar />
-                    </Col>
-                    <Col m={3} className=''>
-                        <Note />
-                    </Col>
-                </Row>
-            </div>
-        );
+
+        const role = this.props.auth.user.role
+        if (role === 'all') {
+
+            return (
+                <div >
+                    <Row>
+                        <Col m={12} >
+                            <NavBarAdmin />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col m={7} className=' colcalendar'>
+                            <Grafica chartData={this.state.chartData} location="Eatable" legendPosition="bottom" fontColor="white" />
+                        </Col>
+                        <Col m={2} className=''>
+                            <Calendar />
+                        </Col>
+                        <Col m={3} className=''>
+                            <Note />
+                        </Col>
+                    </Row>
+                </div>
+            );
+        } else {
+            return (
+                <h1>No se puede mi joven</h1>
+            )
+        }
     }
 }
+
+General.propTypes = {
+    auth: PropTypes.object.isRequired
+}
+
+const mapStateToProps = state => ({
+    auth: state.auth
+})
+
+export default connect(mapStateToProps)(General)
