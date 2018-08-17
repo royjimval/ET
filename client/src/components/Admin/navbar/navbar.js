@@ -12,15 +12,7 @@ export default class NavBarAdmin extends Component {
           <div>
             <Parallax className='header' imageSrc="https://source.unsplash.com/collection/281387/900x200" />
           </div>
-          <Navbar className="nav-color">
-            <NavItem href='components.html'>General</NavItem>
-            <NavItem href='components.html'>Users</NavItem>
-            <NavItem href='components.html'>Inventory</NavItem>
-            <NavItem href='components.html'>Cashier</NavItem>
-            <NavItem href='components.html'>Reports</NavItem>
-            <NavItem href='components.html'>Add Product</NavItem>
-            <NavItem  className="right" href='components.html'>Log Out</NavItem>
-          </Navbar>
+
           <Navbar className="nabAdmin">
             <Link to="/General">
               <div className="contenedor" id="uno">
@@ -99,6 +91,19 @@ export default class NavBarAdmin extends Component {
 
             </Link>
 
+            <Link to="/addIngredient" >
+              <div className="contenedor" id="seven">
+                <Row>
+                  <Col>
+                    <img class="icon" src="assets/menu.svg" />
+                  </Col>
+                  <Col>
+                    <p className="texto">Add ingredient</p>
+                  </Col>
+                </Row>
+              </div>
+
+            </Link>
 
             <div className="login right" id="uno">
               <Row>

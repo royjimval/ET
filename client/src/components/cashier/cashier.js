@@ -58,42 +58,42 @@ sumPrices(preorder){
                 <Nav />
 				<Row>
 				<Col s={2} m={2} l={2} xl={2} className="center">
-					<Button className="ch-btn cyan darken-2">
+						<Button onClick={() => this.getProducts("1")} className="ch-btn cyan darken-2">
 						<Row className="no-marg-b">
 							<img src="assets/table.svg" alt="Table Icon" width="40px" />
 						</Row>
 						<Row className="no-marg-b">Table 1</Row>
 					</Button>
 				</Col><Col s={2} m={2} l={2} xl={2} className="center">
-					<Button className="ch-btn cyan darken-2">
+						<Button onClick={() => this.getProducts("2")} className="ch-btn cyan darken-2">
 						<Row className="no-marg-b">
 							<img src="assets/table.svg" alt="Table Icon" width="40px" />
 						</Row>
 						<Row className="no-marg-b">Table 2</Row>
 					</Button>
 				</Col><Col s={2} m={2} l={2} xl={2} className="center">
-					<Button className="ch-btn cyan darken-2">
+						<Button onClick={() => this.getProducts("3")} className="ch-btn cyan darken-2">
 						<Row className="no-marg-b">
 							<img src="assets/table.svg" alt="Table Icon" width="40px" />
 						</Row>
 						<Row className="no-marg-b">Table 3</Row>
 					</Button>
 				</Col><Col s={2} m={2} l={2} xl={2} className="center">
-					<Button className="ch-btn cyan darken-2">
+						<Button onClick={() => this.getProducts("4")} className="ch-btn cyan darken-2">
 						<Row className="no-marg-b">
 							<img src="assets/table.svg" alt="Table Icon" width="40px" />
 						</Row>
 						<Row className="no-marg-b">Table 4</Row>
 					</Button>
 				</Col><Col s={2} m={2} l={2} xl={2} className="center">
-					<Button className="ch-btn cyan darken-2">
+						<Button onClick={() => this.getProducts("5")} className="ch-btn cyan darken-2">
 						<Row className="no-marg-b">
 							<img src="assets/table.svg" alt="Table Icon" width="40px" />
 						</Row>
 						<Row className="no-marg-b">Table 5</Row>
 					</Button>
 				</Col><Col s={2} m={2} l={2} xl={2} className="center">
-					<Button className="ch-btn cyan darken-2">
+						<Button onClick={() => this.getProducts("6")} className="ch-btn cyan darken-2">
 						<Row className="no-marg-b">
 							<img src="assets/table.svg" alt="Table Icon" width="40px" />
 						</Row>
@@ -102,12 +102,53 @@ sumPrices(preorder){
 				</Col>
 				</Row>
                 <Row>
+					{/* <Table >
+						{this.sumPrices(preorderCashier)}
+
+						{
+							preorderCashier.map((preorder_item) =>
+								(
+									<thead>
+										<tr>
+											<Col s={6} m={6}>
+												<th data-field="id"><strong className="">{preorder_item.name}</strong></th>
+											</Col>
+											<Col s={6} m={6}>
+												<th data-field="id" className="">{preorder_item.price}</th>
+
+											</Col>
+
+										</tr>
+									</thead>
+								))
+
+						}
+
+						<Row>
+							<h1>{total}</h1>
+						</Row>
+						<Button waves='light' onClick={() => this.onPutPreorder(preorderCashier, id_order)} >PAY<Icon left>save</Icon></Button>
+					</Table> */}
 					<Col s={4} m={4}>
+						{this.sumPrices(preorderCashier)}
+
 						<Collection header="First Names">
-							<CollectionItem>Alvin</CollectionItem>
-							<CollectionItem>Alvin</CollectionItem>
-							<CollectionItem>Alvin</CollectionItem>
-							<CollectionItem>Alvin</CollectionItem>
+							{
+								preorderCashier.map((preorder_item) =>
+									(
+										<CollectionItem>
+										<Row>
+											<Col m={8}>
+												{preorder_item.name}
+											</Col>
+											<Col m={4}>
+												{preorder_item.price}
+											</Col>
+										</Row>
+										</CollectionItem>
+									))
+
+							}
 						</Collection>
 					</Col>
 					<Col s={4} m={4}>
@@ -117,7 +158,7 @@ sumPrices(preorder){
 									<h5>Pay</h5>
 								</Col>
 								<Col className="left-align" m={6}>
-									<h5 className="red-text">$ XXX.XX</h5>
+									<h5 className="red-text">$ {total}</h5>
 								</Col>
 								<Col className="right-align" m={6}>
 									<h5>Change</h5>
@@ -138,7 +179,7 @@ sumPrices(preorder){
 								</Input>
 							</Row>
 							<Row className="center-align">
-								<Button>Check Out</Button>
+								<Button onClick={() => this.onPutPreorder(preorderCashier, id_order)} >Pay</Button>
 							</Row>
 						</div>
 					</Col>
@@ -167,102 +208,9 @@ sumPrices(preorder){
                                 <img src="assets/dollar.svg" alt="" height="70px"/>
                                 </Col>
                             </Row>
-{/* 							<Row className="half-marg-b center-align calc-display">
-								<Col m={12}>
-									<h3>$ XXX.XX</h3>
-								</Col>
-							</Row>
-							<div className="center-align">
-								<Row>
-									<Col m={3}>
-										<Button className="green">1</Button>
-									</Col>
-									<Col m={3}>
-										<Button className="green">2</Button>
-									</Col>
-									<Col m={3}>
-										<Button className="green">3</Button>
-									</Col>
-									<Col m={3}>
-										<Button className="green">+</Button>
-									</Col>
-								</Row>
-								<Row>
-									<Col m={3}>
-										<Button className="green">4</Button>
-									</Col>
-									<Col m={3}>
-										<Button className="green">5</Button>
-									</Col>
-									<Col m={3}>
-										<Button className="green">6</Button>
-									</Col>
-									<Col m={3}>
-										<Button className="green">-</Button>
-									</Col>
-								</Row>
-								<Row>
-									<Col m={3}>
-										<Button className="green">7</Button>
-									</Col>
-									<Col m={3}>
-										<Button className="green">8</Button>
-									</Col>
-									<Col m={3}>
-										<Button className="green">9</Button>
-									</Col>
-									<Col m={3}>
-										<Button className="green">*</Button>
-									</Col>
-								</Row>
-								<Row>
-									<Col m={3}>
-										<Button className="green">00</Button>
-									</Col>
-									<Col m={3}>
-										<Button className="green">.</Button>
-									</Col>
-									<Col m={3}>
-										<Button className="green">CE</Button>
-									</Col>
-									<Col m={3}>
-										<Button className="green">=</Button>
-									</Col>
-								</Row>
-							</div> */}
 						</div>
 					</Col>
 				</Row>
-                <Button waves='light' onClick={() => this.getProducts("1")} > Table 1<Icon left>save</Icon></Button>
-                <Button waves='light' onClick={() => this.getProducts("2")} > Table 2<Icon left>save</Icon></Button>
-
-                <Table >
-                    {this.sumPrices(preorderCashier)}
-
-                {
-                        preorderCashier.map((preorder_item) =>
-                        (
-                                <thead>
-                                    <tr>
-                                        <Col s={6} m={6}>
-                                            <th data-field="id"><strong className="">{preorder_item.name}</strong></th>
-                                        </Col>
-                                        <Col s={6} m={6}>
-                                            <th data-field="id" className="">{preorder_item.price}</th>
-                                            
-                                        </Col>
-                                        
-                                    </tr>
-                                </thead>
-                        ))
-
-                }
-
-                    <Row>
-                    <h1>{total}</h1>
-                    </Row>
-                    <Button waves='light' onClick={() => this.onPutPreorder(preorderCashier, id_order)} >PAY<Icon left>save</Icon></Button>
-                </Table>
 
             </div>
         )

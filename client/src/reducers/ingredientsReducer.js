@@ -1,4 +1,4 @@
-import { GET_INGREDIENTS } from '../accions/types';
+import { GET_INGREDIENTS, POST_INGREDIENTS } from '../accions/types';
 
 const initialState = {
     ingredients: [],
@@ -14,6 +14,11 @@ export default function (state = initialState, action) {
                 ingredients: action.payload,
                 loading: true
 
+            };
+        case POST_INGREDIENTS:
+            return {
+                ...state,
+                ingredients: [action.payload, ...state.ingredients]
             };
 
         default:
