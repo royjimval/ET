@@ -53,7 +53,7 @@ class Item extends Component {
         const ingredients = Products.ingredients
         const price = Products.price
         const category = "Drink"
-        const data = { idtable, name, ingredients, price, category}
+        const data = { idtable, name, ingredients, price, category }
         console.log(idtable)
         this.props.addPreorder(data);
         toast.info(name + " is added now to your preorder :) ", {
@@ -68,184 +68,172 @@ class Item extends Component {
         const { dinner } = this.props.dinner;
         const { drink } = this.props.drink;
         const { dessert } = this.props.dessert;
-        return (
 
-            
-            <div>
+        const  role  = this.props.auth.user.role
+        if(role==='Table' || role==='all'){
 
-{/*             <Row>
-                    <Col s={6} m={4} l={3} xl={3} key={product_item._id}>
-                        <div className="card z-depth-3">
-                            <div className='card-header'>
-                                <Row className="no-marg-b">
-                                    <Col s={12} m={12} l={12} xl={12}>
-                                        <p class="left-align title truncate">{product_item.name}</p>
-                                    </Col>
-                                    <Col s={12} m={12} l={12} xl={12}>
-                                        <p className="left-align title green-text">${product_item.price}</p>
-                                    </Col>
-                                </Row>
-                            </div>
-                            <img className="card-img" src={product_item.photo} alt={product_item.name} />
-                            <div className="card-footer center">
-                                <button data-target="modal_for_categorys" className="card-btn" onClick={() => this.datamodal(product_item)}>Add Product</button>
-                            </div>
-                        </div>
-                    </Col>
-            </Row> */}
-
-                <Nav Title="Menu" />
-                <Collapsible popout >
-                    {/* Starts Brakfast Component */}
-                    <CollapsibleItem className='indigo lighten-2' header='BREAKFASTS' icon='arrow_drop_down'>
-                        <Row className="no-marg-b">
-                            <div className='space'></div>
-                            {
-                                breakfast.map((product_item) => (
-                                    <Col s={6} m={4} l={3} xl={3} key={product_item._id}>
-                                        <div className="card z-depth-3">
-                                            <div className='card-header'>
-                                                <Row className="no-marg-b">
-                                                    <Col s={12} m={12} l={12} xl={12}>
-                                                        <p class="left-align title truncate">{product_item.name}</p>
-                                                    </Col>
-                                                    <Col s={12} m={12} l={12} xl={12}>
-                                                        <p className="left-align title green-text">${product_item.price}</p>
-                                                    </Col>
-                                                </Row>
+            return (
+    
+    
+                <div>
+    
+                    <Nav Title="Menu" />
+                    <Collapsible popout >
+                        {/* Starts Brakfast Component */}
+                        <CollapsibleItem className='indigo lighten-2' header='BREAKFASTS' icon='arrow_drop_down'>
+                            <Row className="no-marg-b">
+                                <div className='space'></div>
+                                {
+                                    breakfast.map((product_item) => (
+                                        <Col s={6} m={4} l={3} xl={3} key={product_item._id}>
+                                            <div className="card z-depth-3">
+                                                <div className='card-header'>
+                                                    <Row className="no-marg-b">
+                                                        <Col s={12} m={12} l={12} xl={12}>
+                                                            <p class="left-align title truncate">{product_item.name}</p>
+                                                        </Col>
+                                                        <Col s={12} m={12} l={12} xl={12}>
+                                                            <p className="left-align title green-text">${product_item.price}</p>
+                                                        </Col>
+                                                    </Row>
+                                                </div>
+                                                <img className="card-img" src={product_item.photo} alt={product_item.name} />
+                                                <div className="card-footer center">
+                                                    <button data-target="modal_for_categorys" className="card-btn" onClick={() => this.datamodal(product_item)}>Add Product</button>
+                                                </div>
                                             </div>
-                                            <img className="card-img" src={product_item.photo} alt={product_item.name} />
-                                            <div className="card-footer center">
-                                                <button data-target="modal_for_categorys" className="card-btn" onClick={() => this.datamodal(product_item)}>Add Product</button>
+                                        </Col>
+                                    ))
+                                }
+                            </Row>
+                        </CollapsibleItem>
+    
+                        {/* Start Meal COmponent */}
+                        <CollapsibleItem className='grey darken-1' header='MEALS' icon='arrow_drop_down'>
+                            <Row className="no-marg-b">
+                                {
+                                    meal.map((product_item) => (
+                                        <Col s={6} m={4} l={3} xl={3} key={product_item._id}>
+                                            <div className="card z-depth-3">
+                                                <div className='card-header'>
+                                                    <Row className="no-marg-b">
+                                                        <Col s={12} m={12} l={12} xl={12}>
+                                                            <p class="left-align title truncate">{product_item.name}</p>
+                                                        </Col>
+                                                        <Col s={12} m={12} l={12} xl={12}>
+                                                            <p className="left-align title green-text">${product_item.price}</p>
+                                                        </Col>
+                                                    </Row>
+                                                </div>
+                                                <img className="card-img" src={product_item.photo} alt={product_item.name} />
+                                                <div className="card-footer center">
+                                                    <button data-target="modal_for_categorys" className="card-btn" onClick={() => this.datamodal(product_item)}>Add Product</button>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </Col>
-                                ))
-                            }
-                        </Row>
-                    </CollapsibleItem>
-
-                    {/* Start Meal COmponent */}
-                    <CollapsibleItem className='grey darken-1' header='MEALS' icon='arrow_drop_down'>
-                        <Row className="no-marg-b">
-                            {
-                                meal.map((product_item) => (
-                                    <Col s={6} m={4} l={3} xl={3} key={product_item._id}>
-                                        <div className="card z-depth-3">
-                                            <div className='card-header'>
-                                                <Row className="no-marg-b">
-                                                    <Col s={12} m={12} l={12} xl={12}>
-                                                        <p class="left-align title truncate">{product_item.name}</p>
-                                                    </Col>
-                                                    <Col s={12} m={12} l={12} xl={12}>
-                                                        <p className="left-align title green-text">${product_item.price}</p>
-                                                    </Col>
-                                                </Row>
+                                        </Col>
+                                    ))
+                                }
+                            </Row>
+                        </CollapsibleItem>
+    
+                        {/* Start Dinner Component */}
+                        <CollapsibleItem className='red lighten-1' header='DINNERS' icon='arrow_drop_down'>
+                            <Row className="no-marg-b">
+                                {
+                                    dinner.map((product_item) => (
+                                        <Col s={6} m={4} l={3} xl={3} key={product_item._id}>
+                                            <div className="card z-depth-3">
+                                                <div className='card-header'>
+                                                    <Row className="no-marg-b">
+                                                        <Col s={12} m={12} l={12} xl={12}>
+                                                            <p class="left-align title truncate">{product_item.name}</p>
+                                                        </Col>
+                                                        <Col s={12} m={12} l={12} xl={12}>
+                                                            <p className="left-align title green-text">${product_item.price}</p>
+                                                        </Col>
+                                                    </Row>
+                                                </div>
+                                                <img className="card-img" src={product_item.photo} alt={product_item.name} />
+                                                <div className="card-footer center">
+                                                    <button data-target="modal_for_categorys" className="card-btn" onClick={() => this.datamodal(product_item)}>Add Product</button>
+                                                </div>
                                             </div>
-                                            <img className="card-img" src={product_item.photo} alt={product_item.name} />
-                                            <div className="card-footer center">
-                                                <button data-target="modal_for_categorys" className="card-btn" onClick={() => this.datamodal(product_item)}>Add Product</button>
+                                        </Col>
+                                    ))
+                                }
+                            </Row>
+                        </CollapsibleItem>
+    
+                        {/* Start Dessert Component */}
+                        <CollapsibleItem className=' yellow lighten-2' header='DESSERTS' icon='arrow_drop_down'>
+                            <Row className="no-marg-b">
+                                {
+                                    dessert.map((product_item) => (
+                                        <Col s={6} m={4} l={3} xl={3} key={product_item._id}>
+                                            <div className="card z-depth-3">
+                                                <div className='card-header'>
+                                                    <Row className="no-marg-b">
+                                                        <Col s={12} m={12} l={12} xl={12}>
+                                                            <p class="left-align title truncate">{product_item.name}</p>
+                                                        </Col>
+                                                        <Col s={12} m={12} l={12} xl={12}>
+                                                            <p className="left-align title green-text">${product_item.price}</p>
+                                                        </Col>
+                                                    </Row>
+                                                </div>
+                                                <img className="card-img" src={product_item.photo} alt={product_item.name} />
+                                                <div className="card-footer center">
+                                                    <button data-target="modal_for_categorys" className="card-btn" onClick={() => this.datamodal(product_item)}>Add Product</button>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </Col>
-                                ))
-                            }
-                        </Row>
-                    </CollapsibleItem>
-
-                    {/* Start Dinner Component */}
-                    <CollapsibleItem className='red lighten-1' header='DINNERS' icon='arrow_drop_down'>
-                        <Row className="no-marg-b">
-                            {
-                                dinner.map((product_item) => (
-                                    <Col s={6} m={4} l={3} xl={3} key={product_item._id}>
-                                        <div className="card z-depth-3">
-                                            <div className='card-header'>
-                                                <Row className="no-marg-b">
-                                                    <Col s={12} m={12} l={12} xl={12}>
-                                                        <p class="left-align title truncate">{product_item.name}</p>
-                                                    </Col>
-                                                    <Col s={12} m={12} l={12} xl={12}>
-                                                        <p className="left-align title green-text">${product_item.price}</p>
-                                                    </Col>
-                                                </Row>
+                                        </Col>
+                                    ))
+                                }
+                            </Row>
+                        </CollapsibleItem>
+    
+                        {/* Start Drinks Component */}
+                        <CollapsibleItem className='light-green accent-1' header='DRINKS' icon='arrow_drop_down'>
+                            <Row className="no-marg-b">
+                                {
+                                    drink.map((product_item) => (
+                                        <Col s={6} m={4} l={3} xl={3} key={product_item._id}>
+                                            <div className="card z-depth-3">
+                                                <div className='card-header'>
+                                                    <Row className="no-marg-b">
+                                                        <Col s={12} m={12} l={12} xl={12}>
+                                                            <p class="left-align title truncate">{product_item.name}</p>
+                                                        </Col>
+                                                        <Col s={12} m={12} l={12} xl={12}>
+                                                            <p className="left-align title green-text">${product_item.price}</p>
+                                                        </Col>
+                                                    </Row>
+                                                </div>
+                                                <img className="card-img" src={product_item.photo} alt={product_item.name} />
+                                                <div className="card-footer center">
+                                                    <button className="card-btn" onClick={() => this.add_Preorder(product_item)}>Add Product</button>
+                                                </div>
                                             </div>
-                                            <img className="card-img" src={product_item.photo} alt={product_item.name} />
-                                            <div className="card-footer center">
-                                                <button data-target="modal_for_categorys" className="card-btn" onClick={() => this.datamodal(product_item)}>Add Product</button>
-                                            </div>
-                                        </div>
-                                    </Col>
-                                ))
-                            }
-                        </Row>
-                    </CollapsibleItem>
-
-                    {/* Start Dessert Component */}
-                    <CollapsibleItem className=' yellow lighten-2' header='DESSERTS' icon='arrow_drop_down'>
-                        <Row className="no-marg-b">
-                            {
-                                dessert.map((product_item) => (
-                                    <Col s={6} m={4} l={3} xl={3} key={product_item._id}>
-                                        <div className="card z-depth-3">
-                                            <div className='card-header'>
-                                                <Row className="no-marg-b">
-                                                    <Col s={12} m={12} l={12} xl={12}>
-                                                        <p class="left-align title truncate">{product_item.name}</p>
-                                                    </Col>
-                                                    <Col s={12} m={12} l={12} xl={12}>
-                                                        <p className="left-align title green-text">${product_item.price}</p>
-                                                    </Col>
-                                                </Row>
-                                            </div>
-                                            <img className="card-img" src={product_item.photo} alt={product_item.name} />
-                                            <div className="card-footer center">
-                                                <button data-target="modal_for_categorys" className="card-btn" onClick={() => this.datamodal(product_item)}>Add Product</button>
-                                            </div>
-                                        </div>
-                                    </Col>
-                                ))
-                            }
-                        </Row>
-                    </CollapsibleItem>
-
-                    {/* Start Drinks Component */}
-                    <CollapsibleItem className='light-green accent-1' header='DRINKS' icon='arrow_drop_down'>
-                        <Row className="no-marg-b">
-                            {
-                                drink.map((product_item) => (
-                                    <Col s={6} m={4} l={3} xl={3} key={product_item._id}>
-                                        <div className="card z-depth-3">
-                                            <div className='card-header'>
-                                                <Row className="no-marg-b">
-                                                    <Col s={12} m={12} l={12} xl={12}>
-                                                        <p class="left-align title truncate">{product_item.name}</p>
-                                                    </Col>
-                                                    <Col s={12} m={12} l={12} xl={12}>
-                                                        <p className="left-align title green-text">${product_item.price}</p>
-                                                    </Col>
-                                                </Row>
-                                            </div>
-                                            <img className="card-img" src={product_item.photo} alt={product_item.name} />
-                                            <div className="card-footer center">
-                                                <button data-target="modal_for_categorys" className="card-btn" onClick={() => this.datamodal(product_item)}>Add Product</button>
-                                            </div>
-                                        </div>
-                                    </Col>
-                                ))
-                            }
-                        </Row>
-                    </CollapsibleItem>
-
-                </Collapsible>
-
-
-
-
-
-                <ModalEdit datapass={this.state} />
-            </div >
-        )
+                                        </Col>
+                                    ))
+                                }
+                            </Row>
+                        </CollapsibleItem>
+    
+                    </Collapsible>
+    
+    
+    
+    
+    
+                    <ModalEdit datapass={this.state} />
+                </div >
+            )
+        }else{
+            return(
+              <h1>No se puede mi joven</h1>
+            )
+        }
     }
 }
 

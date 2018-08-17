@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Redirect, Component } from 'react'
 // import { Link } from 'react-router-dom';
 import { Row, Col, Button } from 'react-materialize'
 import './start.css'
@@ -46,27 +46,66 @@ class LogIn extends Component {
 
     render() {
         const { errors } = this.state
-        return (
-            <div className='bg-img  valign-wrapper'>
-                <Row className='container white z-depth-5'>
-                    <form onSubmit={this.onSubmit}>
-                        <h2 className='center grey-text text-darken-3'>Login</h2>
-                        <Col className='offset-s2 black-text' s={8}>
-                            <div>
-                                <Input name="email" value={this.state.email} onChange={this.onChange} type="email" label="email" s={12} />
-                                <span style={{ color: "red" }}>{errors.email}</span>
-                            </div>
-                            <div>
-                                <Input name="password" value={this.state.password} onChange={this.onChange} type="password" label="password" s={12} />
-                                <span style={{ color: "red" }}>{errors.password}</span>
-                            </div>
-                        </Col>
-                        <Col className='center' s={12}><Button className='green accent-4'>Login</Button></Col>
-                    </form>
-                    <Row></Row>
-                </Row>
-            </div>
-        )
+
+        const user = this.props.auth.isAuthenticated
+        const role = this.props.auth.user.role
+        if (user===false) {
+            return (
+                <div className='bg-img  valign-wrapper'>
+                    <Row className='container white z-depth-5'>
+                        <form onSubmit={this.onSubmit}>
+                            <h2 className='center grey-text text-darken-3'>Login</h2>
+                            <Col className='offset-s2 black-text' s={8}>
+                                <div>
+                                    <Input name="email" value={this.state.email} onChange={this.onChange} type="email" label="email" s={12} />
+                                    <span style={{ color: "red" }}>{errors.email}</span>
+                                </div>
+                                <div>
+                                    <Input name="password" value={this.state.password} onChange={this.onChange} type="password" label="password" s={12} />
+                                    <span style={{ color: "red" }}>{errors.password}</span>
+                                </div>
+                            </Col>
+                            <Col className='center' s={12}><Button className='green accent-4'>Login</Button></Col>
+                        </form>
+                        <Row></Row>
+                    </Row>
+                </div>
+            )
+        } else {
+            switch(role){
+                case 'all':{
+                    this.props.history.push('/Admin')
+                    console.log('adm')
+                }
+                break;
+                case 'Table':{
+                    this.props.history.push('/ClientStart')
+                    console.log('ta')
+                }
+                break;
+                case 'Chef':{
+                    this.props.history.push('/Chef')
+                    console.log('chef')
+                }
+                break;
+                case 'Waiter':{
+                    this.props.history.push('/Waiter')
+                    console.log('wai')
+                }
+                break;
+                case 'Cashier':{
+                    this.props.history.push('/Cashier')
+                    console.log('cash')
+                }
+                break;
+            }
+            return(
+                <div>
+                    <h1>{role}</h1>
+                </div>
+            )
+
+        }
     }
 }
 
