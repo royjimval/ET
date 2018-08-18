@@ -61,7 +61,7 @@ sumPrices(preorder){
 					<Nav />
 					<Row>
 					<Col s={2} m={2} l={2} xl={2} className="center">
-						<Button className="ch-btn cyan darken-2">
+							<Button onClick={() => this.getProducts("1")} className="ch-btn cyan darken-2">
 							<Row className="no-marg-b">
 								<img src="assets/table.svg" alt="Table Icon" width="40px" />
 							</Row>

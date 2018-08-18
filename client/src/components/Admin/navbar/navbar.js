@@ -94,6 +94,19 @@ class NavBarAdmin extends Component {
                 </div>
   
               </Link>
+              <Link to="/addIngredient" >
+                <div className="contenedor" id="seven">
+                  <Row>
+                    <Col>
+                      <img class="icon" src="assets/menu.svg" />
+                    </Col>
+                    <Col>
+                      <p className="texto">Add ingredient</p>
+                    </Col>
+                  </Row>
+                </div>
+
+              </Link>
   
   
               <div className="login right" id="uno">

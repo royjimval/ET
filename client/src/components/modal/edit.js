@@ -67,7 +67,9 @@ class modalEdit extends Component {
             labelCost = item.split('$')
             extra= parseInt(labelCost[1])
             sumExtra=sumExtra+extra
+            
         })
+        console.log(sumExtra)
         return(sumExtra)
     }
 
