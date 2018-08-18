@@ -15,7 +15,8 @@ let cont2 = 0; let cont1 = 0; let cont3 = 0; let cont4 = 0; let cont5 = 0; let c
 class Chef extends Component {
 
     componentDidMount() {
-        this.props.getPreorderbytable()
+		this.props.getPreorderbytable()
+		this.updateCosults()
         this.interval1 = setInterval(() => this.updateCosults(), 30000);
         this.props.getProductCashier()
       }
@@ -44,10 +45,9 @@ class Chef extends Component {
 
     changecolor1(table1) {
 		cont1 = 0;
-		table1.map((each_item) => {
-			cont1 = cont1 + 1;
+		table1.map(() => {
+			cont1++;
 		});
-
 		if (cont1 === 0) {
 			return (
 				<Col s={2} m={2} l={2} xl={2} className="center">
@@ -244,10 +244,30 @@ class Chef extends Component {
 
     seeOrder = (table) => {
         this.props.getPreorderbytable(table);
+		switch(table){
+			case '1':{
+				this.props.get_table1()
+			}break;
+			case '2': {
+				this.props.get_table2()
+			} break;
+			case '3': {
+				this.props.get_table3()
+			} break;
+			case '4': {
+				this.props.get_table4()
+			} break;
+			case '5': {
+				this.props.get_table5()
+			} break;
+			case '6': {
+				this.props.get_table6()
+			} break;
+		}
     }
 
     seeOrderWaiter = (table) => {
-        this.props.getProductCashier(table);
+		this.props.getProductCashier(table);
     }
 
     render() {
