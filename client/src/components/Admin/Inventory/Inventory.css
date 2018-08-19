@@ -1,0 +1,67 @@
+.divInventory{
+    margin-left: 5%;
+    margin-top: -1%;
+	width: 90%;
+	height:100%;
+	box-sizing: border-box;
+    background: rgba(0,0,0,.5);
+    color: #fff;
+    border: 2px solid green;
+
+}
+.tbbodyInventory {
+    display:block;
+    height:300px;
+    overflow:auto;
+    }
+    thead
+    {
+        display:table;
+        width:100%;
+        table-layout:fixed;
+        background: rgba(0,0,0,.5);
+    }
+     .tbbodyInventory{
+        display:table;
+        width:100%;
+        table-layout:fixed;
+        background: rgba(0,0,0,.5);
+        margin-bottom: -3%;
+     }    
+     tr {
+        display:table;
+        width:100%;
+        table-layout:fixed;
+        margin-bottom: -3%;
+    }  
+    .tableinventory{
+        margin-top: 2%;
+        margin-left: 3%;
+        margin-right: 3%;    
+        width:94%;
+        border: 1px solid green;
+    }
+    .buttonsearch
+    {
+        margin-top: 5%;
+    }
+    .rowheaderinventory
+    {
+        margin-left: 2%;
+        height: 90%;
+    }
+    .divheaderinventory{
+        background: rgba(0,0,0,.5);  
+    }
+    .tfootinventory
+    {
+        background: rgba(0,0,0,.5);
+    }
+   
+    .divtextInventory{
+        height: 20px;
+    }
+
+    .textInventory{
+        margin-top: 15%;
+    }

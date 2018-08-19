@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 class NavBarAdmin extends Component {
   render() {
     const  role  = this.props.auth.user.role
-    if(role==='all'){
+
 
       return (
         <div className="navmenu">
@@ -44,6 +44,7 @@ class NavBarAdmin extends Component {
                 </div>
               </Link>
   
+              <Link to="/InventoryView">
               <div className="contenedor" id="tres">
                 <Row>
                   <Col>
@@ -54,6 +55,7 @@ class NavBarAdmin extends Component {
                   </Col>
                 </Row>
               </div>
+              </Link>
   
               <div className="contenedor" id="cuatro">
                 <Row>
@@ -120,11 +122,6 @@ class NavBarAdmin extends Component {
           </Row>
         </div >
       )
-    }else{
-      return(
-        <h1>No se puede mi joven</h1>
-      )
-    }
   }
 }
 
