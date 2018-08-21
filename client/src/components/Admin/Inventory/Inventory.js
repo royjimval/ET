@@ -4,7 +4,7 @@ import { get_ingredients, get_ingredient_id } from '../../../accions/ingredients
 import NavBarAdmin from '../navbar/navbar';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import './inventory.css'
+// import './inventory.css'
 import { putInventory } from '../../../accions/inventoryActions';
 let current_Ingredient;
 
