@@ -21,7 +21,7 @@ import Cashier from './components/cashier/cashier';
 import AddProduct from './components/Admin/addProduct/addProduct'
 import ReportsView from './components/Admin/Reports/ReportsView';
 import AddIngredient from './components/Admin/addIngredient/addIngredient';
-import InventoryView from './components/Admin/Inventory/Inventoryview';
+import Inventory from './components/Admin/Inventory/Inventory';
 
 //check for tokens
 if(localStorage.jwtToken){
@@ -53,7 +53,7 @@ class App extends Component {
             <Route path="/addProduct" component={AddProduct} />
             <Route path="/ReportsView" component={ReportsView} />
             <Route path="/addIngredient" component= {AddIngredient} />
-            <Route path="/InventoryView" component= {InventoryView} />
+            <Route path="/inventory" component={Inventory} />
           </div>
         </Router>
   </Provider>
