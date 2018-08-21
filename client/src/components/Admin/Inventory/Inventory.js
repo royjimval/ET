@@ -10,19 +10,19 @@ let current_Ingredient;
 
 class Inventory extends Component {
 
-    constructor(){
+    constructor() {
         super();
-        this.state={
-            name:'',
+        this.state = {
+            name: '',
             sellprice: '',
             stock: '',
-            buyprice:'',
+            buyprice: '',
         }
-        this.handleChange=this.handleChange.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
 
-    handleChange=(e)=>{
-        this.setState({[e.target.name]: e.target.value})
+    handleChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value })
     }
 
 
@@ -43,11 +43,11 @@ class Inventory extends Component {
         const sellprice = current_Ingredient.Sellprice
         const stock = current_Ingredient.stock
         const buyPrice = current_Ingredient.buyPrice
-        const data = { id, name, sellprice, stock, buyPrice}
+        const data = { id, name, sellprice, stock, buyPrice }
         console.log(data)
     }
 
-    handlesumitSellprice = (e) =>{
+    handlesumitSellprice = (e) => {
         e.preventDefault();
         console.log(current_Ingredient)
         const id = current_Ingredient._id
@@ -57,7 +57,7 @@ class Inventory extends Component {
         const buyPrice = current_Ingredient.buyPrice
         const data = { id, name, sellprice, stock, buyPrice }
         console.log(data)
-    }    
+    }
 
     handlesumitStock = (e) => {
         e.preventDefault();
@@ -67,7 +67,7 @@ class Inventory extends Component {
         const sellprice = current_Ingredient.Sellprice
         const stock = this.state.stock
         const buyPrice = current_Ingredient.buyPrice
-        const data = {id, name, sellprice, stock, buyPrice }
+        const data = { id, name, sellprice, stock, buyPrice }
         console.log(data)
     }
 
@@ -79,13 +79,14 @@ class Inventory extends Component {
         const sellprice = current_Ingredient.Sellprice
         const stock = current_Ingredient.stock
         const buyPrice = this.state.buyprice
-        const data = {id, name, sellprice, stock, buyPrice }
-        console.log(data)    }
+        const data = { id, name, sellprice, stock, buyPrice }
+        console.log(data)
+    }
 
     render() {
         const { ingredients } = this.props.ingredients
         const { ingredientid } = this.props.ingredients
-        current_Ingredient= ingredientid
+        current_Ingredient = ingredientid
         return (
             <div>
                 <Row >
@@ -126,37 +127,37 @@ class Inventory extends Component {
 
                             <Collapsible popout>
                                 <CollapsibleItem header={"Actual name: " + ingredientid.name} icon='arrow_drop_down'>
-                                
+
                                     <form onSubmit={this.handlesumitName}>
-                                        <Input value={this.state.name} onChange={this.handleChange} type="text"  name="name" s={12} label="New name" />
+                                        <Input value={this.state.name} onChange={this.handleChange} type="text" name="name" s={12} label="New name" />
                                         <Button className='green' waves="light" value='submit' large >Update</Button>
                                     </form>
 
                                 </CollapsibleItem>
-                                <CollapsibleItem header={"Actual sell price: "+ingredientid.Sellprice} icon='arrow_drop_down'>
-                                    
+                                <CollapsibleItem header={"Actual sell price: " + ingredientid.Sellprice} icon='arrow_drop_down'>
+
                                     <form onSubmit={this.handlesumitSellprice}>
                                         <Input value={this.state.sellprice} onChange={this.handleChange} type="number" name="sellprice" s={12} label="New sell price" />
                                         <Button className='green' waves="light" value='submit' large >Update</Button>
                                     </form>
 
-                                 </CollapsibleItem>
-                                <CollapsibleItem header={"Actual in Stock: "+ingredientid.stock} icon='arrow_drop_down'>
-                                    
+                                </CollapsibleItem>
+                                <CollapsibleItem header={"Actual in Stock: " + ingredientid.stock} icon='arrow_drop_down'>
+
                                     <form onSubmit={this.handlesumitStock}>
                                         <Input value={this.state.stock} onChange={this.handleChange} name="stock" s={12} label="New Stock" />
                                         <Button className='green' waves="light" value='submit' large >Update</Button>
-                                    </form>       
+                                    </form>
 
-                                  </CollapsibleItem>
-                                <CollapsibleItem header={"Atual buy price: "+ingredientid.buyPrice} icon='arrow_drop_down'>
-                                   
+                                </CollapsibleItem>
+                                <CollapsibleItem header={"Atual buy price: " + ingredientid.buyPrice} icon='arrow_drop_down'>
+
                                     <form onSubmit={this.handlesumitBuyprice}>
                                         <Input value={this.state.buyprice} onChange={this.handleChange} name="buyprice" s={12} label="New buy price " />
                                         <Button className='green' waves="light" value='submit' large >Update</Button>
-                                    </form>   
+                                    </form>
 
-                                  </CollapsibleItem>
+                                </CollapsibleItem>
                             </Collapsible>
                         </Row>
                     </Col>

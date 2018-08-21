@@ -53,7 +53,11 @@ class App extends Component {
             <Route path="/addProduct" component={AddProduct} />
             <Route path="/ReportsView" component={ReportsView} />
             <Route path="/addIngredient" component= {AddIngredient} />
+<<<<<<< HEAD
             <Route path="/inventory" component={Inventory} />
+=======
+            <Route path="/InventoryView" component= {InventoryView} />
+>>>>>>> bb0c8621c5dac50d52a06ff4f7f84a4fc423e37a
           </div>
         </Router>
   </Provider>
