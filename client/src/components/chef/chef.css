@@ -30,8 +30,8 @@
 }
 
 .scrollExits {
-    min-height: 50px;
-    height: 70vh;
+    min-height: 0px;
+max-height: 300px;
     overflow-y: scroll;
 }
 

@@ -37,11 +37,11 @@ class Order extends Component {
 
             }
         })
-        this.props.getPreorder(table)
         toast.info("Your order is being prepared by the chef ;)", {
             position: toast.POSITION.TOP_RIGHT,
             className: 'black'
         });
+        setTimeout(()=>{this.props.getPreorder(table)},100)
     };
 
     sumPrice(price) {
