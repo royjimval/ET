@@ -8,6 +8,7 @@ import NavBarAdmin from '../navbar/navbar';
 import './General.css';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Unauthorized from '../../start/Unauthorized';
 
 
 class General extends Component {
@@ -78,7 +79,7 @@ class General extends Component {
             );
         } else {
             return (
-                <h1>No se puede mi joven</h1>
+                <Unauthorized/>
             )
         }
     }

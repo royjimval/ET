@@ -7,6 +7,7 @@ import PropTypes from 'prop-types'
 import { ToastContainer, toast } from 'react-toastify';
 import { connect } from 'react-redux'
 import "./addProduct.css"
+import Unauthorized from '../../start/Unauthorized';
 
 
 
@@ -138,7 +139,7 @@ class addProductClass extends Component {
 			)
 		} else {
 			return (
-				<h1>No se puede mi joven</h1>
+				<Unauthorized/>
 			)
 		}
 	}

@@ -53,23 +53,24 @@ class Chef extends Component {
 				<Col s={2} m={2} l={2} xl={2} className="center">
 					<Button onClick={() => this.sendTable('1')} className="ch-btn cyan darken-2">
 						<Row className="no-marg-b">
-							<img src="assets/table.svg" alt="Table Icon" width="40px" />
+							<img className="btn-img" src="assets/table.svg" alt="" />
 						</Row>
-						<Row className="no-marg-b">Table 1</Row>
+						<Row className="no-marg-b">
+							Table 1
+						</Row>
 					</Button>
 				</Col>
 			);
 		} else {
 			return (
 				<Col s={2} m={2} l={2} xl={2} className="center">
-					<span className="chef-badge red white-text">{cont1}</span>
 					<Button onClick={() => this.sendTable('1')} className="ch-btn green">
-						<Row className="no-marg-b">
-							<img src="assets/table.svg" alt="Table Icon" width="40px" />
+					<Row className="no-marg-b">
+							<img className="btn-img" src="assets/table.svg" alt="" />
 						</Row>
-						<Row className="no-marg-b">Table 1</Row>
-						{/* <Badge className="chef-badge red white-text">{cont1}</Badge> */}
+						Table 1
 					</Button>
+					<span className="chef-badge red white-text">{cont1}</span>
 				</Col>
 			);
 		}
@@ -85,23 +86,27 @@ class Chef extends Component {
 			return (
 				<Col s={2} m={2} l={2} xl={2} className="center">
 					<Button onClick={() => this.sendTable('2')} className="ch-btn cyan darken-2">
-						<Row className="no-marg-b">
-							<img src="assets/table.svg" alt="Table Icon" width="40px" />
+					<Row className="no-marg-b">
+							<img className="btn-img" src="assets/table.svg" alt="" />
 						</Row>
-						<Row className="no-marg-b">Table 2</Row>
+						<Row className="no-marg-b">
+							Table 2
+						</Row>
 					</Button>
 				</Col>
 			);
 		} else {
 			return (
 				<Col s={2} m={2} l={2} xl={2} className="center">
+				<span className="chef-badge red white-text">{cont2}</span>
 					<Button onClick={() => this.sendTable('2')} className="ch-btn green">
-						<Row className="no-marg-b">
-							<img src="assets/table.svg" alt="Table Icon" width="40px" />
+					<Row className="no-marg-b">
+							<img className="btn-img" src="assets/table.svg" alt="" />
 						</Row>
-						<Row className="no-marg-b">Table 2</Row>
+						<Row className="no-marg-b">
+							Table 2
+						</Row>
 					</Button>
-					<Badge className="chef-badge red white-text">{cont2}</Badge>
 				</Col>
 			);
 		}
@@ -117,21 +122,26 @@ class Chef extends Component {
 			return (
 				<Col s={2} m={2} l={2} xl={2} className="center">
 					<Button onClick={() => this.sendTable('3')} className="ch-btn cyan darken-2">
-						<Row className="no-marg-b">
-							<img src="assets/table.svg" alt="Table Icon" width="40px" />
+					<Row className="no-marg-b">
+							<img className="btn-img" src="assets/table.svg" alt="" />
 						</Row>
-						<Row className="no-marg-b">Table 3</Row>
+						<Row className="no-marg-b">
+							Table 3
+						</Row>
 					</Button>
 				</Col>
 			);
 		} else {
 			return (
 				<Col s={2} m={2} l={2} xl={2} className="center">
+						<span className="chef-badge red white-text">{cont3}</span>
 					<Button onClick={() => this.sendTable('3')} className="ch-btn green">
 						<Row className="no-marg-b">
-							<img src="assets/table.svg" alt="Table Icon" width="40px" />
+							<img className="btn-img" src="assets/table.svg" alt="" />
 						</Row>
-						<Row className="no-marg-b">Table 3</Row>
+						<Row className="no-marg-b">
+							Table 3
+						</Row>
 					</Button>
 					<Badge className="chef-badge red white-text">{cont3}</Badge>
 				</Col>
@@ -150,7 +160,7 @@ class Chef extends Component {
 				<Col s={2} m={2} l={2} xl={2} className="center">
 					<Button onClick={() => this.sendTable('4')} className="ch-btn cyan darken-2">
 						<Row className="no-marg-b">
-							<img src="assets/table.svg" alt="Table Icon" width="40px" />
+							<img className="btn-img" src="assets/table.svg" alt="" />
 						</Row>
 						<Row className="no-marg-b">Table 4</Row>
 					</Button>{' '}
@@ -159,11 +169,14 @@ class Chef extends Component {
 		} else {
 			return (
 				<Col s={2} m={2} l={2} xl={2} className="center">
+					<span className="chef-badge red white-text">{cont4}</span>
 					<Button onClick={() => this.sendTable('4')} className="ch-btn green">
 						<Row className="no-marg-b">
-							<img src="assets/table.svg" alt="Table Icon" width="40px" />
+							<img className="btn-img" src="assets/table.svg" alt="" />
 						</Row>
-						<Row className="no-marg-b">Table 4</Row>
+						<Row className="no-marg-b">
+							Table 4
+						</Row>
 					</Button>
 					<Badge className="chef-badge red white-text">{cont4}</Badge>
 				</Col>
@@ -181,23 +194,27 @@ class Chef extends Component {
 			return (
 				<Col s={2} m={2} l={2} xl={2} className="center">
 					<Button onClick={() => this.sendTable('5')} className="ch-btn cyan darken-2">
-						<Row className="no-marg-b">
-							<img src="assets/table.svg" alt="Table Icon" width="40px" />
+					<Row className="no-marg-b">
+							<img className="btn-img" src="assets/table.svg" alt="" />
 						</Row>
-						<Row className="no-marg-b">Table 5</Row>
-					</Button>{' '}
+						<Row className="no-marg-b">
+							Table 5
+						</Row>
+					</Button>
 				</Col>
 			);
 		} else {
 			return (
 				<Col s={2} m={2} l={2} xl={2} className="center">
+						<span className="chef-badge red white-text">{cont5}</span>
 					<Button onClick={() => this.sendTable('5')} className="ch-btn green">
 						<Row className="no-marg-b">
-							<img src="assets/table.svg" alt="Table Icon" width="40px" />
+							<img className="btn-img" src="assets/table.svg" alt="" />
 						</Row>
-						<Row className="no-marg-b">Table 5</Row>
+						<Row className="no-marg-b">
+							Table 5
+						</Row>
 					</Button>
-					<Badge className="chef-badge red white-text">{cont5}</Badge>
 				</Col>
 			);
 		}
@@ -212,25 +229,28 @@ class Chef extends Component {
 		if (cont6 === 0) {
 			return (
 				<Col s={2} m={2} l={2} xl={2} className="center">
-					<Button onClick={() => this.sendTable('5')} className="ch-btn cyan darken-2">
-						<Row className="no-marg-b">
-							<img src="assets/table.svg" alt="Table Icon" width="40px" />
+					<Button onClick={() => this.sendTable('6')} className="ch-btn cyan darken-2">
+					<Row className="no-marg-b">
+							<img className="btn-img" src="assets/table.svg" alt="" />
 						</Row>
-						<Row className="no-marg-b">Table 5</Row>
-					</Button>{' '}
-					{' '}
+						<Row className="no-marg-b">
+							Table 6
+						</Row>
+					</Button>
 				</Col>
 			);
 		} else {
 			return (
 				<Col s={2} m={2} l={2} xl={2} className="center">
-					<Button onClick={() => this.sendTable('5')} className="ch-btn green">
-						<Row className="no-marg-b">
-							<img src="assets/table.svg" alt="Table Icon" width="40px" />
+					<span className="chef-badge red white-text">{cont6}</span>
+					<Button onClick={() => this.sendTable('6')} className="ch-btn green">
+					<Row className="no-marg-b">
+							<img className="btn-img" src="assets/table.svg" alt="" />
 						</Row>
-						<Row className="no-marg-b">Table 5</Row>
+						<Row className="no-marg-b">
+							Table 6
+						</Row>
 					</Button>
-					<Badge className="chef-badge red white-text">{cont5}</Badge>
 				</Col>
 			);
 		}
@@ -285,7 +305,7 @@ class Chef extends Component {
 		
 			return (
 				<div>
-					<Barnav />
+					<Barnav NavTitle="Chef" />
 					<div className='m-top20' />
 					<Row>
 						{
@@ -315,15 +335,15 @@ class Chef extends Component {
 					</Row>
 					<div className='m-top20'/>
 					<Row>
-						<Col className='offset-m1' m={5}>
+						<Col className='offset-m1' s={12} m={5}>
 							<Collection header="Entries">
 							<div className='scrollExits'>
 								{
 									preorder.map(eachPreorder => {
 										return (
-											<Col m={4}>
+											<Col m={12} l={6}>
 												<Collection>
-													<CollectionItem className='orange white-text'><Button onClick={() => { updateFinished(eachPreorder), setTimeout(()=>this.seeOrder(lastTable),100) }} waves='light' flat className='transparent white-text'> {eachPreorder.name}</Button></CollectionItem>
+													<CollectionItem className='no-padding center-align orange white-text'><Button onClick={() => { updateFinished(eachPreorder), setTimeout(()=>this.seeOrder(lastTable),100) }} waves='light' flat className='transparent white-text'> {eachPreorder.name}</Button></CollectionItem>
 													{
 														eachPreorder.ingredients.map(eachIngredients => {
 															return (
@@ -341,7 +361,7 @@ class Chef extends Component {
 								</div>
 							</Collection>
 						</Col>
-						<Col m={5}>
+						<Col s={12} m={5}>
 							<Collection header="Exits">
 							<div className='scrollExits'>
 								{

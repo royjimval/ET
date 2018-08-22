@@ -7,7 +7,11 @@ export default class Barnav extends Component {
   render() {
     return (
       <div>
-
+        <div className='container'>
+          <h1 className='centered ls'>
+            {this.props.NavTitle}
+          </h1>
+        </div>
         <div>
           <Parallax className='header' imageSrc="https://source.unsplash.com/collection/1113375/900x550" />
         </div>

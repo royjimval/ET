@@ -134,56 +134,58 @@ class modalEdit extends Component {
                         <Button className='red' waves="light" modal="close" onClick={() => { this.setCountToOne() }} ><Icon>close</Icon></Button>
                     </div>
                 }>
-                    <Row>
+                    <Row className="no-marg-b">
                         <Col s={6} m={6} l={6}>
                             <Row className='half-marg-b center-align'>
                                 <MediaBox className="modal-img" src={this.props.datapass.photo} caption={this.props.datapass.name} />
                             </Row>
-                            <Row className="valign-wrapper">
-                                <Button className='green accent-4' waves="light" onClick={() => this.resCount()}><Icon>keyboard_arrow_down</Icon></Button>
-                                <Col s={2} m={2}><h5>{this.state.count}</h5></Col>
-                                <Button className='green accent-4' waves="light" onClick={() => this.sumCount()}><Icon>keyboard_arrow_up</Icon></Button>
-                                <Col s={6} m={6}>
-                                    {this.returnPrice()}
-                                </Col>
+                            <Row className="center-align">
+                                <Col s={12} m={5}><Button className='green accent-4' waves="light" onClick={() => this.resCount()}><Icon>keyboard_arrow_down</Icon></Button></Col>
+                                <Col s={12} m={2}><h5>{this.state.count}</h5></Col>
+                                <Col s={12} m={5}><Button className='green accent-4' waves="light" onClick={() => this.sumCount()}><Icon>keyboard_arrow_up</Icon></Button></Col>
                             </Row>
                         </Col>
-                        <form onSubmit={this.handleSubmit} ref={form => this.form = form}>
-                            <Col s={6} m={6} l={6}>
-                                <h5 className='center'>Ingredients</h5>
+
+                        <Col s={6} m={6} l={6}>
+                            <form onSubmit={this.handleSubmit} ref={form => this.form = form}>
                                 <Row className="no-marg-b">
-                                    {this.props.datapass.ingredients.map(ingredien => {
-                                        return (
-                                            <Col m={4}>
-
-                                            <Input name="FoodIngredients" type='checkbox' checked key={ingredien[0]} value={ingredien[0]} label={ingredien[0]} />
-
-                                            </Col>
-                                        )
-                                    })}
+                                    <Col s={12} m={12} l={12} className="blue">
+                                        <h5 className='center'>Ingredients</h5>
+                                        {this.props.datapass.ingredients.map(ingredien => {
+                                            return (
+                                                <Col s={12} m={6} l={6} xl={6}>
+                                                    <Input name="FoodIngredients" type='checkbox' checked key={ingredien[0]} value={ingredien[0]} label={ingredien[0]} />
+                                                </Col>
+                                            )
+                                        })}
+                                    </Col>
                                 </Row>
                                 <Row>
-                                    <Col s={12} m={12} l={12}>
+                                    <Col s={12} m={12} l={12} className="red">
                                         <h5 className='center'>Extras</h5>
                                         <Row className='no-marg-b'>
                                             {
                                                 this.props.datapass.extra.map(extra => {
                                                     return (
-                                                        <Col m={4}>
-
-                                                        <Input className='center' onClick={()=>this.getTotalProduct()} name="FoodExtra" type='checkbox' key={extra[0]} value={extra[0]+" $"+extra[1]} label={extra[0]+" $"+extra[1]} />
-
+                                                        <Col s={12} m={6} l={12} xl={6}>
+                                                            <Input className='center' onClick={() => this.getTotalProduct()} name="FoodExtra" type='checkbox' key={extra[0]} value={extra[0] + " $" + extra[1]} label={extra[0] + " $" + extra[1]} />
                                                         </Col>
                                                     )
                                                 })
                                             }
                                         </Row>
-                                        <p className='center-align grey-text'><strong>each extra ingredient has a price</strong></p>
                                     </Col>
                                 </Row>
-                                <Button large className='green accent-4' waves="light" modal="close">Add</Button>
-                            </Col>
-                        </form>
+                                <Row className="no-marg-b">
+                                <Col m={6}>
+                                    {this.returnPrice()}
+                                </Col>
+                                <Col m={6}>
+                                    <Button className='center-align green accent-4' waves="light" modal="close">Add</Button>
+                                </Col>
+                                </Row>
+                            </form>
+                        </Col>
                     </Row>
                 </Modal>
 

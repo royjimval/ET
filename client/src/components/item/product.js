@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Nav from '../header/header';
 import '../item/item.css';
-import { Col, Icon, Row, Button, Collapsible, CollapsibleItem } from 'react-materialize';
+import { Col, Row, Button, Collapsible, CollapsibleItem } from 'react-materialize';
 import ModalEdit from '../modal/edit'
 import { getproduct_Breakfast, getproduct_Meal, getproduct_Dessert, getproduct_Dinner, getproduct_Drink } from '../../accions/productAccion';
 import { toast } from 'react-toastify'
@@ -76,7 +76,6 @@ class Item extends Component {
     
     
                 <div>
-    
                     <Nav Title="Menu" />
                     <Collapsible popout >
                         {/* Starts Brakfast Component */}
@@ -86,7 +85,7 @@ class Item extends Component {
                                 {
                                     breakfast.map((product_item) => (
                                         <Col s={6} m={4} l={3} xl={3} key={product_item._id}>
-                                            <div className="card z-depth-3">
+                                            <div className="card">
                                                 <div className='card-header'>
                                                     <Row className="no-marg-b">
                                                         <Col s={12} m={12} l={12} xl={12}>
@@ -99,7 +98,7 @@ class Item extends Component {
                                                 </div>
                                                 <img className="card-img" src={product_item.photo} alt={product_item.name} />
                                                 <div className="card-footer center">
-                                                    <button data-target="modal_for_categorys" className="card-btn" onClick={() => this.datamodal(product_item)}>Add Product</button>
+                                                    <Button className="green accent-4" data-target="modal_for_categorys" onClick={() => this.datamodal(product_item)}>Add Product</Button>
                                                 </div>
                                             </div>
                                         </Col>
@@ -127,7 +126,7 @@ class Item extends Component {
                                                 </div>
                                                 <img className="card-img" src={product_item.photo} alt={product_item.name} />
                                                 <div className="card-footer center">
-                                                    <button data-target="modal_for_categorys" className="card-btn" onClick={() => this.datamodal(product_item)}>Add Product</button>
+                                                    <Button className="green accent-4" data-target="modal_for_categorys" onClick={() => this.datamodal(product_item)}>Add Product</Button>
                                                 </div>
                                             </div>
                                         </Col>
@@ -155,7 +154,7 @@ class Item extends Component {
                                                 </div>
                                                 <img className="card-img" src={product_item.photo} alt={product_item.name} />
                                                 <div className="card-footer center">
-                                                    <button data-target="modal_for_categorys" className="card-btn" onClick={() => this.datamodal(product_item)}>Add Product</button>
+                                                <Button className="green accent-4" data-target="modal_for_categorys" onClick={() => this.datamodal(product_item)}>Add Product</Button>
                                                 </div>
                                             </div>
                                         </Col>
@@ -165,7 +164,7 @@ class Item extends Component {
                         </CollapsibleItem>
     
                         {/* Start Dessert Component */}
-                        <CollapsibleItem className=' yellow lighten-2' header='DESSERTS' icon='arrow_drop_down'>
+                        <CollapsibleItem className='yellow lighten-2' header='DESSERTS' icon='arrow_drop_down'>
                             <Row className="no-marg-b">
                                 {
                                     dessert.map((product_item) => (
@@ -183,7 +182,7 @@ class Item extends Component {
                                                 </div>
                                                 <img className="card-img" src={product_item.photo} alt={product_item.name} />
                                                 <div className="card-footer center">
-                                                    <button data-target="modal_for_categorys" className="card-btn" onClick={() => this.datamodal(product_item)}>Add Product</button>
+                                                    <Button className="green accent-4" data-target="modal_for_categorys" onClick={() => this.datamodal(product_item)}>Add Product</Button>
                                                 </div>
                                             </div>
                                         </Col>
@@ -211,7 +210,7 @@ class Item extends Component {
                                                 </div>
                                                 <img className="card-img" src={product_item.photo} alt={product_item.name} />
                                                 <div className="card-footer center">
-                                                    <button className="card-btn" onClick={() => this.add_Preorder(product_item)}>Add Product</button>
+                                                    <Button className="green accent-4" onClick={() => this.add_Preorder(product_item)}>Add Product</Button>
                                                 </div>
                                             </div>
                                         </Col>
