@@ -20,15 +20,12 @@ class Cashier extends Component {
 	constructor() {
 		super();
 		this.state = {
-			totals: 0,
 			pay: 0,
 			change: 0,
-			flag: 0,
-			flag1: 0,
-			dlls:0,
-			coins:0,
+			dlls: 0,
+			coins: 0,
 		};
-		this.onChange=this.onChange.bind(this)
+		this.onChange = this.onChange.bind(this)
 	};
 
 	componentDidMount() {
@@ -36,47 +33,20 @@ class Cashier extends Component {
 		this.ResetPayandChange()
 	}
 
-	onChange=(e)=>{
-		this.setState({[e.target.name]:e.target.value})
+	onChange = (e) => {
+		this.setState({ [e.target.name]: e.target.value })
 		console.log(e.target.value)
 	}
 
 	ResetPayandChange() {
-		this.setState({ flag: 0 })
-
 		pay = 0;
-
-		console.log('ya salio')
 		this.setState({ pay: 0 })
 		this.setState({ change: 0 })
-		this.setState({dlls:0})
-		this.setState({coins:0})
+		this.setState({ dlls: 0 })
+		this.setState({ coins: 0 })
 	}
 
-	addPayMoney(money) {
 
-		if (total > 0) {
-			let restChange = 0;
-			pay = pay + money
-			this.setState({ pay: pay })
-			if (this.state.totals === 0) {
-				this.setState({ totals: total })
-			}
-			if (this.state.change === 0 && this.state.pay === 0) {
-				restChange = total;
-			} else {
-				restChange = this.state.change
-			}
-			this.setState({ change: restChange - money })
-
-			console.log(pay)
-			console.log(total)
-			if (pay === total) {
-				console.log('ya entro')
-				this.setState({ flag: 1 })
-			}
-		}
-	}
 
 	showChange() {
 		if (this.state.change > 0 || this.state.change === 0) {
@@ -99,16 +69,6 @@ class Cashier extends Component {
 
 	}
 
-	showPayButton(preorderCashier, id_order) {
-		return (
-			<div>
-				<Row className="center-align">
-					<Button onClick={() => { this.onPutPreorder(preorderCashier, id_order), this.ResetPayandChange() }} >Pay</Button>
-				</Row>
-			</div>
-		)
-	}
-
 	showTotalDlls() {
 		let dlls = total;
 		dlls = roundTo.down(dlls / 18, 2)
@@ -126,12 +86,26 @@ class Cashier extends Component {
 	}
 
 	getProducts(item) {
-		this.setState({ flag1: 1 })
 		this.props.getProductCashier(item);
 	}
 
+	addPayMoney(money) {
+
+		if (total > 0) {
+			let restChange = 0;
+			pay = pay + money
+			this.setState({ pay: pay })
+			if (this.state.change === 0 && this.state.pay === 0) {
+				restChange = total;
+			} else {
+				restChange = this.state.change
+			}
+			this.setState({ change: restChange - money })
+		}
+	}
+
 	onPutPreorder = (preorder, id_order) => {
-		if (this.state.flag === 1) {
+		if (total < pay || total === pay) {
 
 			id_order.map(id => (
 				new_id = id.order,
@@ -155,6 +129,19 @@ class Cashier extends Component {
 			alert("No se puede realizar esta accion aun")
 		}
 	};
+
+	CheckInputisZero(money) {
+		if (money === 'dlls') {
+			if (this.state.dlls > 0) {
+				this.addPayMoney(this.state.dlls * 18)
+			}
+		}
+		if (money === 'coins') {
+			if(this.state.coins>0){
+				this.addPayMoney(this.state.coins)
+			}
+		}
+	}
 
 	render() {
 		const { preorderCashier } = this.props.preorderCashier;
@@ -244,7 +231,6 @@ class Cashier extends Component {
 
 													</CollectionItem>
 												))
-
 										}
 									</div>
 								</Collection>
@@ -253,21 +239,21 @@ class Cashier extends Component {
 								<div className="cash-wrapper">
 									<Row className="center">
 
-										
 
-											<Col className="right-align" s={12} m={3}>
-												<h5>Total</h5>
-											</Col>
-											<Col className="left-align" s={6} m={3}>
-												<h5 className="red-text">$ {total}</h5>
-											</Col>
 
-											<Col className="right-align" s={6} m={3}>
-												<h5>Total(Dlls)</h5>
-											</Col>
-											<Col className="left-align" s={6} m={3}>
-												<h5 className="red-text">$ {this.showTotalDlls()}</h5>
-											</Col>
+										<Col className="right-align" s={12} m={3}>
+											<h5>Total</h5>
+										</Col>
+										<Col className="left-align" s={6} m={3}>
+											<h5 className="red-text">$ {total}</h5>
+										</Col>
+
+										<Col className="right-align" s={6} m={3}>
+											<h5>Total(Dlls)</h5>
+										</Col>
+										<Col className="left-align" s={6} m={3}>
+											<h5 className="red-text">$ {this.showTotalDlls()}</h5>
+										</Col>
 
 
 
@@ -344,12 +330,12 @@ class Cashier extends Component {
 										<Col m={4}>
 											<label for="icon_prefix">Dlls</label>
 											<input name="dlls" type="number" value={this.state.dlls} onChange={this.onChange} />
-											<Button onClick={() => { this.addPayMoney(this.state.dlls*18) }}>Dlls</Button>
+											<Button onClick={() => { this.CheckInputisZero('dlls') }}>Dlls</Button>
 										</Col>
 										<Col m={4}>
 											<label for="icon_prefix">Coins</label>
 											<input name="coins" type="number" value={this.state.coins} onChange={this.onChange} />
-											<Button onClick={() => { this.addPayMoney(this.state.coins) }}>Coins</Button>
+											<Button onClick={() => { this.CheckInputisZero('coins') }}>Coins</Button>
 										</Col>
 									</Row>
 								</div>
