@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Parallax, Row, Button, Navbar, NavItem, Col } from 'react-materialize'
+import { Parallax, Row, Button, Navbar, NavItem } from 'react-materialize'
 import { Link } from 'react-router-dom';
 import Assist from '../modal/assist'
 import { connect } from 'react-redux';

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 import jwt_decode from 'jwt-decode'
@@ -22,6 +22,7 @@ import AddProduct from './components/Admin/addProduct/addProduct'
 import ReportsView from './components/Admin/Reports/ReportsView';
 import AddIngredient from './components/Admin/addIngredient/addIngredient';
 import InventoryView from './components/Admin/Inventory/Inventoryview';
+import NoMatch from './components/NoMatch';
 
 //check for tokens
 if(localStorage.jwtToken){
@@ -39,21 +40,24 @@ class App extends Component {
       <Provider store = { store } >
         <Router>
           <div>
-            <Route exact path="/" component={Login} />
-            <Route exact path="/ClientStart" component={ClientStart} />
-            <Route exact path="/Menu" component={Item} />
-            <Route exact path="/Admin" component={NavBarAdmin} />
-            <Route path="/Order" component={Order} />
-            <Route path="/Waiter" component={Waiter} />
-            <Route path="/Chef" component={Chef} />
-            <Route exact path="/Grafica" component={Grafica} />
-            <Route path="/General" component={General} />
-            <Route path="/User" component={Usuario} />
-            <Route path="/Cashier" component={Cashier} />
-            <Route path="/addProduct" component={AddProduct} />
-            <Route path="/ReportsView" component={ReportsView} />
-            <Route path="/addIngredient" component= {AddIngredient} />
-            <Route path="/InventoryView" component= {InventoryView} />
+            <Switch>
+            <Route exact path="/" exact component={Login} />
+            <Route exact path="/ClientStart" exact component={ClientStart} />
+            <Route exact path="/Menu" exact component={Item} />
+            <Route exact path="/Admin" exact component={NavBarAdmin} />
+            <Route path="/Order" exact component={Order} />
+            <Route path="/Waiter" exact component={Waiter} />
+            <Route path="/Chef" exact component={Chef} />
+            <Route exact path="/Grafica" exact component={Grafica} />
+            <Route path="/General" exact component={General} />
+            <Route path="/User" exact component={Usuario} />
+            <Route path="/Cashier" exact component={Cashier} />
+            <Route path="/addProduct" exact component={AddProduct} />
+            <Route path="/ReportsView" exact component={ReportsView} />
+            <Route path="/addIngredient" exact component= {AddIngredient} />
+            <Route path="/InventoryView" exact component= {InventoryView} />
+            <Route component={NoMatch} />
+            </Switch>
           </div>
         </Router>
   </Provider>

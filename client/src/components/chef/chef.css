@@ -2,31 +2,34 @@
     line-height: 180%;
     margin: 0;
 }
-
 .chef-badge {
-    color: white;
-    font-size: 12px;
-    position: absolute;
-    top: 170px;
-    left: 160px;
-    padding: 5px 8px;
-    border-radius: 15px;
+    box-sizing: border-box;
+    padding-left: 4px;
+    padding-right: 4px;
+    border-radius:10px;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    -ms-border-radius:10px;
+    -o-border-radius:10px;
+    position: relative;
+    top: 10%;
+    left: -10%;
+    margin: 0 !important;
 }
 
-.ch-btn>img {
-    margin-bottom: -20px;
+.btn-img{
+    width: 30px;
+    margin-top: 5px;
+    margin-bottom: -25px;
+    padding: 0 !important;
 }
 
 .m-top20 {
     margin-top: 20px;
 }
 
-.container {
-    width: 90%;
-}
-
 .ch-btn {
-    height: 90%;
+    height: auto;
 }
 
 .scrollExits {
@@ -38,35 +41,41 @@
 /*Mobile Devices, s*/
 
 @media only screen and (max-width: 600px) {
-.chef-badge {
-    top: 170px;
-    left:5160px;
-}
+    .chef-badge {
+        position: relative;
+        top: -80px;
+        left: -25%;
+    }
+    .ch-btn {
+        font-size: 6px;
+    }
 }
 
 /*Tablet Devices, m*/
 
 @media only screen and (min-width: 601px) and (max-width: 992px) {
-.chef-badge {
-    top: 170px;
-    left:100px;
-}
+    .chef-badge {
+        position: relative;
+        top: -35px;
+        left: -8%;
+    }
+    .ch-btn {
+        font-size: 7px;
+    }
 }
 
 /*Desktop Devices, l*/
 
 @media only screen and (min-width: 993px) {
-.chef-badge {
-    top: 170px;
-    left:125px;
-}
+    .chef-badge {
+        position: relative;
+        top: -35px;
+        left: -5%;
+    }
 }
 
 /*Desktop Devices, xl*/
 
 @media only screen and (min-width: 1200px) {
-    .chef-badge {
-    top: 170px;
-    left: 150px;
-}
+
 }
