@@ -4,8 +4,9 @@ import { get_ingredients, get_ingredient_id } from '../../../accions/ingredients
 import NavBarAdmin from '../navbar/navbar';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { ToastContainer, toast } from 'react-toastify';
 // import './inventory.css'
-import { putInventory } from '../../../accions/inventoryActions';
+import {putInventory} from '../../../accions/ingredientsAccions'
 let current_Ingredient;
 
 class Inventory extends Component {
@@ -43,9 +44,11 @@ class Inventory extends Component {
         const sellprice = current_Ingredient.Sellprice
         const stock = current_Ingredient.stock
         const buyPrice = current_Ingredient.buyPrice
-        const data = { id, name, sellprice, stock, buyPrice }
-        console.log(data)
-    }
+        putInventory(id, name, sellprice, stock, buyPrice )
+        toast.info(current_Ingredient.name + " is change for " + name, {
+            position: toast.POSITION.TOP_RIGHT,
+            className: 'foo-bar'
+        });    }
 
     handlesumitSellprice = (e) => {
         e.preventDefault();
@@ -55,8 +58,14 @@ class Inventory extends Component {
         const sellprice = this.state.sellprice
         const stock = current_Ingredient.stock
         const buyPrice = current_Ingredient.buyPrice
-        const data = { id, name, sellprice, stock, buyPrice }
-        console.log(data)
+        console.log(this.state.sellprice)
+        console.log(id, name, sellprice, stock, buyPrice)
+        putInventory(id, name, sellprice, stock, buyPrice)
+        toast.info(current_Ingredient.Sellprice + " is change for " + sellprice, {
+            position: toast.POSITION.TOP_RIGHT,
+            className: 'foo-bar'
+        });
+    
     }
 
     handlesumitStock = (e) => {
@@ -67,9 +76,13 @@ class Inventory extends Component {
         const sellprice = current_Ingredient.Sellprice
         const stock = this.state.stock
         const buyPrice = current_Ingredient.buyPrice
-        const data = { id, name, sellprice, stock, buyPrice }
-        console.log(data)
+        putInventory(id, name, sellprice, stock, buyPrice)
+        toast.info(current_Ingredient.stock + " is change for " + stock, {
+            position: toast.POSITION.TOP_RIGHT,
+            className: 'foo-bar'
+        });
     }
+    
 
     handlesumitBuyprice = (e) => {
         e.preventDefault();
@@ -79,8 +92,12 @@ class Inventory extends Component {
         const sellprice = current_Ingredient.Sellprice
         const stock = current_Ingredient.stock
         const buyPrice = this.state.buyprice
-        const data = { id, name, sellprice, stock, buyPrice }
-        console.log(data)
+        putInventory(id, name, sellprice, stock, buyPrice)
+        toast.info(current_Ingredient.buyPrice + " is change for " + buyPrice, {
+            position: toast.POSITION.TOP_RIGHT,
+            className: 'foo-bar'
+        });
+    
     }
 
     render() {
@@ -89,6 +106,8 @@ class Inventory extends Component {
         current_Ingredient = ingredientid
         return (
             <div>
+                <ToastContainer />
+
                 <Row >
                     <NavBarAdmin />
                 </Row>
@@ -137,7 +156,7 @@ class Inventory extends Component {
                                 <CollapsibleItem header={"Actual sell price: " + ingredientid.Sellprice} icon='arrow_drop_down'>
 
                                     <form onSubmit={this.handlesumitSellprice}>
-                                        <Input value={this.state.sellprice} onChange={this.handleChange} type="number" name="sellprice" s={12} label="New sell price" />
+                                        <Input value={this.state.sellprice} onChange={this.handleChange} name="sellprice" s={12} label="New sell price" />
                                         <Button className='green' waves="light" value='submit' large >Update</Button>
                                     </form>
 
@@ -172,7 +191,8 @@ Inventory.propTypes = {
     get_ingredients: PropTypes.func.isRequired,
     ingredients: PropTypes.object.isRequired,
     get_ingredient_id: PropTypes.func.isRequired,
-    ingredientid: PropTypes.object.isRequired
+    ingredientid: PropTypes.object.isRequired,
+    putInventory: PropTypes.func.isRequired
 
 
 };
@@ -184,4 +204,4 @@ const mapStateToProps = state => ({
 
 
 
-export default connect(mapStateToProps, { get_ingredients, get_ingredient_id })(Inventory);
+export default connect(mapStateToProps, { get_ingredients, get_ingredient_id, putInventory })(Inventory);

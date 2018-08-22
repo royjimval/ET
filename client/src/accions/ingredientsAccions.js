@@ -31,13 +31,9 @@ export const get_ingredient_id = id => dispatch => {
         })
     );
 };
-export const setIngredientsLoading = () => {
-    return {
-        type: INGREDIENTS_LOADING
-    };
-};
 
 export const putInventory = (id, name, sellprice, stock, buyPrice) => {
+    console.log(id)
     axios.put(`/api/ingredients/${id}`, {
         name: name,
         sellprice: sellprice,
@@ -48,3 +44,11 @@ export const putInventory = (id, name, sellprice, stock, buyPrice) => {
             console.log(response);
         })
 };
+
+
+export const setIngredientsLoading = () => {
+    return {
+        type: INGREDIENTS_LOADING
+    };
+};
+

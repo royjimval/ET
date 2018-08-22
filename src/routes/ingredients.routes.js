@@ -22,11 +22,15 @@ router.post('/', async (req, res) => {
 });
 
 router.put('/:id', async (req, res) => {
-    console.log(req.body);
-    const { name, sellprice, stock, buyPrice } = req.body;
-    const ingredient = { name, sellprice, stock, buyPrice };
-    await Ingredients.findByIdAndUpdate(req.params.id, ingredient);
-    res.json({ status: 'ingredient update' });
+    console.log(req.body.sellprice);
+    var { name, sellprice, stock, buyPrice } = req.body;
+    sellprice = Number(sellprice);
+    const ingredient = { name, Sellprice: sellprice, stock, buyPrice };
+    console.log(ingredient);
+    Ingredients.findByIdAndUpdate(req.params.id, ingredient).then(ingredient => {
+        console.log(ingredient)
+        res.json({ status: 'ingredient update' , ingredient});
+    }).catch(error => console.log(error))
 });
 
 
