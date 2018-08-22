@@ -23,6 +23,7 @@ import ReportsView from './components/Admin/Reports/ReportsView';
 import AddIngredient from './components/Admin/addIngredient/addIngredient';
 import InventoryView from './components/Admin/Inventory/Inventoryview';
 import NoMatch from './components/NoMatch';
+import Inventory from './components/Admin/Inventory/Inventory';
 
 //check for tokens
 if(localStorage.jwtToken){
@@ -56,6 +57,7 @@ class App extends Component {
             <Route path="/ReportsView" exact component={ReportsView} />
             <Route path="/addIngredient" exact component= {AddIngredient} />
             <Route path="/InventoryView" exact component= {InventoryView} />
+            <Route path="/inventory" component={Inventory} />
             <Route component={NoMatch} />
             </Switch>
           </div>

@@ -1,33 +1,26 @@
 import React, { Component } from 'react';
 import './UserData.css';
+import { connect } from 'react-redux';
+import {getUsers} from '../../../accions/getuserAction'
+import PropTypes from 'prop-types'
 
-import axios from 'axios'
 
-
-export default class UserData extends Component {
-    constructor() {
-        super();
-        this.state = {
-            user: []
-        };
-    };
+class UserData extends Component {
     componentDidMount() {
-        this.interval = setInterval(() => this.updateUserTable(), 4000);
+        this.props.getUsers()
+        this.interval = setInterval(() => this.props.getUsers(), 4000);
       }
     
       componentWillUnmount() {
         clearInterval(this.interval);
       }
 
-    updateUserTable() {
-        axios.get('http://localhost:4000/api/user/allUser')
-            .then(res => {
-                const user = res.data;
-                this.setState({ user });
-            })
-    }
+
 
     render() {
+        const { users } = this.props.users;
+        console.log(users)
+        
         return (
             <div class="loginBoxUserData">
                 <table>
@@ -40,7 +33,7 @@ export default class UserData extends Component {
                     </thead>
                     <tbody className="tbbodyUserData">
                         {
-                            this.state.user.map(user => (
+                            users.map(user => (
                                 <tr>
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
@@ -54,3 +47,14 @@ export default class UserData extends Component {
         );
     }
 }
+
+UserData.propTypes={
+    getUsers: PropTypes.func.isRequired,
+    users: PropTypes.object.isRequired
+}
+
+const mapStateToProps = state =>({
+    users: state.users
+})
+
+export default connect(mapStateToProps,{getUsers})(UserData)

@@ -28,7 +28,7 @@ class NavBarAdmin extends Component {
                 Users
             </NavItem>
 
-              <NavItem className="conteinernav" componentClass={Link} href="/InventoryView" to="/InventoryView">
+              <NavItem className="conteinernav" componentClass={Link} href="/Inventory" to="/Inventory">
                 <img className='menu-icon iconnav' src='assets/warehouse.svg' width='31px' />
                 Inventory
             </NavItem>

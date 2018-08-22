@@ -28,7 +28,8 @@ class ReportsView extends Component {
                     </div>
                 </div>
             )
-        } else {
+        }
+        else {
             return (
                 <h1>No se puede mi joven</h1>
             )

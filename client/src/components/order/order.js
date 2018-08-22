@@ -12,7 +12,7 @@ let total = 0; let count = 0;let table;
 class Order extends Component {
     componentDidMount() {
         table = this.props.auth.user.name
-        //this.interval = setInterval(() => this.props.getPreorder(table), 2000);
+
         this.props.getPreorder(table)
         this.resetTotal();
     }
@@ -37,11 +37,11 @@ class Order extends Component {
 
             }
         })
-        this.props.getPreorder(table)
         toast.info("Your order is being prepared by the chef ;)", {
             position: toast.POSITION.TOP_RIGHT,
             className: 'black'
         });
+        setTimeout(()=>{this.props.getPreorder(table)},100)
     };
 
     sumPrice(price) {

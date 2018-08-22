@@ -1,7 +1,8 @@
-import { GET_INGREDIENTS, POST_INGREDIENTS } from '../accions/types';
+import { GET_INGREDIENTS, POST_INGREDIENTS, GET_INGREDIENTS_ID } from '../accions/types';
 
 const initialState = {
     ingredients: [],
+    ingredientid: [],
     loading: false
 
 };
@@ -12,6 +13,13 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 ingredients: action.payload,
+                loading: true
+
+            };
+        case GET_INGREDIENTS_ID:
+            return {
+                ...state,
+                ingredientid: action.payload,
                 loading: true
 
             };

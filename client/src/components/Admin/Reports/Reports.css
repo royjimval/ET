@@ -1,57 +1,95 @@
-.divFiltros{
-    margin-top: 3%;
-	margin-left: 5%;
+.divReports{
+    margin-left: 5%;
+    margin-top: -1%;
 	width: 90%;
 	height:100%;
-	padding: 20px 40px;
 	box-sizing: border-box;
     background: rgba(0,0,0,.5);
-    border-radius: 10px;
     color: #fff;
+    /* border: 2px solid green; */
+    border-radius: 10px;
 }
 
-.btnsearch{
-    background:  linear-gradient(760deg,#30c22bf6 0%,#3f5efb 190%);
-    height: 100%;
-    margin-top: 12%;
-}
-
-.btnsearch:hover
-{
-	background: #efed40;
-	color: #000000;
-}
-
-.iconsearch{
-    margin-top: 15px;
-}
-
-.tbbodyProducts {
-    display:block;
-    height:300px;
-    overflow:auto;
-    }
-    thead, .tbbodyProducts tr {
-    display:table;
-    width:100%;
-    table-layout:fixed;
-    }
-    thead {
-    width: calc( 100% - 1em )
-    }
-    table {
-    width:100%;
+.buttonsearch
+    {
+        margin-top: 7%;
+        margin-left: -10%;
     }
 
-    .tableproduct{
-        margin-top: -3%;
+    .divtextProduct{
+        height: 20px;
+    }
+    .textProduct{
+        margin-top: 17%;
+        margin-left: -17%;
     }
 
-    .iiconsproducts{
-        color:  #30c22bf6;
+    .iconReport{
+        margin-left: 15%;
     }
-    
-    #miImagen{
-        width: 200px;
-        height: 200px;
+
+    .divheaderReports{
+        background: rgba(0,0,0,.5);  
+    }
+
+    .selectDateReport
+    {
+        margin-top: 1%;
+    }
+
+    .selectdate{
+        margin-top: .5%;
+    }
+
+    .calendars
+    {
+        width: 100%;
+    }
+
+
+    .tableProduct{
+        margin-top: 2%;
+        margin-left: 3%;
+        margin-right: 3%;    
+        width:94%;
+        border: 1px solid green;
+    }
+
+    select {
+        background-color: rgba(255,255,255,0.9);
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #f2f2f2;
+        border-radius: 1px;
+        height: 3rem;
+    }
+
+    .theadReport
+    {
+        display:table;
+        width:100%;
+        table-layout:fixed;
+        background: rgba(0,0,0,.5);
+    }
+
+    .tbbodyProducts{
+        display:block;
+        height:300px;
+        overflow:auto;
+        display:table;
+        width:100%;
+        table-layout:fixed;
+        background: rgba(0,0,0,.5);
+        margin-bottom: 0%;
         }
+
+        tr {
+            display:table;
+            width:100%;
+            table-layout:fixed;
+        }  
+
+        .tfootProduct
+    {
+        background: rgba(0,0,0,.7);
+    }

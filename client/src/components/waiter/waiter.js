@@ -278,7 +278,7 @@ class WaiterClass extends Component {
                     return (
                         <div>
                             
-                                <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 200) }} >Delivered<Icon left>check</Icon></Button>
+                                <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 100) }} >Delivered<Icon left>check</Icon></Button>
                         </div>
                     )
                 }else{
@@ -292,7 +292,7 @@ class WaiterClass extends Component {
                     return (
                         <div>
 
-                                <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 200) }} >Delivered<Icon left>check</Icon></Button>
+                                <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 100) }} >Delivered<Icon left>check</Icon></Button>
 
                         </div>
                     )
@@ -307,7 +307,7 @@ class WaiterClass extends Component {
                     return (
                         <div>
 
-                                <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 200) }} >Delivered<Icon left>check</Icon></Button>
+                                <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 100) }} >Delivered<Icon left>check</Icon></Button>
 
                         </div>
                     )
@@ -322,7 +322,7 @@ class WaiterClass extends Component {
                     return (
                         <div>
 
-                                <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 200) }} >Delivered<Icon left>check</Icon></Button>
+                                <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 100) }} >Delivered<Icon left>check</Icon></Button>
 
                         </div>
                     )
@@ -336,7 +336,7 @@ class WaiterClass extends Component {
                 if (cont5 > 0) {
                     return (
                         <div>
-                                <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 200) }} >Delivered<Icon left>check</Icon></Button>
+                                <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 100) }} >Delivered<Icon left>check</Icon></Button>
                         </div>
                     )
                 }else{
@@ -349,7 +349,7 @@ class WaiterClass extends Component {
                 if (cont6 > 0) {
                     return (
                         <div>
-                                <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 200) }} >Delivered<Icon left>check</Icon></Button>
+                                <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 100) }} >Delivered<Icon left>check</Icon></Button>
                         </div>
                     )
                 }else{

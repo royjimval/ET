@@ -110,21 +110,6 @@ class Register extends Component {
                         <label for="icon_prefix">Confirm password</label>
                         <span style={{ color: "red" }}>{errors.password2}</span>
                     </div>
-                    <div className="input-field ">
-                        <i class="material-icons prefix iuser">accessibility</i>
-                        <Collapsible className="acordionRegisterUser " accordion defaultActiveKey={1}>
-                            <CollapsibleItem header='Permissions' className="acordionRegister" >
-                                <div className="scrolleablepermisos" >
-                                    <Row>
-                                        <Input name='group1' type='checkbox' value='green' label='permiso1' className='filled-in permisos' defaultChecked='checked' />
-                                        <Input name='group1' type='checkbox' value='green' label='permiso1' className='filled-in permisos' defaultChecked='checked' />
-                                        <Input name='group1' type='checkbox' value='green' label='permiso1' className='filled-in permisos' defaultChecked='checked' />
-                                        <Input name='group1' type='checkbox' value='green' label='permiso1' className='filled-in permisos' defaultChecked='checked' />
-                                    </Row>
-                                </div>
-                            </CollapsibleItem>
-                        </Collapsible >
-                    </div>
                     <input type="submit" name="" value="Save" />
                 </form>
             </div>

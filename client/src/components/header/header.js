@@ -106,9 +106,9 @@ class Header extends Component {
                     <div>
                         <Row className='center no-marg-b'>
                             <Navbar className='nav-color  center'>
-                                <NavItem componentClass={Link} href="/Menu" to="/Menu"><img className='menu-icon' src='assets/menu.svg' width='30px' /> MENU</NavItem>
+                                <NavItem componentClass={Link} href="/Menu" to="/Menu"><img className='menu-icon' src='assets/menu.svg' width='30px' />MENU</NavItem>
 
-                                <NavItem className='right' onClick={() => console.log("right")}>
+                                <NavItem className='right' onClick={() => console.log("")}>
                                     <form onSubmit={this.handleSubmit}>
 
                                         <Button className='transparent white-text wb' flat><img className='menu-icon-w' src='assets/waiter.svg' width='30px' />Waiter
@@ -117,8 +117,7 @@ class Header extends Component {
 
                                     </form>
                                 </NavItem>
-
-                                <NavItem className='right' componentClass={Link} href="/Order" to="/Order"><img className='menu-icon' src='assets/fast-delivery.svg' width='30px' />My Order</NavItem>
+                                <NavItem className='left' componentClass={Link} href="/Order" to="/Order"><img className='menu-icon' src='assets/fast-delivery.svg' width='30px' />My Order</NavItem>
                             </Navbar>
                         </Row>
                         <ToastContainer />
