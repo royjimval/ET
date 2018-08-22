@@ -12,7 +12,7 @@ let total = 0; let count = 0;let table;
 class Order extends Component {
     componentDidMount() {
         table = this.props.auth.user.name
-        //this.interval = setInterval(() => this.props.getPreorder(table), 2000);
+
         this.props.getPreorder(table)
         this.resetTotal();
     }

@@ -11,6 +11,7 @@ import errorReducer from './errorReducer';
 import registerReducer from './registerReducer'
 
 import ingredientReducer from './ingredientsReducer';
+import getuserReducer from './getuserReducer';
 
 export default combineReducers({
   item: itemReducer,
@@ -21,6 +22,7 @@ export default combineReducers({
   id_order: id_orderReducer,
 
   auth: authReducer,
+  users: getuserReducer,
   errors: errorReducer,
   rightRe: registerReducer,
 

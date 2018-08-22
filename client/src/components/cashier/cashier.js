@@ -3,102 +3,209 @@ import { Row, Col, Collection, CollectionItem, Button, Table, Icon, Input } from
 import Nav from '../header/header'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { getProductCashier, putPreorder} from '../../accions/preorderAccions'
+import { getProductCashier, putPreorder } from '../../accions/preorderAccions'
 import { get_id_order, updateId_order } from '../../accions/idorderAccions'
 import { addOrder } from '../../accions/orderAccions'
 import './order.css'
+import { set } from 'mongoose';
+import Modal from '../../../../node_modules/react-materialize/lib/Modal';
+import roundTo from 'round-to'
 let new_id, order_id
 let total = 0;
 let data;
+let pay;
 
 class Cashier extends Component {
 
-    componentDidMount(){
-        this.props.get_id_order();
-    }
+	constructor() {
+		super();
+		this.state = {
+			totals: 0,
+			pay: 0,
+			change: 0,
+			flag: 0,
+			flag1: 0,
+			dlls:0,
+			coins:0,
+		};
+		this.onChange=this.onChange.bind(this)
+	};
 
-sumPrices(preorder){
-    preorder.map((preorder_item) =>
+	componentDidMount() {
+		this.props.get_id_order();
+		this.ResetPayandChange()
+	}
 
-        total = total + preorder_item.price
-    )
-}
+	onChange=(e)=>{
+		this.setState({[e.target.name]:e.target.value})
+		console.log(e.target.value)
+	}
 
-    getProducts(item){
-        this.props.getProductCashier(item);
-        total = 0;        
+	ResetPayandChange() {
+		this.setState({ flag: 0 })
 
-    }
+		pay = 0;
 
-    onPutPreorder = (preorder, id_order) => {
-        id_order.map(id =>(
-            new_id= id.order,
-            order_id = id._id
-        ))
-        console.log(new_id)
+		console.log('ya salio')
+		this.setState({ pay: 0 })
+		this.setState({ change: 0 })
+		this.setState({dlls:0})
+		this.setState({coins:0})
+	}
 
-        preorder.map((item) => (
-            putPreorder(item._id, item.idtable, item.name, item.ingredients, item.price, item.start, item.finished, item.delivered, new_id)
-        ))
-        
-        data = {new_id, total}
-        this.props.addOrder(data)
+	addPayMoney(money) {
 
-        new_id = parseInt(new_id)  + 1
-        new_id = new_id.toString()
-        updateId_order(order_id, new_id)
-    };
+		if (total > 0) {
+			let restChange = 0;
+			pay = pay + money
+			this.setState({ pay: pay })
+			if (this.state.totals === 0) {
+				this.setState({ totals: total })
+			}
+			if (this.state.change === 0 && this.state.pay === 0) {
+				restChange = total;
+			} else {
+				restChange = this.state.change
+			}
+			this.setState({ change: restChange - money })
 
-    render() {
-        const { preorderCashier } = this.props.preorderCashier;
-        const { id_order } = this.props.id_order;
-		
-		const  role  = this.props.auth.user.role
-        if(role==='Cashier' || role==='all'){
+			console.log(pay)
+			console.log(total)
+			if (pay === total) {
+				console.log('ya entro')
+				this.setState({ flag: 1 })
+			}
+		}
+	}
+
+	showChange() {
+		if (this.state.change > 0 || this.state.change === 0) {
+			return (
+				<div>
+					<Col className="left-align" m={6}>
+						<h5 className="red-text">$ {this.state.change * -1}</h5>
+					</Col>
+				</div>
+			)
+		} else {
+			return (
+				<div>
+					<Col className="left-align" m={6}>
+						<h5 className="green-text">$ {this.state.change * -1}</h5>
+					</Col>
+				</div>
+			)
+		}
+
+	}
+
+	showPayButton(preorderCashier, id_order) {
+		return (
+			<div>
+				<Row className="center-align">
+					<Button onClick={() => { this.onPutPreorder(preorderCashier, id_order), this.ResetPayandChange() }} >Pay</Button>
+				</Row>
+			</div>
+		)
+	}
+
+	showTotalDlls() {
+		let dlls = total;
+		dlls = roundTo.down(dlls / 18, 2)
+		return (
+			dlls
+		)
+	}
+
+
+	sumPrices(preorder) {
+		total = 0;
+		preorder.map((preorder_item) =>
+			total = total + preorder_item.price
+		)
+	}
+
+	getProducts(item) {
+		this.setState({ flag1: 1 })
+		this.props.getProductCashier(item);
+	}
+
+	onPutPreorder = (preorder, id_order) => {
+		if (this.state.flag === 1) {
+
+			id_order.map(id => (
+				new_id = id.order,
+				order_id = id._id
+			))
+			console.log(new_id)
+
+			preorder.map((item) => (
+				putPreorder(item._id, item.idtable, item.name, item.ingredients, item.price, item.start, item.finished, item.delivered, new_id)
+			))
+			this.ResetPayandChange()
+
+			data = { new_id, total }
+			this.props.addOrder(data)
+
+			new_id = parseInt(new_id) + 1
+			new_id = new_id.toString()
+			updateId_order(order_id, new_id)
+		} else {
+			console.log("no se puede")
+			alert("No se puede realizar esta accion aun")
+		}
+	};
+
+	render() {
+		const { preorderCashier } = this.props.preorderCashier;
+		const { id_order } = this.props.id_order;
+
+		const role = this.props.auth.user.role
+		if (role === 'Cashier' || role === 'all') {
 
 			return (
 				<div>
 					<div>
 						<Nav />
-						<br /><br /><br />
+						<br /><br />
 						<Row>
 							<Col s={2} m={2} l={2} xl={2} className="center">
-								<Button onClick={() => this.getProducts("1")} className="ch-btn cyan darken-2">
+								<Button onClick={() => { this.getProducts("1"), this.ResetPayandChange() }} className="ch-btn cyan darken-2">
 									<Row className="no-marg-b">
 										<img src="assets/table.svg" alt="Table Icon" width="40px" />
 									</Row>
 									<Row className="no-marg-b">Table 1</Row>
 								</Button>
 							</Col><Col s={2} m={2} l={2} xl={2} className="center">
-								<Button onClick={() => this.getProducts("2")} className="ch-btn cyan darken-2">
+								<Button onClick={() => { this.getProducts("2"), this.ResetPayandChange() }} className="ch-btn cyan darken-2">
 									<Row className="no-marg-b">
 										<img src="assets/table.svg" alt="Table Icon" width="40px" />
 									</Row>
 									<Row className="no-marg-b">Table 2</Row>
 								</Button>
 							</Col><Col s={2} m={2} l={2} xl={2} className="center">
-								<Button onClick={() => this.getProducts("3")} className="ch-btn cyan darken-2">
+								<Button onClick={() => { this.getProducts("3"), this.ResetPayandChange() }} className="ch-btn cyan darken-2">
 									<Row className="no-marg-b">
 										<img src="assets/table.svg" alt="Table Icon" width="40px" />
 									</Row>
 									<Row className="no-marg-b">Table 3</Row>
 								</Button>
 							</Col><Col s={2} m={2} l={2} xl={2} className="center">
-								<Button onClick={() => this.getProducts("4")} className="ch-btn cyan darken-2">
+								<Button onClick={() => { this.getProducts("4"), this.ResetPayandChange() }} className="ch-btn cyan darken-2">
 									<Row className="no-marg-b">
 										<img src="assets/table.svg" alt="Table Icon" width="40px" />
 									</Row>
 									<Row className="no-marg-b">Table 4</Row>
 								</Button>
 							</Col><Col s={2} m={2} l={2} xl={2} className="center">
-								<Button onClick={() => this.getProducts("5")} className="ch-btn cyan darken-2">
+								<Button onClick={() => { this.getProducts("5"), this.ResetPayandChange() }} className="ch-btn cyan darken-2">
 									<Row className="no-marg-b">
 										<img src="assets/table.svg" alt="Table Icon" width="40px" />
 									</Row>
 									<Row className="no-marg-b">Table 5</Row>
 								</Button>
 							</Col><Col s={2} m={2} l={2} xl={2} className="center">
-								<Button onClick={() => this.getProducts("6")} className="ch-btn cyan darken-2">
+								<Button onClick={() => { this.getProducts("6"), this.ResetPayandChange() }} className="ch-btn cyan darken-2">
 									<Row className="no-marg-b">
 										<img src="assets/table.svg" alt="Table Icon" width="40px" />
 									</Row>
@@ -107,83 +214,142 @@ sumPrices(preorder){
 							</Col>
 						</Row>
 						<Row>
+							{this.sumPrices(preorderCashier)}
 							<Col s={4} m={4}>
-								{this.sumPrices(preorderCashier)}
+								<Collection header="Items to Pay">
+									<div className="order-cashier">
+										{
+											preorderCashier.map((preorder_item) =>
+												(
+													<CollectionItem>
+														<Row>
+															<Col m={8}>
+																{preorder_item.name}
+															</Col>
+															<Col m={4}>
+																{preorder_item.price}
+															</Col>
 
-								<Collection header="First Names">
-									{
-										preorderCashier.map((preorder_item) =>
-											(
-												<CollectionItem>
-													<Row>
-														<Col m={8}>
-															{preorder_item.name}
-														</Col>
-														<Col m={4}>
-															{preorder_item.price}
-														</Col>
-													</Row>
-												</CollectionItem>
-											))
+															<Col m={12}>
+																<Col m={6}>
+																	{
+																		preorder_item.ingredients.map(each_Ingredient => {
+																			return (
+																				<p>{each_Ingredient}</p>
+																			)
+																		})
+																	}</Col>
+															</Col>
+														</Row>
 
-									}
+													</CollectionItem>
+												))
+
+										}
+									</div>
 								</Collection>
 							</Col>
 							<Col s={4} m={4}>
 								<div className="cash-wrapper">
 									<Row className="center">
+
+										
+
+											<Col className="right-align" s={12} m={3}>
+												<h5>Total</h5>
+											</Col>
+											<Col className="left-align" s={6} m={3}>
+												<h5 className="red-text">$ {total}</h5>
+											</Col>
+
+											<Col className="right-align" s={6} m={3}>
+												<h5>Total(Dlls)</h5>
+											</Col>
+											<Col className="left-align" s={6} m={3}>
+												<h5 className="red-text">$ {this.showTotalDlls()}</h5>
+											</Col>
+
+
+
 										<Col className="right-align" m={6}>
 											<h5>Pay</h5>
 										</Col>
 										<Col className="left-align" m={6}>
-											<h5 className="red-text">$ {total}</h5>
+											<h5 className="red-text" >$ {this.state.pay}</h5>
 										</Col>
+
 										<Col className="right-align" m={6}>
 											<h5>Change</h5>
 										</Col>
-										<Col className="left-align" m={6}>
-											<h5 className="red-text">$ XXX.XX</h5>
-										</Col>
-									</Row>
-									<Row className="center no-marg-b">
-										<Input s={6} type="select" label="Exchange Rate" defaultValue="2">
-											<option value="1">US Dollars</option>
-											<option value="2">MX Pesos</option>
-										</Input>
-										<Input s={6} type="select" label="Materialize Select" defaultValue="2">
-											<option value="1">Option 1</option>
-											<option value="2">Option 2</option>
-											<option value="3">Option 3</option>
-										</Input>
+										{this.showChange()}
 									</Row>
 									<Row className="center-align">
-										<Button onClick={() => this.onPutPreorder(preorderCashier, id_order)} >Pay</Button>
+										<Button onClick={() => { this.onPutPreorder(preorderCashier, id_order) }} >Pay</Button>
 									</Row>
 								</div>
 							</Col>
 							<Col m={4}>
 								<div className="cash-wrapper">
 									<Row className="no-marg-b">
-										<div className="valign-wrapper">
-											<img src="assets/money.png" alt="" height="80px" />
-										</div>
-									</Row>
-									<Row className="no-marg-b">
-										<div className="center-wrapper">
-											<img className="hue-r100" src="assets/money.png" alt="" height="80px" />
-										</div>
-									</Row>
-									<Row className="no-marg-b">
-										<div className="valign-wrapper">
-											<img className="hue-r240" src="assets/money.png" alt="" height="80px" />
-										</div>
-									</Row>
-									<Row className="no-marg-b">
-										<Col className='center-align' m={6}>
-											<img src="assets/dollar.svg" alt="" height="70px" />
+										<Col m={6}>
+											<div className="valign-wrapper">
+												<Button onClick={() => { this.addPayMoney(1000) }}>
+													<img src="assets/dollar.svg" alt="" height="80px" />
+												</Button>
+											</div>
 										</Col>
+										<Col m={6}>
+											<div className="center-wrapper">
+												<Button onClick={() => { this.addPayMoney(500) }}>
+													<img className="hue-r100" src="assets/dollar.svg" alt="" height="80px" />
+												</Button>
+											</div>
+										</Col>
+									</Row>
+
+									<br /><br /><br />
+									<Row className="no-marg-b">
+										<Col m={6}>
+											<div className="valign-wrapper">
+												<Button onClick={() => { this.addPayMoney(200) }}>
+													<img className="hue-r240" src="assets/dollar.svg" alt="" height="80px" />
+												</Button>
+											</div>
+										</Col>
+										<Col m={6}>
+											<div className="valign-wrapper">
+												<Button onClick={() => { this.addPayMoney(100) }}>
+													<img className="hue-r240" src="assets/dollar.svg" alt="" height="80px" />
+												</Button>
+											</div>
+										</Col>
+									</Row>
+									<br /><br /><br />
+									<Row className="no-marg-b">
 										<Col className='center-align' m={6}>
-											<img src="assets/dollar.svg" alt="" height="70px" />
+											<Button onClick={() => { this.addPayMoney(50) }}>
+												<img src="assets/dollar.svg" alt="" height="80px" />
+											</Button>
+										</Col>
+
+										<Col className='center-align' m={6}>
+											<Button onClick={() => { this.addPayMoney(20) }}>
+												<img src="assets/dollar.svg" alt="" height="80px" />
+											</Button>
+										</Col>
+									</Row>
+									<br /><br /><br />
+									<Row>
+										<Col m={4}><Button onClick={() => { this.ResetPayandChange() }}> X</Button></Col>
+										<Col m={4}>
+											<label for="icon_prefix">Dlls</label>
+											<input name="dlls" type="number" value={this.state.dlls} onChange={this.onChange} />
+											<Button onClick={() => { this.addPayMoney(this.state.dlls*18) }}>Dlls</Button>
+										</Col>
+										<Col m={4}>
+											<label for="icon_prefix">Coins</label>
+											<input name="coins" type="number" value={this.state.coins} onChange={this.onChange} />
+											<Button onClick={() => { this.addPayMoney(this.state.coins) }}>Coins</Button>
 										</Col>
 									</Row>
 								</div>
@@ -191,27 +357,27 @@ sumPrices(preorder){
 						</Row>
 
 					</div>
-					</div>
+				</div>
 			)
-		}else{
-            return(
-              <h1>No se puede mi joven</h1>
-            )
-        }
-    }
+		} else {
+			return (
+				<h1>No se puede mi joven</h1>
+			)
+		}
+	}
 }
 
 Cashier.propTypes = {
-    getProductCashier: PropTypes.func.isRequired,
-    preorderCashier: PropTypes.object.isRequired,
-    get_id_order: PropTypes.func.isRequired,
-    id_order: PropTypes.object.isRequired,
+	getProductCashier: PropTypes.func.isRequired,
+	preorderCashier: PropTypes.object.isRequired,
+	get_id_order: PropTypes.func.isRequired,
+	id_order: PropTypes.object.isRequired,
 	addOrder: PropTypes.func.isRequired,
 	auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-    preorderCashier: state.preorder,
+	preorderCashier: state.preorder,
 	id_order: state.id_order,
 	auth: state.auth
 });

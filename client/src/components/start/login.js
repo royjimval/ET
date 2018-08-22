@@ -1,5 +1,4 @@
-import React, { Redirect, Component } from 'react'
-// import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
 import { Row, Col, Button } from 'react-materialize'
 import './start.css'
 import Input from '../../../../node_modules/react-materialize/lib/Input';
