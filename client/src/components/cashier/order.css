@@ -10,3 +10,9 @@
   border-radius: 10px;
 
 }
+
+.order-cashier{
+  min-height: 0px;
+max-height: 300px;
+overflow-y: scroll;
+}
