@@ -1,29 +1,27 @@
 .loginBoxUserData
 {
-    margin-top: 10%;
-    width: 90%;
-	height: 490px;
-	padding: 2% 4%;
+    margin-top: 6%;
+    width: 100%;
+    height: 398px;
 	box-sizing: border-box;
-    border-radius: 2%;
+    border-radius: 5px;
     background-color: rgba(0, 0, 0, .5);
-    line-height: 1.5rem;
     padding: 10px 20px;
     color: white;
     border-bottom: 1px solid #e0e0e0;
-
 }
 
 .scrolleable{
     overflow-y: scroll;
-    height: 400px;
+    height: 500px;
 }
 
 
 .tbbodyUserData {
     display:block;
-    height:400px;
+    height:100%;
     overflow:auto;
+    font-size: 12px;
     }
     thead, .tbbodyUserData tr {
     display:table;
@@ -36,3 +34,8 @@
     table {
     width:100%;
     }
+
+    .thuser{
+        margin-right: -10%;
+    }
+
