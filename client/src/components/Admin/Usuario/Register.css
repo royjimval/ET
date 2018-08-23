@@ -1,30 +1,24 @@
 .RegisterUsers
 {
-	margin-top: 20%;
-	margin-left: 20%;
-	width: 80%;
+	margin-top: 6%;
+	width: 100%;
 	height:100%;
 	padding: 20px 40px;
 	box-sizing: border-box;
     background: rgba(0,0,0,.5);
-	border-radius: 2%;
+	border-radius: 5px;
 }
 .user
 {
 	width: 100px;
 	height: 100px;
 	border-radius: 50%;
-	overflow: hidden;
-	position: absolute;
-	top: calc(420px/2);
-	left: calc(20.9% - 70px);
 }
 .RegisterUsers input
 {
 	width: 100%;
 }
 .RegisterUsers input[type="text"],
-.RegisterUsers input[type="email"],
 .RegisterUsers input[type="password"]
 {
 	border: none;
@@ -33,7 +27,7 @@
 	outline: none;
 	height: 40px;
 	color: #fff;
-	font-size: 16px;
+	font-size: 14px;
 }
 ::placeholder
 {
@@ -41,15 +35,16 @@
 }
 .RegisterUsers input[type="submit"]
 {
-	margin-top: 2%;
+	margin-top: 1%;
 	border: none;
 	outline: none;
 	height: 40px;
 	color: #fff;
-	font-size: 16px;
+	font-size: 14px;
 	background: #2dff26;
 	cursor: pointer;
 	border-radius: 20px;
+	width: 50%;
 }
 
 .RegisterUsers input[type="submit"]:hover
@@ -60,11 +55,70 @@
 
 	.cbxTypeUser
 	{
-		margin-top: 18%;
-		margin-left: -2.5%;
-		margin-bottom: -4%;
+		margin-left: -3.5%;
 	}
 
 	.iuser{
 		color: white;
 	}
+	[type="checkbox"]+label {
+
+		cursor: pointer;
+		/* display: inline-block; */
+		height: 25px;
+		line-height: 25px;
+		color: #fff;
+	    font-size: 14px;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-khtml-user-select: none;
+		-ms-user-select: none;
+	}
+
+	[type="checkbox"]+label {
+		position: relative;
+		/* padding-left: 35px; */
+		cursor: pointer;
+		/* display: inline-block; */
+		height: 25px;
+		line-height: 25px;
+		color: #fff;
+	    font-size: 14px;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-khtml-user-select: none;
+		-ms-user-select: none;
+
+	}
+
+	.scrolleablepermisos{
+		overflow-y: scroll;
+		height: 120px;
+	}
+		
+	.collapsible-header {
+		display: block;
+		cursor: pointer;
+		min-height: 3rem;
+		line-height: 3rem;
+		padding: 0 1rem;
+		background-color: transparent;
+		border-bottom: 1px solid #ddd;
+	}
+
+	.stylecolum{
+		border-right: 1px solid white;
+	}
+
+	.stylerow{
+		margin-top: 10%;
+	}
+
+	.headerimage
+	{
+		margin-top: -15%;
+		margin-bottom: -6%;
+	}
+
+	
+	
