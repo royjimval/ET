@@ -1,4 +1,86 @@
 import React from 'react';
+import DatePicker from 'react-datepicker';
+import { Row } from '../../../../../node_modules/react-materialize';
+import Col from '../../../../../node_modules/react-materialize/lib/Col';
+import moment from 'moment';
+
+import 'react-datepicker/dist/react-datepicker.css';
+
+// CSS Modules, react-datepicker-cssmodules.css
+// import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+
+export default class CalendarOne extends React.Component {
+  constructor(props) {
+    super(props)
+    this.handleChange = this.handleChange.bind(this);
+    this.handleToChange = this.handleToChange.bind(this);
+    this.state = {
+      from: moment(),
+      to: moment()
+    };
+  }
+
+  handleChange = date => {
+    this.setState({
+      from: date
+    });
+    const valueOfInput = date.format("YYYY/MM/DD");
+    console.log("from");
+    console.log(valueOfInput);
+  };
+
+  handleToChange = dateto => {
+    this.setState({
+      to: dateto
+    });
+    const valueOfInput = dateto.format("YYYY/MM/DD");
+    console.log("to");
+    console.log(valueOfInput);
+  };
+
+  render() {
+    return (
+      <div className="row">
+        <Row>
+          <Col m={5.5} className="">
+            <Row>
+              <Col>
+                <p>From:</p>
+              </Col>
+              <Col>
+                <DatePicker
+                  placeholder="From"
+                  selected={this.state.from}
+                  onChange={this.handleChange}
+                />
+              </Col>
+            </Row>
+          </Col>
+          <Col m={1} className="center">
+            <p>-</p>
+          </Col>
+          <Col m={5.5}>
+            <Row>
+              <Col>
+                <p>To:</p>
+              </Col>
+              <Col>
+                <DatePicker
+                  placeholder="to"
+                  selected={this.state.to}
+                  onChange={this.handleToChange}
+                />
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </div>
+    );
+  }
+}
+
+
+/* import React from 'react';
 import moment from 'moment';
 import Helmet from 'react-helmet';
 
@@ -17,6 +99,7 @@ export default class CalendarRange extends React.Component {
       to: undefined,
     };
   }
+
   showFromMonth() {
     const { from, to } = this.state;
     if (!from) {
@@ -26,22 +109,32 @@ export default class CalendarRange extends React.Component {
       this.to.getDayPicker().showMonth(from);
     }
   }
-  handleFromChange(from) {
+
+  handleFromChange = from => {
+    this.setState({
+      startDate: from
+    });
     // Change the from date and focus the "to" input field
     this.setState({ from });
+    console.log("from");
+    const valueOfInput = from.parseDate;
+    console.log(valueOfInput);
   }
   handleToChange(to) {
     this.setState({ to }, this.showFromMonth);
-  }
+    console.log("to");
+    const valueOfInput = to;
+    /* console.log(valueOfInput); */
+/*   }
   render() {
     const { from, to } = this.state;
     const modifiers = { start: from, end: to };
     return (
       <div className="InputFromTo black-text">
-        <DayPickerInput 
+        <DayPickerInput
           value={from}
           placeholder="From"
-          format="LL"
+          format="MM/DD/YYYY"
           formatDate={formatDate}
           parseDate={parseDate}
           dayPickerProps={{
@@ -60,7 +153,7 @@ export default class CalendarRange extends React.Component {
             ref={el => (this.to = el)}
             value={to}
             placeholder="To"
-            format="LL"
+            format="MM/DD/YYYY"
             formatDate={formatDate}
             parseDate={parseDate}
             dayPickerProps={{
@@ -75,8 +168,8 @@ export default class CalendarRange extends React.Component {
           />
         </span>
         <Helmet>
-          <style>{`
-  .InputFromTo .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
+          <style>{` */
+ /*  .InputFromTo .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
     background-color: #f0f8ff !important;
     color: #000000 !important;
   }
@@ -96,10 +189,14 @@ export default class CalendarRange extends React.Component {
   }
   .InputFromTo-to .DayPickerInput-Overlay {
     margin-left: -198px;
-  }
-`}</style>
+  } */
+/* `}</style>
         </Helmet>
       </div>
     );
   }
-}
+} */
+
+
+
+
