@@ -4,6 +4,7 @@ import { Parallax, Row, Navbar, NavItem, Col } from 'react-materialize'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Button } from 'react-materialize';
 
 
 class NavBarAdmin extends Component {
@@ -64,7 +65,13 @@ class NavBarAdmin extends Component {
     }
     else {
       return (
-        <h1>No se puede mi joven</h1>
+        <div className='bg-img  valign-wrapper'>
+          <div className="cntr center-align z-depth-2">
+            <h1 className="white-text">Go back</h1>
+            <h5 className="white-text">you shouldn't be here</h5>
+            <Button onClick={() => this.props.history.push('/')}>go back</Button>
+          </div>
+        </div>
       )
     }
   }

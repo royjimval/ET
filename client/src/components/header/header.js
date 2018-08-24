@@ -65,7 +65,7 @@ class Header extends Component {
             }
 
             this.props.addItem(data);
-            toast.info(this.InfoForToast() , {
+            toast.info(this.InfoForToast(), {
                 position: toast.POSITION.TOP_RIGHT,
                 className: 'foo-bar'
             });
@@ -77,21 +77,61 @@ class Header extends Component {
 
     }
 
-    InfoForToast(){
-        return(
+    InfoForToast() {
+        return (
             <div className="center ">
-            <Row>
-                <img className='menu-icon-w' src='assets/waiter.svg' width='50px' />
-            </Row>
-            <Row>
-                <h6>A waiter will attend you soon :3<br/></h6>
-            </Row>
+                <Row>
+                    <img className='menu-icon-w' src='assets/waiter.svg' width='50px' />
+                </Row>
+                <Row>
+                    <h6>A waiter will attend you soon :3<br /></h6>
+                </Row>
             </div>
         )
     }
 
+    CheckNavForUser(role) {
+        switch(role){
+            case 'Tale':{
+                return (
+                    <div>
+                        <NavItem componentClass={Link} href="/Menu" to="/Menu"><img className='menu-icon' src='assets/menu.svg' width='30px' />MENU</NavItem>
+    
+                        <NavItem className='right' onClick={() => console.log("")}>
+                            <form onSubmit={this.handleSubmit}>
+                                <Button className='transparent white-text wb' flat><img className='menu-icon-w' src='assets/waiter.svg' width='30px' />Waiter
+                                    <input type="button" className='hide' value={this.props.auth.user.name} required type="text" ref={(Table) => this.getTable = Table}></input>
+                                </Button>
+                            </form>
+                        </NavItem>
+                        <NavItem className='left' componentClass={Link} href="/Order" to="/Order"><img className='menu-icon' src='assets/fast-delivery.svg' width='30px' />My Order</NavItem>
+                    </div>
+                )
+            }break;
+            case 'all':{
+                return (
+                    <div>
+                        <NavItem componentClass={Link} href="/Menu" to="/Menu"><img className='menu-icon' src='assets/menu.svg' width='30px' />MENU</NavItem>
+                        <NavItem className='left' componentClass={Link} href="/Order" to="/Order"><img className='menu-icon' src='assets/fast-delivery.svg' width='30px' />My Order</NavItem>
+                    </div>
+                )
+            }break;
+            case 'Chef':{
+                return (
+                    <div>
+                        <NavItem onClick={()=>this.logOutUser()}><img className='menu-icon' src='https://image.flaticon.com/icons/svg/1085/1085311.svg' width='30px' /></NavItem>
+                    </div>
+                )
+            }break;
+        }
+    }
+
+    logOutUser(){
+
+    }
 
     render() {
+        const role = this.props.auth.user.role
         return (
             <div>
                 <Row className="no-marg-b">
@@ -106,18 +146,8 @@ class Header extends Component {
                     <div>
                         <Row className='center no-marg-b'>
                             <Navbar className='nav-color  center'>
-                                <NavItem componentClass={Link} href="/Menu" to="/Menu"><img className='menu-icon' src='assets/menu.svg' width='30px' />MENU</NavItem>
+                                {this.CheckNavForUser(role)}
 
-                                <NavItem className='right' onClick={() => console.log("")}>
-                                    <form onSubmit={this.handleSubmit}>
-
-                                        <Button className='transparent white-text wb' flat><img className='menu-icon-w' src='assets/waiter.svg' width='30px' />Waiter
-                                        <input type="button" className='hide' value={this.props.auth.user.name} required type="text" ref={(Table) => this.getTable = Table}></input>
-                                        </Button>
-
-                                    </form>
-                                </NavItem>
-                                <NavItem className='left' componentClass={Link} href="/Order" to="/Order"><img className='menu-icon' src='assets/fast-delivery.svg' width='30px' />My Order</NavItem>
                             </Navbar>
                         </Row>
                         <ToastContainer />
