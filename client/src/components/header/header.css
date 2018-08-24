@@ -2,8 +2,8 @@
 .header {
     width: 100%;
     height: 100px;
-    object-position: 50% 50%;
     object-fit: cover;
+    object-position: 50% 50%;
 }
 
 .b-red {
@@ -25,11 +25,11 @@
     font-family: 'Pacifico', cursive;
     font-size: 50px;
     text-shadow:
-    1px 1px 0 #fa8072,
-    2px 2px 0 #fa8072,
-    3px 3px 0 #fa8072,
-    4px 4px 0 #fa8072,
-    5px 5px 0 #fa8072;
+    1px 1px 0 #333,
+    2px 2px 0 #333,
+    3px 3px 0 #333,
+    4px 4px 0 #333,
+    5px 5px 0 #333;
 }
 
 @media only screen and (max-width: 600px) {

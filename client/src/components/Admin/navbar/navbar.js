@@ -14,8 +14,13 @@ class NavBarAdmin extends Component {
       return (
         <div className="navmenu">
           <Row>
+            <div className='container'>
+              <h1 className='centered ls'>
+              Admin site
+              </h1>
+            </div>
             <div>
-              <Parallax className='header' imageSrc="https://source.unsplash.com/collection/281387/900x200" />
+              <Parallax className='header' imageSrc="assets/pattern.svg" />
             </div>
             <Navbar className="nabAdmin">
               <NavItem className="conteinernav" componentClass={Link} href="/General" to="/General">

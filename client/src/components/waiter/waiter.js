@@ -378,7 +378,7 @@ class WaiterClass extends Component {
             return (
 
                 <div>
-                    <WaiterAssist />
+                    <WaiterAssist WaiterTilte="Waiter"/>
                     <Row>
                         <h3 className='center'>Tables</h3>
 

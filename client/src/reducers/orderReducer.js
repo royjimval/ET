@@ -1,7 +1,8 @@
-import { GET_ORDER, ORDER_LOADING, DELETE_ORDER, UPDATE_ORDER, ADD_ORDER } from '../accions/types';
+import { GET_ORDER, ORDER_LOADING, DELETE_ORDER, UPDATE_ORDER, ADD_ORDER, GET_ORDER_BY_DATE, GET_ORDER_BY_DATE_FT } from '../accions/types';
 
 const initialState = {
   order: [],
+  orderft: [],
   loading: false
 };
 
@@ -11,6 +12,18 @@ export default function (state = initialState, action) {
       return {
         ...state,
         order: action.payload,
+        loading: true
+      };
+    case GET_ORDER_BY_DATE:
+      return {
+        ...state,
+        order: action.payload,
+        loading: true
+      };
+    case GET_ORDER_BY_DATE_FT:
+      return {
+        ...state,
+        orderft: action.payload,
         loading: true
       };
     case DELETE_ORDER:
