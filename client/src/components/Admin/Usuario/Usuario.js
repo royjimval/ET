@@ -19,10 +19,10 @@ class Usuario extends Component {
                         <NavBarAdmin />
                     </Row>
                     <Row>
-                        <Col m={4}>
+                        <Col m={6}>
                             <Register />
                         </Col>
-                        <Col m={8}>
+                        <Col m={6}>
                             <UserData />
                         </Col>
                     </Row>
