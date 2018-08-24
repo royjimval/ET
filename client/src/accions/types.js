@@ -4,6 +4,8 @@ export const DELETE_ITEM = 'DELETE_ITEM';
 export const ADD_ITEM = "ADD_ITEM"
 
 export const GET_ORDER = 'GET_ORDER';
+export const GET_ORDER_BY_DATE = 'GET_ORDER_BY_DATE';
+export const GET_ORDER_BY_DATE_FT = 'GET_ORDER_BY_DATE_FT';
 export const ORDER_LOADING = 'ORDER_LOADING';
 export const DELETE_ORDER = 'DELETE_ORDER';
 export const UPDATE_ORDER = 'UPDATE_ORDER';

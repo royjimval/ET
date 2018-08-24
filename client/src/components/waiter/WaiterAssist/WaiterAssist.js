@@ -30,8 +30,13 @@ class WaiterAssist extends Component {
     const { items } = this.props.item;
     return (
       <div>
+        <div className='container'>
+          <h1 className='centered ls'>
+            {this.props.WaiterTilte}
+          </h1>
+        </div>
         <div>
-          <Parallax className='header' imageSrc="https://source.unsplash.com/collection/1113375/900x550" />
+          <Parallax className='header' imageSrc="assets/pattern.svg" />
         </div>
         <Navbar className='nav-color scrl'>
           {

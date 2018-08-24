@@ -17,21 +17,45 @@ router.get('/', async (req, res) => {
     res.json(order);
 }); 
 
-router.get('/date', async (req, res) => {
+router.get('/dateft', async (req, res) => {
+    console.log("JALA" + req.query.from)
+    console.log("JALA" + req.query.to)
+
     var from = moment(req.query.from).toDate()
     var to = moment(req.query.to).toDate()
 
-    from.setHours(0)
+    from.setUTCHours(0)
     from.setMinutes(0)
     from.setSeconds(0)
 
-    to.setHours(23)
+    to.setUTCHours(23)
     to.setMinutes(59)
     to.setSeconds(59)
 
     console.log({from, to})
 
     const order = await Order.find({ date: { $gt: from, $lt: to } })
+    console.log(order)
+    res.json(order);
+}); 
+
+router.get('/date', async (req, res) => {
+
+    console.log(req.query.date)
+    var date = moment(req.query.date).toDate()
+
+    date.setUTCHours(0)
+    date.setMinutes(0)
+    date.setSeconds(0)
+
+    var gtDate = moment(date).toDate();
+
+    gtDate.setUTCHours(23)
+    gtDate.setMinutes(59)
+    gtDate.setSeconds(59)
+
+    var query = { "date": { $gte: date, $lt: gtDate } };
+    const order = await Order.find(query)
     res.json(order);
 }); 
 

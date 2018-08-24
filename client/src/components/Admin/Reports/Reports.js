@@ -3,7 +3,10 @@ import './Reports.css';
 import CalendarOne from '../Calendar/CalendarOne';
 import CalendarRange from '../Calendar/CalendarRange';
 import { Col, Row } from '../../../../../node_modules/react-materialize';
-export default class Reports extends Component {
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+
+class Reports extends Component {
     constructor() {
         super();
         this.handleChange = this.handleChange.bind(this);
@@ -12,11 +15,56 @@ export default class Reports extends Component {
         };
     }
 
+
+    content(order, orderft) {
+        if (this.state.selectValue == 1) {
+            console.log(order)
+            return (
+                <div>
+                    {
+                    
+                        order.map(eachorder => {
+                            return(
+                                < tr className="trproduct" >
+                                    <td> {eachorder.order} </td>
+                                    <td> {eachorder.date}  </td>
+                                    <td> {eachorder.total} </td>
+                                </tr >
+                            )
+                        })
+                    }
+                </div>
+            )
+        }
+        else {
+            console.log(orderft)
+            return(
+                <div>
+                    {
+                        orderft.map(eachorderft => {
+                            return(
+                            < tr className="trproduct" >
+                                <td> {eachorderft.order} </td>
+                                <td> {eachorderft.date}  </td>
+                                <td> {eachorderft.total} </td>
+                            </tr >
+                            )
+                        })
+                    }
+                </div>
+            )
+
+        }
+    }
+
     handleChange(event) {
         this.setState({ selectValue: event.target.value });
     }
 
     render() {
+        const { order } = this.props.order
+        const { orderft } = this.props.orderft
+
         let MyComponent = null;
         var message = 'You selected ' + this.state.selectValue;
         if (this.state.selectValue == 1) {
@@ -25,6 +73,7 @@ export default class Reports extends Component {
             MyComponent = <CalendarRange />
         }
         return (
+
             <div class="divReports">
                 <div className="row divtextProduct">
                     <Col>
@@ -42,7 +91,7 @@ export default class Reports extends Component {
                                 <option className="transparent" value="2">Date Range</option>
                             </select>
                         </Col>
-                        <Col m={4}className="selectdate">
+                        <Col m={4} className="selectdate">
                             <div className="removable calendars">
                                 {MyComponent}
                             </div>
@@ -59,70 +108,47 @@ export default class Reports extends Component {
                     <table className="tableProduct">
                         <thead className="theadReport">
                             <tr>
-                                <th>Categories</th>
-                                <th>Product</th>
-                                <th>Price</th>
-                                <th>Date of Sale</th>
+                                <th>No order</th>
+                                <th>Date of sale</th>
+                                <th>Total</th>
                             </tr>
                         </thead>
-                        <tfoot className="tfootProduct">
-                            <tr className="trfootProduct" >
-                                <td className="tdfooterProduct">Total Sales</td>
-                                <td className="tdfooterProduct" >$1900</td>
-                            </tr>
-                        </tfoot>
-                        <tbody className="tbbodyProducts">  
-                            <tr className="trproduct">
-                                <td>Drinks</td>
-                                <td>Green Tea</td>
-                                <td>22.00 $</td>
-                                <td>21-6-2018</td>
-                            </tr>
-                            <tr className="trproduct">
-                                <td>Drinks</td>
-                                <td>Green Tea</td>
-                                <td>22.00 $</td>
-                                <td>21-6-2018</td>
-                            </tr>
-                            <tr className="trproduct">
-                                <td>Drinks</td>
-                                <td>Green Tea</td>
-                                <td>22.00 $</td>
-                                <td>21-6-2018</td>
-                            </tr>
-                            <tr className="trproduct">
-                                <td>Drinks</td>
-                                <td>Green Tea</td>
-                                <td>22.00 $</td>
-                                <td>21-6-2018</td>
-                            </tr>
-                            <tr className="trproduct">
-                                <td>Drinks</td>
-                                <td>Green Tea</td>
-                                <td>22.00 $</td>
-                                <td>21-6-2018</td>
-                            </tr>
-                            <tr className="trproduct">
-                                <td>Drinks</td>
-                                <td>Green Tea</td>
-                                <td>22.00 $</td>
-                                <td>21-6-2018</td>
-                            </tr>
+
+                        <tbody className="tbbodyProducts">
+
+                            {
+                                this.content(order,orderft)
+                                
+                            }
+
+                            {/* return{
+                                < tr className="trproduct" >
+                                    <td> {eachorder.order} </td>
+                                    <td> {eachorder.date}  </td>
+                                    <td> {eachorder.total} </td>
+                                </tr >
+                            } */}
+
+
                         </tbody>
                     </table>
-                    <div className="center">
-                        <ul class="pagination paginationinventory">
-                            <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-                            <li class="active"><a href="#!">1</a></li>
-                            <li class="waves-effect"><a href="#!">2</a></li>
-                            <li class="waves-effect"><a href="#!">3</a></li>
-                            <li class="waves-effect"><a href="#!">4</a></li>
-                            <li class="waves-effect"><a href="#!">5</a></li>
-                            <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-                        </ul>
-                    </div>
+
                 </div>
             </div >
         );
     }
 }
+
+Reports.propTypes = {
+    order: PropTypes.object.isRequired,
+    orderft: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    order: state.order,
+    orderft: state.order
+});
+
+
+
+export default connect(mapStateToProps)(Reports);
