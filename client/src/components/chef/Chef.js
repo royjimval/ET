@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 import '../waiter/waiter.css'
 
-import Barnav from '../header/navbar'
+import Barnav from '../header/header'
 import Badge from '../../../../node_modules/react-materialize/lib/Badge';
 let cont2 = 0; let cont1 = 0; let cont3 = 0; let cont4 = 0; let cont5 = 0; let cont6 = 0; let lastTable="";
 
@@ -78,7 +78,7 @@ class Chef extends Component {
 
 	changecolor2(table2) {
 		cont2 = 0;
-		table2.map((each_item) => {
+		table2.map(() => {
 			cont2 = cont2 + 1;
 		});
 
@@ -114,7 +114,7 @@ class Chef extends Component {
 
 	changecolor3(table3) {
 		cont3 = 0;
-		table3.map((each_item) => {
+		table3.map(() => {
 			cont3 = cont3 + 1;
 		});
 
@@ -151,7 +151,7 @@ class Chef extends Component {
 
 	changecolor4(table4) {
 		cont4 = 0;
-		table4.map((each_item) => {
+		table4.map(() => {
 			cont4 = cont4 + 1;
 		});
 
@@ -186,7 +186,7 @@ class Chef extends Component {
 
 	changecolor5(table5) {
 		cont5 = 0;
-		table5.map((each_item) => {
+		table5.map(() => {
 			cont5 = cont5 + 1;
 		});
 
@@ -222,7 +222,7 @@ class Chef extends Component {
 
 	changecolor6(table6) {
 		cont6 = 0;
-		table6.map((each_item) => {
+		table6.map(() => {
 			cont6 = cont6 + 1;
 		});
 
@@ -305,7 +305,7 @@ class Chef extends Component {
 		
 			return (
 				<div>
-					<Barnav NavTitle="Chef" />
+					<Barnav/>
 					<div className='m-top20' />
 					<Row>
 						{
@@ -396,7 +396,13 @@ class Chef extends Component {
 			)
 		}else{
 			return(
-			  <h1>No se puede mi joven</h1>
+				<div className='bg-img  valign-wrapper'>
+				<div className="cntr center-align z-depth-2">
+				  <h1 className="white-text">Go back</h1>
+				  <h5 className="white-text">you shouldn't be here</h5>
+				  <Button onClick={() => this.props.history.push('/')}>go back</Button>
+				</div>
+			  </div>
 			)
 		  }
     }

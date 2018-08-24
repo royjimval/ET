@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Row } from '../../../../../node_modules/react-materialize';
+import { Button } from 'react-materialize';
 import Grafica from '../Graficas/grafica';
 import Col from '../../../../../node_modules/react-materialize/lib/Col';
 import Note from '../Note/Note';
@@ -8,7 +9,6 @@ import NavBarAdmin from '../navbar/navbar';
 import './General.css';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Unauthorized from '../../start/Unauthorized';
 
 
 class General extends Component {
@@ -79,7 +79,13 @@ class General extends Component {
             );
         } else {
             return (
-                <Unauthorized/>
+                <div className='bg-img  valign-wrapper'>
+                    <div className="cntr center-align z-depth-2">
+                        <h1 className="white-text">Go back</h1>
+                        <h5 className="white-text">you shouldn't be here</h5>
+                        <Button onClick={() => this.props.history.push('/')}>go back</Button>
+                    </div>
+                </div>
             )
         }
     }

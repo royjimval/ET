@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import { toast } from 'react-toastify'
 import './order.css'
 import Delivere from './delivered'
-let total = 0; let count = 0;let table;
+let total = 0; let count = 0; let table;
 
 class Order extends Component {
     componentDidMount() {
@@ -41,7 +41,7 @@ class Order extends Component {
             position: toast.POSITION.TOP_RIGHT,
             className: 'black'
         });
-        setTimeout(()=>{this.props.getPreorder(table)},100)
+        setTimeout(() => { this.props.getPreorder(table) }, 100)
     };
 
     sumPrice(price) {
@@ -163,7 +163,13 @@ class Order extends Component {
             )
         } else {
             return (
-                <h1>No se puede mi joven</h1>
+                <div className='bg-img  valign-wrapper'>
+                    <div className="cntr center-align z-depth-2">
+                        <h1 className="white-text">Go back</h1>
+                        <h5 className="white-text">you shouldn't be here</h5>
+                        <Button onClick={() => this.props.history.push('/')}>go back</Button>
+                    </div>
+                </div>
             )
         }
     }

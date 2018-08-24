@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 import { ToastContainer, toast } from 'react-toastify';
 import { connect } from 'react-redux'
 import "./addProduct.css"
-import Unauthorized from '../../start/Unauthorized';
+
 
 
 
@@ -139,7 +139,13 @@ class addProductClass extends Component {
 			)
 		} else {
 			return (
-				<Unauthorized/>
+				<div className='bg-img  valign-wrapper'>
+					<div className="cntr center-align z-depth-2">
+						<h1 className="white-text">Go back</h1>
+						<h5 className="white-text">you shouldn't be here</h5>
+						<Button onClick={() => this.props.history.push('/')}>go back</Button>
+					</div>
+				</div>
 			)
 		}
 	}

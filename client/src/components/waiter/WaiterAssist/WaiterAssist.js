@@ -22,6 +22,9 @@ class WaiterAssist extends Component {
     this.props.deleteItem(id);
   };
 
+  logOutUser(){
+
+  }
 
   render() {
     const { items } = this.props.item;
@@ -43,6 +46,7 @@ class WaiterAssist extends Component {
               </NavItem>
             ))
           }
+          <NavItem onClick={()=>this.logOutUser()}><img className='menu-icon' src='https://image.flaticon.com/icons/svg/1085/1085311.svg' width='30px' /></NavItem>
         </Navbar>
         <Confirmation />
       </div>
