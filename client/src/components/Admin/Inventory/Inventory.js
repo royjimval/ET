@@ -5,7 +5,7 @@ import NavBarAdmin from '../navbar/navbar';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { ToastContainer, toast } from 'react-toastify';
-// import './inventory.css'
+import './inventory.css'
 import {putInventory} from '../../../accions/ingredientsAccions'
 let current_Ingredient;
 

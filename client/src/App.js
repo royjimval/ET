@@ -49,7 +49,6 @@ class App extends Component {
             <Route path="/Order" exact component={Order} />
             <Route path="/Waiter" exact component={Waiter} />
             <Route path="/Chef" exact component={Chef} />
-            <Route exact path="/Grafica" exact component={Grafica} />
             <Route path="/General" exact component={General} />
             <Route path="/User" exact component={Usuario} />
             <Route path="/Cashier" exact component={Cashier} />
@@ -57,7 +56,6 @@ class App extends Component {
             <Route path="/ReportsView" exact component={ReportsView} />
             <Route path="/addIngredient" exact component= {AddIngredient} />
             <Route path="/InventoryView" exact component= {InventoryView} />
-            <Route path="/inventory" component={Inventory} />
             <Route component={NoMatch} />
             </Switch>
           </div>

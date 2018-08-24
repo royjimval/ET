@@ -137,7 +137,7 @@ class Cashier extends Component {
 			}
 		}
 		if (money === 'coins') {
-			if(this.state.coins>0){
+			if (this.state.coins > 0) {
 				this.addPayMoney(this.state.coins)
 			}
 		}
@@ -347,7 +347,13 @@ class Cashier extends Component {
 			)
 		} else {
 			return (
-				<h1>No se puede mi joven</h1>
+				<div className='bg-img  valign-wrapper'>
+					<div className="cntr center-align z-depth-2">
+						<h1 className="white-text">Go back</h1>
+						<h5 className="white-text">you shouldn't be here</h5>
+						<Button onClick={() => this.props.history.push('/')}>go back</Button>
+					</div>
+				</div>
 			)
 		}
 	}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import NavBarAdmin from '../navbar/navbar';
+import { Button } from 'react-materialize';
 import Register from './Register';
 import { Row } from '../../../../../node_modules/react-materialize';
 import Col from '../../../../../node_modules/react-materialize/lib/Col';
@@ -27,10 +28,15 @@ class Usuario extends Component {
                     </Row>
                 </div>
             )
-        } else{
-            console.log(role)
-            return(
-              <h1>No se puede mi joven</h1>
+        } else {
+            return (
+                <div className='bg-img  valign-wrapper'>
+                    <div className="cntr center-align z-depth-2">
+                        <h1 className="white-text">Go back</h1>
+                        <h5 className="white-text">you shouldn't be here</h5>
+                        <Button onClick={() => this.props.history.push('/')}>go back</Button>
+                    </div>
+                </div>
             )
         }
     }

@@ -277,12 +277,12 @@ class WaiterClass extends Component {
                 if (cont1 > 0) {
                     return (
                         <div>
-                            
-                                <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 100) }} >Delivered<Icon left>check</Icon></Button>
+
+                            <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 100) }} >Delivered<Icon left>check</Icon></Button>
                         </div>
                     )
-                }else{
-                    return(
+                } else {
+                    return (
                         <div></div>
                     )
                 }
@@ -292,12 +292,12 @@ class WaiterClass extends Component {
                     return (
                         <div>
 
-                                <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 100) }} >Delivered<Icon left>check</Icon></Button>
+                            <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 100) }} >Delivered<Icon left>check</Icon></Button>
 
                         </div>
                     )
-                }else{
-                    return(
+                } else {
+                    return (
                         <div></div>
                     )
                 }
@@ -307,12 +307,12 @@ class WaiterClass extends Component {
                     return (
                         <div>
 
-                                <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 100) }} >Delivered<Icon left>check</Icon></Button>
+                            <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 100) }} >Delivered<Icon left>check</Icon></Button>
 
                         </div>
                     )
-                }else{
-                    return(
+                } else {
+                    return (
                         <div></div>
                     )
                 }
@@ -322,12 +322,12 @@ class WaiterClass extends Component {
                     return (
                         <div>
 
-                                <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 100) }} >Delivered<Icon left>check</Icon></Button>
+                            <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 100) }} >Delivered<Icon left>check</Icon></Button>
 
                         </div>
                     )
-                }else{
-                    return(
+                } else {
+                    return (
                         <div></div>
                     )
                 }
@@ -336,11 +336,11 @@ class WaiterClass extends Component {
                 if (cont5 > 0) {
                     return (
                         <div>
-                                <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 100) }} >Delivered<Icon left>check</Icon></Button>
+                            <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 100) }} >Delivered<Icon left>check</Icon></Button>
                         </div>
                     )
-                }else{
-                    return(
+                } else {
+                    return (
                         <div></div>
                     )
                 }
@@ -349,11 +349,11 @@ class WaiterClass extends Component {
                 if (cont6 > 0) {
                     return (
                         <div>
-                                <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 100) }} >Delivered<Icon left>check</Icon></Button>
+                            <Button className="blue lighten-1" waves='light' onClick={() => { this.updateDelivered(preorderWaiter), setTimeout(() => this.sendTable(lastTable), 100) }} >Delivered<Icon left>check</Icon></Button>
                         </div>
                     )
-                }else{
-                    return(
+                } else {
+                    return (
                         <div></div>
                     )
                 }
@@ -420,7 +420,7 @@ class WaiterClass extends Component {
                                         }
                                     </div>
                                     <CollectionItem className="center-align">
-                                    {this.showDeliverButton(preorderWaiter)}
+                                        {this.showDeliverButton(preorderWaiter)}
                                     </CollectionItem>
 
                                 </Collection>
@@ -471,7 +471,13 @@ class WaiterClass extends Component {
             )
         } else {
             return (
-                <Unauthorized/>
+                <div className='bg-img  valign-wrapper'>
+                    <div className="cntr center-align z-depth-2">
+                        <h1 className="white-text">Go back</h1>
+                        <h5 className="white-text">you shouldn't be here</h5>
+                        <Button onClick={() => this.props.history.push('/')}>go back</Button>
+                    </div>
+                </div>
             )
         }
     }
