@@ -1,11 +1,12 @@
 .RegisterUsers
 {
-	margin-top: 6%;
+	margin-top: 2%;
+	margin-left: 1%;
 	width: 100%;
 	height:100%;
 	padding: 20px 40px;
 	box-sizing: border-box;
-    background: rgba(0,0,0,.5);
+	background: rgba(0, 0, 0, 0.1);
 	border-radius: 5px;
 }
 .user
@@ -14,101 +15,30 @@
 	height: 100px;
 	border-radius: 50%;
 }
-.RegisterUsers input
+
+.cbxTypeUser
 {
-	width: 100%;
+	margin-left: -3.5%;
 }
-.RegisterUsers input[type="text"],
-.RegisterUsers input[type="password"]
-{
-	border: none;
-	border-bottom: 1px solid #fff;
-	background: transparent;
-	outline: none;
-	height: 40px;
-	color: #fff;
-	font-size: 14px;
+
+.stylecolum{
+	border-right: 1px solid white;
 }
-::placeholder
-{
-	color: rgba(255,255,255,.5);
+
+.stylerow{
+	margin-top: 10%;
 }
-.RegisterUsers input[type="submit"]
+
+.headerimage
 {
-	margin-top: 1%;
-	border: none;
-	outline: none;
-	height: 40px;
-	color: #fff;
-	font-size: 14px;
-	background: #2dff26;
-	cursor: pointer;
+	margin-top: -15%;
+	margin-bottom: -6%;
+}
+
+.RegisterUserButton 
+{
 	border-radius: 20px;
 	width: 50%;
 }
 
-.RegisterUsers input[type="submit"]:hover
-{
-	background: #efed40;
-	color: #262626;
-}
-
-	.cbxTypeUser
-	{
-		margin-left: -3.5%;
-	}
-
-	.iuser{
-		color: white;
-	}
-	[type="checkbox"]+label {
-
-		cursor: pointer;
-		/* display: inline-block; */
-		height: 25px;
-		line-height: 25px;
-		color: #fff;
-	    font-size: 14px;
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		-khtml-user-select: none;
-		-ms-user-select: none;
-	}
-
-	[type="checkbox"]+label {
-		position: relative;
-		/* padding-left: 35px; */
-		cursor: pointer;
-		/* display: inline-block; */
-		height: 25px;
-		line-height: 25px;
-		color: #fff;
-	    font-size: 14px;
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		-khtml-user-select: none;
-		-ms-user-select: none;
-
-	}
-
-	.scrolleablepermisos{
-		overflow-y: scroll;
-		height: 120px;
-	}
-		
-	.stylecolum{
-		border-right: 1px solid white;
-	}
-
-	.stylerow{
-		margin-top: 10%;
-	}
-
-	.headerimage
-	{
-		margin-top: -15%;
-		margin-bottom: -6%;
-	}
-
-	
 	

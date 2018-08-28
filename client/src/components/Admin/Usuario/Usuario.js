@@ -14,10 +14,18 @@ class Usuario extends Component {
         const role = this.props.auth.user.role
         if (role === 'all') {
             return (
-                <div class="">
+                <div>
                     <Row >
-                        <NavBarAdmin history={this.props.history}/>
+                        <NavBarAdmin history={this.props.history} />
                     </Row>
+                    <div className="styleheaders center divHeader">
+                        <div>
+                            <img src='assets/favicon-57.png' />
+                        </div>
+                        <div className="divHeaderText">
+                            Create your Eatable account
+                        </div>
+                    </div>
                     <Row>
                         <Col m={6}>
                             <Register />

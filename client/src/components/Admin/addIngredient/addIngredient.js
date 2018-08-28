@@ -5,7 +5,7 @@ import { get_ingredients, addIngredients } from '../../../accions/ingredientsAcc
 import PropTypes from 'prop-types'
 import { ToastContainer, toast } from 'react-toastify';
 import { connect } from 'react-redux'
-import "./addProduct.css"
+import "./addIngredient.css"
 
 class addIngredient extends Component {
 
@@ -41,27 +41,88 @@ class addIngredient extends Component {
             return (
                 <div class="">
                     <Row >
-                        <NavBarAdmin history={this.props.history}/>
+                        <NavBarAdmin history={this.props.history} />
                     </Row>
                     <ToastContainer />
 
 
+                    <div className="styleheaders center divHeader">
+                        <div>
+                            <img src='assets/favicon-57.png' />
+                        </div>
+                        <div className="divHeaderText">
+                            Create your Eatable ingredient
+                        </div>
+                    </div>
+
                     <Row>
-                        <form onSubmit={this.handlesumit} ref={(form) => (this.form = form)}>
-                            <Row className="no-marg-b">
-                                <Col m={4} className='addProduct-wrapper'>
-                                    <Input name="name" s={12} label="Name" />
-
-                                    <Input name="Sellprice" label="Sellprice" s={12} />
-
-                                </Col>
-                            </Row>
-                            <Row className="center-align no-marg-b">
-                                <Button className='green' waves="light" large >ADD</Button>
-                            </Row>
-                        </form>
+                        <Col m={6}>
+                            <div className="IngredientRegister">
+                                <Row>
+                                    <form onSubmit={this.handlesumit} ref={(form) => (this.form = form)}>
+                                        <div className="center headerimageIngredient">
+                                            <figure>
+                                                <img src="assets/ingrendient.svg" alt="UserIngredient" className="iconaddingredient" />
+                                            </figure>
+                                        </div>
+                                        <Row className="stylerow no-marg-b">
+                                            <Col s={12} m={12} >
+                                                <div className="input-field">
+                                                    <i className="material-icons prefix">
+                                                        <img className='menu-icon iconnav' src='assets/nameingredient.svg' width='30px' />
+                                                    </i>
+                                                    <input name="name" type="text" id="icon_prefix" className="validate" />
+                                                    <label for="icon_prefix">Name Ingredient</label>
+                                                </div>
+                                                <div className="input-field">
+                                                    <i className="material-icons prefix">
+                                                        <img className='menu-icon iconnav' src='assets/money.svg' width='30px' />
+                                                    </i>
+                                                    <input name="Sellprice" id="icon_prefix" type="text" className="validate" />
+                                                    <label for="icon_prefix">Sellprice</label>
+                                                </div>
+                                                <div className="input-field center">
+                                                    <Button className='waves-effect waves-light RegisterIngredientButton' large >Save</Button>
+                                                </div>
+                                            </Col>
+                                        </Row>
+                                    </form>
+                                </Row>
+                            </div>
+                        </Col>
+                        <Col m={6}>
+                            <div class="divIngredients scrolleableingredient">
+                                <Row className="no-marg-b">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Ingredient Name</th>
+                                                <th>Ingredient Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="tbbodyIngredients scrolleable">
+                                            <tr>
+                                                <td>Ingredient Name</td>
+                                                <td>Ingredient Price</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ingredient Name</td>
+                                                <td>Ingredient Price</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ingredient Name</td>
+                                                <td>Ingredient Price</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ingredient Name</td>
+                                                <td>Ingredient Price</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </Row>
+                            </div>
+                        </Col>
                     </Row>
-
                 </div>
             )
         } else {
