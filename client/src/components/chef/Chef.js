@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 import '../waiter/waiter.css'
 
-import Barnav from '../header/header'
+import Barnav from '../header/navbar'
 import Badge from '../../../../node_modules/react-materialize/lib/Badge';
 let cont2 = 0; let cont1 = 0; let cont3 = 0; let cont4 = 0; let cont5 = 0; let cont6 = 0; let lastTable="";
 

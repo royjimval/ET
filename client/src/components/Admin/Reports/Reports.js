@@ -5,6 +5,9 @@ import CalendarRange from '../Calendar/CalendarRange';
 import { Col, Row } from '../../../../../node_modules/react-materialize';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import Button from 'react-materialize/lib/Button';
+import * as jsPDF from 'jspdf'
+let order,date,total = "none";
 
 class Reports extends Component {
     constructor() {
@@ -22,9 +25,9 @@ class Reports extends Component {
             return (
                 <div>
                     {
-                    
+
                         order.map(eachorder => {
-                            return(
+                            return (
                                 < tr className="trproduct" >
                                     <td> {eachorder.order} </td>
                                     <td> {eachorder.date}  </td>
@@ -38,16 +41,16 @@ class Reports extends Component {
         }
         else {
             console.log(orderft)
-            return(
+            return (
                 <div>
                     {
                         orderft.map(eachorderft => {
-                            return(
-                            < tr className="trproduct" >
-                                <td> {eachorderft.order} </td>
-                                <td> {eachorderft.date}  </td>
-                                <td> {eachorderft.total} </td>
-                            </tr >
+                            return (
+                                < tr className="trproduct" >
+                                    <td> {eachorderft.order} </td>
+                                    <td> {eachorderft.date}  </td>
+                                    <td> {eachorderft.total} </td>
+                                </tr >
                             )
                         })
                     }
@@ -59,6 +62,57 @@ class Reports extends Component {
 
     handleChange(event) {
         this.setState({ selectValue: event.target.value });
+    }
+
+    print(order,orderft){
+        if (this.state.selectValue == 1) {
+            this.exportPDF(order)
+        }else{
+            this.exportPDF(orderft)
+        }
+    }
+
+
+
+    exportPDF(orderA) {
+
+        let html = "<h1 classname='Red' >Hello</h1>"
+
+        let rowDoc = 80;
+        var pdfConverter = require('jspdf');
+        var doc = new pdfConverter('p', 'pt', 'c6');
+
+        let stringHtml = `<div>${html}</div>`;
+        doc.fromHTML(stringHtml, 20, 20, { 'width': 180 });
+
+
+        orderA.map(eachorder => {
+            order = eachorder.order,
+            date = eachorder.date,
+            total = eachorder.total,
+
+
+            doc.setTextColor(100);
+            doc.setFontSize(20);
+            doc.text(20, 50, 'Etable reports ...');
+            doc.setFontSize(10);
+            doc.text(10, rowDoc, 'Order: ' + order);
+            rowDoc=rowDoc+20;
+            doc.setFontSize(10);
+            doc.text(20, rowDoc, 'Date: ' + date);
+            rowDoc = rowDoc + 20;
+            doc.setFontSize(10);
+            doc.setTextColor(255, 0, 0);
+            doc.text(20, rowDoc, 'Total: ' + total);
+            doc.setTextColor(100);
+            rowDoc = rowDoc + 30;
+
+            if (rowDoc=== 400 || rowDoc>400){
+                rowDoc=80;
+                doc.addPage()
+            }
+        })
+            doc.save("Report.pdf")
     }
 
     render() {
@@ -117,8 +171,8 @@ class Reports extends Component {
                         <tbody className="tbbodyProducts">
 
                             {
-                                this.content(order,orderft)
-                                
+                                this.content(order, orderft)
+
                             }
 
                             {/* return{
@@ -128,7 +182,9 @@ class Reports extends Component {
                                     <td> {eachorder.total} </td>
                                 </tr >
                             } */}
-
+                            <Button onClick={() => this.print(order,orderft)} >
+                                PRINT PDF
+                            </Button>
 
                         </tbody>
                     </table>
