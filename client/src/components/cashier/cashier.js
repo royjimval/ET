@@ -9,6 +9,7 @@ import { addOrder } from '../../accions/orderAccions'
 import './order.css'
 import Modal from '../../../../node_modules/react-materialize/lib/Modal';
 import roundTo from 'round-to'
+import Unauthorized from '../start/Unauthorized';
 let new_id, order_id
 let total = 0;
 let data;
@@ -52,7 +53,7 @@ class Cashier extends Component {
 		if (this.state.change > 0 || this.state.change === 0) {
 			return (
 				<div>
-					<Col className="left-align" m={6}>
+					<Col className="left-align" m={3}>
 						<h5 className="red-text">$ {this.state.change * -1}</h5>
 					</Col>
 				</div>
@@ -60,7 +61,7 @@ class Cashier extends Component {
 		} else {
 			return (
 				<div>
-					<Col className="left-align" m={6}>
+					<Col className="left-align" m={3}>
 						<h5 className="green-text">$ {this.state.change * -1}</h5>
 					</Col>
 				</div>
@@ -101,7 +102,8 @@ class Cashier extends Component {
 			} else {
 				restChange = this.state.change
 			}
-			this.setState({ change: restChange - money })
+			
+			this.setState({ change:roundTo.down( restChange - money, 2) })
 		}
 	}
 
@@ -138,11 +140,13 @@ class Cashier extends Component {
 			if (this.state.dlls > 0) {
 				this.addPayMoney(this.state.dlls * 18)
 			}
+			this.setState({dlls:0})
 		}
 		if (money === 'coins') {
-			if (this.state.coins > 0) {
+			if(this.state.coins>0){
 				this.addPayMoney(this.state.coins*1)
 			}
+			this.setState({coins:0})
 		}
 	}
 
@@ -203,6 +207,7 @@ class Cashier extends Component {
 								</Button>
 							</Col>
 						</Row>
+						<div className="mt-5"/>
 						<Row>
 							{this.sumPrices(preorderCashier)}
 							<Col s={4} m={4}>
@@ -240,11 +245,8 @@ class Cashier extends Component {
 							</Col>
 							<Col s={4} m={4}>
 								<div className="cash-wrapper">
-									<Row className="center">
-
-
-
-										<Col className="right-align" s={12} m={3}>
+									<Row className="center-align">
+										<Col className="right-align" s={6} m={3}>
 											<h5>Total</h5>
 										</Col>
 										<Col className="left-align" s={6} m={3}>
@@ -252,93 +254,86 @@ class Cashier extends Component {
 										</Col>
 
 										<Col className="right-align" s={6} m={3}>
-											<h5>Total(Dlls)</h5>
+											<h5>Total</h5>
 										</Col>
 										<Col className="left-align" s={6} m={3}>
 											<h5 className="red-text">$ {this.showTotalDlls()}</h5>
 										</Col>
-
-
-
-										<Col className="right-align" m={6}>
+										<Col m={6}>
+											<label>DLLS</label>
+										</Col>
+										<Col m={6}>
+										 <label>PESOS</label>
+										</Col>
+										<hr/>
+									</Row>
+									<Row>
+										<Col className="right-align" m={3}>
 											<h5>Pay</h5>
 										</Col>
-										<Col className="left-align" m={6}>
+										<Col className="left-align" m={3}>
 											<h5 className="red-text" >$ {this.state.pay}</h5>
 										</Col>
-
-										<Col className="right-align" m={6}>
+										<Col className="right-align" m={3}>
 											<h5>Change</h5>
 										</Col>
 										{this.showChange()}
 									</Row>
+
 									<Row className="center-align">
-										<Button onClick={() => { this.onPutPreorder(preorderCashier, id_order) }} >Pay</Button>
+										<Col m={6}>
+											<input label="dlls" name="dlls" type="number" value={this.state.dlls} onChange={this.onChange} />
+										</Col>
+										<Col m={6}>
+											<input label="coin" name="coins" type="number" value={this.state.coins} onChange={this.onChange} />
+										</Col>
+										<Col m={6}>
+											<Button waves="light" className="indigo darken-1" onClick={() => { this.CheckInputisZero('dlls') }}>Dlls</Button>
+										</Col>
+										<Col m={6}>
+											<Button waves="light" className="indigo darken-1" onClick={() => { this.CheckInputisZero('coins') }}>PESOS</Button>
+											</Col>
+									</Row>
+
+									<Row className="center-align">
+										<Button waves="light" className="btn-blck green accent-4" onClick={() => { this.onPutPreorder(preorderCashier, id_order) }} >Pay</Button>
 									</Row>
 								</div>
 							</Col>
 							<Col m={4}>
 								<div className="cash-wrapper">
-									<Row className="no-marg-b">
+									<Row className="center-align">
 										<Col m={6}>
-											<div className="valign-wrapper">
-												<Button onClick={() => { this.addPayMoney(1000) }}>
-													<img src="assets/dollar.svg" alt="" height="80px" />
-												</Button>
-											</div>
+												<img className="bill_img" src="assets/bills/1000.png" alt="1000" onClick={() => { this.addPayMoney(1000) }} />
 										</Col>
 										<Col m={6}>
-											<div className="center-wrapper">
-												<Button onClick={() => { this.addPayMoney(500) }}>
-													<img className="hue-r100" src="assets/dollar.svg" alt="" height="80px" />
-												</Button>
-											</div>
+												<img className="bill_img z-depth-4" src="assets/bills/500.png" alt="500" onClick={() => { this.addPayMoney(500) }} />
 										</Col>
 									</Row>
 
-									<br /><br /><br />
-									<Row className="no-marg-b">
+									<Row className="center-align">
 										<Col m={6}>
-											<div className="valign-wrapper">
-												<Button onClick={() => { this.addPayMoney(200) }}>
-													<img className="hue-r240" src="assets/dollar.svg" alt="" height="80px" />
-												</Button>
-											</div>
+											<img className="bill_img z-depth-4" src="assets/bills/200.png" alt="200" onClick={() => { this.addPayMoney(200) }} />
 										</Col>
 										<Col m={6}>
-											<div className="valign-wrapper">
-												<Button onClick={() => { this.addPayMoney(100) }}>
-													<img className="hue-r240" src="assets/dollar.svg" alt="" height="80px" />
-												</Button>
-											</div>
+											<img className="bill_img z-depth-4" src="assets/bills/100.png" alt="100" onClick={() => { this.addPayMoney(100) }} />
 										</Col>
 									</Row>
-									<br /><br /><br />
-									<Row className="no-marg-b">
-										<Col className='center-align' m={6}>
-											<Button onClick={() => { this.addPayMoney(50) }}>
-												<img src="assets/dollar.svg" alt="" height="80px" />
-											</Button>
+
+									<Row className="center-align">
+										<Col m={6}>
+										<img className="bill_img z-depth-4" src="assets/bills/50.png" alt="50" onClick={() => { this.addPayMoney(50) }} />
 										</Col>
 
-										<Col className='center-align' m={6}>
-											<Button onClick={() => { this.addPayMoney(20) }}>
-												<img src="assets/dollar.svg" alt="" height="80px" />
-											</Button>
+										<Col m={6}>
+										<img className="bill_img z-depth-4" src="assets/bills/20.png" alt="20" onClick={() => { this.addPayMoney(20) }} />
 										</Col>
 									</Row>
-									<br /><br /><br />
-									<Row>
-										<Col m={4}><Button onClick={() => { this.ResetPayandChange() }}> X</Button></Col>
-										<Col m={4}>
-											<label for="icon_prefix">Dlls</label>
-											<input name="dlls" type="number" value={this.state.dlls} onChange={this.onChange} />
-											<Button onClick={() => { this.CheckInputisZero('dlls') }}>Dlls</Button>
-										</Col>
-										<Col m={4}>
-											<label for="icon_prefix">Coins</label>
-											<input name="coins" type="number" value={this.state.coins} onChange={this.onChange} />
-											<Button onClick={() => { this.CheckInputisZero('coins') }}>Coins</Button>
+
+
+									<Row className="center-align">
+										<Col m={12}>
+											<Button waves="light" className="btn-blck orange daken-3" onClick={() => { this.ResetPayandChange() }}>Reset</Button>
 										</Col>
 									</Row>
 								</div>
@@ -350,13 +345,7 @@ class Cashier extends Component {
 			)
 		} else {
 			return (
-				<div className='bg-img  valign-wrapper'>
-					<div className="cntr center-align z-depth-2">
-						<h1 className="white-text">Go back</h1>
-						<h5 className="white-text">you shouldn't be here</h5>
-						<Button onClick={() => this.props.history.push('/')}>go back</Button>
-					</div>
-				</div>
+				<Unauthorized history={this.props.history}/>
 			)
 		}
 	}

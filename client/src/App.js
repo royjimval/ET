@@ -14,7 +14,6 @@ import Order from './components/order/order';
 import Waiter from './components/waiter/waiter';
 import Chef from './components/chef/Chef';
 import NavBarAdmin from './components/Admin/navbar/navbar';
-import Grafica from './components/Admin/Graficas/grafica';
 import General from './components/Admin/General/General';
 import Usuario from './components/Admin/Usuario/Usuario';
 import Cashier from './components/cashier/cashier';

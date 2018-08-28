@@ -149,7 +149,7 @@ class modalEdit extends Component {
                         <Col s={6} m={6} l={6}>
                             <form onSubmit={this.handleSubmit} ref={form => this.form = form}>
                                 <Row className="no-marg-b">
-                                    <Col s={12} m={12} l={12} className="blue">
+                                    <Col s={12} m={12} l={12}>
                                         <h5 className='center'>Ingredients</h5>
                                         {this.props.datapass.ingredients.map(ingredien => {
                                             return (
@@ -161,7 +161,7 @@ class modalEdit extends Component {
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col s={12} m={12} l={12} className="red">
+                                    <Col s={12} m={12} l={12}>
                                         <h5 className='center'>Extras</h5>
                                         <Row className='no-marg-b'>
                                             {

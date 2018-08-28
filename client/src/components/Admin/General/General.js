@@ -1,56 +1,13 @@
 import React, { Component } from 'react';
-import { Row } from '../../../../../node_modules/react-materialize';
-import { Button } from 'react-materialize';
-import Grafica from '../Graficas/grafica';
-import Col from '../../../../../node_modules/react-materialize/lib/Col';
-import Note from '../Note/Note';
-import Calendar from '../Calendar/Calendar';
-import NavBarAdmin from '../navbar/navbar';
+import { Button, Row, Navbar, NavItem } from '../../../../../node_modules/react-materialize';
+import { Link } from 'react-router-dom';
 import './General.css';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Clock from './Clock';
 
 
 class General extends Component {
-    constructor() {
-        super();
-        this.state = {
-            chartData: {}
-        }
-    }
-
-    componentWillMount() {
-        this.getChartData();
-    }
-
-    getChartData() {
-        // Ajax calls here
-        this.setState({
-            chartData: {
-                labels: ['Drinks', 'Breakfast', 'Meal', 'Dinners', 'Desserts'],
-                fontColor: "white",
-                datasets: [
-                    {
-                        label: 'Products', fontColor: "white",
-                        data: [
-                            50000,
-                            45000,
-                            33000,
-                            90000,
-                            1000,
-                        ],
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                        ]
-                    }
-                ],
-            }
-        });
-    }
 
     render() {
 
@@ -59,22 +16,56 @@ class General extends Component {
 
             return (
                 <div >
-                    <Row>
-                        <Col m={12} >
-                            <NavBarAdmin  history={this.props.history}/>
-                        </Col>
+                    <Navbar className="nabAdmin">
+                        <NavItem className="conteinernav" componentClass={Link} href="/General" to="/General">
+                            <img className='menu-icon iconnav' src='assets/general.svg' width='31px' />
+                            General
+                         </NavItem>
+
+                        <NavItem className="conteinernav" componentClass={Link} href="/User" to="/User">
+                            <img className='menu-icon iconnav' src='assets/boy.svg' width='31px' />
+                            Users
+                        </NavItem>
+
+                        <NavItem className="conteinernav" componentClass={Link} href="/InventoryView" to="/InventoryView">
+                            <img className='menu-icon iconnav' src='assets/warehouse.svg' width='31px' />
+                            Inventory
+                        </NavItem>
+
+                        <NavItem className="conteinernav" componentClass={Link} href="/cashier" to="/cashier">
+                            <img className='menu-icon iconnav' src='assets/cashier.svg' width='31px' />
+                            Cashier
+                        </NavItem>
+
+                        <NavItem className="conteinernav" componentClass={Link} href="/ReportsView" to="/ReportsView">
+                            <img className='menu-icon iconnav' src='assets/report.svg' width='31px' />
+                            Reports
+                        </NavItem>
+
+                        <NavItem className="conteinernav" componentClass={Link} href="/addProduct" to="/addProduct">
+                            <img className='menu-icon iconnav' src='assets/menu.svg' width='30px' />
+                            Add Product
+                        </NavItem>
+
+                        <NavItem className="conteinernav" componentClass={Link} href="/addIngredient" to="/addIngredient">
+                            <img className='menu-icon iconnav' src='assets/harvest.svg' width='30px' />
+                            Add Ingredient
+                        </NavItem>
+
+                        <NavItem className="conteinernav right" onClick={() => this.logOutUser()}>
+                            <img className='menu-icon iconnav' src='assets/stand-by.svg' width='30px' />
+                            Logout
+                        </NavItem>
+                    </Navbar>
+
+                    <div className='backscreen'>
+                    <div className='center-screen'>
+                    <Row className='center-align white-text'>
+                        <h1 className='ttl'> Welcome back {this.props.auth.user.name} </h1>
+                        <Clock/>
                     </Row>
-                    <Row>
-                        <Col m={7} className=' colcalendar'>
-                            <Grafica chartData={this.state.chartData} location="Eatable" legendPosition="bottom" fontColor="white" />
-                        </Col>
-                        <Col m={2} className=''>
-                            <Calendar />
-                        </Col>
-                        <Col m={3} className=''>
-                            <Note />
-                        </Col>
-                    </Row>
+                    </div>
+                    </div>
                 </div>
             );
         } else {
