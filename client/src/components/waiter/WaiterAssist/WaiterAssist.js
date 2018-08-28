@@ -23,7 +23,8 @@ class WaiterAssist extends Component {
   };
 
   logOutUser(){
-
+    window.localStorage.clear()
+    setTimeout(()=>{window.location = '/'},1000)
   }
 
   render() {
@@ -46,7 +47,7 @@ class WaiterAssist extends Component {
               </NavItem>
             ))
           }
-          <NavItem onClick={()=>this.logOutUser()}><img className='menu-icon' src='https://image.flaticon.com/icons/svg/1085/1085311.svg' width='30px' /></NavItem>
+          <NavItem className='right' onClick={()=>this.logOutUser()}><img className='menu-icon' src='https://image.flaticon.com/icons/svg/1085/1085311.svg' width='30px' /></NavItem>
         </Navbar>
         <Confirmation />
       </div>

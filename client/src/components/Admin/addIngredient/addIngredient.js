@@ -41,7 +41,7 @@ class addIngredient extends Component {
             return (
                 <div class="">
                     <Row >
-                        <NavBarAdmin />
+                        <NavBarAdmin history={this.props.history}/>
                     </Row>
                     <ToastContainer />
 

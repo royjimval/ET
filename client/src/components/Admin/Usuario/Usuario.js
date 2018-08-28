@@ -16,7 +16,7 @@ class Usuario extends Component {
             return (
                 <div class="">
                     <Row >
-                        <NavBarAdmin />
+                        <NavBarAdmin history={this.props.history}/>
                     </Row>
                     <Row>
                         <Col m={6}>
