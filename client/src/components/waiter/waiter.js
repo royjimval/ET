@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Row, Col, Card, Collection, CollectionItem, Icon, Button, Badge } from 'react-materialize'
+import { Row, Col, Collection, CollectionItem, Icon, Button, Badge } from 'react-materialize'
 import '../waiter/waiter.css'
 import WaiterAssist from './WaiterAssist/WaiterAssist'
-import Unauthorized from '../start/Unauthorized';
 import { getPreorderbytableFinished, getPreorderbytableFinishedDelivered, updateDelivered, get_table1_Finished, get_table2_Finished, get_table3_Finished, get_table4_Finished, get_table5_Finished, get_table6_Finished } from '../../accions/preorderAccions'
 import PropTypes from 'prop-types';
 let cont1 = 0, cont2 = 0, cont3 = 0, cont4 = 0, cont5 = 0, cont6 = 0; let lastTable = "";
@@ -378,7 +377,7 @@ class WaiterClass extends Component {
             return (
 
                 <div>
-                    <WaiterAssist WaiterTilte="Waiter"/>
+                    <WaiterAssist WaiterTilte="Waiter" history={this.props.history}/>
                     <Row>
                         <h3 className='center'>Tables</h3>
 

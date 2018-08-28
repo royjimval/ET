@@ -305,7 +305,7 @@ class Chef extends Component {
 		
 			return (
 				<div>
-					<Barnav/>
+					<Barnav Title="Chef" history={this.props.history}/>
 					<div className='m-top20' />
 					<Row>
 						{

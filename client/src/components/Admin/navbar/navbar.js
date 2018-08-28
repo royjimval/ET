@@ -8,6 +8,13 @@ import { Button } from 'react-materialize';
 
 
 class NavBarAdmin extends Component {
+
+  logOutUser(){
+    window.localStorage.clear()
+    setTimeout(()=>{window.location = '/'},1000)
+  }
+
+
   render() {
     const role = this.props.auth.user.role
 
@@ -59,7 +66,7 @@ class NavBarAdmin extends Component {
                 Add Ingredient
             </NavItem>
 
-              <NavItem className="conteinernav right" componentClass={Link} href="/General" to="/General">
+              <NavItem className="conteinernav right" onClick={()=>this.logOutUser()}>
                 <img className='menu-icon iconnav' src='assets/stand-by.svg' width='30px' />
                 Logout
             </NavItem>

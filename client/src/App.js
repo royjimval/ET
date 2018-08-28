@@ -23,7 +23,6 @@ import ReportsView from './components/Admin/Reports/ReportsView';
 import AddIngredient from './components/Admin/addIngredient/addIngredient';
 import InventoryView from './components/Admin/Inventory/Inventoryview';
 import NoMatch from './components/NoMatch';
-import Inventory from './components/Admin/Inventory/Inventory';
 
 //check for tokens
 if(localStorage.jwtToken){
