@@ -15,9 +15,7 @@ class InventoryView extends Component {
             return (
                 <div>
                     <div>
-                        <Row>
-                            <NavBarAdmin history={this.props.history}/>
-                        </Row>
+
                         <Row >
                             <Col m={12} >
                                 <Inventory />
