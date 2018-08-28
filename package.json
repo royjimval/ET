@@ -24,6 +24,7 @@
     "email-validator": "^2.0.4",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0",
+    "jspdf": "^1.4.1",
     "math": "0.0.3",
     "moment": "^2.22.2",
     "mongoose": "^5.2.1",
