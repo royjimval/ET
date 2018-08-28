@@ -20,7 +20,7 @@ class UserData extends Component {
         const { users } = this.props.users;
         console.log(users)
         return (
-            <div class="loginBoxUserData">
+            <div class="loginBoxUserData scrolleable">
                 <Row className="no-marg-b">
                     <table>
                         <thead>
@@ -30,7 +30,7 @@ class UserData extends Component {
                                 <th>Type User</th>
                             </tr>
                         </thead>
-                        <tbody className="tbbodyUserData">
+                        <tbody className="tbbodyUserData scrolleable">
                             {
                                 users.map(user => (
                                     <tr>

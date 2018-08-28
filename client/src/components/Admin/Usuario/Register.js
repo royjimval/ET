@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Register.css';
 
-import { Input, Icon, Row, Col } from '../../../../../node_modules/react-materialize';
+import { Input, Button, Row, Col } from '../../../../../node_modules/react-materialize';
 import { connect } from 'react-redux';
 import { registerUser } from '../../../accions/auhActions'
 import PropTypes from 'prop-types';
@@ -69,16 +69,20 @@ class Register extends Component {
                                 <img src="assets/user.png" alt="UserRegister" class="user" />
                             </figure>
                         </div>
-                        <Row className="stylerow">
+                        <Row className="stylerow" >
                             <Col s={12} m={6} className="stylecolum">
                                 <div class="input-field">
-                                    <i class="material-icons prefix iuser">account_circle</i>
-                                    <input name="name" id="icon_prefix" type="text" class="validate" value={this.state.name} onChange={this.onChange} />
+                                    <i class="material-icons prefix">
+                                        <img className='menu-icon iconnav' src='assets/man.svg' width='30px' />
+                                    </i>
+                                    <input name="name" id="icon_prefix" type="text" className="black-text validate" value={this.state.name} onChange={this.onChange} />
                                     <label for="icon_prefix">Name</label>
                                     <span style={{ color: "red" }}>{errors.name}</span>
                                 </div>
                                 <div class="row cbxTypeUser">
-                                    <Input name="role" value={this.state.role} onChange={this.onChange} className="white-text" s={12} type='select' icon={<Icon className='iuser'>people</Icon>} defaultValue='1'>
+                                    <Input name="role" value={this.state.role} onChange={this.onChange} s={12} type='select' icon={<i class="material-icons prefix">
+                                        <img className='menu-icon iconnav' src='assets/friendship.svg' width='30px' />
+                                    </i>} defaultValue='1'>
                                         <option value='1'>Select the type of user</option>
                                         <option value='Chef'>Chef</option>
                                         <option value='Table'>Table</option>
@@ -89,7 +93,9 @@ class Register extends Component {
                                     <span style={{ color: "red" }}>{errors.role}</span>
                                 </div>
                                 <div class="input-field">
-                                    <i class="material-icons prefix iuser">lock</i>
+                                    <i class="material-icons prefix">
+                                        <img className='menu-icon iconnav' src='assets/padlock.svg' width='30px' />
+                                    </i>
                                     <input name="password" id="icon_prefix" type="password" class="validate" value={this.state.password} onChange={this.onChange} />
                                     <label for="icon_prefix">Password</label>
                                     <span style={{ color: "red" }}>{errors.password}</span>
@@ -97,19 +103,25 @@ class Register extends Component {
                             </Col>
                             <Col s={12} m={6}>
                                 <div class="input-field">
-                                    <i class="material-icons prefix iuser">account_circle</i>
+                                    <i class="material-icons prefix">
+                                        <img className='menu-icon iconnav' src='assets/man.svg' width='30px' />
+                                    </i>
                                     <input name="lastname" id="icon_prefix" type="text" class="validate" value={this.state.lastname} onChange={this.onChange} />
                                     <label for="icon_prefix">Lastname</label>
                                     <span style={{ color: "red" }}>{errors.lastname}</span>
                                 </div>
                                 <div class="input-field">
-                                    <i class="material-icons prefix iuser">email</i>
+                                    <i class="material-icons prefix">
+                                        <img className='menu-icon iconnav' src='assets/email.svg' width='30px' />
+                                    </i>
                                     <input name="email" id="icon_prefix" type="email" class="validate" value={this.state.email} onChange={this.onChange} />
                                     <label for="icon_prefix">Email</label>
                                     <span style={{ color: "red" }}>{errors.email}</span>
                                 </div>
                                 <div class="input-field">
-                                    <i class="material-icons prefix iuser">lock</i>
+                                    <i class="material-icons prefix">
+                                        <img className='menu-icon iconnav' src='assets/padlock.svg' width='30px' />
+                                    </i>
                                     <input name="password2" id="icon_prefix" type="password" class="validate" value={this.state.password2} onChange={this.onChange} />
                                     <label for="icon_prefix">Confirm password</label>
                                     <span style={{ color: "red" }}>{errors.password2}</span>
@@ -117,7 +129,7 @@ class Register extends Component {
                             </Col>
                         </Row>
                         <div className="center">
-                            <input type="submit" value="Save" />
+                            <Button type="submit" value="Save" className="waves-effect waves-light RegisterUserButton" large> Save</Button>
                         </div>
                     </form>
                 </Row>
