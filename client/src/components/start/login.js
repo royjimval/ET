@@ -74,7 +74,7 @@ class LogIn extends Component {
         } else {
             switch(role){
                 case 'all':{
-                    this.props.history.push('/Admin')
+                    this.props.history.push('/General')
                     console.log('adm')
                 }
                 break;

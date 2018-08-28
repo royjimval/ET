@@ -20,7 +20,6 @@ class NavBarAdmin extends Component {
 
     if (role === 'all') {
       return (
-        <div className="navmenu">
           <Row>
             <div className='container'>
               <h1 className='centered ls'>
@@ -72,7 +71,6 @@ class NavBarAdmin extends Component {
             </NavItem>
             </Navbar>
           </Row>
-        </div >
       )
     }
     else {

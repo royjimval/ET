@@ -14,18 +14,10 @@ class InventoryView extends Component {
         if (role === 'all') {
             return (
                 <div>
-                    <div>
 
-                        <Row >
-                            <Col m={12} >
+
                                 <Inventory />
-                            </Col>
-                        </Row>
-                        <Row >
-                            <Col m={12} >
-                            </Col>
-                        </Row>
-                    </div>
+
                 </div>
             );
         }

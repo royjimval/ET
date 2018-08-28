@@ -9,6 +9,12 @@ import Clock from './Clock';
 
 class General extends Component {
 
+    logOutUser(){
+        window.localStorage.clear()
+        setTimeout(()=>{window.location = '/'},1000)
+      }
+    
+
     render() {
 
         const role = this.props.auth.user.role
