@@ -1,9 +1,4 @@
-.colcalendar{
-    color: #fff;
-    font: bold;
-}
-
-.bg-img {
+.backscreen{
 	width: 100%;
 	height: 100vh;
 	background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
@@ -11,4 +6,11 @@
 	background-position: 50% 50%;
 	background-size: cover;
 	background-repeat: none;
+}
+
+.center-screen{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
 }
