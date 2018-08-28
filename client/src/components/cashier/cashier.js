@@ -13,6 +13,7 @@ let new_id, order_id
 let total = 0;
 let data;
 let pay;
+let lastTable;
 
 class Cashier extends Component {
 
@@ -85,6 +86,7 @@ class Cashier extends Component {
 	}
 
 	getProducts(item) {
+		lastTable=item;
 		this.props.getProductCashier(item);
 	}
 
@@ -123,6 +125,8 @@ class Cashier extends Component {
 			new_id = parseInt(new_id) + 1
 			new_id = new_id.toString()
 			updateId_order(order_id, new_id)
+
+			this.getProducts(lastTable)
 		} else {
 			console.log("no se puede")
 			alert("No se puede realizar esta accion aun")
@@ -137,7 +141,7 @@ class Cashier extends Component {
 		}
 		if (money === 'coins') {
 			if (this.state.coins > 0) {
-				this.addPayMoney(this.state.coins)
+				this.addPayMoney(this.state.coins*1)
 			}
 		}
 	}
