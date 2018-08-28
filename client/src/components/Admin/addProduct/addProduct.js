@@ -77,7 +77,7 @@ class addProductClass extends Component {
 							<img src='assets/favicon-57.png' />
 						</div>
 						<div className="divHeaderText">
-							Create your Eatable account
+							Create your Eatable Product
                         </div>
 					</div>
 					<form onSubmit={this.handlesumit} ref={(form) => (this.form = form)}>
