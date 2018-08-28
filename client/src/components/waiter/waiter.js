@@ -49,7 +49,7 @@ class WaiterClass extends Component {
 
     changecolor1(table1) {
         cont1 = 0;
-        table1.map(each_item => {
+        table1.map(() => {
             cont1 = cont1 + 1;
         })
 
@@ -86,7 +86,7 @@ class WaiterClass extends Component {
 
     changecolor2(table2) {
         cont2 = 0;
-        table2.map(each_item => {
+        table2.map(() => {
             cont2 = cont2 + 1;
         })
 
@@ -124,7 +124,7 @@ class WaiterClass extends Component {
 
     changecolor3(table3) {
         cont3 = 0;
-        table3.map(each_item => {
+        table3.map(() => {
             cont3 = cont3 + 1;
         })
 
@@ -161,7 +161,7 @@ class WaiterClass extends Component {
 
     changecolor4(table4) {
         cont4 = 0;
-        table4.map(each_item => {
+        table4.map(() => {
             cont4 = cont4 + 1;
         })
 
@@ -198,7 +198,7 @@ class WaiterClass extends Component {
 
     changecolor5(table5) {
         cont5 = 0;
-        table5.map(each_item => {
+        table5.map(() => {
             cont5 = cont5 + 1;
         })
 
@@ -235,7 +235,7 @@ class WaiterClass extends Component {
 
     changecolor6(table6) {
         cont6 = 0;
-        table6.map(each_item => {
+        table6.map(() => {
             cont6 = cont6 + 1;
         })
 

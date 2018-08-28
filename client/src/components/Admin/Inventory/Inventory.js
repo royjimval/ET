@@ -108,9 +108,7 @@ class Inventory extends Component {
             <div>
                 <ToastContainer />
 
-                <Row >
                     <NavBarAdmin />
-                </Row>
 
                 <Row className="white black-text container">
                     <Col m={6}>
