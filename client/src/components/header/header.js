@@ -105,7 +105,7 @@ class Header extends Component {
 
     CheckNavForUser(role) {
         switch (role) {
-            case 'Tale': {
+            case 'Table': {
                 return (
                     <div>
                         <NavItem componentClass={Link} href="/Menu" to="/Menu"><img className='menu-icon' src='assets/menu.svg' width='30px' />MENU</NavItem>
