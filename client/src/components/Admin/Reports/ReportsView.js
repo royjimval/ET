@@ -16,7 +16,7 @@ class ReportsView extends Component {
                 <div>
                     <div>
                         <Row>
-                            <NavBarAdmin />
+                            <NavBarAdmin history={this.props.history}/>
                         </Row>
                         <Row >
                             <Col m={12} >

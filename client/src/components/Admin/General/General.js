@@ -61,7 +61,7 @@ class General extends Component {
                 <div >
                     <Row>
                         <Col m={12} >
-                            <NavBarAdmin />
+                            <NavBarAdmin  history={this.props.history}/>
                         </Col>
                     </Row>
                     <Row>

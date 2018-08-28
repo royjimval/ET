@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Parallax, Row, Button, Navbar, NavItem } from 'react-materialize'
+import { Modal, Parallax, Row, Input, Button, Navbar, NavItem } from 'react-materialize'
 import { Link } from 'react-router-dom';
 import Assist from '../modal/assist'
 import { connect } from 'react-redux';
@@ -14,11 +14,24 @@ import '../header/header.css'
 let flag = 0; let counter = 0;
 
 class Header extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            userEmail: '',
+            userPassword: '',
+            errors: ''
+        }
+        this.onChange = this.onChange.bind(this)
+    }
+    onChange = (e) => {
+        this.setState({ [e.target.name]: [e.target.value] })
+    }
 
     componentDidMount() {
         flag = 1;
         counter = 0;
         this.props.getItems()
+        this.setState({ error: {} })
         this.interval1 = setInterval(() => { this.getDataItem() }, 60000);
     }
 
@@ -91,12 +104,12 @@ class Header extends Component {
     }
 
     CheckNavForUser(role) {
-        switch(role){
-            case 'Tale':{
+        switch (role) {
+            case 'Tale': {
                 return (
                     <div>
                         <NavItem componentClass={Link} href="/Menu" to="/Menu"><img className='menu-icon' src='assets/menu.svg' width='30px' />MENU</NavItem>
-    
+
                         <NavItem className='right' onClick={() => console.log("")}>
                             <form onSubmit={this.handleSubmit}>
                                 <Button className='transparent white-text wb' flat><img className='menu-icon-w' src='assets/waiter.svg' width='30px' />Waiter
@@ -107,27 +120,45 @@ class Header extends Component {
                         <NavItem className='left' componentClass={Link} href="/Order" to="/Order"><img className='menu-icon' src='assets/fast-delivery.svg' width='30px' />My Order</NavItem>
                     </div>
                 )
-            }break;
-            case 'all':{
+            } break;
+            case 'all': {
                 return (
                     <div>
                         <NavItem componentClass={Link} href="/Menu" to="/Menu"><img className='menu-icon' src='assets/menu.svg' width='30px' />MENU</NavItem>
                         <NavItem className='left' componentClass={Link} href="/Order" to="/Order"><img className='menu-icon' src='assets/fast-delivery.svg' width='30px' />My Order</NavItem>
                     </div>
                 )
-            }break;
-            case 'Chef':{
+            } break;
+            case 'Chef': {
                 return (
                     <div>
-                        <NavItem onClick={()=>this.logOutUser()}><img className='menu-icon' src='https://image.flaticon.com/icons/svg/1085/1085311.svg' width='30px' /></NavItem>
+                        <NavItem onClick={() => this.logOutUser()}><img className='menu-icon' src='https://image.flaticon.com/icons/svg/1085/1085311.svg' width='30px' /></NavItem>
                     </div>
                 )
-            }break;
+            } break;
+            case 'Cashier': {
+                return (
+                    <div>
+                        <NavItem onClick={() => this.logOutUser()}><img className='menu-icon' src='https://image.flaticon.com/icons/svg/1085/1085311.svg' width='30px' /></NavItem>
+                    </div>
+                )
+            } break;
         }
     }
 
-    logOutUser(){
-
+    logOutUser() {
+        if (this.props.auth.user.email === this.state.userEmail[0]) {
+            this.setState({errors:""})
+            if (this.props.auth.user.role === this.state.userPassword[0]) {
+                this.setState({errors:""})
+                window.localStorage.clear()
+                setTimeout(()=>{window.location = '/'},500)
+            } else {
+                this.setState({ errors: 'No se ingreso el role actual' })
+            }
+        } else {
+            this.setState({ errors: 'No se ingreso el usuario actual' })
+        }
     }
 
     render() {
@@ -141,6 +172,9 @@ class Header extends Component {
                         </h1>
                     </div>
                     <div>
+                        <div className='bt1'>
+                            <Button data-target='foo' className='bt white-text'>x</Button>
+                        </div>
                         <Parallax className='header' imageSrc="https://images.pexels.com/photos/326281/pexels-photo-326281.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
                     </div>
                     <div>
@@ -152,6 +186,20 @@ class Header extends Component {
                         </Row>
                         <ToastContainer />
                     </div>
+                    <Modal
+                        id='foo'
+                        header='Log Out'>
+                        <Row>
+                            <div>
+                                <Input name='userEmail' onChange={this.onChange} type="email" label="Email" s={12} />
+                            </div>
+                            <div>
+                                <Input name='userPassword' onChange={this.onChange} type="text" label="Role" s={12} />
+                            </div>
+                                <span style={{ color: "red" }}>{this.state.errors}</span>
+                        </Row>
+                        <Button onClick={() => { this.logOutUser() }}>Log Out</Button>
+                    </Modal>
                 </Row>
                 <Assist />
             </div>

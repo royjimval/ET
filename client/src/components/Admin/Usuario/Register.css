@@ -96,16 +96,6 @@
 		height: 120px;
 	}
 		
-	.collapsible-header {
-		display: block;
-		cursor: pointer;
-		min-height: 3rem;
-		line-height: 3rem;
-		padding: 0 1rem;
-		background-color: transparent;
-		border-bottom: 1px solid #ddd;
-	}
-
 	.stylecolum{
 		border-right: 1px solid white;
 	}

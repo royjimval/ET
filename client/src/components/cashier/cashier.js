@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { Row, Col, Collection, CollectionItem, Button, Table, Icon, Input } from 'react-materialize'
-import Nav from '../header/header'
+import Barnav from '../header/navbar'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getProductCashier, putPreorder } from '../../accions/preorderAccions'
 import { get_id_order, updateId_order } from '../../accions/idorderAccions'
 import { addOrder } from '../../accions/orderAccions'
 import './order.css'
-import { set } from 'mongoose';
 import Modal from '../../../../node_modules/react-materialize/lib/Modal';
 import roundTo from 'round-to'
 let new_id, order_id
@@ -153,7 +152,7 @@ class Cashier extends Component {
 			return (
 				<div>
 					<div>
-						<Nav />
+						<Barnav />
 						<br /><br />
 						<Row>
 							<Col s={2} m={2} l={2} xl={2} className="center">
