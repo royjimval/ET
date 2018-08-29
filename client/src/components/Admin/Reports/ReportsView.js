@@ -23,10 +23,6 @@ class ReportsView extends Component {
                                 <Reports />
                             </Col>
                         </Row>
-                        <Row >
-                            <Col m={12} >
-                            </Col>
-                        </Row>
                     </div>
                 </div>
             )

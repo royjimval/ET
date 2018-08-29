@@ -8,30 +8,41 @@ import { connect } from 'react-redux'
 import Button from 'react-materialize/lib/Button';
 import * as jsPDF from 'jspdf'
 let order,date,total = "none";
+let allTotal=0;
 
 class Reports extends Component {
     constructor() {
         super();
         this.handleChange = this.handleChange.bind(this);
         this.state = {
-            selectValue: '1'
+            selectValue: '1',
+            total:'0'
         };
     }
 
+    resetTotal(){
+        allTotal=0
+    }
+
+    sumTotal(item){
+        allTotal=allTotal+item
+        console.log(allTotal);
+    }
 
     content(order, orderft) {
         if (this.state.selectValue == 1) {
             console.log(order)
             return (
                 <div>
+                    {this.resetTotal()}
                     {
-
                         order.map(eachorder => {
                             return (
                                 < tr className="trproduct" >
                                     <td> {eachorder.order} </td>
                                     <td> {eachorder.date}  </td>
                                     <td> {eachorder.total} </td>
+                                    {this.sumTotal(eachorder.total)}
                                 </tr >
                             )
                         })
@@ -43,6 +54,7 @@ class Reports extends Component {
             console.log(orderft)
             return (
                 <div>
+                    {this.resetTotal()}
                     {
                         orderft.map(eachorderft => {
                             return (
@@ -50,6 +62,7 @@ class Reports extends Component {
                                     <td> {eachorderft.order} </td>
                                     <td> {eachorderft.date}  </td>
                                     <td> {eachorderft.total} </td>
+                                    {this.sumTotal(eachorderft.total)}
                                 </tr >
                             )
                         })
@@ -174,20 +187,13 @@ class Reports extends Component {
                                 this.content(order, orderft)
 
                             }
-
-                            {/* return{
-                                < tr className="trproduct" >
-                                    <td> {eachorder.order} </td>
-                                    <td> {eachorder.date}  </td>
-                                    <td> {eachorder.total} </td>
-                                </tr >
-                            } */}
                             <Button onClick={() => this.print(order,orderft)} >
                                 PRINT PDF
                             </Button>
 
                         </tbody>
                     </table>
+                    <center><h2>total: {allTotal}</h2></center>
 
                 </div>
             </div >

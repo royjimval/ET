@@ -12,6 +12,17 @@ import "./addProduct.css"
 
 
 class addProductClass extends Component {
+	constructor(){
+		super()
+		this.state={
+			errorName:'',
+			errorCategory:'',
+			errorPrice:'',
+			errorPhoto:'',
+			errorIngredient:'',
+			errorExtre:''
+		}
+	}
 
 	componentDidMount() {
 		this.props.get_ingredients();
@@ -49,14 +60,71 @@ class addProductClass extends Component {
 		const categoryValue = category.value;
 		const priceValue = price.value;
 		const photoValue = photo.value;
-		const data = { nameValue, categoryValue, priceValue, checkedCheckboxesValuesIngredients, extraIngredients, photoValue }
-		console.log(data)
-		this.props.addProduct(data)
-		console.log(data)
-		toast.info(nameValue + " is added now to your Menu :) ", {
-			position: toast.POSITION.BOTTOM_RIGHT,
-			className: 'foo-bar'
-		});
+
+		let flag =1;
+		if(nameValue===''){
+			flag=0
+			this.setState({errorName:'You must fill name field'})
+		}else{
+			this.setState({errorName:''})
+		}
+
+		if(categoryValue==='1'){
+			flag=0
+			this.setState({errorCategory:'You must fill category field'})
+		}else{
+			this.setState({errorCategory:''})
+		}
+
+		if(priceValue===''){
+			flag=0
+			this.setState({errorPrice:'You must fill price field'})
+		}else{
+			this.setState({errorPrice:''})
+		}
+
+		if(photoValue===''){
+			flag=0
+			this.setState({errorPhoto:'You must fill photo field'})
+		}else{
+			this.setState({errorPhoto:''})
+		}
+
+		let checkValues=0;
+		checkedCheckboxesValuesIngredients.map(items => {
+			checkValues++
+		})
+
+		if (checkValues>2){
+			this.setState({errorIngredient:""})
+		}else{
+			flag=0
+			this.setState({errorIngredient:"you must fill more than 2 ingredients"})
+		}
+		checkValues=0;
+
+		checkedCheckboxesValuesExtra.map(items=>{
+			checkValues++
+		})
+		console.log(checkValues);
+		if (checkValues>2){
+			this.setState({errorExtre:''})
+		}else{
+			flag=0
+			this.setState({errorExtre:"you must fill more than 2 extra ingredients"})
+		}
+
+
+		if(flag===1){
+			const data = { nameValue, categoryValue, priceValue, checkedCheckboxesValuesIngredients, extraIngredients, photoValue }
+			console.log(data)
+			this.props.addProduct(data)
+			console.log(data)
+			toast.info(nameValue + " is added now to your Menu :) ", {
+				position: toast.POSITION.BOTTOM_RIGHT,
+				className: 'foo-bar'
+			});
+		}
 	}
 
 
@@ -96,6 +164,7 @@ class addProductClass extends Component {
 										</i>
 										<input name="name" id="icon_prefix" type="text" className="validate" />
 										<label for="icon_prefix">Name Product</label>
+										<span style={{ color: "red" }}>{this.state.errorName}</span>
 									</div>
 
 
@@ -110,14 +179,16 @@ class addProductClass extends Component {
 											<option value="Dinner">Dinner</option>
 											<option value="Drink">Drink</option>
 										</Input>
+										<span style={{ color: "red" }}>{this.state.errorCategory}</span>
 									</div>
 
 									<div class="input-field">
 										<i class="material-icons prefix">
 											<img className='menu-icon iconnav' src='assets/money.svg' width='30px' />
 										</i>
-										<input name="price" id="icon_prefix" type="text" className="validate" />
+										<input name="price" id="icon_prefix" type="number" className="validate" />
 										<label for="icon_prefix">Price</label>
+										<span style={{ color: "red" }}>{this.state.errorPrice}</span>
 									</div>
 
 
@@ -127,17 +198,9 @@ class addProductClass extends Component {
 										</i>
 										<input name="photo" id="icon_prefix" type="text" className="validate" />
 										<label for="icon_prefix">Photo</label>
+										<span style={{ color: "red" }}>{this.state.errorPhoto}</span>
 									</div>
 
-									{/* 		<div class="file-field input-field">
-										<div className="btn choosefile center">
-											<span className="center">File</span>
-											<input type="file" multiple />
-										</div>
-										<div class="file-path-wrapper">
-											<input class="file-path validate" type="text" placeholder="Upload one or more files" />
-										</div>
-									</div> */}
 									<div className="center">
 										<Button className='waves-effect waves-light RegisterProductButton' large >Save</Button>
 									</div>
@@ -166,6 +229,7 @@ class addProductClass extends Component {
 													</div>
 												</Row>
 											</CollapsibleItem>
+											<span style={{ color: "red" }}>{this.state.errorIngredient}</span>
 											<CollapsibleItem header={<p>Extras</p>}>
 												<Row >
 													<div className="scrolleableExtras stylefontColapsible">
@@ -184,6 +248,7 @@ class addProductClass extends Component {
 													</div>
 												</Row>
 											</CollapsibleItem>
+											<span style={{ color: "red" }}>{this.state.errorExtre}</span>
 										</Collapsible>
 									</Row>
 								</div>

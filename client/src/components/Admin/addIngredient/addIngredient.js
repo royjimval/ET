@@ -7,7 +7,16 @@ import { ToastContainer, toast } from 'react-toastify';
 import { connect } from 'react-redux'
 import "./addIngredient.css"
 
+
+
 class addIngredient extends Component {
+    constructor(){
+        super()
+        this.state={
+            errorName:'',
+            errorPrice:''
+        }
+    }
 
     componentDidMount() {
         this.props.get_ingredients();
@@ -22,12 +31,29 @@ class addIngredient extends Component {
         const nameValue = name.value;
         const SellpriceValue = Sellprice.value;
 
-        const data = { nameValue, SellpriceValue }
-        this.props.addIngredients(data)
-        toast.info(nameValue + " is added now to your ingredients :) ", {
-            position: toast.POSITION.BOTTOM_RIGHT,
-            className: 'foo-bar'
-        });
+        let flag=1;
+        if(nameValue===''){
+            flag=0
+            this.setState({errorName:'You must fill Name field'})
+        }else{
+            this.setState({errorName:''})
+        }
+
+        if(SellpriceValue===''){
+            flag=0
+            this.setState({errorPrice:'You must fill Price field'})
+        }else{
+            this.setState({errorPrice:''})
+        }
+
+        if(flag===1){
+            const data = { nameValue, SellpriceValue }
+            this.props.addIngredients(data)
+            toast.info(nameValue + " is added now to your ingredients :) ", {
+                position: toast.POSITION.BOTTOM_RIGHT,
+                className: 'foo-bar'
+            });
+        }
     }
 
 
@@ -73,13 +99,15 @@ class addIngredient extends Component {
                                                     </i>
                                                     <input name="name" type="text" id="icon_prefix" className="validate" />
                                                     <label for="icon_prefix">Name Ingredient</label>
+                                                    <span style={{ color: "red" }}>{this.state.errorName}</span>
                                                 </div>
                                                 <div className="input-field">
                                                     <i className="material-icons prefix">
                                                         <img className='menu-icon iconnav' src='assets/money.svg' width='30px' />
                                                     </i>
-                                                    <input name="Sellprice" id="icon_prefix" type="text" className="validate" />
+                                                    <input name="Sellprice" id="icon_prefix" type="number" className="validate" />
                                                     <label for="icon_prefix">Sellprice</label>
+                                                    <span style={{ color: "red" }}>{this.state.errorPrice}</span>
                                                 </div>
                                                 <div className="input-field center">
                                                     <Button className='waves-effect waves-light RegisterIngredientButton' large >Save</Button>
