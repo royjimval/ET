@@ -16,8 +16,19 @@ class ReportsView extends Component {
                 <div>
                     <div>
                         <Row>
-                            <NavBarAdmin history={this.props.history}/>
+                            <NavBarAdmin history={this.props.history} />
                         </Row>
+                        <Row>
+                            <div className="styleheaders center divHeader pad1">
+                                <div>
+                                    <img src='assets/favicon-57.png' />
+                                </div>
+                                <div className="divHeaderText">
+                                    Create your Eatable account
+                                </div>
+                            </div>
+                        </Row>
+
                         <Row >
                             <Col m={12} >
                                 <Reports />
