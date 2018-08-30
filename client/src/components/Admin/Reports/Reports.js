@@ -6,7 +6,6 @@ import { Col, Row } from '../../../../../node_modules/react-materialize';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Button from 'react-materialize/lib/Button';
-import * as jsPDF from 'jspdf'
 let order,date,total = "none";
 let allTotal=0;
 
@@ -30,7 +29,7 @@ class Reports extends Component {
     }
 
     content(order, orderft) {
-        if (this.state.selectValue == 1) {
+        if (this.state.selectValue === 1) {
             console.log(order)
             return (
                 <div>
@@ -78,7 +77,7 @@ class Reports extends Component {
     }
 
     print(order,orderft){
-        if (this.state.selectValue == 1) {
+        if (this.state.selectValue === 1) {
             this.exportPDF(order)
         }else{
             this.exportPDF(orderft)
@@ -133,8 +132,7 @@ class Reports extends Component {
         const { orderft } = this.props.orderft
 
         let MyComponent = null;
-        var message = 'You selected ' + this.state.selectValue;
-        if (this.state.selectValue == 1) {
+        if (this.state.selectValue === 1) {
             MyComponent = <CalendarOne />
         } else {
             MyComponent = <CalendarRange />

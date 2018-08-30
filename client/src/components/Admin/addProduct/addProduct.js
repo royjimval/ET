@@ -7,21 +7,22 @@ import PropTypes from 'prop-types'
 import { ToastContainer, toast } from 'react-toastify';
 import { connect } from 'react-redux'
 import "./addProduct.css"
-import ImageUploader from 'react-images-upload';
+import { storage } from '../../../firebase/index'
 
 
 
 class addProductClass extends Component {
-	constructor(props){
+	constructor(props) {
 		super(props)
-		this.state={
-			errorName:'',
-			errorCategory:'',
-			errorPrice:'',
-			errorPhoto:'',
-			errorIngredient:'',
-			errorExtre:'',
-			pictures: ''
+		this.state = {
+			errorName: '',
+			errorCategory: '',
+			errorPrice: '',
+			errorPhoto: '',
+			errorIngredient: '',
+			errorExtre: '',
+			pictures: {},
+			url: ''
 		}
 		this.onDrop = this.onDrop.bind(this);
 	}
@@ -33,107 +34,127 @@ class addProductClass extends Component {
 	handlesumit = (e) => {
 		e.preventDefault();
 
-		const { name } = this.form;
-		const { category } = this.form;
-		const { price } = this.form;
+		const image = this.state.pictures
 
-		const { ingredients } = this.form;
-		const checkboxArrayIngredients = Array.prototype.slice.call(ingredients);
-		const checkedCheckboxesIngredients = checkboxArrayIngredients.filter(input => input.checked);
-		const checkedCheckboxesValuesIngredients = checkedCheckboxesIngredients.map(input => input.value);
-		console.log('checked ingredients:', checkedCheckboxesValuesIngredients);
+		const uploadTask = storage.ref(`images/${image.name}`).put(image)
+		uploadTask.on('state_changed',
+			(snapshot) => { },
+			(error) => {
+				console.log(error)
+			},
+			() => {
+				storage.ref('images').child(image.name).getDownloadURL().then(url => {
+					this.setState({ url: url })
+				})
+			})
 
-		const { extra } = this.form;
-		const checkboxArrayExtra = Array.prototype.slice.call(extra);
-		const checkedCheckboxesExtra = checkboxArrayExtra.filter(input => input.checked);
-		const checkedCheckboxesValuesExtra = checkedCheckboxesExtra.map(input => input.value);
-		console.log('checked extra:', checkedCheckboxesValuesExtra);
+		setTimeout(() => {
 
-		let extraIngredients = [];
-		let extraIngredient;
-		checkedCheckboxesValuesExtra.map(items => {
-			extraIngredient = items.split(" ")
-			extraIngredients.push([extraIngredient[0], extraIngredient[1]])
-		})
+			const { name } = this.form;
+			const { category } = this.form;
+			const { price } = this.form;
 
+			const { ingredients } = this.form;
+			const checkboxArrayIngredients = Array.prototype.slice.call(ingredients);
+			const checkedCheckboxesIngredients = checkboxArrayIngredients.filter(input => input.checked);
+			const checkedCheckboxesValuesIngredients = checkedCheckboxesIngredients.map(input => input.value);
+			console.log('checked ingredients:', checkedCheckboxesValuesIngredients);
 
-		const nameValue = name.value;
-		const categoryValue = category.value;
-		const priceValue = price.value;
-		const photoValue = this.state.pictures
+			const { extra } = this.form;
+			const checkboxArrayExtra = Array.prototype.slice.call(extra);
+			const checkedCheckboxesExtra = checkboxArrayExtra.filter(input => input.checked);
+			const checkedCheckboxesValuesExtra = checkedCheckboxesExtra.map(input => input.value);
+			console.log('checked extra:', checkedCheckboxesValuesExtra);
 
-		let flag =1;
-		if(nameValue===''){
-			flag=0
-			this.setState({errorName:'You must fill name field'})
-		}else{
-			this.setState({errorName:''})
-		}
-
-		if(categoryValue==='1'){
-			flag=0
-			this.setState({errorCategory:'You must fill category field'})
-		}else{
-			this.setState({errorCategory:''})
-		}
-
-		if(priceValue===''){
-			flag=0
-			this.setState({errorPrice:'You must fill price field'})
-		}else{
-			this.setState({errorPrice:''})
-		}
-
-		if(photoValue===''){
-			flag=0
-			console.log('a')
-			this.setState({errorPhoto:'You must fill photo field'})
-		}else{
-			this.setState({errorPhoto:''})
-		}
-
-		let checkValues=0;
-		checkedCheckboxesValuesIngredients.map(items => {
-			checkValues++
-		})
-
-		if (checkValues>2){
-			this.setState({errorIngredient:""})
-		}else{
-			flag=0
-			this.setState({errorIngredient:"you must fill more than 2 ingredients"})
-		}
-		checkValues=0;
-
-		checkedCheckboxesValuesExtra.map(items=>{
-			checkValues++
-		})
-		console.log(checkValues);
-		if (checkValues>2){
-			this.setState({errorExtre:''})
-		}else{
-			flag=0
-			this.setState({errorExtre:"you must fill more than 2 extra ingredients"})
-		}
+			let extraIngredients = [];
+			let extraIngredient;
+			checkedCheckboxesValuesExtra.map(items => {
+				extraIngredient = items.split(" ")
+				extraIngredients.push([extraIngredient[0], extraIngredient[1]])
+			})
 
 
-		if(flag===1){
-			const data = { nameValue, categoryValue, priceValue, checkedCheckboxesValuesIngredients, extraIngredients, photoValue }
-			console.log(data)
-			this.props.addProduct(data)
-			console.log(data)
-			toast.info(nameValue + " is added now to your Menu :) ", {
-				position: toast.POSITION.BOTTOM_RIGHT,
-				className: 'foo-bar'
-			});
-		}
+			const nameValue = name.value;
+			const categoryValue = category.value;
+			const priceValue = price.value;
+			const photoValue = this.state.url
+
+			let flag = 1;
+			if (nameValue === '') {
+				flag = 0
+				this.setState({ errorName: 'You must fill name field' })
+			} else {
+				this.setState({ errorName: '' })
+			}
+
+			if (categoryValue === '1') {
+				flag = 0
+				this.setState({ errorCategory: 'You must fill category field' })
+			} else {
+				this.setState({ errorCategory: '' })
+			}
+
+			if (priceValue === '') {
+				flag = 0
+				this.setState({ errorPrice: 'You must fill price field' })
+			} else {
+				this.setState({ errorPrice: '' })
+			}
+
+			if (photoValue === '') {
+				flag = 0
+				console.log('a')
+				this.setState({ errorPhoto: 'You must fill photo field' })
+			} else {
+				this.setState({ errorPhoto: '' })
+			}
+
+			let checkValues = 0;
+			checkedCheckboxesValuesIngredients.map(items => {
+				checkValues++
+			})
+
+			if (checkValues > 2) {
+				this.setState({ errorIngredient: "" })
+			} else {
+				flag = 0
+				this.setState({ errorIngredient: "you must fill more than 2 ingredients" })
+			}
+			checkValues = 0;
+
+			checkedCheckboxesValuesExtra.map(items => {
+				checkValues++
+			})
+			console.log(checkValues);
+			if (checkValues > 2) {
+				this.setState({ errorExtre: '' })
+			} else {
+				flag = 0
+				this.setState({ errorExtre: "you must fill more than 2 extra ingredients" })
+			}
+
+
+			if (flag === 1) {
+				const data = { nameValue, categoryValue, priceValue, checkedCheckboxesValuesIngredients, extraIngredients, photoValue }
+				console.log(data)
+				this.props.addProduct(data)
+				console.log(data)
+				toast.info(nameValue + " is added now to your Menu :) ", {
+					position: toast.POSITION.BOTTOM_RIGHT,
+					className: 'foo-bar'
+				});
+			}
+			setTimeout(()=>{window.location = '/addProduct'},500)
+		}, 3000)
 	}
 
-	onDrop(picture) {
-        this.setState({
-            pictures: this.state.pictures.concat(picture),
-        });
-    }
+	onDrop = (e) => {
+		if (e.target.files[0]) {
+			const image = e.target.files[0]
+			this.setState({ pictures: e.target.files[0] });
+			console.log(image)
+		}
+	}
 
 
 	render() {
@@ -200,13 +221,8 @@ class addProductClass extends Component {
 
 
 									<div class="input-field">
-										<ImageUploader
-											withIcon={true}
-											buttonText='Choose images'
-											onChange={this.onDrop}
-											imgExtension={['.jpg', '.gif', '.png', '.gif']}
-											maxFileSize={5242880}
-										/>
+										<input type="file" onChange={this.onDrop} s={12} />
+
 										<span style={{ color: "red" }}>{this.state.errorPhoto}</span>
 									</div>
 
