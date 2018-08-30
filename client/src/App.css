@@ -55,3 +55,13 @@ label {
 .cntr>h1{
     font-family: 'Fredoka One', sans-serif;
 }
+
+.pad0{
+    padding: 0 !important;
+}
+.pad10{
+    padding: 10px !important;
+}
+.pad20{
+    padding: 20px !important;
+}

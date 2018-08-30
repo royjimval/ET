@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom/server';
 import './Reports.css';
 import CalendarOne from '../Calendar/CalendarOne';
 import CalendarRange from '../Calendar/CalendarRange';
-import { Col, Row } from '../../../../../node_modules/react-materialize';
+import { Col, Row, Input } from '../../../../../node_modules/react-materialize';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Button from 'react-materialize/lib/Button';
-let order,date,total = "none";
-let allTotal=0;
+import * as jsPDF from 'jspdf'
+let order, date, total = "none";
+let allTotal = 0;
 
 class Reports extends Component {
     constructor() {
@@ -15,16 +17,16 @@ class Reports extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.state = {
             selectValue: '1',
-            total:'0'
+            total: '0'
         };
     }
 
-    resetTotal(){
-        allTotal=0
+    resetTotal() {
+        allTotal = 0
     }
 
-    sumTotal(item){
-        allTotal=allTotal+item
+    sumTotal(item) {
+        allTotal = allTotal + item
         console.log(allTotal);
     }
 
@@ -79,7 +81,7 @@ class Reports extends Component {
     print(order,orderft){
         if (this.state.selectValue === 1) {
             this.exportPDF(order)
-        }else{
+        } else {
             this.exportPDF(orderft)
         }
     }
@@ -87,29 +89,20 @@ class Reports extends Component {
 
 
     exportPDF(orderA) {
-
-        let html = "<h1 classname='Red' >Hello</h1>"
-
         let rowDoc = 80;
         var pdfConverter = require('jspdf');
         var doc = new pdfConverter('p', 'pt', 'c6');
-
-        let stringHtml = `<div>${html}</div>`;
-        doc.fromHTML(stringHtml, 20, 20, { 'width': 180 });
-
-
         orderA.map(eachorder => {
             order = eachorder.order,
-            date = eachorder.date,
-            total = eachorder.total,
-
-
-            doc.setTextColor(100);
+                date = eachorder.date,
+                total = eachorder.total,
+                doc.setTextColor(100, 100, 100);
+            doc.setFont('helvetica');
             doc.setFontSize(20);
-            doc.text(20, 50, 'Etable reports ...');
+            doc.text(20, 50, 'Etable Reports');
             doc.setFontSize(10);
             doc.text(10, rowDoc, 'Order: ' + order);
-            rowDoc=rowDoc+20;
+            rowDoc = rowDoc + 20;
             doc.setFontSize(10);
             doc.text(20, rowDoc, 'Date: ' + date);
             rowDoc = rowDoc + 20;
@@ -119,12 +112,12 @@ class Reports extends Component {
             doc.setTextColor(100);
             rowDoc = rowDoc + 30;
 
-            if (rowDoc=== 400 || rowDoc>400){
-                rowDoc=80;
+            if (rowDoc === 400 || rowDoc > 400) {
+                rowDoc = 80;
                 doc.addPage()
             }
         })
-            doc.save("Report.pdf")
+        doc.save("Report.pdf")
     }
 
     render() {
@@ -138,62 +131,53 @@ class Reports extends Component {
             MyComponent = <CalendarRange />
         }
         return (
-
-            <div class="divReports">
-                <div className="row divtextProduct">
-                    <Col>
-                        <img className='menu-icon iconReport' alt="warehouse" src='assets/report.svg' width='25px' />
-                    </Col>
-                    <Col>
-                        <h6 className="textProduct">My Reports</h6>
-                    </Col>
-                </div>
-                <div className="divheaderReports">
-                    <Row className="rowheaderReports">
-                        <Col m={3} className=" selectDateReport">
-                            <select className="browser-default transparent" value={this.state.selectValue} onChange={this.handleChange}>
-                                <option className="transparent" value="1">Specific Date</option>
-                                <option className="transparent" value="2">Date Range</option>
-                            </select>
-                        </Col>
-                        <Col m={4} className="selectdate">
-                            <div className="removable calendars">
+            <div>
+                <Row className="no-marg-b">
+                    <Col s={12} m={6}>
+                        <div className="pad10 grey lighten-3">
+                            <Row className="no-marg-b">
+                                <Input s={12} type='select' label="Select date of report" defaultValue='1' onChange={this.handleChange}>
+                                    <option value='1'>Specific Date</option>
+                                    <option value='2'>Date Range</option>
+                                </Input>
+                            </Row>
+                            <Row className="no-marg-b">
                                 {MyComponent}
-                            </div>
-                        </Col>
-                        <Col m={3} className="">
-                            <a class="waves-effect waves-light btn buttonsearch left">
-                                <img className='menu-icon ' alt="searchinventory" src='assets/search.svg' width='20px' />
-                                Search
-                            </a>
-                        </Col>
-                    </Row>
-                </div>
-                <div className="">
-                    <table className="tableProduct">
-                        <thead className="theadReport">
-                            <tr>
-                                <th>No order</th>
-                                <th>Date of sale</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-
-                        <tbody className="tbbodyProducts">
-
-                            {
-                                this.content(order, orderft)
-
-                            }
-                            <Button onClick={() => this.print(order,orderft)} >
-                                PRINT PDF
+                            </Row>
+                            <div className="row center-align pad10">
+                                <Button waves="light" className="green accent-4" onClick={() => this.print(order, orderft)} >
+                                    PRINT PDF
                             </Button>
+                            </div>
 
-                        </tbody>
-                    </table>
-                    <center><h2>total: {allTotal}</h2></center>
+                        </div>
+                    </Col>
+                    <Col s={12} m={6}>
+                        <div className="pad10 grey lighten-3">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>No order</th>
+                                        <th>Date of sale</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
 
-                </div>
+                                <tbody>
+
+                                    {
+                                        this.content(order, orderft)
+                                    }
+
+                                </tbody>
+                            </table>
+                            <Row className="no-marg-b">
+                                <h4 className="center-align">Sales Total: {allTotal}</h4>
+                            </Row>
+                        </div>
+                    </Col>
+                </Row>
+
             </div >
         );
     }
