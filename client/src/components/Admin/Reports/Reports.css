@@ -1,95 +1,43 @@
-.divReports{
-    margin-left: 5%;
-    margin-top: -1%;
-	width: 90%;
-	height:100%;
-	box-sizing: border-box;
-    background: rgba(0,0,0,.5);
-    color: #fff;
-    /* border: 2px solid green; */
-    border-radius: 10px;
+.react-datepicker {
+    font-family: Roboto, sans-serif !important;
+    font-size: 0.8rem;
+    background-color: #fff;
+    border: none !important;
+    color: #000;
+    display: inline-block;
+    border-radius:0 !important;
+    -webkit-border-radius:0 !important;
+    -moz-border-radius:0 !important;
+    -ms-border-radius:0 !important;
+    -o-border-radius:0 !important;
+    width: 100% !important;
+    user-select: none;
 }
 
-.buttonsearch
-    {
-        margin-top: 7%;
-        margin-left: -10%;
-    }
+.react-datepicker__month-container {
+    width: 100% !important;
+}
 
-    .divtextProduct{
-        height: 20px;
-    }
-    .textProduct{
-        margin-top: 17%;
-        margin-left: -17%;
-    }
+.react-datepicker__header {
+    text-align: center;
+    background-color: #e0e0e0   !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding-top: 8px;
+    position: relative;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    -ms-border-radius: 0 !important;
+    -o-border-radius: 0 !important;
+}
 
-    .iconReport{
-        margin-left: 15%;
-    }
-
-    .divheaderReports{
-        background: rgba(0,0,0,.5);  
-    }
-
-    .selectDateReport
-    {
-        margin-top: 1%;
-    }
-
-    .selectdate{
-        margin-top: .5%;
-    }
-
-    .calendars
-    {
-        width: 100%;
-    }
-
-
-    .tableProduct{
-        margin-top: 2%;
-        margin-left: 3%;
-        margin-right: 3%;    
-        width:94%;
-        border: 1px solid green;
-    }
-
-    select {
-        background-color: rgba(255,255,255,0.9);
-        width: 100%;
-        padding: 5px;
-        border: 1px solid #f2f2f2;
-        border-radius: 1px;
-        height: 3rem;
-    }
-
-    .theadReport
-    {
-        display:table;
-        width:100%;
-        table-layout:fixed;
-        background: rgba(0,0,0,.5);
-    }
-
-    .tbbodyProducts{
-        display:block;
-        height:300px;
-        overflow:auto;
-        display:table;
-        width:100%;
-        table-layout:fixed;
-        background: rgba(0,0,0,.5);
-        margin-bottom: 0%;
-        }
-
-        tr {
-            display:table;
-            width:100%;
-            table-layout:fixed;
-        }  
-
-        .tfootProduct
-    {
-        background: rgba(0,0,0,.7);
-    }
+.react-datepicker__day--selected, .react-datepicker__day--in-selecting-range, .react-datepicker__day--in-range {
+    background-color: #00c853 !important;
+    color: #fff;
+    border-radius: 2px !important;
+    -webkit-border-radius: 2px !important;
+    -moz-border-radius: 2px !important;
+    -ms-border-radius: 2px !important;
+    -o-border-radius: 2px !important;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}

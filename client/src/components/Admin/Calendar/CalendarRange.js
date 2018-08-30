@@ -6,7 +6,7 @@ import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { getdateft} from '../../../accions/orderAccions'
+import { getdateft } from '../../../accions/orderAccions'
 let from, to;
 
 class CalendarRange extends React.Component {
@@ -20,8 +20,8 @@ class CalendarRange extends React.Component {
     };
   }
 
-  seeorder(){
-    let data = {from, to}
+  seeorder() {
+    let data = { from, to }
     console.log(data)
     this.props.getdateft(data)
   }
@@ -49,38 +49,24 @@ class CalendarRange extends React.Component {
 
   render() {
     return (
-      <div className="row">
+      <div>
         <Row>
-          <Col m={5.5} className="">
-            <Row>
-              <Col>
-                <p>From:</p>
-              </Col>
-              <Col>
-                <DatePicker
-                  placeholder="From"
-                  selected={this.state.from}
-                  onChange={this.handleChange}
-                />
-              </Col>
-            </Row>
+          <Col m={6} className="center-align">
+            <DatePicker
+              inline
+              placeholder="From"
+              selected={this.state.from}
+              onChange={this.handleChange}
+            />
           </Col>
-          <Col m={1} className="center">
-            <p>-</p>
-          </Col>
-          <Col m={5.5}>
-            <Row>
-              <Col>
-                <p>To:</p>
-              </Col>
-              <Col>
-                <DatePicker
-                  placeholder="to"
-                  selected={this.state.to}
-                  onChange={this.handleToChange}
-                />
-              </Col>
-            </Row>
+          <Col m={6} className="center-align">
+            <DatePicker
+              inline
+              placeholder="to"
+              selected={this.state.to}
+              onChange={this.handleToChange}
+              maxDate={moment()}
+            />
           </Col>
         </Row>
       </div>

@@ -29,14 +29,15 @@ seeOrders(date){
       startDate: date
     });
     const valueOfInput = date.format("YYYY/MM/DD");
-    console.log(valueOfInput);
     this.seeOrders(valueOfInput)
   };
 
   render() {
     return <DatePicker
+      inline
       selected={this.state.startDate}
       onChange={this.handleChange}
+      maxDate={moment()}
     />;
   }
 }

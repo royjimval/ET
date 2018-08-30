@@ -28,6 +28,7 @@
     "math": "0.0.3",
     "moment": "^2.22.2",
     "mongoose": "^5.2.1",
+    "npm": "^6.4.0",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "popper": "^1.0.1",
