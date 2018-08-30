@@ -14,10 +14,20 @@ class InventoryView extends Component {
         if (role === 'all') {
             return (
                 <div>
-
-
-                                <Inventory history={this.props.history}/>
-
+                    <Row>
+                        <NavBarAdmin />
+                    </Row>
+                    <div className="styleheaders center divHeader">
+                        <div>
+                            <img src='assets/favicon-57.png' />
+                        </div>
+                        <div className="divHeaderText">
+                            Create your Eatable account
+                        </div>
+                    </div>
+                    <Row>
+                        <Inventory history={this.props.history} />
+                    </Row>
                 </div>
             );
         }
