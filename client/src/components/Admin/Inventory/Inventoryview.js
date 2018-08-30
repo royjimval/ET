@@ -16,7 +16,7 @@ class InventoryView extends Component {
                 <div>
 
 
-                                <Inventory />
+                                <Inventory history={this.props.history}/>
 
                 </div>
             );

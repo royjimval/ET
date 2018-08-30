@@ -18,6 +18,10 @@ class Inventory extends Component {
             sellprice: '',
             stock: '',
             buyprice: '',
+            errorName:'',
+            errorSellprice:'',
+            errorStock:'',
+            errorBuyprice:''
         }
         this.handleChange = this.handleChange.bind(this)
     }
@@ -38,66 +42,173 @@ class Inventory extends Component {
 
     handlesumitName = (e) => {
         e.preventDefault();
-        console.log(current_Ingredient)
-        const id = current_Ingredient._id
-        const name = this.state.name
-        const sellprice = current_Ingredient.Sellprice
-        const stock = current_Ingredient.stock
-        const buyPrice = current_Ingredient.buyPrice
-        putInventory(id, name, sellprice, stock, buyPrice )
-        toast.info(current_Ingredient.name + " is change for " + name, {
-            position: toast.POSITION.TOP_RIGHT,
-            className: 'foo-bar'
-        });    }
+
+        if(this.state.name===''){
+            this.setState({errorName:'you must fill the name field'})
+        }else{
+            this.setState({name:''})
+            this.setState({errorName:''})
+            console.log(current_Ingredient)
+            const id = current_Ingredient._id
+            const name = this.state.name
+            const sellprice = current_Ingredient.Sellprice
+            const stock = current_Ingredient.stock
+            const buyPrice = current_Ingredient.buyPrice
+            putInventory(id, name, sellprice, stock, buyPrice )
+            toast.info(current_Ingredient.name + " is change for " + name, {
+                position: toast.POSITION.TOP_RIGHT,
+                className: 'foo-bar'
+            });
+            this.props.get_ingredients();
+            setTimeout(()=>{window.location = '/InventoryView'},1000)
+        }
+    }
 
     handlesumitSellprice = (e) => {
-        e.preventDefault();
-        console.log(current_Ingredient)
-        const id = current_Ingredient._id
-        const name = current_Ingredient.name
-        const sellprice = this.state.sellprice
-        const stock = current_Ingredient.stock
-        const buyPrice = current_Ingredient.buyPrice
-        console.log(this.state.sellprice)
-        console.log(id, name, sellprice, stock, buyPrice)
-        putInventory(id, name, sellprice, stock, buyPrice)
-        toast.info(current_Ingredient.Sellprice + " is change for " + sellprice, {
-            position: toast.POSITION.TOP_RIGHT,
-            className: 'foo-bar'
-        });
-    
+        if(this.state.sellprice===''){
+            this.setState({errorSellprice:'you must fill the sell price field'})
+        }else{
+            this.setState({sellprice:''})
+            this.setState({errorSellprice:''})
+            e.preventDefault();
+            console.log(current_Ingredient)
+            const id = current_Ingredient._id
+            const name = current_Ingredient.name
+            const sellprice = this.state.sellprice
+            const stock = current_Ingredient.stock
+            const buyPrice = current_Ingredient.buyPrice
+            console.log(this.state.sellprice)
+            console.log(id, name, sellprice, stock, buyPrice)
+            putInventory(id, name, sellprice, stock, buyPrice)
+            toast.info(current_Ingredient.Sellprice + " is change for " + sellprice, {
+                position: toast.POSITION.TOP_RIGHT,
+                className: 'foo-bar'
+            });
+            setTimeout(()=>{window.location = '/InventoryView'},1000)
+        }
+
     }
 
     handlesumitStock = (e) => {
-        e.preventDefault();
-        console.log(current_Ingredient)
-        const id = current_Ingredient._id
-        const name = current_Ingredient.name
-        const sellprice = current_Ingredient.Sellprice
-        const stock = this.state.stock
-        const buyPrice = current_Ingredient.buyPrice
-        putInventory(id, name, sellprice, stock, buyPrice)
-        toast.info(current_Ingredient.stock + " is change for " + stock, {
-            position: toast.POSITION.TOP_RIGHT,
-            className: 'foo-bar'
-        });
+        if(this.state.stock===''){
+            this.setState({errorStock:'you must fill the Stock field'})
+        }else{
+            this.setState({errorStock:''})
+            this.setState({stock:''})
+            e.preventDefault();
+            console.log(current_Ingredient)
+            const id = current_Ingredient._id
+            const name = current_Ingredient.name
+            const sellprice = current_Ingredient.Sellprice
+            const stock = this.state.stock
+            const buyPrice = current_Ingredient.buyPrice
+            putInventory(id, name, sellprice, stock, buyPrice)
+            toast.info(current_Ingredient.stock + " is change for " + stock, {
+                position: toast.POSITION.TOP_RIGHT,
+                className: 'foo-bar'
+            });
+            setTimeout(()=>{window.location = '/InventoryView'},1000)
+        }
     }
     
 
     handlesumitBuyprice = (e) => {
-        e.preventDefault();
-        console.log(current_Ingredient)
-        const id = current_Ingredient._id
-        const name = current_Ingredient.name
-        const sellprice = current_Ingredient.Sellprice
-        const stock = current_Ingredient.stock
-        const buyPrice = this.state.buyprice
-        putInventory(id, name, sellprice, stock, buyPrice)
-        toast.info(current_Ingredient.buyPrice + " is change for " + buyPrice, {
-            position: toast.POSITION.TOP_RIGHT,
-            className: 'foo-bar'
-        });
-    
+        if(this.state.buyprice===''){
+            this.setState({errorBuyprice:'you must fill the Buy price field'})
+        }else{
+            this.setState({buyprice:''})
+            this.setState({errorBuyprice:''})
+            e.preventDefault();
+            console.log(current_Ingredient)
+            const id = current_Ingredient._id
+            const name = current_Ingredient.name
+            const sellprice = current_Ingredient.Sellprice
+            const stock = current_Ingredient.stock
+            const buyPrice = this.state.buyprice
+            putInventory(id, name, sellprice, stock, buyPrice)
+            toast.info(current_Ingredient.buyPrice + " is change for " + buyPrice, {
+                position: toast.POSITION.TOP_RIGHT,
+                className: 'foo-bar'
+            });
+            setTimeout(()=>{window.location = '/InventoryView'},1000)
+        }
+    }
+
+    showData(item,data){
+        switch(item){
+            case 'name':{
+                if(data===undefined){
+                    return("Actual name: ")
+                }else{
+                    return("Actual name: " + data)
+                }
+            }break;
+            case 'sellprice':
+            {
+                if(data===undefined){
+                    return("Actual sell price: ")
+                }else{
+                    return("Actual sell price: " + data)
+                }
+            }break;
+            case 'buyprice':
+            {
+                if(data===undefined){
+                    return("Actual buy price: ")
+                }else{
+                    return("Actual buy price: " + data)
+                }
+            }break;
+            case 'stock':
+            {
+                if(data===undefined){
+                    return("Actual in Stock: ")
+                }else{
+                    return("Actual in Stock: " + data)
+                }
+            }break;
+        }
+    }
+
+    editableInputs(ingredientid){
+        return(
+
+        <Collapsible popout>
+
+                                <span style={{ color: "red" }}>{this.state.errorName}</span>
+                                <CollapsibleItem header={this.showData("name",ingredientid.name)} icon='arrow_drop_down'>
+                                    <form onSubmit={this.handlesumitName}>
+                                        <Input value={this.state.name} onChange={this.handleChange} type="text" name="name" s={12} label="New name" />
+                                        <Button className='green' waves="light" value='submit' large >Update</Button>
+                                    </form>
+                                </CollapsibleItem>
+
+                                <span style={{ color: "red" }}>{this.state.errorSellprice}</span>
+                                <CollapsibleItem header={this.showData("sellprice",ingredientid.Sellprice)} icon='arrow_drop_down'>
+                                    <form onSubmit={this.handlesumitSellprice}>
+                                        <Input value={this.state.sellprice} onChange={this.handleChange} name="sellprice" s={12} label="New sell price" />
+                                        <Button className='green' waves="light" value='submit' large >Update</Button>
+                                    </form>
+                                </CollapsibleItem>
+
+                                <span style={{ color: "red" }}>{this.state.errorStock}</span>
+                                <CollapsibleItem header={this.showData("stock",ingredientid.stock)} icon='arrow_drop_down'>
+                                    <form onSubmit={this.handlesumitStock}>
+                                        <Input value={this.state.stock} onChange={this.handleChange} name="stock" s={12} label="New Stock" />
+                                        <Button className='green' waves="light" value='submit' large >Update</Button>
+                                    </form>
+                                </CollapsibleItem>
+
+                                <span style={{ color: "red" }}>{this.state.errorBuyprice}</span>
+                                <CollapsibleItem header={this.showData("buyprice",ingredientid.buyPrice)} icon='arrow_drop_down'>
+                                    <form onSubmit={this.handlesumitBuyprice}>
+                                        <Input value={this.state.buyprice} onChange={this.handleChange} name="buyprice" s={12} label="New buy price " />
+                                        <Button className='green' waves="light" value='submit' large >Update</Button>
+                                    </form>
+                                </CollapsibleItem>
+
+                            </Collapsible>
+        )
     }
 
     render() {
@@ -141,41 +252,9 @@ class Inventory extends Component {
                     <Col m={6} >
 
                         <Row>
-
-                            <Collapsible popout>
-                                <CollapsibleItem header={"Actual name: " + ingredientid.name} icon='arrow_drop_down'>
-
-                                    <form onSubmit={this.handlesumitName}>
-                                        <Input value={this.state.name} onChange={this.handleChange} type="text" name="name" s={12} label="New name" />
-                                        <Button className='green' waves="light" value='submit' large >Update</Button>
-                                    </form>
-
-                                </CollapsibleItem>
-                                <CollapsibleItem header={"Actual sell price: " + ingredientid.Sellprice} icon='arrow_drop_down'>
-
-                                    <form onSubmit={this.handlesumitSellprice}>
-                                        <Input value={this.state.sellprice} onChange={this.handleChange} name="sellprice" s={12} label="New sell price" />
-                                        <Button className='green' waves="light" value='submit' large >Update</Button>
-                                    </form>
-
-                                </CollapsibleItem>
-                                <CollapsibleItem header={"Actual in Stock: " + ingredientid.stock} icon='arrow_drop_down'>
-
-                                    <form onSubmit={this.handlesumitStock}>
-                                        <Input value={this.state.stock} onChange={this.handleChange} name="stock" s={12} label="New Stock" />
-                                        <Button className='green' waves="light" value='submit' large >Update</Button>
-                                    </form>
-
-                                </CollapsibleItem>
-                                <CollapsibleItem header={"Atual buy price: " + ingredientid.buyPrice} icon='arrow_drop_down'>
-
-                                    <form onSubmit={this.handlesumitBuyprice}>
-                                        <Input value={this.state.buyprice} onChange={this.handleChange} name="buyprice" s={12} label="New buy price " />
-                                        <Button className='green' waves="light" value='submit' large >Update</Button>
-                                    </form>
-
-                                </CollapsibleItem>
-                            </Collapsible>
+                            {
+                                this.editableInputs(ingredientid)
+                            }
                         </Row>
                     </Col>
                 </Row>
