@@ -7,21 +7,23 @@ import PropTypes from 'prop-types'
 import { ToastContainer, toast } from 'react-toastify';
 import { connect } from 'react-redux'
 import "./addProduct.css"
-
+import ImageUploader from 'react-images-upload';
 
 
 
 class addProductClass extends Component {
-	constructor(){
-		super()
+	constructor(props){
+		super(props)
 		this.state={
 			errorName:'',
 			errorCategory:'',
 			errorPrice:'',
 			errorPhoto:'',
 			errorIngredient:'',
-			errorExtre:''
+			errorExtre:'',
+			pictures: ''
 		}
+		this.onDrop = this.onDrop.bind(this);
 	}
 
 	componentDidMount() {
@@ -34,7 +36,6 @@ class addProductClass extends Component {
 		const { name } = this.form;
 		const { category } = this.form;
 		const { price } = this.form;
-		const { photo } = this.form;
 
 		const { ingredients } = this.form;
 		const checkboxArrayIngredients = Array.prototype.slice.call(ingredients);
@@ -59,7 +60,7 @@ class addProductClass extends Component {
 		const nameValue = name.value;
 		const categoryValue = category.value;
 		const priceValue = price.value;
-		const photoValue = photo.value;
+		const photoValue = this.state.pictures
 
 		let flag =1;
 		if(nameValue===''){
@@ -85,6 +86,7 @@ class addProductClass extends Component {
 
 		if(photoValue===''){
 			flag=0
+			console.log('a')
 			this.setState({errorPhoto:'You must fill photo field'})
 		}else{
 			this.setState({errorPhoto:''})
@@ -127,6 +129,11 @@ class addProductClass extends Component {
 		}
 	}
 
+	onDrop(picture) {
+        this.setState({
+            pictures: this.state.pictures.concat(picture),
+        });
+    }
 
 
 	render() {
@@ -193,11 +200,13 @@ class addProductClass extends Component {
 
 
 									<div class="input-field">
-										<i class="material-icons prefix">
-											<img className='menu-icon iconnav' src='assets/picture.svg' width='30px' />
-										</i>
-										<input name="photo" id="icon_prefix" type="text" className="validate" />
-										<label for="icon_prefix">Photo</label>
+										<ImageUploader
+											withIcon={true}
+											buttonText='Choose images'
+											onChange={this.onDrop}
+											imgExtension={['.jpg', '.gif', '.png', '.gif']}
+											maxFileSize={5242880}
+										/>
 										<span style={{ color: "red" }}>{this.state.errorPhoto}</span>
 									</div>
 

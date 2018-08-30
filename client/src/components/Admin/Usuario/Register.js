@@ -85,7 +85,6 @@ class Register extends Component {
                                     </i>} defaultValue='1'>
                                         <option value='1'>Select the type of user</option>
                                         <option value='Chef'>Chef</option>
-                                        <option value='Table'>Table</option>
                                         <option value='Waiter'>Waiter</option>
                                         <option value='Cashier'>Cashier</option>
                                         <option value='all'>Admin</option>
