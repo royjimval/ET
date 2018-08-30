@@ -53,6 +53,7 @@ class addIngredient extends Component {
                 position: toast.POSITION.BOTTOM_RIGHT,
                 className: 'foo-bar'
             });
+            setTimeout(()=>{window.location = '/addIngredient'},1000)
         }
     }
 

@@ -31,7 +31,7 @@ class Reports extends Component {
     }
 
     content(order, orderft) {
-        if (this.state.selectValue == 1) {
+        if (this.state.selectValue === 1) {
             console.log(order)
             return (
                 <div>
@@ -78,8 +78,8 @@ class Reports extends Component {
         this.setState({ selectValue: event.target.value });
     }
 
-    print(order, orderft) {
-        if (this.state.selectValue == 1) {
+    print(order,orderft){
+        if (this.state.selectValue === 1) {
             this.exportPDF(order)
         } else {
             this.exportPDF(orderft)
@@ -125,7 +125,7 @@ class Reports extends Component {
         const { orderft } = this.props.orderft
 
         let MyComponent = null;
-        if (this.state.selectValue == 1) {
+        if (this.state.selectValue === 1) {
             MyComponent = <CalendarOne />
         } else {
             MyComponent = <CalendarRange />
