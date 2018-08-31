@@ -125,7 +125,7 @@ class Header extends Component {
                 return (
                     <div>
                         <NavItem componentClass={Link} href="/Menu" to="/Menu"><img className='menu-icon' src='assets/menu.svg' width='30px' />MENU</NavItem>
-                        <NavItem className='left' componentClass={Link} href="/Order" to="/Order"><img className='menu-icon' src='assets/fast-delivery.svg' width='30px' />My Order</NavItem>
+                        <NavItem className='left' componentClass={Link} href="/Order" to="/Order"><img className='menu-icon' src='assets/fast-delivery.svg' width='30px' />CONFIRN ORDER</NavItem>
                     </div>
                 )
             } break;

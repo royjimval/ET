@@ -77,6 +77,17 @@ class Item extends Component {
     
                 <div>
                     <Nav Title="Menu" />
+
+                <br></br>
+                    <div className="styleheaders center divHeader">
+                        <div>
+                            <img src='assets/favicon-57.png' />
+                        </div>
+                        <div className="divHeaderText">
+                            Open a category and start to select your food :D
+                        </div>
+                    </div>
+
                     <Collapsible popout defaultActiveKey={1} >
                         {/* Starts Brakfast Component */}
                         <CollapsibleItem className='indigo lighten-2' header='BREAKFASTS' icon='arrow_drop_down'>

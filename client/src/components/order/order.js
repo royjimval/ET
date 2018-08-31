@@ -126,6 +126,16 @@ class Order extends Component {
                 <div>
                     <Nav Title="My Order" />
                     <Row>
+                        <br></br>
+                        <div className="styleheaders center divHeader">
+                            <div>
+                                <img src='assets/favicon-57.png' />
+                            </div>
+                            <div className="divHeaderText">
+                                Check your order :) 
+                        </div>
+                        </div>
+                        <br></br>
                         <Col m={5} className='offset-m1'>
                             <Col m={12}>
                                 <Collection header="Pre-Order" className='z-depth-1-half'>

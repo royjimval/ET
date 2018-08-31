@@ -22,7 +22,7 @@ class InventoryView extends Component {
                             <img src='assets/favicon-57.png' />
                         </div>
                         <div className="divHeaderText">
-                            Create your Eatable account
+                            Here you can select the product and edit it :D
                         </div>
                     </div>
                     <Row>

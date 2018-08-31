@@ -80,6 +80,7 @@ class addIngredient extends Component {
                             Create your Eatable ingredient
                         </div>
                     </div>
+                    <br></br>
 
                     <Row>
                         <Col m={6}>

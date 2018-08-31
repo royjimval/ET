@@ -24,7 +24,7 @@ class ReportsView extends Component {
                                     <img src='assets/favicon-57.png' />
                                 </div>
                                 <div className="divHeaderText">
-                                    Create your Eatable account
+                                    Here you can see the reports :)
                                 </div>
                             </div>
                         </Row>
