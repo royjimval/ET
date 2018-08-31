@@ -117,7 +117,7 @@ class addProductClass extends Component {
 			flag = 0
 			this.setState({ errorIngredient: "you must fill more than 2 ingredients" })
 		}
-		
+
 		checkValues = 0;
 
 		checkedCheckboxesValuesExtra.map(items => {
@@ -222,13 +222,19 @@ class addProductClass extends Component {
 										<label for="icon_prefix">Price</label>
 										<span style={{ color: "red" }}>{this.state.errorPrice}</span>
 									</div>
-
-
-									<div class="input-field">
-										<span style={{ color: "red" }}>{this.state.errorPhoto}</span>
-										<input type="file" onChange={this.onDrop} s={12} />
-									</div>
-
+									<Row>
+										<div class="file-field input-field">
+											<div class="btn choosefile">
+												<span>Chosse Image</span>
+												<span style={{ color: "red" }}>{this.state.errorPhoto}</span>
+												<input type="file" onChange={this.onDrop} s={12} />
+											</div>
+											<div class="file-path-wrapper">
+												<input class="file-path validate stylefontColapsible" type="text"
+													placeholder="Upload file" />
+											</div>
+										</div>
+									</Row>
 									<div className="center">
 										<Button className='waves-effect waves-light RegisterProductButton' large >Save</Button>
 									</div>
