@@ -1,4 +1,4 @@
-import {GET_USERS} from '../accions/types'
+import {GET_USERS, DELETE_USER} from '../accions/types'
 
 const initialState = {
     users:[],
@@ -12,6 +12,11 @@ export default function(state = initialState,action){
                 ...state,
                 users: action.payload,
                 loading: true
+            };
+        case DELETE_USER:
+            return {
+                ...state,
+                users: state.users.filter(users => users._id !== action.payload)
             };
         
         default:
