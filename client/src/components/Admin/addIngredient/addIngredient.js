@@ -119,31 +119,27 @@ class addIngredient extends Component {
                             </div>
                         </Col>
                         <Col m={6}>
-                            <div class="divIngredients scrolleableingredient">
-                                <Row className="no-marg-b">
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th>Ingredient Name</th>
-                                                <th>Ingredient Price</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody className="tbbodyIngredients scrolleable">
-                                            <tr>
-                                                {ingredients.map(eachingredient => {
-                                                    return (
-                                                        <div>
-                                                            <td>{eachingredient.name}</td>
-                                                            <td>{eachingredient.Sellprice}</td>
-                                                        </div>
-
-                                                    )
-                                                })}
-
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </Row>
+                            <div class="divIngredients">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Ingredient Name</th>
+                                            <th>Ingredient Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="tbbodyIngredientData">
+                                        <tr>
+                                            {ingredients.map(eachingredient => {
+                                                return (
+                                                    <tr>
+                                                        <td>{eachingredient.name}</td>
+                                                        <td>{eachingredient.Sellprice}</td>
+                                                    </tr>
+                                                )
+                                            })}
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </Col>
                     </Row>

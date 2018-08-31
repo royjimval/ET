@@ -1,7 +1,5 @@
-
-
 .InventoryRegister{
-	margin-top: 6%;
+	margin-top: 2%;
 	margin-left: 1%;
 	width: 100%;
 	height:430px;
@@ -16,20 +14,35 @@
 	height: 350px;
 }
 
-.stylefontColapsibleInventory{
-    font-size: 15px;
-    font-family: 'Combo', cursive;
-    font-weight: 100;
-    line-height: 12px;
-    margin: 0;
-    }
-
 	.buttonedit
 	{
 		width: 80px;
 		height: 50px;
 	}
 
-	.headerInventory{
-		font-family: 'Combo', cursive;
-	}
+	.tbbodyInventoryData {
+		display:block;
+		height:100%;
+		overflow:auto;
+		font-size: 12px;
+		height: 330px;
+		display: inline-block;
+		width: 100%;
+		overflow: auto;
+		}
+		thead, .tbbodyInventoryData tr {
+		display:table;
+		width:100%;
+		table-layout:fixed;
+		}
+		thead {
+		width: calc( 100% - 1em )
+		}
+		table {
+		width:100%;
+		display:block;
+		}
+	
+		.thuser{
+			margin-right: -10%;
+		}

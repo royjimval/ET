@@ -47,17 +47,17 @@
     height: 360px;;
 }
 
-.tbbodyIngredients {
+.tbbodyIngredientData {
     display:block;
     height:100%;
     overflow:auto;
     font-size: 12px;
-    height: 360px;
+    height: 330px;
     display: inline-block;
     width: 100%;
     overflow: auto;
     }
-    thead, .tbbodyIngredients tr {
+    thead, .tbbodyIngredientData tr {
     display:table;
     width:100%;
     table-layout:fixed;
@@ -70,6 +70,9 @@
     display:block;
     }
 
+    .thuser{
+        margin-right: -10%;
+    }
   
 
 

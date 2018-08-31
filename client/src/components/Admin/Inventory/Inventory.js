@@ -179,7 +179,7 @@ class Inventory extends Component {
                 <CollapsibleItem header={this.showData("name", ingredientid.name)} icon='arrow_drop_down'>
                     <form onSubmit={this.handlesumitName}>
                         <Input value={this.state.name} onChange={this.handleChange} type="text" name="name" s={12} label="New name" />
-                        <Button  waves="light" value='submit' large >Update</Button>
+                        <Button waves="light" value='submit' large >Update</Button>
                     </form>
                 </CollapsibleItem>
 
@@ -187,7 +187,7 @@ class Inventory extends Component {
                 <CollapsibleItem header={this.showData("sellprice", ingredientid.Sellprice)} icon='arrow_drop_down'>
                     <form onSubmit={this.handlesumitSellprice}>
                         <Input value={this.state.sellprice} onChange={this.handleChange} name="sellprice" s={12} label="New sell price" />
-                        <Button  waves="light" value='submit' large >Update</Button>
+                        <Button waves="light" value='submit' large >Update</Button>
                     </form>
                 </CollapsibleItem>
 
@@ -195,7 +195,7 @@ class Inventory extends Component {
                 <CollapsibleItem header={this.showData("stock", ingredientid.stock)} icon='arrow_drop_down'>
                     <form onSubmit={this.handlesumitStock}>
                         <Input value={this.state.stock} onChange={this.handleChange} name="stock" s={12} label="New Stock" />
-                        <Button  waves="light" value='submit' large >Update</Button>
+                        <Button waves="light" value='submit' large >Update</Button>
                     </form>
                 </CollapsibleItem>
 
@@ -221,15 +221,18 @@ class Inventory extends Component {
                 <Row>
                     <Col m={6}>
                         <div className="InventoryRegister">
-                            <table >
-                                <tr className="headerInventory">
-                                    <th>Name</th>
-                                    <th>Selling price</th>
-                                    <th>Stock</th>
-                                    <th>Buy price</th>
-                                    <th>Select Edit</th>
-                                </tr>
-                                <div className="scrolleableinventory stylefontColapsibleInventory">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Selling price</th>
+                                        <th>Stock</th>
+                                        <th>Buy price</th>
+                                        <th>Select Edit</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="tbbodyInventoryData">
+
                                     {ingredients.map((eachIngredient) => {
                                         return (
                                             <tr>
@@ -238,20 +241,19 @@ class Inventory extends Component {
                                                 <td>{eachIngredient.stock}</td>
                                                 <td>{eachIngredient.buyPrice}</td>
                                                 <td>
-                                                    <Button className="buttonedit" onClick={() => this.seeIngredient(eachIngredient)} icon={<i class="material-icons prefix">
-                                                        <img className='menu-icon' src='assets/edit.svg' width='30px' />
-                                                    </i>}>
+                                                    <Button className="buttonedit" onClick={() => this.seeIngredient(eachIngredient)} icon={<i class="material-icons">edit</i>}>
                                                     </Button>
                                                 </td>
                                             </tr>
                                         )
                                     })}
-                                </div>
+
+                                </tbody>
                             </table>
                         </div>
                     </Col>
                     <Col m={6} >
-                        <div className="InventoryRegister headerInventory">
+                        <div className="InventoryRegister">
                             <Row>
                                 {
                                     this.editableInputs(ingredientid)
