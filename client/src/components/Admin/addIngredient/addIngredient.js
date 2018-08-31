@@ -10,11 +10,11 @@ import "./addIngredient.css"
 
 
 class addIngredient extends Component {
-    constructor(){
+    constructor() {
         super()
-        this.state={
-            errorName:'',
-            errorPrice:''
+        this.state = {
+            errorName: '',
+            errorPrice: ''
         }
     }
 
@@ -31,29 +31,28 @@ class addIngredient extends Component {
         const nameValue = name.value;
         const SellpriceValue = Sellprice.value;
 
-        let flag=1;
-        if(nameValue===''){
-            flag=0
-            this.setState({errorName:'You must fill Name field'})
-        }else{
-            this.setState({errorName:''})
+        let flag = 1;
+        if (nameValue === '') {
+            flag = 0
+            this.setState({ errorName: 'You must fill Name field' })
+        } else {
+            this.setState({ errorName: '' })
         }
 
-        if(SellpriceValue===''){
-            flag=0
-            this.setState({errorPrice:'You must fill Price field'})
-        }else{
-            this.setState({errorPrice:''})
+        if (SellpriceValue === '') {
+            flag = 0
+            this.setState({ errorPrice: 'You must fill Price field' })
+        } else {
+            this.setState({ errorPrice: '' })
         }
 
-        if(flag===1){
+        if (flag === 1) {
             const data = { nameValue, SellpriceValue }
             this.props.addIngredients(data)
             toast.info(nameValue + " is added now to your ingredients :) ", {
                 position: toast.POSITION.BOTTOM_RIGHT,
                 className: 'foo-bar'
             });
-            setTimeout(()=>{window.location = '/addIngredient'},1000)
         }
     }
 
@@ -106,7 +105,7 @@ class addIngredient extends Component {
                                                     <i className="material-icons prefix">
                                                         <img className='menu-icon iconnav' src='assets/money.svg' width='30px' />
                                                     </i>
-                                                    <input name="Sellprice" id="icon_prefix" type="number" className="validate" />
+                                                    <input name="Sellprice" id="icon_prefix" type="number" className="validate" type="number" min="0" />
                                                     <label for="icon_prefix">Sellprice</label>
                                                     <span style={{ color: "red" }}>{this.state.errorPrice}</span>
                                                 </div>
@@ -131,20 +130,16 @@ class addIngredient extends Component {
                                         </thead>
                                         <tbody className="tbbodyIngredients scrolleable">
                                             <tr>
-                                                <td>Ingredient Name</td>
-                                                <td>Ingredient Price</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ingredient Name</td>
-                                                <td>Ingredient Price</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ingredient Name</td>
-                                                <td>Ingredient Price</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ingredient Name</td>
-                                                <td>Ingredient Price</td>
+                                                {ingredients.map(eachingredient => {
+                                                    return (
+                                                        <div>
+                                                            <td>{eachingredient.name}</td>
+                                                            <td>{eachingredient.Sellprice}</td>
+                                                        </div>
+
+                                                    )
+                                                })}
+
                                             </tr>
                                         </tbody>
                                     </table>
