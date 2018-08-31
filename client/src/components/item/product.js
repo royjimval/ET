@@ -79,7 +79,6 @@ class Item extends Component {
     
                 <div>
                     <Nav Title="Menu" />
-<<<<<<< HEAD
 
                 <br></br>
                     <div className="styleheaders center divHeader">
@@ -91,10 +90,7 @@ class Item extends Component {
                         </div>
                     </div>
 
-                    <Collapsible popout defaultActiveKey={1} >
-=======
                     <Collapsible popout defaultActiveKey={lastChecked} >
->>>>>>> e6e93c1b2b9d6f33b8bfd2f34665fd5bfa6d8596
                         {/* Starts Brakfast Component */}
                         <CollapsibleItem className='indigo lighten-2' header='BREAKFASTS' icon='arrow_drop_down'>
                             <Row className="no-marg-b">
