@@ -77,7 +77,7 @@ class Item extends Component {
     
                 <div>
                     <Nav Title="Menu" />
-                    <Collapsible popout >
+                    <Collapsible popout defaultActiveKey={1} >
                         {/* Starts Brakfast Component */}
                         <CollapsibleItem className='indigo lighten-2' header='BREAKFASTS' icon='arrow_drop_down'>
                             <Row className="no-marg-b">

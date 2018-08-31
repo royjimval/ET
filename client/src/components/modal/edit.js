@@ -43,6 +43,7 @@ class modalEdit extends Component {
         const total_Price = this.props.datapass.price + extraPrice;
 
         this.add_Preorder(total_Price, checkedCheckboxesValuesIngredients, checkedCheckboxesValuesExtra)
+        setTimeout(()=>{window.location = '/Menu'},500)
 
     }
 
