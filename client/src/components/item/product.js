@@ -5,7 +5,7 @@ import { Col, Row, Button, Collapsible, CollapsibleItem } from 'react-materializ
 import ModalEdit from '../modal/edit'
 import { getproduct_Breakfast, getproduct_Meal, getproduct_Dessert, getproduct_Dinner, getproduct_Drink } from '../../accions/productAccion';
 import { toast } from 'react-toastify'
-import { addPreorder } from '../../accions/preorderAccions'
+import { addPreorder,lastCategory } from '../../accions/preorderAccions'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -68,6 +68,8 @@ class Item extends Component {
         const { dinner } = this.props.dinner;
         const { drink } = this.props.drink;
         const { dessert } = this.props.dessert;
+        const {lastChecked} = this.props.lastChecked;
+        console.log(lastChecked)
 
         const  role  = this.props.auth.user.role
         if(role==='Table' || role==='all'){
@@ -77,7 +79,7 @@ class Item extends Component {
     
                 <div>
                     <Nav Title="Menu" />
-                    <Collapsible popout defaultActiveKey={1} >
+                    <Collapsible popout defaultActiveKey={lastChecked} >
                         {/* Starts Brakfast Component */}
                         <CollapsibleItem className='indigo lighten-2' header='BREAKFASTS' icon='arrow_drop_down'>
                             <Row className="no-marg-b">
@@ -98,7 +100,7 @@ class Item extends Component {
                                                 </div>
                                                 <img className="card-img" src={product_item.photo} alt={product_item.name} />
                                                 <div className="card-footer center">
-                                                    <Button className="green accent-4" data-target="modal_for_categorys" onClick={() => this.datamodal(product_item)}>Add Product</Button>
+                                                    <Button className="green accent-4" data-target="modal_for_categorys" onClick={() => {this.datamodal(product_item),this.props.lastCategory(0)}}>Add Product</Button>
                                                 </div>
                                             </div>
                                         </Col>
@@ -126,7 +128,7 @@ class Item extends Component {
                                                 </div>
                                                 <img className="card-img" src={product_item.photo} alt={product_item.name} />
                                                 <div className="card-footer center">
-                                                    <Button className="green accent-4" data-target="modal_for_categorys" onClick={() => this.datamodal(product_item)}>Add Product</Button>
+                                                    <Button className="green accent-4" data-target="modal_for_categorys" onClick={() => {this.datamodal(product_item),this.props.lastCategory(1)}}>Add Product</Button>
                                                 </div>
                                             </div>
                                         </Col>
@@ -154,7 +156,7 @@ class Item extends Component {
                                                 </div>
                                                 <img className="card-img" src={product_item.photo} alt={product_item.name} />
                                                 <div className="card-footer center">
-                                                <Button className="green accent-4" data-target="modal_for_categorys" onClick={() => this.datamodal(product_item)}>Add Product</Button>
+                                                <Button className="green accent-4" data-target="modal_for_categorys" onClick={() => {this.datamodal(product_item),this.props.lastCategory(2)}}>Add Product</Button>
                                                 </div>
                                             </div>
                                         </Col>
@@ -182,7 +184,7 @@ class Item extends Component {
                                                 </div>
                                                 <img className="card-img" src={product_item.photo} alt={product_item.name} />
                                                 <div className="card-footer center">
-                                                    <Button className="green accent-4" data-target="modal_for_categorys" onClick={() => this.datamodal(product_item)}>Add Product</Button>
+                                                    <Button className="green accent-4" data-target="modal_for_categorys" onClick={() => {this.datamodal(product_item),this.props.lastCategory(3)}}>Add Product</Button>
                                                 </div>
                                             </div>
                                         </Col>
@@ -210,7 +212,7 @@ class Item extends Component {
                                                 </div>
                                                 <img className="card-img" src={product_item.photo} alt={product_item.name} />
                                                 <div className="card-footer center">
-                                                    <Button className="green accent-4" onClick={() => this.add_Preorder(product_item)}>Add Product</Button>
+                                                    <Button className="green accent-4" onClick={() => {this.add_Preorder(product_item),this.props.lastCategory(4)}}>Add Product</Button>
                                                 </div>
                                             </div>
                                         </Col>
@@ -225,7 +227,7 @@ class Item extends Component {
     
     
     
-                    <ModalEdit datapass={this.state} />
+                    <ModalEdit history={this.props.history} datapass={this.state} />
                 </div >
             )
         }else{
@@ -248,13 +250,15 @@ Item.propTypes = {
     getproduct_Dinner: PropTypes.func.isRequired,
     getproduct_Drink: PropTypes.func.isRequired,
     getproduct_Dessert: PropTypes.func.isRequired,
+    lastCategory: PropTypes.func.isRequired,
 
     breakfast: PropTypes.object.isRequired,
     meal: PropTypes.object.isRequired,
     dinner: PropTypes.object.isRequired,
     drink: PropTypes.object.isRequired,
     dessert: PropTypes.object.isRequired,
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
+    lastChecked: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -264,8 +268,9 @@ const mapStateToProps = state => ({
     dinner: state.product,
     drink: state.product,
     dessert: state.product,
+    lastChecked: state.order,
     auth: state.auth
 });
 
 
-export default connect(mapStateToProps, { addPreorder, getproduct_Breakfast, getproduct_Meal, getproduct_Dinner, getproduct_Drink, getproduct_Dessert })(Item);
+export default connect(mapStateToProps, { lastCategory, addPreorder, getproduct_Breakfast, getproduct_Meal, getproduct_Dinner, getproduct_Drink, getproduct_Dessert })(Item);
