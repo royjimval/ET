@@ -50,6 +50,13 @@ module.exports = function validateRegisterInput(data) {
             errors.lastname = 'Lastname must be between 2 and 30 characters';
         }
     }
+
+    if (data.name.length > 30) {
+        if (!data.name == 0) {
+            errors.name = 'Name must be between 1 and 30 characters';
+        }
+    }
+
     if (data.password.length < 6 && !data.password == 0) {
         errors.password = 'Passwors must be at least 6 characters';
     }

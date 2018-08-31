@@ -70,6 +70,13 @@ class addProductClass extends Component {
 			this.setState({ errorName: '' })
 		}
 
+		if(nameValue.length>30){
+			flag=0
+			this.setState({errorName:"The name is too big choose another one smaller( max: 30 characters)"})
+		}else {
+			this.setState({ errorName: '' })
+		}
+
 		if (categoryValue === '1') {
 			flag = 0
 			this.setState({ errorCategory: 'You must fill category field' })
@@ -106,29 +113,33 @@ class addProductClass extends Component {
 				})
 		}
 
-		let checkValues = 0;
-		checkedCheckboxesValuesIngredients.map(items => {
-			checkValues++
-		})
+		if(categoryValue==='Drink'){
 
-		if (checkValues > 2) {
-			this.setState({ errorIngredient: "" })
-		} else {
-			flag = 0
-			this.setState({ errorIngredient: "you must fill more than 2 ingredients" })
-		}
-
-		checkValues = 0;
-
-		checkedCheckboxesValuesExtra.map(items => {
-			checkValues++
-		})
-		console.log(checkValues);
-		if (checkValues > 2) {
-			this.setState({ errorExtre: '' })
-		} else {
-			flag = 0
-			this.setState({ errorExtre: "you must fill more than 2 extra ingredients" })
+		}else{
+			let checkValues = 0;
+			checkedCheckboxesValuesIngredients.map(items => {
+				checkValues++
+			})
+	
+			if (checkValues > 2) {
+				this.setState({ errorIngredient: "" })
+			} else {
+				flag = 0
+				this.setState({ errorIngredient: "you must fill more than 2 ingredients" })
+			}
+	
+			checkValues = 0;
+	
+			checkedCheckboxesValuesExtra.map(items => {
+				checkValues++
+			})
+			console.log(checkValues);
+			if (checkValues > 2) {
+				this.setState({ errorExtre: '' })
+			} else {
+				flag = 0
+				this.setState({ errorExtre: "you must fill more than 2 extra ingredients" })
+			}
 		}
 
 
@@ -219,14 +230,14 @@ class addProductClass extends Component {
 										<i class="material-icons prefix">
 											<img className='menu-icon iconnav' src='assets/money.svg' width='30px' />
 										</i>
-										<input name="price" id="icon_prefix" type="number" className="validate" />
+										<input name="price" id="icon_prefix" type="number" min="0" className="validate" />
 										<label for="icon_prefix">Price</label>
 										<span style={{ color: "red" }}>{this.state.errorPrice}</span>
 									</div>
 									<Row>
 										<div class="file-field input-field">
 											<div class="btn choosefile">
-												<span>Chosse Image</span>
+												<h6>Chosse Image</h6>
 												<span style={{ color: "red" }}>{this.state.errorPhoto}</span>
 												<input type="file" onChange={this.onDrop} s={12} />
 											</div>

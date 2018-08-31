@@ -1,9 +1,11 @@
-import { GET_ORDER, ORDER_LOADING, DELETE_ORDER, UPDATE_ORDER, ADD_ORDER, GET_ORDER_BY_DATE, GET_ORDER_BY_DATE_FT } from '../accions/types';
+import {CHECK_CATEGORY, GET_ORDER, ORDER_LOADING, DELETE_ORDER, UPDATE_ORDER, ADD_ORDER, GET_ORDER_BY_DATE, GET_ORDER_BY_DATE_FT } from '../accions/types';
+import { lastCategory } from '../accions/preorderAccions';
 
 const initialState = {
   order: [],
   orderft: [],
-  loading: false
+  loading: false,
+  lastChecked:0
 };
 
 export default function (state = initialState, action) {
@@ -12,6 +14,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         order: action.payload,
+        loading: true
+      };
+      case CHECK_CATEGORY:
+      return {
+        ...state,
+        lastChecked: action.payload,
         loading: true
       };
     case GET_ORDER_BY_DATE:

@@ -10,6 +10,7 @@ export const ORDER_LOADING = 'ORDER_LOADING';
 export const DELETE_ORDER = 'DELETE_ORDER';
 export const UPDATE_ORDER = 'UPDATE_ORDER';
 export const ADD_ORDER = 'ADD_ORDER';
+export const CHECK_CATEGORY = 'CHECK_CATEGORY';
 
 export const GET_PRODUCT = 'GET_PRODUCT'; 
 export const GET_PRODUCT_BREAKFAST = 'GET_PRODUCT_BREAKFAST'; 
