@@ -19,7 +19,6 @@ class Order extends Component {
 
     componentWillUnmount() {
         count = 0;
-        clearInterval(this.interval);
     }
 
 

@@ -11,6 +11,7 @@ class Delivered extends Component {
     componentDidMount() {
         const table = this.props.auth.user.name
         this.props.getPreorder(table);
+        setInterval(()=>{this.props.getPreorder(table)},2000)
         this.resetTotal();
     }
 

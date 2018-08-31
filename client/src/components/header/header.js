@@ -154,10 +154,10 @@ class Header extends Component {
                 window.localStorage.clear()
                 setTimeout(()=>{window.location = '/'},500)
             } else {
-                this.setState({ errors: 'No se ingreso el role actual' })
+                this.setState({ errors: 'You did not fill the current email user' })
             }
         } else {
-            this.setState({ errors: 'No se ingreso el usuario actual' })
+            this.setState({ errors: 'You did not fill the current role user' })
         }
     }
 

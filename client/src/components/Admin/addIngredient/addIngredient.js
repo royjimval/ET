@@ -39,6 +39,13 @@ class addIngredient extends Component {
             this.setState({ errorName: '' })
         }
 
+        if(nameValue.length>30){
+			flag=0
+			this.setState({errorName:"The name is too big choose another one smaller( max: 30 characters)"})
+		}else {
+			this.setState({ errorName: '' })
+		}
+
         if (SellpriceValue === '') {
             flag = 0
             this.setState({ errorPrice: 'You must fill Price field' })
@@ -53,6 +60,7 @@ class addIngredient extends Component {
                 position: toast.POSITION.BOTTOM_RIGHT,
                 className: 'foo-bar'
             });
+            setTimeout(() => { window.location = '/addIngredient' }, 500)
         }
     }
 
