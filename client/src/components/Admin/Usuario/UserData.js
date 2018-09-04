@@ -34,7 +34,9 @@ class UserData extends Component {
             return (
                 <Col m={6}>
                     <div className='valign-wrapper'>
-                        <Button className='red right' waves='light' onClick={() => this.onDeleteUser(user._id)} >Remove</Button>
+                        <Button className='red right' onClick={() => this.onDeleteUser(user._id)}
+                            icon={<i class="material-icons">delete</i>}>
+                        </Button>
 
                     </div>
                 </Col>

@@ -9,9 +9,9 @@ import { Button } from 'react-materialize';
 
 class NavBarAdmin extends Component {
 
-  logOutUser(){
+  logOutUser() {
     window.localStorage.clear()
-    setTimeout(()=>{window.location = '/'},1000)
+    setTimeout(() => { window.location = '/' }, 1000)
   }
 
 
@@ -20,57 +20,57 @@ class NavBarAdmin extends Component {
 
     if (role === 'all') {
       return (
-          <Row>
-            <div className='container'>
-              <h1 className='centered ls'>
+        <Row>
+          <div className='container'>
+            <h1 className='centered'>
               Admin site
               </h1>
-            </div>
-            <div>
-              <Parallax className='header' imageSrc="assets/pattern.svg" />
-            </div>
-            <Navbar className="nabAdmin">
-              <NavItem className="conteinernav" componentClass={Link} href="/General" to="/General">
-                <img className='menu-icon iconnav' src='assets/general.svg' width='31px' />
-                General
+          </div>
+          <div>
+            <Parallax className='header' imageSrc="assets/pattern.svg" />
+          </div>
+          <Navbar className="nabAdmin">
+            <NavItem className="conteinernav" componentClass={Link} href="/General" to="/General">
+              <img className='menu-icon iconnav' src='assets/general.svg' width='31px' />
+              General
             </NavItem>
 
-              <NavItem className="conteinernav" componentClass={Link} href="/User" to="/User">
-                <img className='menu-icon iconnav' src='assets/boy.svg' width='31px' />
-                Users
+            <NavItem className="conteinernav" componentClass={Link} href="/User" to="/User">
+              <img className='menu-icon iconnav' src='assets/boy.svg' width='31px' />
+              Users
             </NavItem>
 
-              <NavItem className="conteinernav" componentClass={Link} href="/InventoryView" to="/InventoryView">
-                <img className='menu-icon iconnav' src='assets/warehouse.svg' width='31px' />
-                Inventory
+            <NavItem className="conteinernav" componentClass={Link} href="/InventoryView" to="/InventoryView">
+              <img className='menu-icon iconnav' src='assets/warehouse.svg' width='31px' />
+              Inventory
             </NavItem>
 
-              <NavItem className="conteinernav" componentClass={Link} href="/cashier" to="/cashier">
-                <img className='menu-icon iconnav' src='assets/cashier.svg' width='31px' />
-                Cashier
+            <NavItem className="conteinernav" componentClass={Link} href="/cashier" to="/cashier">
+              <img className='menu-icon iconnav' src='assets/cashier.svg' width='31px' />
+              Cashier
             </NavItem>
 
-              <NavItem className="conteinernav" componentClass={Link} href="/ReportsView" to="/ReportsView">
-                <img className='menu-icon iconnav' src='assets/report.svg' width='31px' />
-                Reports
+            <NavItem className="conteinernav" componentClass={Link} href="/ReportsView" to="/ReportsView">
+              <img className='menu-icon iconnav' src='assets/report.svg' width='31px' />
+              Reports
             </NavItem>
 
-              <NavItem className="conteinernav" componentClass={Link} href="/addProduct" to="/addProduct">
-                <img className='menu-icon iconnav' src='assets/menu.svg' width='30px' />
-                Add Product
+            <NavItem className="conteinernav" componentClass={Link} href="/addProduct" to="/addProduct">
+              <img className='menu-icon iconnav' src='assets/menu.svg' width='30px' />
+              Add Product
             </NavItem>
 
-              <NavItem className="conteinernav" componentClass={Link} href="/addIngredient" to="/addIngredient">
-                <img className='menu-icon iconnav' src='assets/harvest.svg' width='30px' />
-                Add Ingredient
+            <NavItem className="conteinernav" componentClass={Link} href="/addIngredient" to="/addIngredient">
+              <img className='menu-icon iconnav' src='assets/harvest.svg' width='30px' />
+              Add Ingredient
             </NavItem>
 
-              <NavItem className="conteinernav right" onClick={()=>this.logOutUser()}>
-                <img className='menu-icon iconnav' src='assets/stand-by.svg' width='30px' />
-                Logout
+            <NavItem className="conteinernav right" onClick={() => this.logOutUser()}>
+              <img className='menu-icon iconnav' src='assets/stand-by.svg' width='30px' />
+              Logout
             </NavItem>
-            </Navbar>
-          </Row>
+          </Navbar>
+        </Row>
       )
     }
     else {

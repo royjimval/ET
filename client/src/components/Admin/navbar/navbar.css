@@ -24,3 +24,22 @@
 	background-size: cover;
 	background-repeat: none;
 }
+
+
+/*Mobile Devices, s*/
+
+@media only screen and (max-width: 600px) {
+    .centered {
+        font-size: 37px !important;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .centeredtext {
+        font-size: 10px !important;
+    }
+}
+
+
+

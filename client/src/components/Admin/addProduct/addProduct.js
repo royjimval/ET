@@ -235,9 +235,9 @@ class addProductClass extends Component {
 										<span style={{ color: "red" }}>{this.state.errorPrice}</span>
 									</div>
 									<Row>
-										<div class="file-field input-field">
-											<div class="btn choosefile">
-												<h6>Chosse Image</h6>
+										<div class="file-field input-field center">
+											<div class="btn choosefile center">
+												<h6 className="hide-on-med-and-down">Chosse Image</h6>
 												<span style={{ color: "red" }}>{this.state.errorPhoto}</span>
 												<input type="file" onChange={this.onDrop} s={12} />
 											</div>

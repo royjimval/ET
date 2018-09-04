@@ -91,7 +91,7 @@ class addIngredient extends Component {
                     <br></br>
 
                     <Row>
-                        <Col m={6}>
+                        <Col  s={12} m={6}>
                             <div className="IngredientRegister">
                                 <Row>
                                     <form onSubmit={this.handlesumit} ref={(form) => (this.form = form)}>
