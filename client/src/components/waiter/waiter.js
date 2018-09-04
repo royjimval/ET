@@ -379,8 +379,15 @@ class WaiterClass extends Component {
                 <div>
                     <WaiterAssist WaiterTilte="Waiter" history={this.props.history}/>
                     <Row>
-                        <h3 className='center'>Tables</h3>
-
+                    <br></br>
+                    <div className="styleheaders center divHeader">
+                        <div>
+                            <img src='assets/favicon-57.png' />
+                        </div>
+                        <div className="divHeaderText">
+                            Hey you can see the order ready here :D
+                        </div>
+                    </div>
                         <Col m={2}>
                             {
                                 this.changecolor1(table1_finished)
