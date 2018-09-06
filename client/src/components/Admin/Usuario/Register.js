@@ -64,11 +64,15 @@ class Register extends Component {
             <div class="RegisterUsers">
                 <Row className="no-marg-b">
                     <form onSubmit={this.onSubmit} id="create-course-form">
-                        <div className="center headerimage">
-                            <figure>
-                                <img src="assets/user.png" alt="UserRegister" class="user" />
-                            </figure>
-                        </div>
+                        <Row >
+                            <Col s={12}>
+                                <div className="center headerimage hide-on-med-and-down">
+                                    <figure>
+                                        <img src="assets/user.png" alt="UserRegister" class="user" />
+                                    </figure>
+                                </div>
+                            </Col>
+                        </Row>
                         <Row className="stylerow" >
                             <Col s={12} m={6} className="stylecolum">
                                 <div class="input-field">
