@@ -252,7 +252,7 @@ class Inventory extends Component {
                             </table>
                         </div>
                     </Col>
-                    <Col m={6} >
+                    <Col s={12} m={6} >
                         <div className="InventoryRegister">
                             <Row>
                                 {
